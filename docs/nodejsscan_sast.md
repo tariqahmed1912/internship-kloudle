@@ -54,8 +54,7 @@ Scan the /app directory (which holds the files for DVNA) and store the scan resu
 ```bash
 nodejsscan -d /app -o /app/report/nodejsscan-report
 ```
-	
-EXTRAAAA
+
 
 ### Jenkins Pipeline
 
