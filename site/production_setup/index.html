@@ -391,9 +391,9 @@
 </ul>
 <h3 id="step-1-install-docker">Step 1 - Install docker</h3>
 <p>Update the apt package index and install packages to allow apt to use a repository over HTTPS</p>
-<pre><code class="language-bash">sudo apt-get update
+<pre><code class="language-bash">sudo apt update
 
-sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
 </code></pre>
 <p>Add Docker’s official GPG key</p>
 <pre><code class="language-bash">curl -fsSL &lt;https://download.docker.com/linux/ubuntu/gpg&gt; | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -404,9 +404,9 @@ sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 $(lsb_release -cs) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list /dev/null
 </code></pre>
 <p>Update the apt package index, and install the latest version of Docker Engine and containerd.</p>
-<pre><code class="language-bash">sudo apt-get update
+<pre><code class="language-bash">sudo apt update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt install docker-ce docker-ce-cli containerd.io
 
 sudo docker run hello-world # Test if docker installation is successful 
 </code></pre>
