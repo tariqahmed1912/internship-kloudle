@@ -25,7 +25,7 @@ Run nodjsscan container
 sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
 ```
     
-You can access the website by typing `<ip-address>:9090` in the browsers URL. To perform SAST test, upload the files (individual files or a zip file) and run the scan.
+You can access the website by typing `<ip-address>:9090` in the browsers URL. To perform SAST, upload the files (individual files or a zip file) and run the scan.
 
 ### CLI-based
 
@@ -46,13 +46,15 @@ apt install python3-pip
 Install nodejsscan
 
 ```bash
-pip3 install nodejsscan
+pip3 install njsscan
 ```
 
 Scan the /app directory (which holds the files for DVNA) and store the scan result in `/app/report/nodejsscan-report`
 
 ```bash
-nodejsscan -d /app -o /app/report/nodejsscan-report
+mkdir /app/report
+
+njsscan --json -o /app/report/nodejsscan-report /app
 ```
 
 
@@ -74,28 +76,29 @@ pipeline {
   stages {
     stage ('Initialization') {
       steps {
-        sh 'echo "Starting the build..."'
+        sh 'echo "Starting the build!"'
       }
     }
     
-    stage('MySQL db') {
+    stage('MySQL DB config') {
       steps {
         sh 'scp tariq@192.168.56.102:~/vars.env ~/'
       }
     }
     
-    stage('Run Application Container') {
+    stage('Copy Application Code') {
       steps {
-        sh 'docker run -d --name dvna-mysql-test --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker cp dvna-app:/app/ ~/"'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir ~/app/report'
       }
     }
-    
     
     stage('NodeJsScan') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker exec -u 0 dvna-app-test nodejsscan -d /app -o /app/report/nodejsscan-report-test"'
+        sh 'njsscan --json -o ~/app/report/nodejsscan-report ~/app'
       }
     }
+    
     
     stage ('Final') {
       steps {

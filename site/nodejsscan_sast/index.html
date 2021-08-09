@@ -410,7 +410,7 @@
 <p>Run nodjsscan container</p>
 <pre><code class="language-bash">sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
 </code></pre>
-<p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST test, upload the files (individual files or a zip file) and run the scan.</p>
+<p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST, upload the files (individual files or a zip file) and run the scan.</p>
 <h3 id="cli-based">CLI-based</h3>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
@@ -421,10 +421,12 @@
 apt install python3-pip
 </code></pre>
 <p>Install nodejsscan</p>
-<pre><code class="language-bash">pip3 install nodejsscan
+<pre><code class="language-bash">pip3 install njsscan
 </code></pre>
 <p>Scan the /app directory (which holds the files for DVNA) and store the scan result in <code>/app/report/nodejsscan-report</code></p>
-<pre><code class="language-bash">nodejsscan -d /app -o /app/report/nodejsscan-report
+<pre><code class="language-bash">mkdir /app/report
+
+njsscan --json -o /app/report/nodejsscan-report /app
 </code></pre>
 <h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running a NodeJsScan.</p>
@@ -437,28 +439,29 @@ apt install python3-pip
   stages {
     stage ('Initialization') {
       steps {
-        sh 'echo &quot;Starting the build...&quot;'
+        sh 'echo &quot;Starting the build!&quot;'
       }
     }
 
-    stage('MySQL db') {
+    stage('MySQL DB config') {
       steps {
         sh 'scp tariq@192.168.56.102:~/vars.env ~/'
       }
     }
 
-    stage('Run Application Container') {
+    stage('Copy Application Code') {
       steps {
-        sh 'docker run -d --name dvna-mysql-test --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker cp dvna-app:/app/ ~/&quot;'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir ~/app/report'
       }
     }
-
 
     stage('NodeJsScan') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker exec -u 0 dvna-app-test nodejsscan -d /app -o /app/report/nodejsscan-report-test&quot;'
+        sh 'njsscan --json -o ~/app/report/nodejsscan-report ~/app'
       }
     }
+
 
     stage ('Final') {
       steps {
