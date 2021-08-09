@@ -62,12 +62,6 @@ njsscan --json -o /app/report/nodejsscan-report /app
 
 The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running a NodeJsScan.
 
-<!-- First, install docker on the Jenkins server. Follow the steps given in the `Install Docker` section of the `Setup of Production Server` page. The `docker` commands can only be run as sudo user. To enable executing `docker` commands without sudo, type the following in the terminal.
-
-```bash
-sudo chmod 666 /var/run/docker.sock
-``` -->
-
 Install njsscan in the Jenkins server.
 
 ```bash

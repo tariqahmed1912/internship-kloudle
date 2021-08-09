@@ -430,14 +430,8 @@ njsscan --json -o /app/report/nodejsscan-report /app
 </code></pre>
 <h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running a NodeJsScan.</p>
-<p>&lt;!-- First, install docker on the Jenkins server. Follow the steps given in the <code>Install Docker</code> section of the <code>Setup of Production Server</code> page. The <code>docker</code> commands can only be run as sudo user. To enable executing <code>docker</code> commands without sudo, type the following in the terminal.</p>
-<pre><code class="language-bash">sudo chmod 666 /var/run/docker.sock
-``` --&gt;
-
-Install njsscan in the Jenkins server.
-
-```bash
-apt update &amp;&amp; apt install python3-pip &amp;&amp; pip3 install njsscan
+<p>Install njsscan in the Jenkins server.</p>
+<pre><code class="language-bash">apt update &amp;&amp; apt install python3-pip &amp;&amp; pip3 install njsscan
 </code></pre>
 <p>The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:</p>
 <pre><code class="language-bash">pipeline {
