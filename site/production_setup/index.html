@@ -391,9 +391,9 @@
 </ul>
 <h3 id="step-1-install-docker">Step 1 - Install docker</h3>
 <p>Update the apt package index and install packages to allow apt to use a repository over HTTPS</p>
-<pre><code class="language-bash">sudo apt update
+<pre><code class="language-bash">sudo apt-get update
 
-sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 </code></pre>
 <p>Add Docker’s official GPG key</p>
 <pre><code class="language-bash">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings docker-archive-keyring.gpg

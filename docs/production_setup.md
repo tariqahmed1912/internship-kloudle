@@ -16,9 +16,9 @@ Prerequisites
 Update the apt package index and install packages to allow apt to use a repository over HTTPS
 
 ```bash
-sudo apt update
+sudo apt-get update
 
-sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
     
 Add Docker’s official GPG key
