@@ -1,6 +1,6 @@
 site_name: DevSecOps Pipeline
 nav:
-  - Introduction: 'introduction.md'
+  - Introduction: 'index.md'
   - Setup of VMs: 'vm_setup.md'
   - Setup of Jenkins: 'jenkins_setup.md'
   - Setup of Production Server: 'production_setup.md'
