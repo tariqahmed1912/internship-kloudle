@@ -58,13 +58,50 @@ nodejsscan -d /app -o /app/report/nodejsscan-report
 
 ### Jenkins Pipeline
 
-SSH into server
-Copy code to server
-docker build
-docker start
-run nodejsscan
-stop and remove docker container
+The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running a NodeJsScan.
 
-Install Mkdocs
+First, install docker on the Jenkins server. Follow the steps given in the `Install Docker` section of the `Setup of Production Server` page. The `docker` commands can only be run as sudo user. To enable executing `docker` commands without sudo, type the following in the terminal.
 
-Auditjs SAST tool
+```bash
+sudo chmod 666 /var/run/docker.sock
+```
+
+The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:
+
+```bash
+pipeline {
+  agent any
+  stages {
+    stage ('Initialization') {
+      steps {
+        sh 'echo "Starting the build..."'
+      }
+    }
+    
+    stage('MySQL db') {
+      steps {
+        sh 'scp tariq@192.168.56.102:~/vars.env ~/'
+      }
+    }
+    
+    stage('Run Application Container') {
+      steps {
+        sh 'docker run -d --name dvna-mysql-test --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
+      }
+    }
+    
+    
+    stage('NodeJsScan') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker exec -u 0 dvna-app-test nodejsscan -d /app -o /app/report/nodejsscan-report-test"'
+      }
+    }
+    
+    stage ('Final') {
+      steps {
+        sh 'echo "Scan successfully completed!"'
+      }
+    }
+  }
+}
+```

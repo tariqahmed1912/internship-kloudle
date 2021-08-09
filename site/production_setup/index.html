@@ -422,7 +422,7 @@ MYSQL_PORT=3306
 <p>Start MySQL container (using environment variables in vars.env file). Run an infinite command in detached mode (using <code>-d</code>), so the command never ends and the container never stops. I used <code>tail -f /dev/null</code> because it is quite light weight and /dev/null is present in most linux images.</p>
 <pre><code class="language-bash">sudo docker run -d --name dvna-mysql --env-file vars.env mysql:5.7 tail -f /dev/null
 </code></pre>
-<p>Start/run the DVNA application</p>
+<p>Start/run the DVNA application.</p>
 <pre><code class="language-bash">sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
 </code></pre>
 <p>To see the if the containers are running, run a <code>docker ps</code>. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using <code>docker stop &lt;container-name-or-id&gt;</code>. </p>

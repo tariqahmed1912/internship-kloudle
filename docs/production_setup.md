@@ -65,7 +65,7 @@ Start MySQL container (using environment variables in vars.env file). Run an inf
 sudo docker run -d --name dvna-mysql --env-file vars.env mysql:5.7 tail -f /dev/null
 ```
     
-Start/run the DVNA application
+Start/run the DVNA application.
 
 ```bash
 sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
