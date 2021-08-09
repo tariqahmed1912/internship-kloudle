@@ -89,16 +89,21 @@ pipeline {
     stage('Copy Application Code') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker cp dvna-app:/app/ ~/"'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir ~/app/report'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir ~/report'
       }
     }
     
     stage('NodeJsScan') {
       steps {
-        sh 'njsscan --json -o ~/app/report/nodejsscan-report ~/app'
+        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
       }
     }
     
+    stage('Remove Application Code') {
+      steps {
+        sh 'rm -rf ~/app && rm -rf ~/vars.env'
+      }
+    }
     
     stage ('Final') {
       steps {
