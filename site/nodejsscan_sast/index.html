@@ -415,12 +415,12 @@
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
-<p>To install nodejsscan, we first need to install pip3 in 'dvna-app' container in production server.</p>
+<p>To install njsscan, we first need to install pip3 in 'dvna-app' container in production server.</p>
 <pre><code class="language-bash">apt update
 
 apt install python3-pip
 </code></pre>
-<p>Install nodejsscan</p>
+<p>Install njsscan</p>
 <pre><code class="language-bash">pip3 install njsscan
 </code></pre>
 <p>Scan the /app directory (which holds the files for DVNA) and store the scan result in <code>/app/report/nodejsscan-report</code></p>
@@ -430,8 +430,14 @@ njsscan --json -o /app/report/nodejsscan-report /app
 </code></pre>
 <h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running a NodeJsScan.</p>
-<p>First, install docker on the Jenkins server. Follow the steps given in the <code>Install Docker</code> section of the <code>Setup of Production Server</code> page. The <code>docker</code> commands can only be run as sudo user. To enable executing <code>docker</code> commands without sudo, type the following in the terminal.</p>
+<p>&lt;!-- First, install docker on the Jenkins server. Follow the steps given in the <code>Install Docker</code> section of the <code>Setup of Production Server</code> page. The <code>docker</code> commands can only be run as sudo user. To enable executing <code>docker</code> commands without sudo, type the following in the terminal.</p>
 <pre><code class="language-bash">sudo chmod 666 /var/run/docker.sock
+``` --&gt;
+
+Install njsscan in the Jenkins server.
+
+```bash
+apt update &amp;&amp; apt install python3-pip &amp;&amp; pip3 install njsscan
 </code></pre>
 <p>The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:</p>
 <pre><code class="language-bash">pipeline {
