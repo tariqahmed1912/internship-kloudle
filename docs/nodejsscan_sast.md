@@ -80,16 +80,10 @@ pipeline {
       }
     }
     
-    stage('MySQL DB config') {
-      steps {
-        sh 'scp tariq@192.168.56.102:~/vars.env ~/'
-      }
-    }
-    
     stage('Copy Application Code') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker cp dvna-app:/app/ ~/"'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir ~/report'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir -p ~/report'
       }
     }
     
@@ -99,14 +93,9 @@ pipeline {
       }
     }
     
-    stage('Remove Application Code') {
-      steps {
-        sh 'rm -rf ~/app && rm -rf ~/vars.env'
-      }
-    }
-    
     stage ('Final') {
       steps {
+        sh 'rm -rf ~/app && rm -rf ~/vars.env'
         sh 'echo "Scan successfully completed!"'
       }
     }

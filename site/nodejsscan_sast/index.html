@@ -443,16 +443,10 @@ njsscan --json -o /app/report/nodejsscan-report /app
       }
     }
 
-    stage('MySQL DB config') {
-      steps {
-        sh 'scp tariq@192.168.56.102:~/vars.env ~/'
-      }
-    }
-
     stage('Copy Application Code') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker cp dvna-app:/app/ ~/&quot;'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir ~/report'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
       }
     }
 
@@ -462,14 +456,9 @@ njsscan --json -o /app/report/nodejsscan-report /app
       }
     }
 
-    stage('Remove Application Code') {
-      steps {
-        sh 'rm -rf ~/app &amp;&amp; rm -rf ~/vars.env'
-      }
-    }
-
     stage ('Final') {
       steps {
+        sh 'rm -rf ~/app &amp;&amp; rm -rf ~/vars.env'
         sh 'echo &quot;Scan successfully completed!&quot;'
       }
     }
