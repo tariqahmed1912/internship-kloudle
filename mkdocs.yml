@@ -6,7 +6,6 @@ nav:
   - Setup of Production Server: 'production_setup.md'
   - SSH Connection between VMs: 'ssh_connection.md'
   - SAST using NodeJsScan: 'nodejsscan_sast.md'
-  # - MkDocs setup for report: 'mkdocs-setup-usage.md'
 
 theme: material
 
