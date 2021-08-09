@@ -1,8 +1,8 @@
-## **Objective**
+## Objective
 
 This section deals with the initial setup of VMs running Ubuntu Server.
 
-### **Setting up VMs**
+### Setting up VMs
 For the lab setup, I created 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. 
 
 I followed this [documentation](https://hibbard.eu/install-ubuntu-virtual-box/) upto "Up and Running with SSH" step, for installing Ubuntu on both the VMs. In the blog, they used a "Bridged" connection for enabling VM-to-VM and host-to-VM communication. But this was not working for me. So I instead used 2 adaptors; one for NAT and the other a Host-only network.

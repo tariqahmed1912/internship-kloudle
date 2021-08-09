@@ -364,9 +364,9 @@
                 
                   <h1>Setup of VMs</h1>
                 
-                <h2 id="objective"><strong>Objective</strong></h2>
+                <h2 id="objective">Objective</h2>
 <p>This section deals with the initial setup of VMs running Ubuntu Server.</p>
-<h3 id="setting-up-vms"><strong>Setting up VMs</strong></h3>
+<h3 id="setting-up-vms">Setting up VMs</h3>
 <p>For the lab setup, I created 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. </p>
 <p>I followed this <a href="https://hibbard.eu/install-ubuntu-virtual-box/">documentation</a> upto "Up and Running with SSH" step, for installing Ubuntu on both the VMs. In the blog, they used a "Bridged" connection for enabling VM-to-VM and host-to-VM communication. But this was not working for me. So I instead used 2 adaptors; one for NAT and the other a Host-only network.</p>
 <p>Open Virtual Box and go to <code>File</code> -&gt; <code>Host Network Manager</code>. The <code>Host Network Manager</code> window will open, and ideally, a network named "vboxnet0" should exist with the DHCP server disabled. If it does not exist, you can create it by clicking on the "Create" button. The new network created will be named "vboxnet0" and ensure DHCP server is not enabled. This network will enable host-to-VM communication.</p>
