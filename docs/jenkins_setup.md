@@ -1,4 +1,4 @@
-## Objective
+## **Objective**
 
 In this section, we will walk through the installation steps for Jenkins. 
 
@@ -12,7 +12,7 @@ Prerequisites
 - VM running Ubuntu 18.04 LTS.
 - Java version 8. OpenJDK version 11.
 
-### Step 1 - Install Java
+### **Step 1 - Install Java**
 
 The easiest option for installing Java is to use the version packaged with Ubuntu. By default, Ubuntu 18.04 includes OpenJDK version 11, which is an open-source variant of the JRE and JDK.
 
@@ -33,7 +33,7 @@ $ sudo apt install default-jdk
 $ javac --version  # Java Compiler version
 ```
 
-### Step 2 - Install Jenkins
+### **Step 2 - Install Jenkins**
 
 First, add the repository key to the system. On success, the system will return "OK".
 
@@ -55,7 +55,7 @@ Install Jenkins and its dependencies
 sudo apt install jenkins
 ```
 
-### Step 3 - Start Jenkins Service
+### **Step 3 - Start Jenkins Service**
 
 After all the installation steps, start Jenkins using systemctl. You can view the status of the service, using the 2nd command shown below.
 
@@ -65,7 +65,7 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 ```
 
-### Step 4 - Adding Firewall Rules
+### **Step 4 - Adding Firewall Rules**
 
 Jenkins uses port 8080 by default. Hence, we'll allow traffic to port 8080 by adding a firewall rule using ufw (uncomplicated firewall).
 
@@ -76,7 +76,7 @@ sudo ufw enable # Starts the firewall service
 sudo ufw status # Shows all firewall rules
 ```
 
-### Step 5 - Setting Up Jenkins
+### **Step 5 - Setting Up Jenkins**
 
 To set up your installation, visit Jenkins on its default port, 8080, using your server domain name or IP address: http://<your_server_ip_or_domain>:8080. The 'Unlock Jenkins' page asks for administrator password.  
 &nbsp;

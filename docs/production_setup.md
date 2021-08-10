@@ -1,4 +1,4 @@
-## Objective
+## **Objective**
 
 In this section, we will walk implement the steps for setting up production server for deploying an application (DVNA).
 
@@ -11,7 +11,7 @@ Prerequisites
 -   VM running Ubuntu 18.04 LTS.
 -   Docker installed
 
-### Step 1 - Install docker
+### **Step 1 - Install docker**
 
 Update the apt package index and install packages to allow apt to use a repository over HTTPS
 
@@ -46,7 +46,7 @@ sudo docker run hello-world # Test if docker installation is successful
 ```
     
 
-### Step 2 - Setup Production Server
+### **Step 2 - Setup Production Server**
 
 DVNA interacts with a MySQL database. Store the db configuration in a file named 'vars.env'.
 
@@ -73,7 +73,7 @@ sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -
 
 To see the if the containers are running, run a `docker ps`. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using `docker stop <container-name-or-id>`. 
 	
-<b>Note:</b> 
+<b>**Note:**</b> 
 1.  You can start the containers again using `docker start <container-name-or-id>`. When starting, however, you will have to start `dvna-mysql` container first because the `dvna-app` is dependant on it.
 
 2. The `docker` commands can only be run as sudo user. To enable executing `docker` commands without sudo, type the following in the terminal.

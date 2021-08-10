@@ -420,7 +420,7 @@
                 
                   <h1>Setup of Jenkins</h1>
                 
-                <h2 id="objective">Objective</h2>
+                <h2 id="objective"><strong>Objective</strong></h2>
 <p>In this section, we will walk through the installation steps for Jenkins. </p>
 <p>About Jenkins</p>
 <ul>
@@ -432,7 +432,7 @@
 <li>VM running Ubuntu 18.04 LTS.</li>
 <li>Java version 8. OpenJDK version 11.</li>
 </ul>
-<h3 id="step-1-install-java">Step 1 - Install Java</h3>
+<h3 id="step-1-install-java"><strong>Step 1 - Install Java</strong></h3>
 <p>The easiest option for installing Java is to use the version packaged with Ubuntu. By default, Ubuntu 18.04 includes OpenJDK version 11, which is an open-source variant of the JRE and JDK.</p>
 <p>Install the default Java Runtime Environment (JRE) from OpenJDK 11.</p>
 <pre><code class="language-bash">$ sudo apt install default-jre 
@@ -444,7 +444,7 @@ $ java --version   # OpenJDK version
 
 $ javac --version  # Java Compiler version
 </code></pre>
-<h3 id="step-2-install-jenkins">Step 2 - Install Jenkins</h3>
+<h3 id="step-2-install-jenkins"><strong>Step 2 - Install Jenkins</strong></h3>
 <p>First, add the repository key to the system. On success, the system will return "OK".</p>
 <pre><code class="language-bash">wget -q -O - &lt;https://pkg.jenkins.io/debian-stable/jenkins.io.key&gt; | sudo apt-key add -
 </code></pre>
@@ -456,20 +456,20 @@ sudo apt update
 <p>Install Jenkins and its dependencies</p>
 <pre><code class="language-bash">sudo apt install jenkins
 </code></pre>
-<h3 id="step-3-start-jenkins-service">Step 3 - Start Jenkins Service</h3>
+<h3 id="step-3-start-jenkins-service"><strong>Step 3 - Start Jenkins Service</strong></h3>
 <p>After all the installation steps, start Jenkins using systemctl. You can view the status of the service, using the 2nd command shown below.</p>
 <pre><code class="language-bash">sudo systemctl start jenkins
 
 sudo systemctl status jenkins
 </code></pre>
-<h3 id="step-4-adding-firewall-rules">Step 4 - Adding Firewall Rules</h3>
+<h3 id="step-4-adding-firewall-rules"><strong>Step 4 - Adding Firewall Rules</strong></h3>
 <p>Jenkins uses port 8080 by default. Hence, we'll allow traffic to port 8080 by adding a firewall rule using ufw (uncomplicated firewall).</p>
 <pre><code class="language-bash">sudo ufw allow 8080
 sudo ufw allow OpenSSH # Allow SSH access into the server over the internet
 sudo ufw enable # Starts the firewall service
 sudo ufw status # Shows all firewall rules
 </code></pre>
-<h3 id="step-5-setting-up-jenkins">Step 5 - Setting Up Jenkins</h3>
+<h3 id="step-5-setting-up-jenkins"><strong>Step 5 - Setting Up Jenkins</strong></h3>
 <p>To set up your installation, visit Jenkins on its default port, 8080, using your server domain name or IP address: http://<your_server_ip_or_domain>:8080. The 'Unlock Jenkins' page asks for administrator password.<br />
 &nbsp;
 <img alt="Screenshot" src="../img/jenkins_setup_1.png" />

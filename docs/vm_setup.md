@@ -1,12 +1,13 @@
-## Objective
+## **Objective**
 
 This section deals with the initial setup of VMs running Ubuntu Server.
 
-### Setting up VMs
+### **Setting up VMs**
 For the lab setup, I created 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. 
 
 I followed this [documentation](https://hibbard.eu/install-ubuntu-virtual-box/) upto "Up and Running with SSH" step, for installing Ubuntu on both the VMs. In the blog, they used a "Bridged" connection for enabling VM-to-VM and host-to-VM communication. But this was not working for me. So I instead used 2 adaptors; one for NAT and the other a Host-only network.
 
+### **VM Network Configuration**
 Open Virtual Box and go to `File` -> `Host Network Manager`. The `Host Network Manager` window will open, and ideally, a network named "vboxnet0" should exist with the DHCP server disabled. If it does not exist, you can create it by clicking on the "Create" button. The new network created will be named "vboxnet0" and ensure DHCP server is not enabled. This network will enable host-to-VM communication.
 
 ![Screenshot](img/vm_setup_1.png)
@@ -55,7 +56,7 @@ sudo netplan apply
 
 Your setup should now be complete!
 <br><br>
-**Additional Notes - Fix for updating apt package repository**
+**Note: Fix for updating apt package repository**
 
 After installing Ubuntu 18.04 LTS iso file and running two VMs using it, I tried to update all packages and their dependancies using  `sudo apt install update`. This, however, was not working and threw  errors. As my location was Kuwait, it tried reaching out to [https://kw.archive.ubuntu.com/](https://kw.archive.ubuntu.com/)..._ to find updates. But this archive server was not reachable.
 

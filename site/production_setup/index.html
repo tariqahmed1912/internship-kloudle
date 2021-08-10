@@ -378,7 +378,7 @@
                 
                   <h1>Setup of Production Server</h1>
                 
-                <h2 id="objective">Objective</h2>
+                <h2 id="objective"><strong>Objective</strong></h2>
 <p>In this section, we will walk implement the steps for setting up production server for deploying an application (DVNA).</p>
 <p>About DVNA</p>
 <ul>
@@ -389,7 +389,7 @@
 <li>VM running Ubuntu 18.04 LTS.</li>
 <li>Docker installed</li>
 </ul>
-<h3 id="step-1-install-docker">Step 1 - Install docker</h3>
+<h3 id="step-1-install-docker"><strong>Step 1 - Install docker</strong></h3>
 <p>Update the apt package index and install packages to allow apt to use a repository over HTTPS</p>
 <pre><code class="language-bash">sudo apt-get update
 
@@ -410,7 +410,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 sudo docker run hello-world # Test if docker installation is successful 
 </code></pre>
-<h3 id="step-2-setup-production-server">Step 2 - Setup Production Server</h3>
+<h3 id="step-2-setup-production-server"><strong>Step 2 - Setup Production Server</strong></h3>
 <p>DVNA interacts with a MySQL database. Store the db configuration in a file named 'vars.env'.</p>
 <pre><code class="language-bash">MYSQL_USER=dvna
 MYSQL_DATABASE=dvna
@@ -426,7 +426,7 @@ MYSQL_PORT=3306
 <pre><code class="language-bash">sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
 </code></pre>
 <p>To see the if the containers are running, run a <code>docker ps</code>. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using <code>docker stop &lt;container-name-or-id&gt;</code>. </p>
-<p><b>Note:</b> 
+<p><b><strong>Note:</strong></b> 
 1.  You can start the containers again using <code>docker start &lt;container-name-or-id&gt;</code>. When starting, however, you will have to start <code>dvna-mysql</code> container first because the <code>dvna-app</code> is dependant on it.</p>
 <ol>
 <li>
