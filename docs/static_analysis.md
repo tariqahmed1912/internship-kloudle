@@ -94,7 +94,7 @@ at OSS Index and run the scan with your accounts 'Username' and 'API-token'.
 **Note**: You can find the API-token in the User settings of the OSSI Index website.
 
 ```bash
-auditjs ossi --username <USERNAME> --token <AUTH-TOKEN> > ~/report/auditjs-report
+auditjs ossi --username <USERNAME> --token <API-TOKEN> > ~/report/auditjs-report
 ```
 
 ### **SAST Pipeline**
