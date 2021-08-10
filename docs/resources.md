@@ -2,7 +2,7 @@ These are some references I used along with the ones mentioned implicitly in the
 
 ### Setup of VMs
 
-- Ubuntu (https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
+- Ubuntu [](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
 - OpenJDK (https://www.digitalocean.com/community/tutorials how-to-install-java-with-apt-on-ubuntu-18-04#installing-specific-versions-of-openjdk)
 - VM Network (https://christophermaier.name/2010/09/01/host-only-networking-with-virtualbox/)
 - Netplan (https://www.linux.com/topic/distributions/how-use-netplan-network-configuration-tool-linux/)
