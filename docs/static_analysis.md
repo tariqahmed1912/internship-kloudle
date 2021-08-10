@@ -91,6 +91,7 @@ auditjs ossi > ~/report/auditjs-report
 
 If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account
 at OSS Index and run the scan with your accounts 'Username' and 'API-token'. 
+
 **Note**: You can find the API-token in the User settings of the OSSI Index website.
 
 ```bash
