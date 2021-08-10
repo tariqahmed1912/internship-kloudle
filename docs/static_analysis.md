@@ -1,6 +1,6 @@
 ## Objective
 
-In this section, we will perform SAST using NodeJsScan on DVNA in Production server.
+In this section, we will be using various tools to perform SAST on DVNA in Production server.
 
 About SAST
 
@@ -11,7 +11,9 @@ Prerequisites
 
 -   An application (DVNA) running on Production Server.
 
-### Web-based
+### NodeJsScan
+
+#### Web-based 
 
 Pull NodeJsScan docker image
 
@@ -27,7 +29,7 @@ sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
     
 You can access the website by typing `<ip-address>:9090` in the browsers URL. To perform SAST, upload the files (individual files or a zip file) and run the scan.
 
-### CLI-based
+#### CLI-based
 
 In the Production server, enter DVNA container in exec mode.
 
@@ -57,10 +59,41 @@ mkdir /app/report
 njsscan --json -o /app/report/nodejsscan-report /app
 ```
 
+### Auditjs
+
+In the Production server, enter DVNA container in exec mode.
+
+```bash
+sudo docker exec -it -u 0 dvna-app /bin/bash
+```
+
+To install auditjs, we first need to install npm in 'dvna-app' container in production server.
+
+```bash
+apt update
+
+apt install npm
+```
+
+Install auditjs using npx
+
+```bash
+npx auditjs@latest ossi
+```
+
+Scan the /app directory (which holds the files for DVNA) and store the scan result in `/app/report/nodejsscan-report`
+
+```bash
+mkdir /app/report
+
+njsscan --json -o /app/report/nodejsscan-report /app
+```
+
+
 
 ### Jenkins Pipeline
 
-The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running a NodeJsScan.
+The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.
 
 Install njsscan in the Jenkins server.
 
@@ -89,7 +122,7 @@ pipeline {
     
     stage('NodeJsScan') {
       steps {
-        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
+        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app && (exit 0) || (exit 1)'
       }
     }
     

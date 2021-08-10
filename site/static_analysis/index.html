@@ -14,7 +14,7 @@
     
     
       
-        <title>SAST using NodeJsScan - DevSecOps Pipeline</title>
+        <title>Static Analysis - DevSecOps Pipeline</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SAST using NodeJsScan
+              Static Analysis
             
           </span>
         </div>
@@ -258,12 +258,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          SAST using NodeJsScan
+          Static Analysis
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        SAST using NodeJsScan
+        Static Analysis
       </a>
       
         
@@ -287,6 +287,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#nodejsscan" class="md-nav__link">
+    NodeJsScan
+  </a>
+  
+    <nav class="md-nav" aria-label="NodeJsScan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#web-based" class="md-nav__link">
     Web-based
   </a>
@@ -296,6 +304,18 @@
           <li class="md-nav__item">
   <a href="#cli-based" class="md-nav__link">
     CLI-based
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auditjs" class="md-nav__link">
+    Auditjs
   </a>
   
 </li>
@@ -352,6 +372,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#nodejsscan" class="md-nav__link">
+    NodeJsScan
+  </a>
+  
+    <nav class="md-nav" aria-label="NodeJsScan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#web-based" class="md-nav__link">
     Web-based
   </a>
@@ -361,6 +389,18 @@
           <li class="md-nav__item">
   <a href="#cli-based" class="md-nav__link">
     CLI-based
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auditjs" class="md-nav__link">
+    Auditjs
   </a>
   
 </li>
@@ -390,10 +430,10 @@
               
                 
                 
-                  <h1>SAST using NodeJsScan</h1>
+                  <h1>Static Analysis</h1>
                 
                 <h2 id="objective">Objective</h2>
-<p>In this section, we will perform SAST using NodeJsScan on DVNA in Production server.</p>
+<p>In this section, we will be using various tools to perform SAST on DVNA in Production server.</p>
 <p>About SAST</p>
 <ul>
 <li>Static application security testing (SAST) is a testing methodology that analyzes source code to find security vulnerabilities.</li>
@@ -403,7 +443,8 @@
 <ul>
 <li>An application (DVNA) running on Production Server.</li>
 </ul>
-<h3 id="web-based">Web-based</h3>
+<h3 id="nodejsscan">NodeJsScan</h3>
+<h4 id="web-based">Web-based</h4>
 <p>Pull NodeJsScan docker image</p>
 <pre><code class="language-bash">sudo docker pull opensecurity/nodejsscan:latest
 </code></pre>
@@ -411,7 +452,7 @@
 <pre><code class="language-bash">sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
 </code></pre>
 <p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST, upload the files (individual files or a zip file) and run the scan.</p>
-<h3 id="cli-based">CLI-based</h3>
+<h4 id="cli-based">CLI-based</h4>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
@@ -428,8 +469,25 @@ apt install python3-pip
 
 njsscan --json -o /app/report/nodejsscan-report /app
 </code></pre>
+<h3 id="auditjs">Auditjs</h3>
+<p>In the Production server, enter DVNA container in exec mode.</p>
+<pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
+</code></pre>
+<p>To install auditjs, we first need to install npm in 'dvna-app' container in production server.</p>
+<pre><code class="language-bash">apt update
+
+apt install npm
+</code></pre>
+<p>Install auditjs using npx</p>
+<pre><code class="language-bash">npx auditjs@latest ossi
+</code></pre>
+<p>Scan the /app directory (which holds the files for DVNA) and store the scan result in <code>/app/report/nodejsscan-report</code></p>
+<pre><code class="language-bash">mkdir /app/report
+
+njsscan --json -o /app/report/nodejsscan-report /app
+</code></pre>
 <h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
-<p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running a NodeJsScan.</p>
+<p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
 <p>Install njsscan in the Jenkins server.</p>
 <pre><code class="language-bash">apt update &amp;&amp; apt install python3-pip &amp;&amp; pip3 install njsscan
 </code></pre>
@@ -452,7 +510,7 @@ njsscan --json -o /app/report/nodejsscan-report /app
 
     stage('NodeJsScan') {
       steps {
-        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
+        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app &amp;&amp; (exit 0) || (exit 1)'
       }
     }
 
