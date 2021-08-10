@@ -321,8 +321,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jenkins-pipeline" class="md-nav__link">
-    Jenkins Pipeline
+  <a href="#sast-pipeline" class="md-nav__link">
+    SAST Pipeline
   </a>
   
 </li>
@@ -406,8 +406,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jenkins-pipeline" class="md-nav__link">
-    Jenkins Pipeline
+  <a href="#sast-pipeline" class="md-nav__link">
+    SAST Pipeline
   </a>
   
 </li>
@@ -444,6 +444,7 @@
 <li>An application (DVNA) running on Production Server.</li>
 </ul>
 <h3 id="nodejsscan">NodeJsScan</h3>
+<p>NodeJsScan is a static code scanner which is used to find security flaws specifically in Node.js applications.</p>
 <h4 id="web-based">Web-based</h4>
 <p>Pull NodeJsScan docker image</p>
 <pre><code class="language-bash">sudo docker pull opensecurity/nodejsscan:latest
@@ -464,29 +465,33 @@ apt install python3-pip
 <p>Install njsscan</p>
 <pre><code class="language-bash">pip3 install njsscan
 </code></pre>
-<p>Scan the /app directory (which holds the files for DVNA) and store the scan result in <code>/app/report/nodejsscan-report</code></p>
-<pre><code class="language-bash">mkdir /app/report
+<p>Scan the ~/app directory (which holds the files for DVNA) and store the scan result in <code>~/report/nodejsscan-report</code></p>
+<pre><code class="language-bash">mkdir ~/report
 
-njsscan --json -o /app/report/nodejsscan-report /app
+njsscan --json -o /app/report/nodejsscan-report ~/app
 </code></pre>
 <h3 id="auditjs">Auditjs</h3>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
-<p>To install auditjs, we first need to install npm in 'dvna-app' container in production server.</p>
-<pre><code class="language-bash">apt update
-
-apt install npm
+<p>To install auditjs, we first need to install npm and nodejs in 'dvna-app' container in production server. After running the following commands, the package versions are: <code>npm v6.14.14</code> and <code>nodejs v14.17.4</code></p>
+<pre><code class="language-bash">sudo apt update
+sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install -y nodejs npm 
+sudo npm install latest-version
 </code></pre>
-<p>Install auditjs using npx</p>
-<pre><code class="language-bash">npx auditjs@latest ossi
+<p>Install auditjs using npm</p>
+<pre><code class="language-bash">sudo npm install -g auditjs
 </code></pre>
-<p>Scan the /app directory (which holds the files for DVNA) and store the scan result in <code>/app/report/nodejsscan-report</code></p>
-<pre><code class="language-bash">mkdir /app/report
-
-njsscan --json -o /app/report/nodejsscan-report /app
+<p>Scan the ~/app directory (which holds the files for DVNA) and store the scan result in <code>~/report/auditjs-report</code>. </p>
+<pre><code class="language-bash">cd ~/app
+auditjs ossi &gt; ~/report/auditjs-report
 </code></pre>
-<h3 id="jenkins-pipeline">Jenkins Pipeline</h3>
+<p>If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account at OSS Index and run the scan with your accounts <username> and <API-token>. 
+ <strong>Note</strong>: You can find the API-token in the User settings of the OSSI Index website.</p>
+<pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;AUTH-TOKEN&gt; &gt; ~/report/auditjs-report
+</code></pre>
+<h3 id="sast-pipeline">SAST Pipeline</h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
 <p>Install njsscan in the Jenkins server.</p>
 <pre><code class="language-bash">apt update &amp;&amp; apt install python3-pip &amp;&amp; pip3 install njsscan
@@ -503,25 +508,32 @@ njsscan --json -o /app/report/nodejsscan-report /app
 
     stage('Copy Application Code') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker cp dvna-app:/app/ ~/&quot;'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
         sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
       }
     }
 
     stage('NodeJsScan') {
       steps {
-        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app &amp;&amp; (exit 0) || (exit 1)'
+        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
+      }
+    }
+
+    stage('Auditjs') {
+      steps {
+        sh 'cd ~/app; auditjs ossi &gt; ~/report/auditjs-report || true'
       }
     }
 
     stage ('Final') {
       steps {
-        sh 'rm -rf ~/app &amp;&amp; rm -rf ~/vars.env'
+        sh 'rm -rf ~/app'
         sh 'echo &quot;Scan successfully completed!&quot;'
       }
     }
   }
 }
+
 </code></pre>
                 
               

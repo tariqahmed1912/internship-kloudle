@@ -13,6 +13,8 @@ Prerequisites
 
 ### NodeJsScan
 
+NodeJsScan is a static code scanner which is used to find security flaws specifically in Node.js applications.
+
 #### Web-based 
 
 Pull NodeJsScan docker image
@@ -51,12 +53,12 @@ Install njsscan
 pip3 install njsscan
 ```
 
-Scan the /app directory (which holds the files for DVNA) and store the scan result in `/app/report/nodejsscan-report`
+Scan the ~/app directory (which holds the files for DVNA) and store the scan result in `~/report/nodejsscan-report`
 
 ```bash
-mkdir /app/report
+mkdir ~/report
 
-njsscan --json -o /app/report/nodejsscan-report /app
+njsscan --json -o /app/report/nodejsscan-report ~/app
 ```
 
 ### Auditjs
@@ -67,31 +69,36 @@ In the Production server, enter DVNA container in exec mode.
 sudo docker exec -it -u 0 dvna-app /bin/bash
 ```
 
-To install auditjs, we first need to install npm in 'dvna-app' container in production server.
+To install auditjs, we first need to install npm and nodejs in 'dvna-app' container in production server. After running the following commands, the package versions are: `npm v6.14.14` and `nodejs v14.17.4`
 
 ```bash
-apt update
-
-apt install npm
+sudo apt update
+sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install -y nodejs npm 
+sudo npm install latest-version
 ```
 
-Install auditjs using npx
+Install auditjs using npm
 
 ```bash
-npx auditjs@latest ossi
+sudo npm install -g auditjs
 ```
 
-Scan the /app directory (which holds the files for DVNA) and store the scan result in `/app/report/nodejsscan-report`
+Scan the ~/app directory (which holds the files for DVNA) and store the scan result in `~/report/auditjs-report`. 
 
 ```bash
-mkdir /app/report
-
-njsscan --json -o /app/report/nodejsscan-report /app
+cd ~/app
+auditjs ossi > ~/report/auditjs-report
 ```
 
+ If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account at OSS Index and run the scan with your accounts <username> and <API-token>. 
+ **Note**: You can find the API-token in the User settings of the OSSI Index website.
 
+```bash
+auditjs ossi --username <USERNAME> --token <AUTH-TOKEN> > ~/report/auditjs-report
+```
 
-### Jenkins Pipeline
+### SAST Pipeline
 
 The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.
 
@@ -115,23 +122,30 @@ pipeline {
     
     stage('Copy Application Code') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker cp dvna-app:/app/ ~/"'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql && docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app && docker stop dvna-mysql;"'
         sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir -p ~/report'
       }
     }
     
     stage('NodeJsScan') {
       steps {
-        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app && (exit 0) || (exit 1)'
+        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
       }
     }
     
+    stage('Auditjs') {
+      steps {
+        sh 'cd ~/app; auditjs ossi > ~/report/auditjs-report || true'
+      }
+    }
+
     stage ('Final') {
       steps {
-        sh 'rm -rf ~/app && rm -rf ~/vars.env'
+        sh 'rm -rf ~/app'
         sh 'echo "Scan successfully completed!"'
       }
     }
   }
 }
+
 ```
