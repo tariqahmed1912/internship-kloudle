@@ -432,7 +432,7 @@
                 
                   <h1>Static Analysis</h1>
                 
-                <h2 id="objective">Objective</h2>
+                <h2 id="objective"><strong>Objective</strong></h2>
 <p>In this section, we will be using various tools to perform SAST on DVNA in Production server.</p>
 <p>About SAST</p>
 <ul>
@@ -443,8 +443,8 @@
 <ul>
 <li>An application (DVNA) running on Production Server.</li>
 </ul>
-<h3 id="nodejsscan">NodeJsScan</h3>
-<p>NodeJsScan is a static code scanner which is used to find security flaws specifically in Node.js applications.</p>
+<h3 id="nodejsscan"><strong>NodeJsScan</strong></h3>
+<p>NodeJsScan is a static code scanner which is used to find security flaws in Node.js applications.</p>
 <h4 id="web-based">Web-based</h4>
 <p>Pull NodeJsScan docker image</p>
 <pre><code class="language-bash">sudo docker pull opensecurity/nodejsscan:latest
@@ -452,15 +452,13 @@
 <p>Run nodjsscan container</p>
 <pre><code class="language-bash">sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
 </code></pre>
-<p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST, upload the files (individual files or a zip file) and run the scan.</p>
+<p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST, upload the files (as a zip file) or individual file and run the scan.</p>
 <h4 id="cli-based">CLI-based</h4>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
 <p>To install njsscan, we first need to install pip3 in 'dvna-app' container in production server.</p>
-<pre><code class="language-bash">apt update
-
-apt install python3-pip
+<pre><code class="language-bash">apt update &amp;&amp; apt install python3-pip
 </code></pre>
 <p>Install njsscan</p>
 <pre><code class="language-bash">pip3 install njsscan
@@ -470,7 +468,7 @@ apt install python3-pip
 
 njsscan --json -o /app/report/nodejsscan-report ~/app
 </code></pre>
-<h3 id="auditjs">Auditjs</h3>
+<h3 id="auditjs"><strong>Auditjs</strong></h3>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
@@ -487,11 +485,12 @@ sudo npm install latest-version
 <pre><code class="language-bash">cd ~/app
 auditjs ossi &gt; ~/report/auditjs-report
 </code></pre>
-<p>If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account at OSS Index and run the scan with your accounts <username> and <API-token>. 
- <strong>Note</strong>: You can find the API-token in the User settings of the OSSI Index website.</p>
+<p>If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account
+at OSS Index and run the scan with your accounts <username> and <API-token>. 
+<strong>Note</strong>: You can find the API-token in the User settings of the OSSI Index website.</p>
 <pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;AUTH-TOKEN&gt; &gt; ~/report/auditjs-report
 </code></pre>
-<h3 id="sast-pipeline">SAST Pipeline</h3>
+<h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
 <p>Install njsscan in the Jenkins server.</p>
 <pre><code class="language-bash">apt update &amp;&amp; apt install python3-pip &amp;&amp; pip3 install njsscan

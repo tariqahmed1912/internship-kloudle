@@ -1,4 +1,4 @@
-## Objective
+## **Objective**
 
 In this section, we will be using various tools to perform SAST on DVNA in Production server.
 
@@ -11,9 +11,9 @@ Prerequisites
 
 -   An application (DVNA) running on Production Server.
 
-### NodeJsScan
+### **NodeJsScan**
 
-NodeJsScan is a static code scanner which is used to find security flaws specifically in Node.js applications.
+NodeJsScan is a static code scanner which is used to find security flaws in Node.js applications.
 
 #### Web-based 
 
@@ -29,7 +29,7 @@ Run nodjsscan container
 sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
 ```
     
-You can access the website by typing `<ip-address>:9090` in the browsers URL. To perform SAST, upload the files (individual files or a zip file) and run the scan.
+You can access the website by typing `<ip-address>:9090` in the browsers URL. To perform SAST, upload the files (as a zip file) or individual file and run the scan.
 
 #### CLI-based
 
@@ -42,9 +42,7 @@ sudo docker exec -it -u 0 dvna-app /bin/bash
 To install njsscan, we first need to install pip3 in 'dvna-app' container in production server.
 
 ```bash
-apt update
-
-apt install python3-pip
+apt update && apt install python3-pip
 ```
 
 Install njsscan
@@ -61,7 +59,7 @@ mkdir ~/report
 njsscan --json -o /app/report/nodejsscan-report ~/app
 ```
 
-### Auditjs
+### **Auditjs**
 
 In the Production server, enter DVNA container in exec mode.
 
@@ -91,14 +89,15 @@ cd ~/app
 auditjs ossi > ~/report/auditjs-report
 ```
 
- If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account at OSS Index and run the scan with your accounts <username> and <API-token>. 
- **Note**: You can find the API-token in the User settings of the OSSI Index website.
+If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account
+at OSS Index and run the scan with your accounts <username> and <API-token>. 
+**Note**: You can find the API-token in the User settings of the OSSI Index website.
 
 ```bash
 auditjs ossi --username <USERNAME> --token <AUTH-TOKEN> > ~/report/auditjs-report
 ```
 
-### SAST Pipeline
+### **SAST Pipeline**
 
 The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.
 
