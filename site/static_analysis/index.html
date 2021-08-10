@@ -492,9 +492,6 @@ at OSS Index and run the scan with your accounts 'Username' and 'API-token'. </p
 </code></pre>
 <h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
-<p>Install njsscan in the Jenkins server.</p>
-<pre><code class="language-bash">apt update &amp;&amp; apt install python3-pip &amp;&amp; pip3 install njsscan
-</code></pre>
 <p>The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:</p>
 <pre><code class="language-bash">pipeline {
   agent any

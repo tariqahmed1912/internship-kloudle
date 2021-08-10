@@ -102,12 +102,6 @@ auditjs ossi --username <USERNAME> --token <API-TOKEN> > ~/report/auditjs-report
 
 The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.
 
-Install njsscan in the Jenkins server.
-
-```bash
-apt update && apt install python3-pip && pip3 install njsscan
-```
-
 The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:
 
 ```bash
