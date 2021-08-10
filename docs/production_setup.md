@@ -74,6 +74,7 @@ sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -
 To see the if the containers are running, run a `docker ps`. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using `docker stop <container-name-or-id>`. 
 	
 <b>**Note:**</b> 
+
 1.  You can start the containers again using `docker start <container-name-or-id>`. When starting, however, you will have to start `dvna-mysql` container first because the `dvna-app` is dependant on it.
 
 2. The `docker` commands can only be run as sudo user. To enable executing `docker` commands without sudo, type the following in the terminal.

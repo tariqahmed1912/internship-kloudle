@@ -328,6 +328,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        Resources
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -441,9 +456,11 @@ MYSQL_PORT=3306
 <pre><code class="language-bash">sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
 </code></pre>
 <p>To see the if the containers are running, run a <code>docker ps</code>. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using <code>docker stop &lt;container-name-or-id&gt;</code>. </p>
-<p><b><strong>Note:</strong></b> 
-1.  You can start the containers again using <code>docker start &lt;container-name-or-id&gt;</code>. When starting, however, you will have to start <code>dvna-mysql</code> container first because the <code>dvna-app</code> is dependant on it.</p>
+<p><b><strong>Note:</strong></b> </p>
 <ol>
+<li>
+<p>You can start the containers again using <code>docker start &lt;container-name-or-id&gt;</code>. When starting, however, you will have to start <code>dvna-mysql</code> container first because the <code>dvna-app</code> is dependant on it.</p>
+</li>
 <li>
 <p>The <code>docker</code> commands can only be run as sudo user. To enable executing <code>docker</code> commands without sudo, type the following in the terminal.</p>
 <p><code>bash
