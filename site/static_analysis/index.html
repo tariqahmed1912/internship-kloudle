@@ -477,11 +477,16 @@
                   <h1>Static Analysis</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
-<p>In this section, we will be using various tools to perform SAST on DVNA in Production server.</p>
+<p>In this section, we will be performing static analysis using SAST and SCA tools via Jenkins pipeline.</p>
 <p>About SAST</p>
 <ul>
 <li>Static application security testing (SAST) is a testing methodology that analyzes source code to find security vulnerabilities.</li>
 <li>SAST scans an application before the code is compiled. Its also known as white box testing.</li>
+</ul>
+<p>About SCA</p>
+<ul>
+<li>Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities.</li>
+<li>It helps identify vulnerabilities in open source code (dependencies) used in code.</li>
 </ul>
 <p>Prerequisites</p>
 <ul>
@@ -535,14 +540,14 @@ at OSS Index and run the scan with your accounts 'Username' and 'API-token'. </p
 <pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;API-TOKEN&gt; &gt; ~/report/auditjs-report
 </code></pre>
 <h3 id="owasp-dependancy-check"><strong>OWASP Dependancy-Check</strong></h3>
-<p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies. It helps identify vulnerabilities in open source code (dependencies) used in code.</p>
+<p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies.</p>
 <p>To start working with Dependency Check, I followed the <a href="https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html">official documentation</a>. First, download the Dependency-Check CLI tool and the associated GPG signature file.</p>
 <pre><code class="language-bash">wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip
 
 wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc
 </code></pre>
 <p>Next, extract the files from the dependency-check tool zip file.</p>
-<pre><code class="language-bash">unzip dependency-check-6.2.2-release.zip
+<pre><code class="language-bash">unzip ~/dependency-check-6.2.2-release.zip
 </code></pre>
 <p>Perform the scan by specifying the path to the project, output report format and its location.</p>
 <pre><code class="language-bash">~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint

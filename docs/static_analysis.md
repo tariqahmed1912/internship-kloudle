@@ -1,11 +1,16 @@
 ## **Objective**
 
-In this section, we will be using various tools to perform SAST on DVNA in Production server.
+In this section, we will be performing static analysis using SAST and SCA tools via Jenkins pipeline.
 
 About SAST
 
 -   Static application security testing (SAST) is a testing methodology that analyzes source code to find security vulnerabilities.
 -   SAST scans an application before the code is compiled. Its also known as white box testing.
+
+About SCA
+
+- Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities.
+- It helps identify vulnerabilities in open source code (dependencies) used in code.
 
 Prerequisites
 
@@ -100,7 +105,7 @@ auditjs ossi --username <USERNAME> --token <API-TOKEN> > ~/report/auditjs-report
 
 ### **OWASP Dependancy-Check**
 
-OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies. It helps identify vulnerabilities in open source code (dependencies) used in code.
+OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies.
 
 To start working with Dependency Check, I followed the [official documentation](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html). First, download the Dependency-Check CLI tool and the associated GPG signature file.
 
@@ -113,7 +118,7 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
 Next, extract the files from the dependency-check tool zip file.
 
 ```bash
-unzip dependency-check-6.2.2-release.zip
+unzip ~/dependency-check-6.2.2-release.zip
 ```
 
 Perform the scan by specifying the path to the project, output report format and its location.
