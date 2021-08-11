@@ -166,7 +166,7 @@ pipeline {
 
     stage ('OWASP Dependency-Check') {
       steps {
-        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint'
+        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
       }
     }
 

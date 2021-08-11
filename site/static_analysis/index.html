@@ -586,7 +586,7 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
 
     stage ('OWASP Dependency-Check') {
       steps {
-        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint'
+        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
       }
     }
 
