@@ -92,11 +92,37 @@ auditjs ossi > ~/report/auditjs-report
 If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account
 at OSS Index and run the scan with your accounts 'Username' and 'API-token'. 
 
-**Note**: You can find the API-token in the `User settings` after logging into the OSSI Index website.
+**Note**: You can find the API-token in the `User settings` after logging into the OSS Index website.
 
 ```bash
 auditjs ossi --username <USERNAME> --token <API-TOKEN> > ~/report/auditjs-report
 ```
+
+### **OWASP Dependancy-Check**
+
+OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies. It helps identify vulnerabilities in open source code (dependencies) used in code.
+
+To start working with Dependency Check, I followed the [official documentation](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html). First, download the Dependency-Check CLI tool and the associated GPG signature file.
+
+```bash
+wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip
+
+wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc
+```
+
+Next, extract the files from the dependency-check tool zip file.
+
+```bash
+unzip dependency-check-6.2.2-release.zip
+```
+
+Perform the scan by specifying the path to the project, output report format and its location.
+
+```bash
+~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint
+```
+
+This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.
 
 ### **SAST Pipeline**
 
@@ -133,12 +159,19 @@ pipeline {
       }
     }
 
+    stage ('OWASP Dependency-Check') {
+      steps {
+        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint'
+      }
+    }
+
     stage ('Final') {
       steps {
         sh 'rm -rf ~/app'
         sh 'echo "Scan successfully completed!"'
       }
     }
+
   }
 }
 

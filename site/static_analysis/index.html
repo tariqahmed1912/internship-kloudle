@@ -336,6 +336,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#owasp-dependancy-check" class="md-nav__link">
+    OWASP Dependancy-Check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sast-pipeline" class="md-nav__link">
     SAST Pipeline
   </a>
@@ -436,6 +443,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#owasp-dependancy-check" class="md-nav__link">
+    OWASP Dependancy-Check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sast-pipeline" class="md-nav__link">
     SAST Pipeline
   </a>
@@ -517,9 +531,23 @@ auditjs ossi &gt; ~/report/auditjs-report
 </code></pre>
 <p>If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account
 at OSS Index and run the scan with your accounts 'Username' and 'API-token'. </p>
-<p><strong>Note</strong>: You can find the API-token in the <code>User settings</code> after logging into the OSSI Index website.</p>
+<p><strong>Note</strong>: You can find the API-token in the <code>User settings</code> after logging into the OSS Index website.</p>
 <pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;API-TOKEN&gt; &gt; ~/report/auditjs-report
 </code></pre>
+<h3 id="owasp-dependancy-check"><strong>OWASP Dependancy-Check</strong></h3>
+<p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies. It helps identify vulnerabilities in open source code (dependencies) used in code.</p>
+<p>To start working with Dependency Check, I followed the <a href="https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html">official documentation</a>. First, download the Dependency-Check CLI tool and the associated GPG signature file.</p>
+<pre><code class="language-bash">wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip
+
+wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc
+</code></pre>
+<p>Next, extract the files from the dependency-check tool zip file.</p>
+<pre><code class="language-bash">unzip dependency-check-6.2.2-release.zip
+</code></pre>
+<p>Perform the scan by specifying the path to the project, output report format and its location.</p>
+<pre><code class="language-bash">~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint
+</code></pre>
+<p>This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
 <h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
 <p>The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:</p>
@@ -551,12 +579,19 @@ at OSS Index and run the scan with your accounts 'Username' and 'API-token'. </p
       }
     }
 
+    stage ('OWASP Dependency-Check') {
+      steps {
+        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint'
+      }
+    }
+
     stage ('Final') {
       steps {
         sh 'rm -rf ~/app'
         sh 'echo &quot;Scan successfully completed!&quot;'
       }
     }
+
   }
 }
 

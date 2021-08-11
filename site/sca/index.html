@@ -14,7 +14,7 @@
     
     
       
-        <title>Resources - DevSecOps Pipeline</title>
+        <title>Sca - DevSecOps Pipeline</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-of-vms" class="md-skip">
+        <a href="#objective" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Resources
+              Sca
             
           </span>
         </div>
@@ -278,68 +278,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Resources
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
         Resources
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-vms" class="md-nav__link">
-    Setup of VMs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-jenkins-server" class="md-nav__link">
-    Setup of Jenkins Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-production-server" class="md-nav__link">
-    Setup of Production Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#static-analysis" class="md-nav__link">
-    Static Analysis
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -368,30 +311,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup-of-vms" class="md-nav__link">
-    Setup of VMs
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owasp-dependancy-check" class="md-nav__link">
+    OWASP Dependancy Check
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-jenkins-server" class="md-nav__link">
-    Setup of Jenkins Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-production-server" class="md-nav__link">
-    Setup of Production Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#static-analysis" class="md-nav__link">
-    Static Analysis
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -408,31 +343,17 @@
               
                 
                 
-                  <h1>Resources</h1>
+                  <h1>Sca</h1>
                 
-                <p>These are some references I used along with the ones mentioned implicitly in the report:</p>
-<h3 id="setup-of-vms">Setup of VMs</h3>
+                <h2 id="objective"><strong>Objective</strong></h2>
+<p>In this section, we will perform Software Composition Analysis (SCA) of DVNA.</p>
+<p>About SCA</p>
 <ul>
-<li>Ubuntu (<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04</a>)</li>
-<li>OpenJDK (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04#installing-specific-versions-of-openjdk">https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04#installing-specific-versions-of-openjdk</a>)</li>
-<li>VM Network (<a href="https://christophermaier.name/2010/09/01/host-only-networking-with-virtualbox/">https://christophermaier.name/2010/09/01/host-only-networking-with-virtualbox/</a>)</li>
-<li>Netplan (<a href="https://www.linux.com/topic/distributions/how-use-netplan-network-configuration-tool-linux/">https://www.linux.com/topic/distributions/how-use-netplan-network-configuration-tool-linux/</a>)</li>
+<li>Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities.</li>
+<li>It helps identify vulnerabilities in open source code used.</li>
 </ul>
-<h3 id="setup-of-jenkins-server">Setup of Jenkins Server</h3>
-<ul>
-<li>Jenkins Installation (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04</a>)</li>
-</ul>
-<h3 id="setup-of-production-server">Setup of Production Server</h3>
-<ul>
-<li>DVNA (<a href="https://github.com/appsecco/dvna">https://github.com/appsecco/dvna</a>)</li>
-<li>Docker Installation (<a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a>)</li>
-</ul>
-<h3 id="static-analysis">Static Analysis</h3>
-<ul>
-<li>NodeJsScan (<a href="https://github.com/ajinabraham/nodejsscan">https://github.com/ajinabraham/nodejsscan</a>)</li>
-<li>Auditjs (<a href="https://github.com/sonatype-nexus-community/auditjs">https://github.com/sonatype-nexus-community/auditjs</a>)</li>
-<li>OWASP Dependancy Check (<a href="https://owasp.org/www-project-dependency-check/">https://owasp.org/www-project-dependency-check/</a>)</li>
-</ul>
+<h3 id="owasp-dependancy-check"><strong>OWASP Dependancy Check</strong></h3>
+<p><a href="https://owasp.org/www-project-dependency-check/">OWASP Dependency-Check</a> is an SCA tool that attempts to detect publicly disclosed vulnerabilities contained within a project’s dependencies. It does this by determining if there is a Common Platform Enumeration (CPE) identifier for a given dependency. If found, it will generate a report linking to the associated CVE entries.</p>
                 
               
               
@@ -448,26 +369,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../static_analysis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Static Analysis" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Static Analysis
-            </div>
-          </div>
-        </a>
-      
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
