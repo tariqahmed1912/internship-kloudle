@@ -1,6 +1,6 @@
 ## **Objective**
 
-In this section, we will walk implement the steps for setting up production server for deploying an application (DVNA).
+The aim of this section is to set up a production server for deploying an application (DVNA).
 
 About DVNA
 

@@ -1,6 +1,6 @@
 ## **Objective**
 
-In this section, we will be performing static analysis using SAST and SCA tools via Jenkins pipeline.
+The aim of this section is to perform static analysis on DVNA, using SAST and SCA tools, in a Jenkins pipeline.
 
 About SAST
 

@@ -1,6 +1,6 @@
 ## **Objective**
 
-This section deals with the initial setup of VMs running Ubuntu Server.
+The aim of this section is to set up VMs running Ubuntu Server.
 
 ### **Setting up VMs**
 For the lab setup, I created 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. 

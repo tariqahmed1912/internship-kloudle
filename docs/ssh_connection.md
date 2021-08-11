@@ -1,6 +1,6 @@
 ## **Objective**
 
-In this section, we will enable SSH communication between the 2 VMs.
+The aim of this section is to enable SSH communication between the two VMs.
 
 About SSH
 

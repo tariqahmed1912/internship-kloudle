@@ -1,6 +1,6 @@
 ## **Objective**
 
-In this section, we will walk through the installation steps for Jenkins. 
+The aim of this section is to set up a Jenkins server for building various CI/CD pipelines.
 
 About Jenkins
 
