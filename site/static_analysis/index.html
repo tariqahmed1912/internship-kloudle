@@ -555,7 +555,7 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
 <p>This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
 <h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
-<p>The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:</p>
+<p>The Jenkinsfile for performing SAST and SCA of DVNA via Jenkins pipeline is given below:</p>
 <pre><code class="language-bash">pipeline {
   agent any
   stages {

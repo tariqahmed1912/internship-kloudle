@@ -133,7 +133,7 @@ This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to n
 
 The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.
 
-The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:
+The Jenkinsfile for performing SAST and SCA of DVNA via Jenkins pipeline is given below:
 
 ```bash
 pipeline {
