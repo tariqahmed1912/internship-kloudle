@@ -314,42 +314,8 @@
 <li><a href="../production_setup/">Setup of Production Server</a></li>
 <li><a href="../ssh_connection/">SSH Connection between VMs</a></li>
 <li><a href="../static_analysis/">Static Analysis</a></li>
+<li><a href="../resources/">Resources</a></li>
 </ol>
-<p>pipeline {
-  agent any
-  stages {
-    stage ('Initialization') {
-      steps {
-        sh 'echo "Starting the build!"'
-      }
-    }</p>
-<pre><code>stage('Copy Application Code') {
-  steps {
-    sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app &amp;&amp; docker stop dvna-mysql;"'
-    sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
-  }
-}
-
-stage('NodeJsScan') {
-  steps {
-    sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
-  }
-}
-
-stage('Auditjs') {
-  steps {
-    sh 'cd ~/app; auditjs ossi &gt; ~/report/auditjs-report || true'
-  }
-}
-stage ('Final') {
-  steps {
-    sh 'rm -rf ~/app'
-    sh 'echo "Scan successfully completed!"'
-  }
-}
-</code></pre>
-<p>}
-}</p>
                 
               
               
