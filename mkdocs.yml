@@ -7,7 +7,7 @@ nav:
   - Setup of Production Server: 'production_setup.md'
   - SSH Connection between VMs: 'ssh_connection.md'
   - Static Analysis: 'static_analysis.md'
-  - Dynamic Analysis: 'dynamic_analysis.md'
+  #- Dynamic Analysis: 'dynamic_analysis.md'
   - Resources: 'resources.md'
 theme: material
 
