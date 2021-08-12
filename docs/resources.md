@@ -21,3 +21,10 @@ These are some references I used along with the ones mentioned implicitly in the
 - NodeJsScan ([https://github.com/ajinabraham/nodejsscan](https://github.com/ajinabraham/nodejsscan))
 -  Auditjs ([https://github.com/sonatype-nexus-community/auditjs](https://github.com/sonatype-nexus-community/auditjs))
 - OWASP Dependancy Check ([https://owasp.org/www-project-dependency-check/](https://owasp.org/www-project-dependency-check/))
+
+
+### Dynamic Analysis
+
+- ZAP docker full-scan ([https://www.zaproxy.org/docs/docker/full-scan/](https://www.zaproxy.org/docs/docker/full-scan/))
+- ZAP docker baseline-scan ([https://www.zaproxy.org/docs/docker/baseline-scan/](https://www.zaproxy.org/docs/docker/baseline-scan/))
+- ZAP CLI ([https://github.com/Grunny/zap-cli](https://github.com/Grunny/zap-cli))

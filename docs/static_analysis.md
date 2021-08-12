@@ -66,6 +66,8 @@ njsscan --json -o /app/report/nodejsscan-report ~/app
 
 ### **Auditjs**
 
+Auditjs is a SAST tool which detects vulnerablilites in dependencies (node modules) used in your application. It interacts with Sonatype Nexus IQ Server to check for known and disclosed vulnerabailites.
+
 In the Production server, enter DVNA container in exec mode.
 
 ```bash

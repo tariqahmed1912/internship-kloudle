@@ -14,7 +14,7 @@
     
     
       
-        <title>Table of Content - DevSecOps Pipeline</title>
+        <title>Dynamic Analysis - DevSecOps Pipeline</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#objective" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -86,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Table of Content
+              Dynamic Analysis
             
           </span>
         </div>
@@ -183,19 +188,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../contents/" class="md-nav__link">
         Table of Content
       </a>
-      
     </li>
   
 
@@ -281,11 +278,60 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../dynamic_analysis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dynamic Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Dynamic Analysis
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owasp-zap" class="md-nav__link">
+    OWASP ZAP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -312,25 +358,100 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owasp-zap" class="md-nav__link">
+    OWASP ZAP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Table of Content</h1>
+                  <h1>Dynamic Analysis</h1>
                 
-                <p>The following is the report/documentation for the problem statements stated in the next section. The contents of the report are:</p>
-<ol>
-<li><a href="..">Introduction</a></li>
-<li><a href="./">Table of Content</a></li>
-<li><a href="../vm_setup/">Setup of VMs</a></li>
-<li><a href="../jenkins_setup/">Setup of Jenkins</a></li>
-<li><a href="../production_setup/">Setup of Production Server</a></li>
-<li><a href="../ssh_connection/">SSH Connection between VMs</a></li>
-<li><a href="../static_analysis/">Static Analysis</a></li>
-<li><a href="../resources/">Resources</a></li>
-</ol>
+                <h2 id="objective"><strong>Objective</strong></h2>
+<p>The aim of this section is to perform dynamic analysis using DAST tools on DVNA.</p>
+<p>About DAST</p>
+<ul>
+<li>Dynamic analysis is done while an application is running. </li>
+<li>DAST tools include OWASP Zed Attack Proxy (ZAP) and W3AF.</li>
+</ul>
+<h3 id="owasp-zap"><strong>OWASP ZAP</strong></h3>
+<p>Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this <a href="https://www.zaproxy.org/docs/docker/about/">documentation</a>. First, pull the ZAP image from docker hub.</p>
+<pre><code class="language-bash">sudo docker pull owasp/zap2docker-stable
+</code></pre>
+<p>TRIED THIS! It Didnt Work!
+Create a docker network for both application container and zap container to run in.</p>
+<pre><code class="language-bash">sudo docker network create zapnet
+</code></pre>
+<pre><code class="language-bash">sudo docker run -u zap -td --name owasp-zap --net zapnet -p 8090:8090 owasp/zap2docker-stable zap.sh -daemon -port 8090 -host 0.0.0.0 -config api.disablekey=true
+
+sudo docker exec owasp-zap zap-cli open-url http://192.168.56.102:9090
+
+sudo docker exec owasp-zap zap-cli active-scan http://192.168.56.102:9090
+</code></pre>
+<p>FINAL SOLUTION
+The baseline-scan script is intended to be ideal to run in a CI/CD environment, even against production sites.
+Docker flags used</p>
+<ul>
+<li>--rm, remove container after completion</li>
+<li>-d, run as a background job</li>
+<li>-u <user>, specify user to run container as</li>
+<li>-v 'host dir':'container dir', mount volumes</li>
+</ul>
+<p>Zap CLI flags used</p>
+<ul>
+<li>-t 'target', specify target to scan</li>
+<li>-r 'file.html', generate an HTML output report</li>
+<li>-l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.</li>
+</ul>
+<pre><code class="language-bash">sudo docker run --rm -td -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+</code></pre>
+<p>To run a fullscan script, run the following command</p>
+<pre><code class="language-bash">sudo docker run --rm -td -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+</code></pre>
+<p>The report <code>owasp-zap-report.html</code> will be generated on successful completion. It will be located in the users home directory.
+<strong>Note:</strong> To open .html file in browser from terminal, type <code>open owasp-report.html</code> from host terminal.</p>
                 
               
               
@@ -350,7 +471,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+        <a href="../static_analysis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Static Analysis" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -359,20 +480,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Introduction
+              Static Analysis
             </div>
           </div>
         </a>
       
       
         
-        <a href="../vm_setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Setup of VMs" rel="next">
+        <a href="../resources/" class="md-footer__link md-footer__link--next" aria-label="Next: Resources" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Setup of VMs
+              Resources
             </div>
           </div>
           <div class="md-footer__button md-icon">

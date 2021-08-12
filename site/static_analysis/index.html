@@ -370,6 +370,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../dynamic_analysis/" class="md-nav__link">
+        Dynamic Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../resources/" class="md-nav__link">
         Resources
       </a>
@@ -518,6 +533,7 @@
 njsscan --json -o /app/report/nodejsscan-report ~/app
 </code></pre>
 <h3 id="auditjs"><strong>Auditjs</strong></h3>
+<p>Auditjs is a SAST tool which detects vulnerablilites in dependencies (node modules) used in your application. It interacts with Sonatype Nexus IQ Server to check for known and disclosed vulnerabailites.</p>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
@@ -636,13 +652,13 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
       
       
         
-        <a href="../resources/" class="md-footer__link md-footer__link--next" aria-label="Next: Resources" rel="next">
+        <a href="../dynamic_analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynamic Analysis" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Resources
+              Dynamic Analysis
             </div>
           </div>
           <div class="md-footer__button md-icon">
