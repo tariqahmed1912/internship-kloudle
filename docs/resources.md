@@ -25,6 +25,8 @@ These are some references I used along with the ones mentioned implicitly in the
 
 ### Dynamic Analysis
 
+- ZAP docker ([https://www.zaproxy.org/docs/docker/about/](https://www.zaproxy.org/docs/docker/about/))
 - ZAP docker full-scan ([https://www.zaproxy.org/docs/docker/full-scan/](https://www.zaproxy.org/docs/docker/full-scan/))
 - ZAP docker baseline-scan ([https://www.zaproxy.org/docs/docker/baseline-scan/](https://www.zaproxy.org/docs/docker/baseline-scan/))
 - ZAP CLI ([https://github.com/Grunny/zap-cli](https://github.com/Grunny/zap-cli))
+- Increase VM Disk Space ([https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox](https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox))

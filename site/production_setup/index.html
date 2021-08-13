@@ -336,6 +336,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../dynamic_analysis/" class="md-nav__link">
+        Dynamic Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../resources/" class="md-nav__link">
         Resources
       </a>
@@ -462,8 +477,14 @@ MYSQL_PORT=3306
 <p>You can start the containers again using <code>docker start &lt;container-name-or-id&gt;</code>. When starting, however, you will have to start <code>dvna-mysql</code> container first because the <code>dvna-app</code> is dependant on it.</p>
 </li>
 <li>
-<p>The <code>docker</code> commands can only be run as sudo user. To enable executing <code>docker</code> commands without sudo, type the following in the terminal.</p>
-<p><code>bash
+<p>The <code>docker</code> commands can only be run as sudo user. There are 2 ways to enable executing <code>docker</code> commands without sudo. Although, you must know, its highly discouraged to do so. </p>
+<p>(i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. 
+```bash
+sudo usermod -aG docker $USER</p>
+<p>sudo reboot
+```</p>
+<p>(ii) This method should only be used if no other method seems to work, since it grants permission to every user to execute and run docker containers.
+<code>bash
 sudo chmod 666 /var/run/docker.sock</code></p>
 </li>
 </ol>

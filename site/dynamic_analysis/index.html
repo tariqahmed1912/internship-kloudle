@@ -14,7 +14,7 @@
     
     
       
-        <title>Dynamic analysis - DevSecOps Pipeline</title>
+        <title>Dynamic Analysis - DevSecOps Pipeline</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dynamic analysis
+              Dynamic Analysis
             
           </span>
         </div>
@@ -278,6 +278,84 @@
 
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dynamic Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Dynamic Analysis
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owasp-zap" class="md-nav__link">
+    OWASP ZAP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dast-pipeline" class="md-nav__link">
+    DAST Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#increase-vm-disk-space" class="md-nav__link">
+    Increase VM Disk Space
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
   
     <li class="md-nav__item">
       <a href="../resources/" class="md-nav__link">
@@ -325,6 +403,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dast-pipeline" class="md-nav__link">
+    DAST Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#increase-vm-disk-space" class="md-nav__link">
+    Increase VM Disk Space
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -343,7 +435,7 @@
               
                 
                 
-                  <h1>Dynamic analysis</h1>
+                  <h1>Dynamic Analysis</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
 <p>The aim of this section is to perform dynamic analysis using DAST tools on DVNA.</p>
@@ -388,6 +480,87 @@ Docker flags used</p>
 </code></pre>
 <p>The report <code>owasp-zap-report.html</code> will be generated on successful completion. It will be located in the users home directory.
 <strong>Note:</strong> To open .html file in browser from terminal, type <code>open owasp-report.html</code> from host terminal.</p>
+<h3 id="dast-pipeline"><strong>DAST Pipeline</strong></h3>
+<p>As we've already seen in <a href="../production_setup/">Setup of Production Server</a>, DVNA is deployed in a docker container. To perform DAST on DVNA, the application will run in a docker container and the DAST tool will run in another container (as shown earlier in this section). To work with docker containers via Jenkins pipeline, you'll need to add <code>jenkins</code> user to group <code>docker</code> to run docker commands without sudo.</p>
+<pre><code class="language-bash">sudo usermod -aG docker jenkins
+sudo reboot
+</code></pre>
+<pre><code class="language-bash">pipeline {
+  agent any
+  stages {
+    stage ('Initialization') {
+      steps {
+        sh 'echo &quot;Starting the build!&quot;'
+      }
+    }
+
+    stage('Copy Application Code') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/;&quot;'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
+      }
+    }
+
+    stage('NodeJsScan') {
+      steps {
+        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
+      }
+    }
+
+    stage('Auditjs') {
+      steps {
+        sh 'cd ~/app; auditjs ossi &gt; ~/report/auditjs-report || true'
+      }
+    }
+
+    stage ('OWASP Dependency-Check') {
+      steps {
+        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
+      }
+    }
+
+    stage('ZAP Scan') {
+      steps {
+        sh 'docker run --rm -td -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
+      }
+    }
+
+    stage ('Final') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
+        sh 'rm -rf ~/app'
+        sh 'echo &quot;Scan successfully completed!&quot;'
+      }
+    }
+
+  }
+}
+</code></pre>
+<h3 id="increase-vm-disk-space"><strong>Increase VM Disk Space</strong></h3>
+<p>While trying to run the Jenkins pipeline, I noticed there was an error during the ZAP scan. On reviewing the container logs, I realized that my VM was out of disk space. So instead of creating a new VM with more disk space (I was currently using the default 10GB), I decided to increase the disk space of the Jenkins VM to 16GB.</p>
+<p>I followed this <a href="https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox">documentation</a>. Get location of your Jenkins VM virtual hard disk. Go to <code>Oracle VM VirtualBox Manager</code> -&gt; <code>Jenkins Server</code> -&gt; <code>Settings</code> -&gt; <code>Storage</code> -&gt; <code>Controller: IDE</code>.</p>
+<p><img alt="Screenshot" src="../img/dynamic_analysis_1.png" /><br></p>
+<p><strong>Increase Disk Size</strong></p>
+<p>To increase size of virtual disk, type the following command in the terminal (for Linux/MaxOS).</p>
+<pre><code class="language-bash">VBoxManage  modifyhd --resize &lt;NEW-SIZE&gt; &lt;LOCATION-OF-VDI-IMAGE&gt;
+</code></pre>
+<p>Check if size changed successfully.</p>
+<pre><code class="language-bash">VBoxManage showhdinfo &lt;LOCATION-OF-VDI-IMAGE&gt; | grep Capacity
+</code></pre>
+<p><strong>Boot from GParted on your VM</strong></p>
+<p>I followed the same steps as mentioned in the <code>Boot from GParted on your VM</code> section of the <a href="https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox">documentation</a>. Even after having followed all the steps, the partition was still not set properly. I then found the solution to this problem <a href="https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning">here</a></p>
+<p>In the Jenkins VM, resize the logical volume to use all the existing and free space of the volume group.</p>
+<pre><code class="language-bash">sudo lvm
+
+lvm&gt; lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+lvm&gt; exit
+</code></pre>
+<p>After the above command is successful, resize the file system to use the new available space in the logical volume.</p>
+<pre><code class="language-bash">sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
+</code></pre>
+<p>Check if the available space has increased.</p>
+<pre><code class="language-bash">df -h
+</code></pre>
                 
               
               
@@ -403,6 +576,41 @@ Docker flags used</p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../static_analysis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Static Analysis" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Static Analysis
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../resources/" class="md-footer__link md-footer__link--next" aria-label="Next: Resources" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Resources
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

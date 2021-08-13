@@ -77,8 +77,16 @@ To see the if the containers are running, run a `docker ps`. We will see two con
 
 1.  You can start the containers again using `docker start <container-name-or-id>`. When starting, however, you will have to start `dvna-mysql` container first because the `dvna-app` is dependant on it.
 
-2. The `docker` commands can only be run as sudo user. To enable executing `docker` commands without sudo, type the following in the terminal.
+2. The `docker` commands can only be run as sudo user. There are 2 ways to enable executing `docker` commands without sudo. Although, you must know, its highly discouraged to do so. 
 
+    (i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. 
+    ```bash
+    sudo usermod -aG docker $USER
+
+    sudo reboot
+    ```
+
+    (ii) This method should only be used if no other method seems to work, since it grants permission to every user to execute and run docker containers.
     ```bash
     sudo chmod 666 /var/run/docker.sock
     ```
