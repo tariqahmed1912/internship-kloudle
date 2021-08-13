@@ -109,7 +109,8 @@ pipeline {
 
     stage('ZAP Scan') {
       steps {
-        sh 'docker run --rm -td -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
+        sh 'docker run --rm -td -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS'
+        sh 'docker logs --follow owasp-zap'
       }
     }
 
@@ -149,7 +150,7 @@ VBoxManage showhdinfo <LOCATION-OF-VDI-IMAGE> | grep Capacity
 
 **Boot from GParted on your VM**
 
-I followed the same steps as mentioned in the `Boot from GParted on your VM` section of the [documentation](https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox). Even after having followed all the steps, the partition was still not set properly. I then found the solution to this problem [here](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning)
+I followed the same steps as mentioned in the `Boot from GParted on your VM` section of the [documentation](https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox). Even after having followed all the steps, the partition was still not set properly. I found the solution to this problem [here](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
 
 In the Jenkins VM, resize the logical volume to use all the existing and free space of the volume group.
 ```bash
@@ -159,7 +160,7 @@ lvm> lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
 lvm> exit
 ```
 
-After the above command is successful, resize the file system to use the new available space in the logical volume.
+After the command above is successful, resize the file system to use the new available space in the logical volume.
 ```bash
 sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 ```

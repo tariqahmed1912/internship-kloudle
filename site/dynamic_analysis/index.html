@@ -521,7 +521,8 @@ sudo reboot
 
     stage('ZAP Scan') {
       steps {
-        sh 'docker run --rm -td -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
+        sh 'docker run --rm -td -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS'
+        sh 'docker logs --follow owasp-zap'
       }
     }
 
@@ -548,14 +549,14 @@ sudo reboot
 <pre><code class="language-bash">VBoxManage showhdinfo &lt;LOCATION-OF-VDI-IMAGE&gt; | grep Capacity
 </code></pre>
 <p><strong>Boot from GParted on your VM</strong></p>
-<p>I followed the same steps as mentioned in the <code>Boot from GParted on your VM</code> section of the <a href="https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox">documentation</a>. Even after having followed all the steps, the partition was still not set properly. I then found the solution to this problem <a href="https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning">here</a></p>
+<p>I followed the same steps as mentioned in the <code>Boot from GParted on your VM</code> section of the <a href="https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox">documentation</a>. Even after having followed all the steps, the partition was still not set properly. I found the solution to this problem <a href="https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning">here</a>.</p>
 <p>In the Jenkins VM, resize the logical volume to use all the existing and free space of the volume group.</p>
 <pre><code class="language-bash">sudo lvm
 
 lvm&gt; lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
 lvm&gt; exit
 </code></pre>
-<p>After the above command is successful, resize the file system to use the new available space in the logical volume.</p>
+<p>After the command above is successful, resize the file system to use the new available space in the logical volume.</p>
 <pre><code class="language-bash">sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 </code></pre>
 <p>Check if the available space has increased.</p>
