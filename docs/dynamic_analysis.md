@@ -16,6 +16,7 @@ sudo docker pull owasp/zap2docker-stable
 ```
 
 TRIED THIS! It Didnt Work!
+
 Create a docker network for both application container and zap container to run in.
 ```bash
 sudo docker network create zapnet
@@ -32,6 +33,7 @@ sudo docker exec owasp-zap zap-cli active-scan http://192.168.56.102:9090
 
 
 FINAL SOLUTION
+
 The baseline-scan script is intended to be ideal to run in a CI/CD environment, even against production sites.
 Docker flags used
 
@@ -55,7 +57,8 @@ To run a fullscan script, run the following command
 sudo docker run --rm -td -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
 ```
 
-The report `owasp-zap-report.html` will be generated on successful completion. It will be located in the users home directory.
+The report `owasp-zap-report.html`, generated on successful completion, will be located in the users home directory.
+
 **Note:** To open .html file in browser from terminal, type `open owasp-report.html` from host terminal.
 
 
