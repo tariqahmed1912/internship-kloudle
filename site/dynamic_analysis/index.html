@@ -459,10 +459,10 @@
 -t 'target', specify target to scan<br />
 -r 'file.html', generate an HTML output report<br />
 -l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.</p>
-<pre><code class="language-bash">sudo docker run --rm -td -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+<pre><code class="language-bash">sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
 </code></pre>
 <p>To run a fullscan script, run the following command</p>
-<pre><code class="language-bash">sudo docker run --rm -td -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+<pre><code class="language-bash">sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
 </code></pre>
 <p>The report <code>owasp-zap-report.html</code>, generated on successful completion, will be located in the users home directory.</p>
 <p><strong>Note:</strong> To open .html file in browser from terminal, type <code>open owasp-report.html</code> from host terminal.</p>
