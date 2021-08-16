@@ -10,31 +10,14 @@ About DAST
 
 ### **OWASP ZAP**
 
+The Zed Attack Proxy (ZAP) is one of the most widely-used open source tools for DAST. It helps find security vulnerabilities in web applications while its in the development and testing stage.  Maintained by OWASP, ZAP has built a huge community of people creating new features and add-ons that make it incredibly versatile. 
+
 Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this [documentation](https://www.zaproxy.org/docs/docker/about/). First, pull the ZAP image from docker hub.
 ```bash
 sudo docker pull owasp/zap2docker-stable
 ```
 
-TRIED THIS! It didnt work!
-
-Create a docker network for both application container and zap container to run in.
-```bash
-sudo docker network create zapnet
-```
-
-```bash
-sudo docker run -u zap -td --name owasp-zap --net zapnet -p 8090:8090 owasp/zap2docker-stable zap.sh -daemon -port 8090 -host 0.0.0.0 -config api.disablekey=true
-
-sudo docker exec owasp-zap zap-cli open-url http://192.168.56.102:9090
-
-sudo docker exec owasp-zap zap-cli active-scan http://192.168.56.102:9090
-```
-
-
-
-FINAL SOLUTION
-
-The baseline-scan script is intended to be ideal to run in a CI/CD environment, even against production sites.
+We will be running a baseline scan as it is ideal in a CI/CD environment, even against production sites.
 
 Docker flags used  
 --rm, remove container after completion  
@@ -70,6 +53,7 @@ sudo usermod -aG docker jenkins
 sudo reboot
 ```
 
+The entire pipeline for both SAST and DAST is given below.
 
 ```bash
 pipeline {
@@ -124,7 +108,7 @@ pipeline {
 ```
 
 
-### **Increase VM Disk Space**
+### **Increase VM Disk Space (Optional)**
 While trying to run the Jenkins pipeline, I noticed there was an error during the ZAP scan. On reviewing the container logs, I realized that my VM was out of disk space. So instead of creating a new VM with more disk space (I was currently using the default 10GB), I decided to increase the disk space of the Jenkins VM to 16GB.
 
 I followed this [documentation](https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox). Get location of your Jenkins VM virtual hard disk. Go to `Oracle VM VirtualBox Manager` -> `Jenkins Server` -> `Settings` -> `Storage` -> `Controller: IDE`.

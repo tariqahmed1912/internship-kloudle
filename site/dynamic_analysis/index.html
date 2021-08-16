@@ -331,8 +331,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#increase-vm-disk-space" class="md-nav__link">
-    Increase VM Disk Space
+  <a href="#increase-vm-disk-space-optional" class="md-nav__link">
+    Increase VM Disk Space (Optional)
   </a>
   
 </li>
@@ -411,8 +411,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#increase-vm-disk-space" class="md-nav__link">
-    Increase VM Disk Space
+  <a href="#increase-vm-disk-space-optional" class="md-nav__link">
+    Increase VM Disk Space (Optional)
   </a>
   
 </li>
@@ -445,21 +445,11 @@
 <li>DAST performs black-box security testing.</li>
 </ul>
 <h3 id="owasp-zap"><strong>OWASP ZAP</strong></h3>
+<p>The Zed Attack Proxy (ZAP) is one of the most widely-used open source tools for DAST. It helps find security vulnerabilities in web applications while its in the development and testing stage.  Maintained by OWASP, ZAP has built a huge community of people creating new features and add-ons that make it incredibly versatile. </p>
 <p>Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this <a href="https://www.zaproxy.org/docs/docker/about/">documentation</a>. First, pull the ZAP image from docker hub.</p>
 <pre><code class="language-bash">sudo docker pull owasp/zap2docker-stable
 </code></pre>
-<p>TRIED THIS! It didnt work!</p>
-<p>Create a docker network for both application container and zap container to run in.</p>
-<pre><code class="language-bash">sudo docker network create zapnet
-</code></pre>
-<pre><code class="language-bash">sudo docker run -u zap -td --name owasp-zap --net zapnet -p 8090:8090 owasp/zap2docker-stable zap.sh -daemon -port 8090 -host 0.0.0.0 -config api.disablekey=true
-
-sudo docker exec owasp-zap zap-cli open-url http://192.168.56.102:9090
-
-sudo docker exec owasp-zap zap-cli active-scan http://192.168.56.102:9090
-</code></pre>
-<p>FINAL SOLUTION</p>
-<p>The baseline-scan script is intended to be ideal to run in a CI/CD environment, even against production sites.</p>
+<p>We will be running a baseline scan as it is ideal in a CI/CD environment, even against production sites.</p>
 <p>Docker flags used<br />
 --rm, remove container after completion<br />
 -d, run as a background job<br />
@@ -481,6 +471,7 @@ sudo docker exec owasp-zap zap-cli active-scan http://192.168.56.102:9090
 <pre><code class="language-bash">sudo usermod -aG docker jenkins
 sudo reboot
 </code></pre>
+<p>The entire pipeline for both SAST and DAST is given below.</p>
 <pre><code class="language-bash">pipeline {
   agent any
   stages {
@@ -531,7 +522,7 @@ sudo reboot
   }
 }
 </code></pre>
-<h3 id="increase-vm-disk-space"><strong>Increase VM Disk Space</strong></h3>
+<h3 id="increase-vm-disk-space-optional"><strong>Increase VM Disk Space (Optional)</strong></h3>
 <p>While trying to run the Jenkins pipeline, I noticed there was an error during the ZAP scan. On reviewing the container logs, I realized that my VM was out of disk space. So instead of creating a new VM with more disk space (I was currently using the default 10GB), I decided to increase the disk space of the Jenkins VM to 16GB.</p>
 <p>I followed this <a href="https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox">documentation</a>. Get location of your Jenkins VM virtual hard disk. Go to <code>Oracle VM VirtualBox Manager</code> -&gt; <code>Jenkins Server</code> -&gt; <code>Settings</code> -&gt; <code>Storage</code> -&gt; <code>Controller: IDE</code>.</p>
 <p><img alt="Screenshot" src="../img/dynamic_analysis_1.png" /><br></p>
