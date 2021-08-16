@@ -459,7 +459,7 @@
 <h3 id="cyclonedx"><strong>CycloneDX</strong></h3>
 <p>The CycloneDX module for Node.js creates a valid CycloneDX SBoM containing an aggregate of all project dependencies. It's a lightweight SBoM specification that is easily created, human and machine readable, and simple to parse. It also comes in a variety of implementations to serve projects using different stacks such as Python, Maven, .NET, etc. For my use case, I stuck with the NPM package as DVNA only utilizes Nodejs.</p>
 <h3 id="generating-sbom-for-dvna"><strong>Generating SBoM for DVNA</strong></h3>
-<p>Installation of Cyclonedx using NPM.</p>
+<p>Installation of CycloneDX using NPM.</p>
 <pre><code class="language-bash">npm install -g @cyclonedx/bom
 </code></pre>
 <p>To generate a SBoM report, use the <code>-o</code> flag and specify the filename and its format. The report can be either XML  or JSON.  </p>

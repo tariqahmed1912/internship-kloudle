@@ -13,7 +13,7 @@ The CycloneDX module for Node.js creates a valid CycloneDX SBoM containing an ag
 
 ### **Generating SBoM for DVNA**
 
-Installation of Cyclonedx using NPM.
+Installation of CycloneDX using NPM.
 
 ```bash
 npm install -g @cyclonedx/bom
