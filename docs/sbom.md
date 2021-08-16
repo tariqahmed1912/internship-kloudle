@@ -9,16 +9,26 @@ A Software Bill of Materials (SBOM) is a list of all the open source and third-p
 
 ### **CycloneDX**
 
-The CycloneDX module for Node.js creates a valid CycloneDX SBoM containing an aggregate of all project dependencies. It's a lightweight SBoM specification that is easily created, human and machine readable, and simple to parse.
+The CycloneDX module for Node.js creates a valid CycloneDX SBoM containing an aggregate of all project dependencies. It's a lightweight SBoM specification that is easily created, human and machine readable, and simple to parse. It also comes in a variety of implementations to serve projects using different stacks such as Python, Maven, .NET, etc. For my use case, I stuck with the NPM package as DVNA only utilizes Nodejs.
 
-Installation of cyclonedx using npm.
+### **Generating SBoM for DVNA**
+
+Installation of cyclonedx using NPM.
 
 ```bash
 npm install -g @cyclonedx/bom
 ```
 
-To generate a SBoM report, use the `-o` flag and specify the filename and its format. The report can be either XML  or JSON.
-
+To generate a SBoM report, use the `-o` flag and specify the filename and its format. The report can be either XML  or JSON.  
 ```bash
-cyclonedx-bom -o bom.json
+cyclonedx-bom -o sbom.xml
+```
+
+I added a stage in the Jenkins pipeline for generating the SBoM.  
+```bash
+stage ('Generating Software Bill of Materials') {
+    steps {
+        sh 'cyclonedx-bom -o ~/reports/sbom.xml'
+    }
+}
 ```
