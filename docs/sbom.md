@@ -2,7 +2,7 @@
 
 The aim of this section is to generate a Software Bill of Materials (SBoM) for DVNA and generate a report.
 
-About SBOM
+### **SBoM**
 
 A Software Bill of Materials (SBOM) is a list of all the open source and third-party components present in a codebase. It lists the licenses that govern those components, the versions of the components used in the codebase, and their patch status.
 
