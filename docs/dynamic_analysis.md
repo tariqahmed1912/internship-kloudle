@@ -15,7 +15,7 @@ Implementing ZAP analysis with docker is simpler and faster than manual installa
 sudo docker pull owasp/zap2docker-stable
 ```
 
-TRIED THIS! It Didnt Work!
+TRIED THIS! It didnt work!
 
 Create a docker network for both application container and zap container to run in.
 ```bash
@@ -37,16 +37,16 @@ FINAL SOLUTION
 The baseline-scan script is intended to be ideal to run in a CI/CD environment, even against production sites.
 Docker flags used
 
-- --rm, remove container after completion
-- -d, run as a background job
-- -u <user>, specify user to run container as
-- -v 'host dir':'container dir', mount volumes
+--rm, remove container after completion
+-d, run as a background job
+-u <user>, specify user to run container as
+-v 'host dir':'container dir', mount volumes
 
 Zap CLI flags used
 
-- -t 'target', specify target to scan
-- -r 'file.html', generate an HTML output report
-- -l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.
+-t 'target', specify target to scan
+-r 'file.html', generate an HTML output report
+-l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.
 
 ```bash
 sudo docker run --rm -td -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
@@ -85,7 +85,7 @@ pipeline {
     stage('Copy Application Code') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql && docker start dvna-app; docker cp dvna-app:/app/ ~/;"'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir -p ~/report'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir ~/report && chmod 777 ~/report'
       }
     }
     
@@ -106,11 +106,10 @@ pipeline {
         sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
       }
     }
-
+    
     stage('ZAP Scan') {
       steps {
-        sh 'docker run --rm -td -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS'
-        sh 'docker logs --follow owasp-zap'
+        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
       }
     }
 
@@ -121,7 +120,6 @@ pipeline {
         sh 'echo "Scan successfully completed!"'
       }
     }
-
   }
 }
 ```
@@ -168,6 +166,20 @@ sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 Check if the available space has increased.
 ```bash
 df -h
+```
+
+**Note**
+
+While running the ZAP scan in pipeline, I got the following error:
+
+```bash
+ERROR [Errno 13] Permission denied: '/zap/wrk/zap-report.html'
+```
+
+To resolve this error, I changed the permissions of /var/lib/jenkins/report directory.
+
+```bash
+sudo chmod 777 /var/lib/jenkins/report
 ```
 
 

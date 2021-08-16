@@ -448,7 +448,7 @@
 <p>Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this <a href="https://www.zaproxy.org/docs/docker/about/">documentation</a>. First, pull the ZAP image from docker hub.</p>
 <pre><code class="language-bash">sudo docker pull owasp/zap2docker-stable
 </code></pre>
-<p>TRIED THIS! It Didnt Work!</p>
+<p>TRIED THIS! It didnt work!</p>
 <p>Create a docker network for both application container and zap container to run in.</p>
 <pre><code class="language-bash">sudo docker network create zapnet
 </code></pre>
@@ -461,18 +461,14 @@ sudo docker exec owasp-zap zap-cli active-scan http://192.168.56.102:9090
 <p>FINAL SOLUTION</p>
 <p>The baseline-scan script is intended to be ideal to run in a CI/CD environment, even against production sites.
 Docker flags used</p>
-<ul>
-<li>--rm, remove container after completion</li>
-<li>-d, run as a background job</li>
-<li>-u <user>, specify user to run container as</li>
-<li>-v 'host dir':'container dir', mount volumes</li>
-</ul>
+<p>--rm, remove container after completion
+-d, run as a background job
+-u <user>, specify user to run container as
+-v 'host dir':'container dir', mount volumes</p>
 <p>Zap CLI flags used</p>
-<ul>
-<li>-t 'target', specify target to scan</li>
-<li>-r 'file.html', generate an HTML output report</li>
-<li>-l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.</li>
-</ul>
+<p>-t 'target', specify target to scan
+-r 'file.html', generate an HTML output report
+-l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.</p>
 <pre><code class="language-bash">sudo docker run --rm -td -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
 </code></pre>
 <p>To run a fullscan script, run the following command</p>
@@ -497,7 +493,7 @@ sudo reboot
     stage('Copy Application Code') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/;&quot;'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir ~/report &amp;&amp; chmod 777 ~/report'
       }
     }
 
@@ -521,8 +517,7 @@ sudo reboot
 
     stage('ZAP Scan') {
       steps {
-        sh 'docker run --rm -td -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS'
-        sh 'docker logs --follow owasp-zap'
+        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
       }
     }
 
@@ -533,7 +528,6 @@ sudo reboot
         sh 'echo &quot;Scan successfully completed!&quot;'
       }
     }
-
   }
 }
 </code></pre>
@@ -561,6 +555,13 @@ lvm&gt; exit
 </code></pre>
 <p>Check if the available space has increased.</p>
 <pre><code class="language-bash">df -h
+</code></pre>
+<p><strong>Note</strong></p>
+<p>While running the ZAP scan in pipeline, I got the following error:</p>
+<pre><code class="language-bash">ERROR [Errno 13] Permission denied: '/zap/wrk/zap-report.html'
+</code></pre>
+<p>To resolve this error, I changed the permissions of /var/lib/jenkins/report directory.</p>
+<pre><code class="language-bash">sudo chmod 777 /var/lib/jenkins/report
 </code></pre>
                 
               
