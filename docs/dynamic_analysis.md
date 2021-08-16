@@ -35,17 +35,23 @@ sudo docker exec owasp-zap zap-cli active-scan http://192.168.56.102:9090
 FINAL SOLUTION
 
 The baseline-scan script is intended to be ideal to run in a CI/CD environment, even against production sites.
+
 Docker flags used
 
 --rm, remove container after completion
+
 -d, run as a background job
+
 -u <user>, specify user to run container as
+
 -v 'host dir':'container dir', mount volumes
 
 Zap CLI flags used
 
 -t 'target', specify target to scan
+
 -r 'file.html', generate an HTML output report
+
 -l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.
 
 ```bash
