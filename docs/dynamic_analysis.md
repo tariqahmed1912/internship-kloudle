@@ -4,8 +4,8 @@ The aim of this section is to perform dynamic analysis using DAST tools on DVNA.
 
 About DAST
 
-- Dynamic analysis is done while an application is running. 
-- DAST tools include OWASP Zed Attack Proxy (ZAP) and W3AF.
+- Dynamic Application Security Testing (DAST) is a testing methodology which looks for security vulnerabilities by simulating external attacks on an application while the application is running. 
+- DAST performs black-box security testing.
 
 
 ### **OWASP ZAP**
