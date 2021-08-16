@@ -7,4 +7,6 @@ The following is the report/documentation for the problem statements stated in t
 5. [Setup of Production Server](production_setup.md)
 6. [SSH Connection between VMs](ssh_connection.md)
 7. [Static Analysis](static_analysis.md)
-8. [Resources](resources.md)
+8. [Dynamic Analysis](dynamic_analysis.md)
+9. [Software Bill of Materials](sbom.md)
+10. [Resources](resources.md)
