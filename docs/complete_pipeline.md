@@ -3,7 +3,7 @@
 The aim of this section is to show the complete CI/CD pipeline structure.
 
 
-### **Pipeline**
+### **Complete Pipeline**
 
 ```bash
 pipeline {
