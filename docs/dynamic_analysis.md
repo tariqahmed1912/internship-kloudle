@@ -53,7 +53,7 @@ sudo usermod -aG docker jenkins
 sudo reboot
 ```
 
-The entire pipeline for both SAST and DAST is given below.
+The pipeline to implement DAST on DVNA is given below.
 
 ```bash
 pipeline {
@@ -65,29 +65,13 @@ pipeline {
       }
     }
     
-    stage('Copy Application Code') {
+    stage('Start Application (DVNA)') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql && docker start dvna-app; docker cp dvna-app:/app/ ~/;"'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir ~/report && chmod 777 ~/report'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql && docker start dvna-app"'
+        sh 'mkdir ~/report && chmod 777 ~/report'
       }
     }
     
-    stage('NodeJsScan') {
-      steps {
-        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
-      }
-    }
-    
-    stage('Auditjs') {
-      steps {
-        sh 'cd ~/app; auditjs ossi > ~/report/auditjs-report || true'
-      }
-    }
-
-    stage ('OWASP Dependency-Check') {
-      steps {
-        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
-      }
     }
     
     stage('ZAP Scan') {
@@ -99,7 +83,6 @@ pipeline {
     stage ('Final') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql;"'
-        sh 'rm -rf ~/app'
         sh 'echo "Scan successfully completed!"'
       }
     }

@@ -9,4 +9,5 @@ The following is the report/documentation for the problem statements stated in t
 7. [Static Analysis](static_analysis.md)
 8. [Dynamic Analysis](dynamic_analysis.md)
 9. [Software Bill of Materials](sbom.md)
-10. [Resources](resources.md)
+10. [Complete Pipeline Structure](complete_pipeline.md)
+11. [Resources](resources.md)

@@ -9,5 +9,6 @@ nav:
   - Static Analysis: 'static_analysis.md'
   - Dynamic Analysis: 'dynamic_analysis.md'
   - Software Bill of Materials: 'sbom.md'
+  - Complete Pipeline Structure: 'complete_pipeline.md'
   - Resources: 'resources.md'
 theme: material
