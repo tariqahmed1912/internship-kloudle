@@ -35,7 +35,7 @@ echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
     
-Update the apt package index, and install the latest version of Docker Engine and containerd.
+Update the apt package index, and install the latest version of Docker Engine and containerd (a daemon process that manages and runs containers).
 
 ```bash
 sudo apt-get update
@@ -80,6 +80,7 @@ To see the if the containers are running, run a `docker ps`. We will see two con
 2. The `docker` commands can only be run as sudo user. There are 2 ways to enable executing `docker` commands without sudo. Although, you must know, its highly discouraged to do so. 
 
     (i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. 
+    
     ```bash
     sudo usermod -aG docker $USER
 
@@ -87,6 +88,7 @@ To see the if the containers are running, run a `docker ps`. We will see two con
     ```
 
     (ii) This method should only be used if no other method seems to work, since it grants permission to every user to execute and run docker containers.
+
     ```bash
     sudo chmod 666 /var/run/docker.sock
     ```
