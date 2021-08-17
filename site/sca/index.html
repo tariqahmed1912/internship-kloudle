@@ -14,7 +14,7 @@
     
     
       
-        <title>Software Code Quality Analysis - DevSecOps Pipeline</title>
+        <title>Software Composition Analysis - DevSecOps Pipeline</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Software Code Quality Analysis
+              Software Composition Analysis
             
           </span>
         </div>
@@ -293,11 +293,67 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../sca/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Software Composition Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Software Composition Analysis
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#owasp-dependancy-check" class="md-nav__link">
+    OWASP Dependancy-Check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sca-pipeline" class="md-nav__link">
+    SCA Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -338,81 +394,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Software Code Quality Analysis
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../scqa/" class="md-nav__link">
         Software Code Quality Analysis
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objective" class="md-nav__link">
-    Objective
-  </a>
-  
-    <nav class="md-nav" aria-label="Objective">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scqa" class="md-nav__link">
-    SCQA
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jshint" class="md-nav__link">
-    JSHint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eslint" class="md-nav__link">
-    ESLint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generating-sbom-for-dvna" class="md-nav__link">
-    Generating SBoM for DVNA
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -479,29 +465,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#scqa" class="md-nav__link">
-    SCQA
+  <a href="#owasp-dependancy-check" class="md-nav__link">
+    OWASP Dependancy-Check
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#jshint" class="md-nav__link">
-    JSHint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eslint" class="md-nav__link">
-    ESLint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generating-sbom-for-dvna" class="md-nav__link">
-    Generating SBoM for DVNA
+  <a href="#sca-pipeline" class="md-nav__link">
+    SCA Pipeline
   </a>
   
 </li>
@@ -524,28 +496,67 @@
               
                 
                 
-                  <h1>Software Code Quality Analysis</h1>
+                  <h1>Software Composition Analysis</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
-<p>The aim of this section is to analyse the quality of software code and generate a report.</p>
-<h3 id="scqa"><strong>SCQA</strong></h3>
-<p>A Software Bill of Materials (SBOM) is a list of all the open source and third-party components present in a codebase. It lists the licenses that govern those components, the versions of the components used in the codebase, and their patch status.</p>
-<h3 id="jshint"><strong>JSHint</strong></h3>
-<p>JSHint is a static code analysis tool that helps to detect errors and potential problems in your JavaScript code. It scans a program written in JavaScript and reports about commonly made mistakes and potential bugs. The potential problem could be a syntax error, a bug due to an implicit type conversion, a leaking variable, or something else entirely.</p>
-<h3 id="eslint"><strong>ESLint</strong></h3>
-<h3 id="generating-sbom-for-dvna"><strong>Generating SBoM for DVNA</strong></h3>
-<p>Installation of CycloneDX using NPM.</p>
-<pre><code class="language-bash">npm install -g @cyclonedx/bom
+<p>The aim of this section is to explain the software composition of DVNA using SCA tools in a Jenkins pipeline.</p>
+<p>About SCA</p>
+<ul>
+<li>Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities.</li>
+<li>It helps identify vulnerabilities in open source code (dependencies) used in code.</li>
+</ul>
+<p>Prerequisites</p>
+<ul>
+<li>An application (DVNA) running on Production Server.</li>
+</ul>
+<h3 id="owasp-dependancy-check"><strong>OWASP Dependancy-Check</strong></h3>
+<p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies.</p>
+<p>To start working with Dependency Check, I followed the <a href="https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html">official documentation</a>. First, download the Dependency-Check CLI tool and the associated GPG signature file.</p>
+<pre><code class="language-bash">wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip
+
+wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc
 </code></pre>
-<p>To generate a SBoM report, use the <code>-o</code> flag and specify the filename and its format. The report can be either XML  or JSON.  </p>
-<pre><code class="language-bash">cyclonedx-bom -o sbom.xml
+<p>Next, extract the files from the dependency-check tool zip file.</p>
+<pre><code class="language-bash">unzip ~/dependency-check-6.2.2-release.zip
 </code></pre>
-<p>I added a stage in the Jenkins pipeline for generating the SBoM.  </p>
-<pre><code class="language-bash">stage ('Generating Software Bill of Materials') {
-    steps {
-        sh 'cyclonedx-bom -o ~/reports/sbom.xml'
+<p>Perform the scan by specifying the path to the project, output report format and its location.</p>
+<pre><code class="language-bash">~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint
+</code></pre>
+<p>This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
+<h3 id="sca-pipeline"><strong>SCA Pipeline</strong></h3>
+<p>The Jenkinsfile for performing SCA of DVNA via Jenkins pipeline is given below:</p>
+<pre><code class="language-bash">pipeline {
+  agent any
+  stages {
+    stage ('Initialization') {
+      steps {
+        sh 'echo &quot;Starting the build!&quot;'
+      }
     }
+
+    stage('Copy Application Code') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
+      }
+    }
+
+    stage ('OWASP Dependency-Check') {
+      steps {
+        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
+      }
+    }
+
+    stage ('Final') {
+      steps {
+        sh 'rm -rf ~/app'
+        sh 'echo &quot;Scan successfully completed!&quot;'
+      }
+    }
+
+  }
 }
+
 </code></pre>
                 
               
@@ -566,7 +577,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../sbom/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Software Bill of Materials" rel="prev">
+        <a href="../static_analysis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Static Analysis" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -575,20 +586,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Software Bill of Materials
+              Static Analysis
             </div>
           </div>
         </a>
       
       
         
-        <a href="../complete_pipeline/" class="md-footer__link md-footer__link--next" aria-label="Next: Complete Pipeline Structure" rel="next">
+        <a href="../dynamic_analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynamic Analysis" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Complete Pipeline Structure
+              Dynamic Analysis
             </div>
           </div>
           <div class="md-footer__button md-icon">

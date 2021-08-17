@@ -351,13 +351,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#owasp-dependancy-check" class="md-nav__link">
-    OWASP Dependancy-Check
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#sast-pipeline" class="md-nav__link">
     SAST Pipeline
   </a>
@@ -373,6 +366,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sca/" class="md-nav__link">
+        Software Composition Analysis
+      </a>
     </li>
   
 
@@ -518,13 +526,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#owasp-dependancy-check" class="md-nav__link">
-    OWASP Dependancy-Check
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#sast-pipeline" class="md-nav__link">
     SAST Pipeline
   </a>
@@ -552,16 +553,11 @@
                   <h1>Static Analysis</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
-<p>The aim of this section is to perform static analysis on DVNA, using SAST and SCA tools, in a Jenkins pipeline.</p>
+<p>The aim of this section is to perform static analysis on DVNA using SAST tools in a Jenkins pipeline.</p>
 <p>About SAST</p>
 <ul>
 <li>Static application security testing (SAST) is a testing methodology that analyzes source code to find security vulnerabilities.</li>
 <li>SAST scans an application before the code is compiled. Its also known as white box testing.</li>
-</ul>
-<p>About SCA</p>
-<ul>
-<li>Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities.</li>
-<li>It helps identify vulnerabilities in open source code (dependencies) used in code.</li>
 </ul>
 <p>Prerequisites</p>
 <ul>
@@ -615,23 +611,9 @@ at OSS Index and run the scan with your accounts 'Username' and 'API-token'. </p
 <p><strong>Note</strong>: You can find the API-token in the <code>User settings</code> after logging into the OSS Index website.</p>
 <pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;API-TOKEN&gt; &gt; ~/report/auditjs-report
 </code></pre>
-<h3 id="owasp-dependancy-check"><strong>OWASP Dependancy-Check</strong></h3>
-<p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies.</p>
-<p>To start working with Dependency Check, I followed the <a href="https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html">official documentation</a>. First, download the Dependency-Check CLI tool and the associated GPG signature file.</p>
-<pre><code class="language-bash">wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip
-
-wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc
-</code></pre>
-<p>Next, extract the files from the dependency-check tool zip file.</p>
-<pre><code class="language-bash">unzip ~/dependency-check-6.2.2-release.zip
-</code></pre>
-<p>Perform the scan by specifying the path to the project, output report format and its location.</p>
-<pre><code class="language-bash">~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint
-</code></pre>
-<p>This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
 <h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
-<p>The Jenkinsfile for performing SAST and SCA of DVNA via Jenkins pipeline is given below:</p>
+<p>The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:</p>
 <pre><code class="language-bash">pipeline {
   agent any
   stages {
@@ -657,12 +639,6 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
     stage('Auditjs') {
       steps {
         sh 'cd ~/app; auditjs ossi &gt; ~/report/auditjs-report || true'
-      }
-    }
-
-    stage ('OWASP Dependency-Check') {
-      steps {
-        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
       }
     }
 
@@ -712,13 +688,13 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
       
       
         
-        <a href="../dynamic_analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynamic Analysis" rel="next">
+        <a href="../sca/" class="md-footer__link md-footer__link--next" aria-label="Next: Software Composition Analysis" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Dynamic Analysis
+              Software Composition Analysis
             </div>
           </div>
           <div class="md-footer__button md-icon">

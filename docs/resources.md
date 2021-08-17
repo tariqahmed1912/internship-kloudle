@@ -20,8 +20,10 @@ These are some references I used along with the ones mentioned implicitly in the
 
 - NodeJsScan ([https://github.com/ajinabraham/nodejsscan](https://github.com/ajinabraham/nodejsscan))
 -  Auditjs ([https://github.com/sonatype-nexus-community/auditjs](https://github.com/sonatype-nexus-community/auditjs))
-- OWASP Dependancy Check ([https://owasp.org/www-project-dependency-check/](https://owasp.org/www-project-dependency-check/))
 
+### Software Composition Analysis
+
+- OWASP Dependancy Check ([https://owasp.org/www-project-dependency-check/](https://owasp.org/www-project-dependency-check/))
 
 ### Dynamic Analysis
 
