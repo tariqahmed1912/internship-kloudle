@@ -13,7 +13,7 @@ Prerequisites
 
 ### **Step 1 - Install docker**
 
-Update the apt package index and install packages to allow apt to use a repository over HTTPS
+For docker installation, I followed the [official documentation](https://docs.docker.com/engine/install/ubuntu/). First, Update the apt package index and install packages to allow apt to use a repository over HTTPS.
 
 ```bash
 sudo apt-get update
@@ -21,7 +21,7 @@ sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
     
-Add Docker’s official GPG key
+Then add Docker’s official GPG key.
 
 ```bash
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings docker-archive-keyring.gpg
@@ -34,7 +34,7 @@ echo \
   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-    
+
 Update the apt package index, and install the latest version of Docker Engine and containerd (a daemon process that manages and runs containers).
 
 ```bash
@@ -44,11 +44,10 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 sudo docker run hello-world # Test if docker installation is successful 
 ```
-    
 
 ### **Step 2 - Setup Production Server**
 
-DVNA interacts with a MySQL database. Store the db configuration in a file named 'vars.env'.
+I followed the [official documentation](https://github.com/appsecco/dvna) available on GitHub page to setup DVNA. DVNA interacts with a MySQL database. Store the db configuration in a file named `vars.env`.
 
 ```bash
 MYSQL_USER=dvna
@@ -58,7 +57,7 @@ MYSQL_RANDOM_ROOT_PASSWORD=yes
 MYSQL_HOST=mysql-db
 MYSQL_PORT=3306
 ```
-	
+
 Start MySQL container (using environment variables in vars.env file). Run an infinite command in detached mode (using `-d`), so the command never ends and the container never stops. I used `tail -f /dev/null` because it is quite light weight and /dev/null is present in most linux images.
    
 ```bash

@@ -577,10 +577,10 @@
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
-<p>To install njsscan, we first need to install pip3 in 'dvna-app' container in production server.</p>
+<p>Following the <a href="https://github.com/ajinabraham/nodejsscan">official documentation</a> available on GitHub, I installed njsscan using pip3. To use pip3, we first need to install it in the <code>dvna-app</code> container in production server.</p>
 <pre><code class="language-bash">apt update &amp;&amp; apt install python3-pip
 </code></pre>
-<p>Install njsscan</p>
+<p>Install njsscan using pip3.</p>
 <pre><code class="language-bash">pip3 install njsscan
 </code></pre>
 <p>Scan the ~/app directory (which holds the files for DVNA) and store the scan result in <code>~/report/nodejsscan-report</code></p>
@@ -593,13 +593,13 @@ njsscan --json -o /app/report/nodejsscan-report ~/app
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
-<p>To install auditjs, we first need to install npm and nodejs in 'dvna-app' container in production server. After running the following commands, the package versions are: <code>npm v6.14.14</code> and <code>nodejs v14.17.4</code></p>
+<p>Following the <a href="https://github.com/ajinabraham/nodejsscan">official documentation</a> available on GitHub, I installed auditjs using NPM (Node Packet Manager). To do so, we first need to install <code>npm</code> and <code>nodejs</code> in 'dvna-app' container in production server. After running the following commands, the package versions are: <code>npm v6.14.14</code> and <code>nodejs v14.17.4</code></p>
 <pre><code class="language-bash">sudo apt update
 sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs npm 
 sudo npm install latest-version
 </code></pre>
-<p>Install auditjs using npm</p>
+<p>Install auditjs using npm.</p>
 <pre><code class="language-bash">sudo npm install -g auditjs
 </code></pre>
 <p>Scan the ~/app directory (which holds the files for DVNA) and store the scan result in <code>~/report/auditjs-report</code>. </p>

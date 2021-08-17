@@ -33,19 +33,19 @@ You can access the website by typing `<ip-address>:9090` in the browsers URL. To
 
 #### CLI-based
 
-In the Production server, enter DVNA container in exec mode.
+ In the Production server, enter DVNA container in exec mode.
 
 ```bash
 sudo docker exec -it -u 0 dvna-app /bin/bash
 ```
 
-To install njsscan, we first need to install pip3 in 'dvna-app' container in production server.
+Following the [official documentation](https://github.com/ajinabraham/nodejsscan) available on GitHub, I installed njsscan using pip3. To use pip3, we first need to install it in the `dvna-app` container in production server.
 
 ```bash
 apt update && apt install python3-pip
 ```
 
-Install njsscan
+Install njsscan using pip3.
 
 ```bash
 pip3 install njsscan
@@ -69,7 +69,7 @@ In the Production server, enter DVNA container in exec mode.
 sudo docker exec -it -u 0 dvna-app /bin/bash
 ```
 
-To install auditjs, we first need to install npm and nodejs in 'dvna-app' container in production server. After running the following commands, the package versions are: `npm v6.14.14` and `nodejs v14.17.4`
+Following the [official documentation](https://github.com/ajinabraham/nodejsscan) available on GitHub, I installed auditjs using NPM (Node Packet Manager). To do so, we first need to install `npm` and `nodejs` in 'dvna-app' container in production server. After running the following commands, the package versions are: `npm v6.14.14` and `nodejs v14.17.4`
 
 ```bash
 sudo apt update
@@ -78,7 +78,7 @@ sudo apt install -y nodejs npm
 sudo npm install latest-version
 ```
 
-Install auditjs using npm
+Install auditjs using npm.
 
 ```bash
 sudo npm install -g auditjs

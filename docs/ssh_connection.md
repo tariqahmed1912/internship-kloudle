@@ -24,13 +24,13 @@ You will be prompted to add a passphrase. You can either provide one or leave it
 
 ### **Copying SSH Key**
 
-Copy the public key from Jenkins server (id_ed25519.pub) into '.ssh/authorized_users' file of Production servers.
+Copy the public key from Jenkins server (id_ed25519.pub) into `.ssh/authorized_users` file of Production servers.
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_ed25519 <username>@<production_server_ip>
 ```
     
-Copy the .ssh folder in Jenkins server into `/var/lib/jenkins` of the same server and change the ownership of the folder from root to jenkins. This is because `jenkins` user executes commands. Also, change the permissions of the `/var/lib/jenkins/.ssh` to only-read mode for owner (ie. user 'jenkins')
+Copy the `.ssh` folder in Jenkins server into `/var/lib/jenkins` of the same server and change the ownership of the folder from root to jenkins. This is because `jenkins` user executes commands. Also, change the permissions of the `/var/lib/jenkins/.ssh` to only-read mode for owner (ie. user `jenkins`)
     
 ```bash
 sudo cp -r ~/.ssh /var/lib/jenkins

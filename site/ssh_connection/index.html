@@ -544,10 +544,10 @@
 </code></pre>
 <p>You will be prompted to add a passphrase. You can either provide one or leave it empty.</p>
 <h3 id="copying-ssh-key"><strong>Copying SSH Key</strong></h3>
-<p>Copy the public key from Jenkins server (id_ed25519.pub) into '.ssh/authorized_users' file of Production servers.</p>
+<p>Copy the public key from Jenkins server (id_ed25519.pub) into <code>.ssh/authorized_users</code> file of Production servers.</p>
 <pre><code class="language-bash">ssh-copy-id -i ~/.ssh/id_ed25519 &lt;username&gt;@&lt;production_server_ip&gt;
 </code></pre>
-<p>Copy the .ssh folder in Jenkins server into <code>/var/lib/jenkins</code> of the same server and change the ownership of the folder from root to jenkins. This is because <code>jenkins</code> user executes commands. Also, change the permissions of the <code>/var/lib/jenkins/.ssh</code> to only-read mode for owner (ie. user 'jenkins')</p>
+<p>Copy the <code>.ssh</code> folder in Jenkins server into <code>/var/lib/jenkins</code> of the same server and change the ownership of the folder from root to jenkins. This is because <code>jenkins</code> user executes commands. Also, change the permissions of the <code>/var/lib/jenkins/.ssh</code> to only-read mode for owner (ie. user <code>jenkins</code>)</p>
 <pre><code class="language-bash">sudo cp -r ~/.ssh /var/lib/jenkins
 
 sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
