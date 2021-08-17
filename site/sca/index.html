@@ -332,6 +332,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#sca" class="md-nav__link">
+    SCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#owasp-dependancy-check" class="md-nav__link">
     OWASP Dependancy-Check
   </a>
@@ -339,8 +346,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sca-pipeline" class="md-nav__link">
-    SCA Pipeline
+  <a href="#performing-sca-on-dvna" class="md-nav__link">
+    Performing SCA on DVNA
   </a>
   
 </li>
@@ -465,6 +472,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#sca" class="md-nav__link">
+    SCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#owasp-dependancy-check" class="md-nav__link">
     OWASP Dependancy-Check
   </a>
@@ -472,8 +486,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sca-pipeline" class="md-nav__link">
-    SCA Pipeline
+  <a href="#performing-sca-on-dvna" class="md-nav__link">
+    Performing SCA on DVNA
   </a>
   
 </li>
@@ -500,17 +514,15 @@
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
 <p>The aim of this section is to explain the software composition of DVNA using SCA tools in a Jenkins pipeline.</p>
-<p>About SCA</p>
-<ul>
-<li>Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities.</li>
-<li>It helps identify vulnerabilities in open source code (dependencies) used in code.</li>
-</ul>
 <p>Prerequisites</p>
 <ul>
 <li>An application (DVNA) running on Production Server.</li>
 </ul>
+<h3 id="sca"><strong>SCA</strong></h3>
+<p>Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities. It helps identify vulnerabilities in open source code (dependencies) used in code.</p>
 <h3 id="owasp-dependancy-check"><strong>OWASP Dependancy-Check</strong></h3>
-<p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies.</p>
+<p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies. It does this by determining if there is a Common Platform Enumeration (CPE) identifier for a given dependency. If found, it will generate a report linking to the associated CVE entries.</p>
+<h3 id="performing-sca-on-dvna"><strong>Performing SCA on DVNA</strong></h3>
 <p>To start working with Dependency Check, I followed the <a href="https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html">official documentation</a>. First, download the Dependency-Check CLI tool and the associated GPG signature file.</p>
 <pre><code class="language-bash">wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip
 
@@ -522,41 +534,13 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
 <p>Perform the scan by specifying the path to the project, output report format and its location.</p>
 <pre><code class="language-bash">~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint
 </code></pre>
-<p>This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
-<h3 id="sca-pipeline"><strong>SCA Pipeline</strong></h3>
-<p>The Jenkinsfile for performing SCA of DVNA via Jenkins pipeline is given below:</p>
-<pre><code class="language-bash">pipeline {
-  agent any
-  stages {
-    stage ('Initialization') {
-      steps {
-        sh 'echo &quot;Starting the build!&quot;'
-      }
+<p><strong>Note</strong>: This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
+<p>I added the following stage in the Jenkins pipeline to perform SCA of DVNA.</p>
+<pre><code class="language-bash">stage ('OWASP Dependency-Check') {
+    steps {
+    sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
     }
-
-    stage('Copy Application Code') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
-      }
-    }
-
-    stage ('OWASP Dependency-Check') {
-      steps {
-        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
-      }
-    }
-
-    stage ('Final') {
-      steps {
-        sh 'rm -rf ~/app'
-        sh 'echo &quot;Scan successfully completed!&quot;'
-      }
-    }
-
-  }
 }
-
 </code></pre>
                 
               
