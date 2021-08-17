@@ -32,3 +32,4 @@ These are some references I used along with the ones mentioned implicitly in the
 - ZAP docker baseline-scan ([https://www.zaproxy.org/docs/docker/baseline-scan/](https://www.zaproxy.org/docs/docker/baseline-scan/))
 - ZAP CLI ([https://github.com/Grunny/zap-cli](https://github.com/Grunny/zap-cli))
 - Increase VM Disk Space ([https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox](https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox))
+
