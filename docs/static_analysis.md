@@ -5,7 +5,7 @@ The aim of this section is to perform static analysis on DVNA using SAST tools i
 About SAST
 
 -   Static application security testing (SAST) is a testing methodology that analyzes source code to find security vulnerabilities.
--   SAST scans an application before the code is compiled. Its also known as white box testing.
+-   SAST scans an application before the code is compiled. Since the test is performed on the source code, ie. the internal structures or workings of an application, and not its functionality, its also called white box testing.
 
 Prerequisites
 
@@ -17,7 +17,7 @@ NodeJsScan is a static code scanner which is used to find security flaws in Node
 
 #### Web-based 
 
-Pull NodeJsScan docker image
+Pull NodeJsScan docker image.
 
 ```bash
 sudo docker pull opensecurity/nodejsscan:latest
@@ -51,7 +51,7 @@ Install njsscan using pip3.
 pip3 install njsscan
 ```
 
-Scan the ~/app directory (which holds the files for DVNA) and store the scan result in `~/report/nodejsscan-report`
+Scan the `~/app` directory (which holds the files for DVNA) and store the scan result in `~/report/nodejsscan-report`
 
 ```bash
 mkdir ~/report
@@ -84,7 +84,7 @@ Install auditjs using npm.
 sudo npm install -g auditjs
 ```
 
-Scan the ~/app directory (which holds the files for DVNA) and store the scan result in `~/report/auditjs-report`. 
+Scan the `~/app` directory (which holds the files for DVNA) and store the scan result in `~/report/auditjs-report`. 
 
 ```bash
 cd ~/app

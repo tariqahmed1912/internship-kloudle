@@ -557,7 +557,7 @@
 <p>About SAST</p>
 <ul>
 <li>Static application security testing (SAST) is a testing methodology that analyzes source code to find security vulnerabilities.</li>
-<li>SAST scans an application before the code is compiled. Its also known as white box testing.</li>
+<li>SAST scans an application before the code is compiled. Since the test is performed on the source code, ie. the internal structures or workings of an application, and not its functionality, its also called white box testing.</li>
 </ul>
 <p>Prerequisites</p>
 <ul>
@@ -566,7 +566,7 @@
 <h3 id="nodejsscan"><strong>NodeJsScan</strong></h3>
 <p>NodeJsScan is a static code scanner which is used to find security flaws in Node.js applications.</p>
 <h4 id="web-based">Web-based</h4>
-<p>Pull NodeJsScan docker image</p>
+<p>Pull NodeJsScan docker image.</p>
 <pre><code class="language-bash">sudo docker pull opensecurity/nodejsscan:latest
 </code></pre>
 <p>Run nodjsscan container</p>
@@ -583,7 +583,7 @@
 <p>Install njsscan using pip3.</p>
 <pre><code class="language-bash">pip3 install njsscan
 </code></pre>
-<p>Scan the ~/app directory (which holds the files for DVNA) and store the scan result in <code>~/report/nodejsscan-report</code></p>
+<p>Scan the <code>~/app</code> directory (which holds the files for DVNA) and store the scan result in <code>~/report/nodejsscan-report</code></p>
 <pre><code class="language-bash">mkdir ~/report
 
 njsscan --json -o /app/report/nodejsscan-report ~/app
@@ -602,7 +602,7 @@ sudo npm install latest-version
 <p>Install auditjs using npm.</p>
 <pre><code class="language-bash">sudo npm install -g auditjs
 </code></pre>
-<p>Scan the ~/app directory (which holds the files for DVNA) and store the scan result in <code>~/report/auditjs-report</code>. </p>
+<p>Scan the <code>~/app</code> directory (which holds the files for DVNA) and store the scan result in <code>~/report/auditjs-report</code>. </p>
 <pre><code class="language-bash">cd ~/app
 auditjs ossi &gt; ~/report/auditjs-report
 </code></pre>
