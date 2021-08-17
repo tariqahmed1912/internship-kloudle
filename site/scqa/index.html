@@ -377,8 +377,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#scqa" class="md-nav__link">
-    SCQA
+  <a href="#code-linting" class="md-nav__link">
+    Code Linting
   </a>
   
 </li>
@@ -393,13 +393,6 @@
           <li class="md-nav__item">
   <a href="#eslint" class="md-nav__link">
     ESLint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generating-sbom-for-dvna" class="md-nav__link">
-    Generating SBoM for DVNA
   </a>
   
 </li>
@@ -479,8 +472,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#scqa" class="md-nav__link">
-    SCQA
+  <a href="#code-linting" class="md-nav__link">
+    Code Linting
   </a>
   
 </li>
@@ -495,13 +488,6 @@
           <li class="md-nav__item">
   <a href="#eslint" class="md-nav__link">
     ESLint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generating-sbom-for-dvna" class="md-nav__link">
-    Generating SBoM for DVNA
   </a>
   
 </li>
@@ -527,26 +513,21 @@
                   <h1>Software Code Quality Analysis</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
-<p>The aim of this section is to analyse the quality of software code and generate a report.</p>
-<h3 id="scqa"><strong>SCQA</strong></h3>
-<p>A Software Bill of Materials (SBOM) is a list of all the open source and third-party components present in a codebase. It lists the licenses that govern those components, the versions of the components used in the codebase, and their patch status.</p>
+<p>The aim of this section is to perform code linting and generate a code quality report.</p>
+<h3 id="code-linting"><strong>Code Linting</strong></h3>
+<p>Code linting is the automated checking of your source code for programmatic and stylistic errors. It's great for identifying violations of standard rules and is the most basic form of static analysis. Lint tools (aka linters) help accelerate developement process and reduce costs by finding errors earlier.</p>
 <h3 id="jshint"><strong>JSHint</strong></h3>
 <p>JSHint is a static code analysis tool that helps to detect errors and potential problems in your JavaScript code. It scans a program written in JavaScript and reports about commonly made mistakes and potential bugs. The potential problem could be a syntax error, a bug due to an implicit type conversion, a leaking variable, or something else entirely.</p>
+<p>To get started with working with JSHint, I followed this <a href="https://jshint.com/docs/">documentation</a>. To test NodeJs application (DVNA), install JSHint using NPM.</p>
+<p>``bash
+npm install -g jshint</p>
+<pre><code>
+Run the `jshint` command with the application/project directory to scan all `.js` files. To generate a report, we can either just redirect the output stream to a file or make use of `reporters` to create XML or JSON reports. 
+
+```bash
+jshint ~/app &gt; ~/report/jshint-report
+</code></pre>
 <h3 id="eslint"><strong>ESLint</strong></h3>
-<h3 id="generating-sbom-for-dvna"><strong>Generating SBoM for DVNA</strong></h3>
-<p>Installation of CycloneDX using NPM.</p>
-<pre><code class="language-bash">npm install -g @cyclonedx/bom
-</code></pre>
-<p>To generate a SBoM report, use the <code>-o</code> flag and specify the filename and its format. The report can be either XML  or JSON.  </p>
-<pre><code class="language-bash">cyclonedx-bom -o sbom.xml
-</code></pre>
-<p>I added a stage in the Jenkins pipeline for generating the SBoM.  </p>
-<pre><code class="language-bash">stage ('Generating Software Bill of Materials') {
-    steps {
-        sh 'cyclonedx-bom -o ~/reports/sbom.xml'
-    }
-}
-</code></pre>
                 
               
               

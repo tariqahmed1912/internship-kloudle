@@ -1,36 +1,29 @@
 ## **Objective**
 
-The aim of this section is to analyse the quality of software code and generate a report.
+The aim of this section is to perform code linting and generate a code quality report.
 
-### **SCQA**
+### **Code Linting**
 
-A Software Bill of Materials (SBOM) is a list of all the open source and third-party components present in a codebase. It lists the licenses that govern those components, the versions of the components used in the codebase, and their patch status.
-
+Code linting is the automated checking of your source code for programmatic and stylistic errors. It's great for identifying violations of standard rules and is the most basic form of static analysis. Lint tools (aka linters) help accelerate developement process and reduce costs by finding errors earlier.
 
 ### **JSHint**
 
 JSHint is a static code analysis tool that helps to detect errors and potential problems in your JavaScript code. It scans a program written in JavaScript and reports about commonly made mistakes and potential bugs. The potential problem could be a syntax error, a bug due to an implicit type conversion, a leaking variable, or something else entirely.
 
+To get started with working with JSHint, I followed this [documentation](https://jshint.com/docs/). To test NodeJs application (DVNA), install JSHint using NPM.
+
+``bash
+npm install -g jshint
+```
+
+Run the `jshint` command with the application/project directory to scan all `.js` files. To generate a report, we can either just redirect the output stream to a file or make use of `reporters` to create XML or JSON reports. 
+
+```bash
+jshint ~/app > ~/report/jshint-report
+```
+
+
 ### **ESLint**
 
-### **Generating SBoM for DVNA**
 
-Installation of CycloneDX using NPM.
 
-```bash
-npm install -g @cyclonedx/bom
-```
-
-To generate a SBoM report, use the `-o` flag and specify the filename and its format. The report can be either XML  or JSON.  
-```bash
-cyclonedx-bom -o sbom.xml
-```
-
-I added a stage in the Jenkins pipeline for generating the SBoM.  
-```bash
-stage ('Generating Software Bill of Materials') {
-    steps {
-        sh 'cyclonedx-bom -o ~/reports/sbom.xml'
-    }
-}
-```
