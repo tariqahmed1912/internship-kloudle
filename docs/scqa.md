@@ -12,7 +12,7 @@ JSHint is a static code analysis tool that helps to detect errors and potential 
 
 To get started with JSHint, I followed this [documentation](https://jshint.com/docs/). Since I'm performing a test on a  NodeJs application (DVNA), I installed JSHint using NPM.
 
-``bash
+```bash
 npm install -g jshint
 ```
 

@@ -533,13 +533,10 @@
 <h3 id="jshint"><strong>JSHint</strong></h3>
 <p>JSHint is a static code analysis tool that helps to detect errors and potential problems in your JavaScript code. It scans a program written in JavaScript and reports about commonly made mistakes and potential bugs. The potential problem could be a syntax error, a bug due to an implicit type conversion, a leaking variable, or something else entirely.</p>
 <p>To get started with JSHint, I followed this <a href="https://jshint.com/docs/">documentation</a>. Since I'm performing a test on a  NodeJs application (DVNA), I installed JSHint using NPM.</p>
-<p>``bash
-npm install -g jshint</p>
-<pre><code>
-Run the `jshint` command with the application/project directory to scan all `.js` files. To generate a report, we can either just redirect the output stream to a file or make use of `reporters` to create XML or JSON reports. 
-
-```bash
-jshint ~/app &gt; ~/report/jshint-report
+<pre><code class="language-bash">npm install -g jshint
+</code></pre>
+<p>Run the <code>jshint</code> command with the application/project directory to scan all <code>.js</code> files. To generate a report, we can either just redirect the output stream to a file or make use of <code>reporters</code> to create XML or JSON reports. </p>
+<pre><code class="language-bash">jshint ~/app &gt; ~/report/jshint-report
 </code></pre>
 <p>The above command will scan all the files in the <code>/app</code> directory. To restrict the scan to only .js files, use a <code>find</code> command. We will further exclude all files in the <code>node_modules</code> directory.</p>
 <pre><code class="language-bash">jshint $(find ~/app -type f -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; | grep -v node_modules) &gt; ~/reports/jshint-report
