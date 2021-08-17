@@ -527,6 +527,9 @@ Run the `jshint` command with the application/project directory to scan all `.js
 ```bash
 jshint ~/app &gt; ~/report/jshint-report
 </code></pre>
+<p>The above command will scan all the files in the <code>/app</code> directory. To restrict the scan to only .js files, use a <code>find</code> command. We will further exclude all files in the <code>node_modules</code> directory.</p>
+<pre><code class="language-bash">jshint $(find ~/app -type f \( -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; \) | grep -v node_modules) &gt; ~/report/jshint-report
+</code></pre>
 <h3 id="eslint"><strong>ESLint</strong></h3>
                 
               

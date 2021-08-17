@@ -22,6 +22,12 @@ Run the `jshint` command with the application/project directory to scan all `.js
 jshint ~/app > ~/report/jshint-report
 ```
 
+The above command will scan all the files in the `/app` directory. To restrict the scan to only .js files, use a `find` command. We will further exclude all files in the `node_modules` directory.
+
+```bash
+jshint $(find ~/app -type f \( -name "*.js" -o -name "*.ejs" \) | grep -v node_modules) > ~/report/jshint-report
+```
+
 
 ### **ESLint**
 
