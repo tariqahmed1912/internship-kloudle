@@ -28,7 +28,7 @@ I added a stage in the Jenkins pipeline for generating the SBoM.
 ```bash
 stage ('Generating Software Bill of Materials') {
     steps {
-        sh 'cyclonedx-bom -o ~/reports/sbom.xml'
+        sh 'cd ~/app && cyclonedx-bom -o ~/reports/sbom.xml'
     }
 }
 ```

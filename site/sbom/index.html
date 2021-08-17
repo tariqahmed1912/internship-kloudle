@@ -205,6 +205,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../problem_statements/" class="md-nav__link">
+        Problem Statement
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../vm_setup/" class="md-nav__link">
         Setup of VMs
       </a>
@@ -373,6 +388,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../scqa/" class="md-nav__link">
+        Software Code Quality Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../complete_pipeline/" class="md-nav__link">
         Complete Pipeline Structure
       </a>
@@ -483,7 +513,7 @@
 <p>I added a stage in the Jenkins pipeline for generating the SBoM.  </p>
 <pre><code class="language-bash">stage ('Generating Software Bill of Materials') {
     steps {
-        sh 'cyclonedx-bom -o ~/reports/sbom.xml'
+        sh 'cd ~/app &amp;&amp; cyclonedx-bom -o ~/reports/sbom.xml'
     }
 }
 </code></pre>
@@ -522,13 +552,13 @@
       
       
         
-        <a href="../complete_pipeline/" class="md-footer__link md-footer__link--next" aria-label="Next: Complete Pipeline Structure" rel="next">
+        <a href="../scqa/" class="md-footer__link md-footer__link--next" aria-label="Next: Software Code Quality Analysis" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Complete Pipeline Structure
+              Software Code Quality Analysis
             </div>
           </div>
           <div class="md-footer__button md-icon">

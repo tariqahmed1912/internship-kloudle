@@ -48,7 +48,7 @@ pipeline {
 
     stage ('Generating Software Bill of Materials') {
       steps {
-        sh 'cyclonedx-bom -o ~/reports/sbom.xml'
+        sh 'cd ~/app && cyclonedx-bom -o ~/reports/sbom.xml'
       }
     }
     

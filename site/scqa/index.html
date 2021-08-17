@@ -14,7 +14,7 @@
     
     
       
-        <title>Resources - DevSecOps Pipeline</title>
+        <title>Software Code Quality Analysis - DevSecOps Pipeline</title>
       
     
     
@@ -60,11 +60,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#setup-of-vms" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Resources
+              Software Code Quality Analysis
             
           </span>
         </div>
@@ -323,11 +318,19 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../scqa/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Software Code Quality Analysis
       </a>
+      
     </li>
   
 
@@ -353,75 +356,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Resources
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
         Resources
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-vms" class="md-nav__link">
-    Setup of VMs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-jenkins-server" class="md-nav__link">
-    Setup of Jenkins Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-production-server" class="md-nav__link">
-    Setup of Production Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#static-analysis" class="md-nav__link">
-    Static Analysis
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dynamic-analysis" class="md-nav__link">
-    Dynamic Analysis
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -433,103 +372,15 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-vms" class="md-nav__link">
-    Setup of VMs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-jenkins-server" class="md-nav__link">
-    Setup of Jenkins Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-of-production-server" class="md-nav__link">
-    Setup of Production Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#static-analysis" class="md-nav__link">
-    Static Analysis
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dynamic-analysis" class="md-nav__link">
-    Dynamic Analysis
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Resources</h1>
+                  <h1>Software Code Quality Analysis</h1>
                 
-                <p>These are some references I used along with the ones mentioned implicitly in the report:</p>
-<h3 id="setup-of-vms">Setup of VMs</h3>
-<ul>
-<li>Ubuntu (<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04</a>)</li>
-<li>OpenJDK (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04#installing-specific-versions-of-openjdk">https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04#installing-specific-versions-of-openjdk</a>)</li>
-<li>VM Network (<a href="https://christophermaier.name/2010/09/01/host-only-networking-with-virtualbox/">https://christophermaier.name/2010/09/01/host-only-networking-with-virtualbox/</a>)</li>
-<li>Netplan (<a href="https://www.linux.com/topic/distributions/how-use-netplan-network-configuration-tool-linux/">https://www.linux.com/topic/distributions/how-use-netplan-network-configuration-tool-linux/</a>)</li>
-</ul>
-<h3 id="setup-of-jenkins-server">Setup of Jenkins Server</h3>
-<ul>
-<li>Jenkins Installation (<a href="https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04">https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04</a>)</li>
-</ul>
-<h3 id="setup-of-production-server">Setup of Production Server</h3>
-<ul>
-<li>DVNA (<a href="https://github.com/appsecco/dvna">https://github.com/appsecco/dvna</a>)</li>
-<li>Docker Installation (<a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a>)</li>
-</ul>
-<h3 id="static-analysis">Static Analysis</h3>
-<ul>
-<li>NodeJsScan (<a href="https://github.com/ajinabraham/nodejsscan">https://github.com/ajinabraham/nodejsscan</a>)</li>
-<li>Auditjs (<a href="https://github.com/sonatype-nexus-community/auditjs">https://github.com/sonatype-nexus-community/auditjs</a>)</li>
-<li>OWASP Dependancy Check (<a href="https://owasp.org/www-project-dependency-check/">https://owasp.org/www-project-dependency-check/</a>)</li>
-</ul>
-<h3 id="dynamic-analysis">Dynamic Analysis</h3>
-<ul>
-<li>ZAP docker (<a href="https://www.zaproxy.org/docs/docker/about/">https://www.zaproxy.org/docs/docker/about/</a>)</li>
-<li>ZAP docker full-scan (<a href="https://www.zaproxy.org/docs/docker/full-scan/">https://www.zaproxy.org/docs/docker/full-scan/</a>)</li>
-<li>ZAP docker baseline-scan (<a href="https://www.zaproxy.org/docs/docker/baseline-scan/">https://www.zaproxy.org/docs/docker/baseline-scan/</a>)</li>
-<li>ZAP CLI (<a href="https://github.com/Grunny/zap-cli">https://github.com/Grunny/zap-cli</a>)</li>
-<li>Increase VM Disk Space (<a href="https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox">https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox</a>)</li>
-</ul>
+                
                 
               
               
@@ -549,7 +400,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../complete_pipeline/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Complete Pipeline Structure" rel="prev">
+        <a href="../sbom/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Software Bill of Materials" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -558,11 +409,26 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Complete Pipeline Structure
+              Software Bill of Materials
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="../complete_pipeline/" class="md-footer__link md-footer__link--next" aria-label="Next: Complete Pipeline Structure" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Complete Pipeline Structure
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

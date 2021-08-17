@@ -2,6 +2,7 @@ site_name: DevSecOps Pipeline
 nav:
   - Introduction: 'index.md'
   - Table of Content: 'contents.md'
+  - Problem Statement: 'problem_statements.md'
   - Setup of VMs: 'vm_setup.md'
   - Setup of Jenkins: 'jenkins_setup.md'
   - Setup of Production Server: 'production_setup.md'
@@ -9,6 +10,7 @@ nav:
   - Static Analysis: 'static_analysis.md'
   - Dynamic Analysis: 'dynamic_analysis.md'
   - Software Bill of Materials: 'sbom.md'
+  - Software Code Quality Analysis: 'scqa.md'
   - Complete Pipeline Structure: 'complete_pipeline.md'
   - Resources: 'resources.md'
 theme: material
