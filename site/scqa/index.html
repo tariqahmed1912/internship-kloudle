@@ -397,13 +397,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    NOTE
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -499,13 +492,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    NOTE
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -549,12 +535,8 @@
 }
 </code></pre>
 <h3 id="eslint"><strong>ESLint</strong></h3>
-<h3 id="note"><strong>NOTE</strong></h3>
-<p>A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a <code>0</code> status code.</p>
-<pre><code class="language-bash">&lt;scan command&gt; || true 
-OR
-&lt;scan command&gt;; echo $? &gt; /dev/null
-</code></pre>
+<p>ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. Unlike JSHint, ESLint uses Espree for JavaScript parsing and an AST to evaluate patterns in code. It's completely pluggable, every single rule is a plugin and you can add more at runtime.</p>
+<p>To get started with JSHint, I followed this <a href="https://github.com/eslint/eslint">documentation</a>.</p>
                 
               
               

@@ -63,3 +63,11 @@ pipeline {
   }
 }
 ```
+
+### **NOTE**  
+A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a `0` status code.  
+```bash
+<scan command> || true 
+OR
+<scan command>; echo $? > /dev/null
+```

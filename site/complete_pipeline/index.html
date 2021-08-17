@@ -398,6 +398,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    NOTE
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -460,6 +467,13 @@
           <li class="md-nav__item">
   <a href="#complete-pipeline" class="md-nav__link">
     Complete Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    NOTE
   </a>
   
 </li>
@@ -543,6 +557,12 @@
 
   }
 }
+</code></pre>
+<h3 id="note"><strong>NOTE</strong></h3>
+<p>A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a <code>0</code> status code.  </p>
+<pre><code class="language-bash">&lt;scan command&gt; || true 
+OR
+&lt;scan command&gt;; echo $? &gt; /dev/null
 </code></pre>
                 
               

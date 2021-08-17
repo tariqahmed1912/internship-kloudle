@@ -40,15 +40,10 @@ stage ('JSHint Analysis') {
 
 ### **ESLint**
 
+ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. Unlike JSHint, ESLint uses Espree for JavaScript parsing and an AST to evaluate patterns in code. It's completely pluggable, every single rule is a plugin and you can add more at runtime.
 
-### **NOTE**
+To get started with JSHint, I followed this [documentation](https://github.com/eslint/eslint).
 
-A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a `0` status code.
 
-```bash
-<scan command> || true 
-OR
-<scan command>; echo $? > /dev/null
-```
 
 
