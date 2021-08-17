@@ -518,7 +518,7 @@
 <p>Code linting is the automated checking of your source code for programmatic and stylistic errors. It's great for identifying violations of standard rules and is the most basic form of static analysis. Lint tools (aka linters) help accelerate developement process and reduce costs by finding errors earlier.</p>
 <h3 id="jshint"><strong>JSHint</strong></h3>
 <p>JSHint is a static code analysis tool that helps to detect errors and potential problems in your JavaScript code. It scans a program written in JavaScript and reports about commonly made mistakes and potential bugs. The potential problem could be a syntax error, a bug due to an implicit type conversion, a leaking variable, or something else entirely.</p>
-<p>To get started with working with JSHint, I followed this <a href="https://jshint.com/docs/">documentation</a>. To test NodeJs application (DVNA), install JSHint using NPM.</p>
+<p>To get started with JSHint, I followed this <a href="https://jshint.com/docs/">documentation</a>. Since I'm performing a test on a  NodeJs application (DVNA), I installed JSHint using NPM.</p>
 <p>``bash
 npm install -g jshint</p>
 <pre><code>
@@ -533,7 +533,7 @@ jshint ~/app &gt; ~/report/jshint-report
 <p>I added the following stage in the Jenkins pipeline to perform code linting on DVNA</p>
 <pre><code class="language-bash">stage ('JSHint Analysis') {
   steps {
-    sh 'jshint $(find ~/app -type f \( -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; \) | grep -v node_modules) &gt; ~/reports/jshint-report'
+    sh 'jshint $(find ~/app -type f \( -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; \) | grep -v node_modules) &gt; ~/reports/jshint-report; echo $? &gt; /dev/null'
   }
 }
 </code></pre>
