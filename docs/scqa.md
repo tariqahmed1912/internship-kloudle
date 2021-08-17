@@ -25,7 +25,7 @@ jshint ~/app > ~/report/jshint-report
 The above command will scan all the files in the `/app` directory. To restrict the scan to only .js files, use a `find` command. We will further exclude all files in the `node_modules` directory.
 
 ```bash
-jshint $(find ~/app -type f \( -name "*.js" -o -name "*.ejs" \) | grep -v node_modules) > ~/reports/jshint-report
+jshint $(find ~/app -type f -name "*.js" -o -name "*.ejs" | grep -v node_modules) > ~/reports/jshint-report
 ```
 
 I added the following stage in the Jenkins pipeline to perform code linting on DVNA
@@ -40,5 +40,15 @@ stage ('JSHint Analysis') {
 
 ### **ESLint**
 
+
+### **NOTE**
+
+A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a `0` status code.
+
+```bash
+<scan command> || true 
+OR
+<scan command>; echo $? > /dev/null
+```
 
 

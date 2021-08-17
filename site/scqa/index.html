@@ -397,6 +397,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    NOTE
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -492,6 +499,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    NOTE
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -528,7 +542,7 @@ Run the `jshint` command with the application/project directory to scan all `.js
 jshint ~/app &gt; ~/report/jshint-report
 </code></pre>
 <p>The above command will scan all the files in the <code>/app</code> directory. To restrict the scan to only .js files, use a <code>find</code> command. We will further exclude all files in the <code>node_modules</code> directory.</p>
-<pre><code class="language-bash">jshint $(find ~/app -type f \( -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; \) | grep -v node_modules) &gt; ~/reports/jshint-report
+<pre><code class="language-bash">jshint $(find ~/app -type f -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; | grep -v node_modules) &gt; ~/reports/jshint-report
 </code></pre>
 <p>I added the following stage in the Jenkins pipeline to perform code linting on DVNA</p>
 <pre><code class="language-bash">stage ('JSHint Analysis') {
@@ -538,6 +552,12 @@ jshint ~/app &gt; ~/report/jshint-report
 }
 </code></pre>
 <h3 id="eslint"><strong>ESLint</strong></h3>
+<h3 id="note"><strong>NOTE</strong></h3>
+<p>A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a <code>0</code> status code.</p>
+<pre><code class="language-bash">&lt;scan command&gt; || true 
+OR
+&lt;scan command&gt;; echo $? &gt; /dev/null
+</code></pre>
                 
               
               
