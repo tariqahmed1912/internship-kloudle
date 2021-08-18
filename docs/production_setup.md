@@ -82,7 +82,6 @@ To see the if the containers are running, run a `docker ps`. We will see two con
     
     ```bash
     sudo usermod -aG docker $USER
-
     sudo reboot
     ```
 
