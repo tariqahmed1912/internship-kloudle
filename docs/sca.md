@@ -40,6 +40,8 @@ Perform the scan by specifying the path to the project, output report format and
 
 **Note**: This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.
 
+### **SCA Pipeline**
+
 I added the following stage in the Jenkins pipeline to perform SCA of DVNA.
 
 ```bash

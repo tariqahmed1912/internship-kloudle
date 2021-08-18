@@ -36,5 +36,5 @@ These are some references I used along with the ones mentioned implicitly in the
 
 ### Software Code Quality Analysis
 
-- JSHint ([https://jshint.com/docs/cli/](https://jshint.com/docs/cli/))
-- ESLint ([]())
+- JSHint ([https://jshint.com/docs/cli/](https://jshint.com/docs/cli/), [https://github.com/jshint/jshint](https://github.com/jshint/jshint))
+- ESLint ([https://eslint.org/docs/user-guide/](https://eslint.org/docs/user-guide/), [https://github.com/eslint/eslint](https://github.com/eslint/eslint))

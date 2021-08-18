@@ -352,6 +352,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sca-pipeline" class="md-nav__link">
+    SCA Pipeline
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -492,6 +499,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sca-pipeline" class="md-nav__link">
+    SCA Pipeline
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -535,6 +549,7 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
 <pre><code class="language-bash">~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint
 </code></pre>
 <p><strong>Note</strong>: This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
+<h3 id="sca-pipeline"><strong>SCA Pipeline</strong></h3>
 <p>I added the following stage in the Jenkins pipeline to perform SCA of DVNA.</p>
 <pre><code class="language-bash">stage ('OWASP Dependency-Check') {
     steps {

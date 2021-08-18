@@ -42,7 +42,11 @@ stage ('JSHint Analysis') {
 
 ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. Unlike JSHint, ESLint uses Espree for JavaScript parsing and an AST to evaluate patterns in code. It's completely pluggable, every single rule is a plugin and you can add more at runtime.
 
-To get started with JSHint, I followed this [documentation](https://github.com/eslint/eslint).
+To get started with JSHint, I followed the [official documentation](https://eslint.org/docs/user-guide/getting-started). 
+
+```bash
+npm install -g eslint 
+```
 
 
 

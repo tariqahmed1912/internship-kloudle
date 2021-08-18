@@ -382,6 +382,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sbom-pipeline" class="md-nav__link">
+    SBoM Pipeline
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -492,6 +499,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sbom-pipeline" class="md-nav__link">
+    SBoM Pipeline
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -525,6 +539,7 @@
 <p>To generate a SBoM report, use the <code>-o</code> flag and specify the filename and its format. The report can be either XML  or JSON.  </p>
 <pre><code class="language-bash">cyclonedx-bom -o sbom.xml
 </code></pre>
+<h3 id="sbom-pipeline"><strong>SBoM Pipeline</strong></h3>
 <p>I added a stage in the Jenkins pipeline for generating the SBoM.  </p>
 <pre><code class="language-bash">stage ('Generating Software Bill of Materials') {
     steps {

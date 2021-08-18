@@ -24,6 +24,8 @@ To generate a SBoM report, use the `-o` flag and specify the filename and its fo
 cyclonedx-bom -o sbom.xml
 ```
 
+### **SBoM Pipeline**
+
 I added a stage in the Jenkins pipeline for generating the SBoM.  
 ```bash
 stage ('Generating Software Bill of Materials') {
