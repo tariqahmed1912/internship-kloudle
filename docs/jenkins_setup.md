@@ -14,7 +14,7 @@ Prerequisites
 
 ### **Step 1 - Install Java**
 
-For setting up the Jenkins server, I followed this [documentation](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04). The easiest option for installing Java is to use the version packaged with Ubuntu. By default, Ubuntu 18.04 includes OpenJDK version 11, which is an open-source variant of the JRE and JDK.
+For setting up the Jenkins server, I followed this [documentation](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04) as its very clear and easy to follow. The easiest option for installing Java is to use the version packaged with Ubuntu. By default, Ubuntu 18.04 includes OpenJDK version 11, which is an open-source variant of the JRE and JDK.
 
 Install the default Java Runtime Environment (JRE) from OpenJDK 11.
 

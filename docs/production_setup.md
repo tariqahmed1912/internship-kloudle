@@ -47,7 +47,7 @@ sudo docker run hello-world # Test if docker installation is successful
 
 ### **Step 2 - Setup Production Server**
 
-I followed the [official documentation](https://github.com/appsecco/dvna) available on GitHub page to setup DVNA. DVNA interacts with a MySQL database. Store the db configuration in a file named `vars.env`.
+I followed the [official documentation](https://github.com/appsecco/dvna) available on GitHub to setup DVNA. DVNA interacts with a MySQL database. Store the db configuration in a file named `vars.env`.
 
 ```bash
 MYSQL_USER=dvna
