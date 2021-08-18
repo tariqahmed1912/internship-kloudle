@@ -81,7 +81,7 @@ To see the if the containers are running, run a `docker ps`. We will see two con
     (i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. 
     
     ```bash
-    sudo usermod -aG docker $USER
+    sudo usermod -aG docker $USER  
     sudo reboot
     ```
 
