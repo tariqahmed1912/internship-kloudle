@@ -521,7 +521,7 @@
 </ul>
 <h3 id="owasp-zap"><strong>OWASP ZAP</strong></h3>
 <p>The Zed Attack Proxy (ZAP) is one of the most widely-used open source tools for DAST. It helps find security vulnerabilities in web applications while its in the development and testing stage.  Maintained by OWASP, ZAP has built a huge community of people creating new features and add-ons that make it incredibly versatile. </p>
-<p>Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this <a href="https://www.zaproxy.org/docs/docker/about/">documentation</a>. First, pull the ZAP image from docker hub.</p>
+<p>Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this <a href="https://www.zaproxy.org/docs/docker/about/">official documentation</a>. First, pull the ZAP image from docker hub.</p>
 <pre><code class="language-bash">sudo docker pull owasp/zap2docker-stable
 </code></pre>
 <p>We will be running a baseline scan as it is ideal in a CI/CD environment, even against production sites.</p>
@@ -534,13 +534,13 @@
 -t 'target', specify target to scan<br />
 -r 'file.html', generate an HTML output report<br />
 -l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.</p>
-<pre><code class="language-bash">sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+<pre><code class="language-bash">sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS
 </code></pre>
 <p>To run a fullscan script, run the following command</p>
-<pre><code class="language-bash">sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+<pre><code class="language-bash">sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS
 </code></pre>
-<p>The report <code>owasp-zap-report.html</code>, generated on successful completion, will be located in the users home directory.</p>
-<p><strong>Note:</strong> To open .html file in browser from terminal, type <code>open owasp-report.html</code> from host terminal.</p>
+<p>The report <code>zap-report.html</code>, generated on successful completion, will be located in the users home directory.</p>
+<p><strong>Note:</strong> To open .html file in browser from terminal, type <code>open zap-report.html</code> from host terminal.</p>
 <h3 id="dast-pipeline"><strong>DAST Pipeline</strong></h3>
 <p>As we've already seen in <a href="../production_setup/">Setup of Production Server</a>, DVNA is deployed in a docker container. To perform DAST on DVNA, the application will run in a docker container and the DAST tool will run in another container (as shown earlier in this section). To work with docker containers via Jenkins pipeline, you'll need to add <code>jenkins</code> user to group <code>docker</code> to run docker commands without sudo.</p>
 <pre><code class="language-bash">sudo usermod -aG docker jenkins
@@ -567,7 +567,7 @@ sudo reboot
 
     stage('ZAP Scan') {
       steps {
-        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
+        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
       }
     }
 

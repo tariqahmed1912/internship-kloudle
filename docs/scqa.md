@@ -22,7 +22,7 @@ Run the `jshint` command with the application/project directory to scan all `.js
 jshint ~/app > ~/report/jshint-report
 ```
 
-The above command will scan all the files in the `/app` directory. To restrict the scan to only .js files, use a `find` command. We will further exclude all files in the `node_modules` directory.
+The above command will scan all the files in the `/app` directory. To restrict the scan to only .js and .ejs files, use a `find` command. We will further exclude all files in the `node_modules` directory.
 
 ```bash
 jshint $(find ~/app -type f -name "*.js" -o -name "*.ejs" | grep -v node_modules) > ~/reports/jshint-report
@@ -33,12 +33,13 @@ jshint $(find ~/app -type f -name "*.js" -o -name "*.ejs" | grep -v node_modules
 
 ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. Unlike JSHint, ESLint uses Espree for JavaScript parsing and an AST to evaluate patterns in code. It's completely pluggable, every single rule is a plugin and you can add more at runtime.
 
-To get started with JSHint, I followed the [official documentation](https://eslint.org/docs/user-guide/getting-started). 
+To get started with JSHint, I followed the [official documentation](https://eslint.org/docs/user-guide/getting-started). Install eslint using NPM.
 
 ```bash
 npm install -g eslint 
 ```
-After installing eslint, eslint requires a `.eslintrc` configuration file which contains environment variables, rules and other extra config details. To create this file, navigate to your project folder and run `eslint --init`. You will be prompted a few questions to create the config file. The questions and my responses to them are given below.
+
+To run the scan, eslint requires a `.eslintrc` configuration file which contains environment variables, rules and other config details. To create this file, navigate to your project folder and run `eslint --init`. You will be prompted to a few questions to create the config file. The questions and my responses to them are given below.
 
 ```bash
 ✔ How would you like to use ESLint? · problems
@@ -65,9 +66,9 @@ The contents of the new `.eslintrc.json` config file are:
     }
 }
 ```
-**Note:** The `.eslintrc.*` config file is required everytime you want to run `eslint` code linting on a file or directory. While running the scans in a pipeline, its not possible to create the config file by running `eslint --init` as the command line waits for responses to file configuration questions. To work around this problem, copy the configuration details shown above in `<Jenkins-Home-Dir>/.eslintrc.json`. You can now specify `eslint` to use this config file during its execution.
+**Note:** The `.eslintrc.*` config file is required everytime you want to run an `eslint` scan on a file or directory. While running the scans in a pipeline, its not possible to create the config file by running `eslint --init` as the command line waits for responses to file configuration questions. To work around this problem, copy the configuration details shown above into `<Jenkins-Home-Dir>/.eslintrc.json` file. You can now specify `eslint` to use this config file during its execution.
 
-To perform linting using eslint, run `eslint` command with the following flags;
+To perform an eslint scan, run `eslint` command with the following flags;
 `-c`, specify the config file to use;
 `-f`, format of output report;
 `--ext`, specify the extensions of files to be scannned;
@@ -79,7 +80,7 @@ eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.htm
 
 ### **Code Quality Pipeline**
 
-I added the following stages in the Jenkins pipeline for performing code linting.
+Add the following stages in the Jenkins pipeline for performing code linting.
 
 ```bash
 stage ('JSHint Analysis') {

@@ -12,7 +12,8 @@ About DAST
 
 The Zed Attack Proxy (ZAP) is one of the most widely-used open source tools for DAST. It helps find security vulnerabilities in web applications while its in the development and testing stage.  Maintained by OWASP, ZAP has built a huge community of people creating new features and add-ons that make it incredibly versatile. 
 
-Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this [documentation](https://www.zaproxy.org/docs/docker/about/). First, pull the ZAP image from docker hub.
+Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this [official documentation](https://www.zaproxy.org/docs/docker/about/). First, pull the ZAP image from docker hub.
+
 ```bash
 sudo docker pull owasp/zap2docker-stable
 ```
@@ -31,17 +32,17 @@ Zap CLI flags used
 -l level, minimum level to show: PASS, IGNORE, INFO, WARN or FAIL.
 
 ```bash
-sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS
 ```
 
 To run a fullscan script, run the following command
 ```bash
-sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r owasp-zap-report.html -l PASS
+sudo docker run --rm -d -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-full-scan.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS
 ```
 
-The report `owasp-zap-report.html`, generated on successful completion, will be located in the users home directory.
+The report `zap-report.html`, generated on successful completion, will be located in the users home directory.
 
-**Note:** To open .html file in browser from terminal, type `open owasp-report.html` from host terminal.
+**Note:** To open .html file in browser from terminal, type `open zap-report.html` from host terminal.
 
 
 ### **DAST Pipeline**
@@ -76,7 +77,7 @@ pipeline {
     
     stage('ZAP Scan') {
       steps {
-        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/report/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
+        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
       }
     }
 

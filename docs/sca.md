@@ -42,12 +42,12 @@ Perform the scan by specifying the path to the project, output report format and
 
 ### **SCA Pipeline**
 
-I added the following stage in the Jenkins pipeline to perform SCA of DVNA.
+Add the following stage in the Jenkins pipeline to perform SCA of DVNA.
 
 ```bash
 stage ('OWASP Dependency-Check') {
     steps {
-    sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint || true'
+    sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/reports/dependency-check-report --format JSON --prettyPrint || true'
     }
 }
 ```

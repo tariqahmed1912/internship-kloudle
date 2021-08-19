@@ -569,10 +569,10 @@
 <p>Pull NodeJsScan docker image.</p>
 <pre><code class="language-bash">sudo docker pull opensecurity/nodejsscan:latest
 </code></pre>
-<p>Run nodjsscan container</p>
+<p>Run nodjsscan container with host-port <code>9090</code> mapped to container-port <code>9090</code>.</p>
 <pre><code class="language-bash">sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
 </code></pre>
-<p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST, upload the files (as a zip file) or individual file and run the scan.</p>
+<p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST, upload multiple files (as a zip file) or individual file and run the scan.</p>
 <h4 id="cli-based">CLI-based</h4>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
@@ -583,18 +583,18 @@
 <p>Install njsscan using pip3.</p>
 <pre><code class="language-bash">pip3 install njsscan
 </code></pre>
-<p>Scan the <code>~/app</code> directory (which holds the files for DVNA) and store the scan result in <code>~/report/nodejsscan-report</code></p>
-<pre><code class="language-bash">mkdir ~/report
+<p>Scan the <code>~/app</code> directory (which holds the files for DVNA) and store the scan result in <code>~/reports/nodejsscan-report</code></p>
+<pre><code class="language-bash">mkdir ~/reports
 
-njsscan --json -o /app/report/nodejsscan-report ~/app
+njsscan --json -o /app/reports/nodejsscan-report ~/app
 </code></pre>
 <h3 id="auditjs"><strong>Auditjs</strong></h3>
 <p>Auditjs is a SAST tool which detects vulnerablilites in dependencies (node modules) used in your application. It interacts with Sonatype Nexus IQ Server to check for known and disclosed vulnerabailites.</p>
 <p>In the Production server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
-<p>Following the <a href="https://github.com/ajinabraham/nodejsscan">official documentation</a> available on GitHub, I installed auditjs using NPM (Node Packet Manager). To do so, I referred this <a href="https://www.tecmint.com/install-nodejs-npm-in-centos-ubuntu/">documentation</a> as it's clear and easy to follow, to install <code>npm</code> and <code>nodejs</code> in 'dvna-app' container in production server. After running the following commands, the package versions are: <code>npm v6.14.14</code> and <code>nodejs v14.17.4</code>.<br />
-<strong>Note:</strong> Installing nodejs from deb.nodesource.com comes with a prepackaged NPM. To update npm to latest version, use <code>sudo npm install latest-version</code> after running the commands below. </p>
+<p>Following the <a href="https://github.com/ajinabraham/nodejsscan">official documentation</a> available on GitHub, I installed auditjs using NPM (Node Packet Manager). To install <code>npm</code> and <code>nodejs</code> in <code>dvna-app</code> container in production server, I referred this <a href="https://www.tecmint.com/install-nodejs-npm-in-centos-ubuntu/">documentation</a> as it's clear and easy to follow. After running the following commands, the package versions are: <code>npm v6.14.14</code> and <code>nodejs v14.17.4</code>.<br />
+<strong>Note:</strong> Installing nodejs from deb.nodesource.com comes with a prepackaged NPM. So you don't need to install <code>npm</code> using the <code>apt</code> package manager. Additionally, to update npm to latest version, use <code>sudo npm install latest-version</code> after running the commands below. </p>
 <pre><code class="language-bash">sudo apt update
 sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
@@ -602,14 +602,14 @@ sudo apt install -y nodejs
 <p>Install auditjs using npm.</p>
 <pre><code class="language-bash">sudo npm install -g auditjs
 </code></pre>
-<p>Scan the <code>~/app</code> directory (which holds the files for DVNA) and store the scan result in <code>~/report/auditjs-report</code>. </p>
+<p>Scan the <code>~/app</code> directory (which holds the files for DVNA) and store the scan result in <code>~/reports/auditjs-report</code>. </p>
 <pre><code class="language-bash">cd ~/app
-auditjs ossi &gt; ~/report/auditjs-report
+auditjs ossi &gt; ~/reports/auditjs-report
 </code></pre>
 <p>If your NodeJs project is very large, you might face rate-limit issues. To solve this issue, create a free account
-at OSS Index and run the scan with your accounts 'Username' and 'API-token'. </p>
-<p><strong>Note</strong>: You can find the API-token in the <code>User settings</code> after logging into the OSS Index website.</p>
-<pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;API-TOKEN&gt; &gt; ~/report/auditjs-report
+at OSS Index and run the scan with your accounts <code>username</code> and <code>API-token</code>. </p>
+<p><strong>Note</strong>: You can find the <code>API-token</code> in the <code>User Settings</code> after logging into the OSS Index website.</p>
+<pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;API-TOKEN&gt; &gt; ~/reports/auditjs-report
 </code></pre>
 <h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
 <p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
@@ -626,19 +626,19 @@ at OSS Index and run the scan with your accounts 'Username' and 'API-token'. </p
     stage('Copy Application Code') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/report'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/reports'
       }
     }
 
     stage('NodeJsScan') {
       steps {
-        sh 'njsscan --json -o ~/report/nodejsscan-report ~/app || true'
+        sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
       }
     }
 
     stage('Auditjs') {
       steps {
-        sh 'cd ~/app; auditjs ossi &gt; ~/report/auditjs-report || true'
+        sh 'cd ~/app; auditjs ossi &gt; ~/reports/auditjs-report || true'
       }
     }
 

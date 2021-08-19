@@ -70,32 +70,32 @@ Start/run the DVNA application.
 sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
 ```
 
-To test if the containers are running, run a `docker ps`. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using `docker stop <container-name-or-id>`. 
+To test if the containers are running, run a `docker ps`. You should see two containers running; dvna-app and dvna-mysql. You can stop running containers by using `docker stop <container-name-or-id>`. 
 	
 <b>**Note:**</b> 
 
-1.  You can start the containers again using `docker start <container-name-or-id>`. When starting, however, you will have to start `dvna-mysql` container first because the `dvna-app` is dependant on it.
+1.  You can start the containers again using `docker start <container-name-or-id>`. When starting, however, you will have to start `dvna-mysql` container first because `dvna-app` is dependant on it.
 
 2. The `docker` commands can only be run as sudo user. There are 2 ways to enable executing `docker` commands without sudo. Although, you must know, its highly discouraged to do so. 
 
     (i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. 
     
-        sudo usermod -aG docker $USER; 
+        sudo usermod -aG docker $USER
         sudo reboot
 
     (ii) This method should only be used if no other method seems to work, since it grants every user permission to execute and run docker containers.
 
         sudo chmod 666 /var/run/docker.sock
 
-3. To completely remove nodejs and npm from your system 
+3. Follow these steps to completely uninstall/remove nodejs and npm from your VM.
 
-    Removing Nodejs and Npm    
+    Removing Nodejs and Npm using `apt` package manager.
 
         sudo apt-get remove nodejs npm node
         sudo apt-get purge nodejs
 
 
-    Now manually remove .node and .npm folders from your system
+    Now manually remove .node and .npm folders from your VM.
 
         sudo rm -rf /usr/local/bin/npm 
         sudo rm -rf /usr/local/share/man/man1/node* 
@@ -109,7 +109,7 @@ To test if the containers are running, run a `docker ps`. We will see two contai
         sudo rm -rf /usr/local/include/node*
         sudo rm -rf /usr/local/bin/node*
 
-    Go to home directory and remove any node or node_modules directory, if it exists.
+    Go to home directory and remove any node or node_modules directory.
 
     You can verify your uninstallation by running these commands; they should not return any output.
 

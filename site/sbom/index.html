@@ -540,7 +540,7 @@
 <pre><code class="language-bash">cyclonedx-bom -o sbom.xml
 </code></pre>
 <h3 id="sbom-pipeline"><strong>SBoM Pipeline</strong></h3>
-<p>I added a stage in the Jenkins pipeline for generating the SBoM.  </p>
+<p>Add this stage in the Jenkins pipeline for generating the SBoM.  </p>
 <pre><code class="language-bash">stage ('Generating Software Bill of Materials') {
     steps {
         sh 'cd ~/app &amp;&amp; cyclonedx-bom -o ~/reports/sbom.xml'

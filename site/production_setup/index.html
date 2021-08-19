@@ -545,16 +545,16 @@ MYSQL_PORT=3306
 <p>Start/run the DVNA application.</p>
 <pre><code class="language-bash">sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
 </code></pre>
-<p>To test if the containers are running, run a <code>docker ps</code>. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using <code>docker stop &lt;container-name-or-id&gt;</code>. </p>
+<p>To test if the containers are running, run a <code>docker ps</code>. You should see two containers running; dvna-app and dvna-mysql. You can stop running containers by using <code>docker stop &lt;container-name-or-id&gt;</code>. </p>
 <p><b><strong>Note:</strong></b> </p>
 <ol>
 <li>
-<p>You can start the containers again using <code>docker start &lt;container-name-or-id&gt;</code>. When starting, however, you will have to start <code>dvna-mysql</code> container first because the <code>dvna-app</code> is dependant on it.</p>
+<p>You can start the containers again using <code>docker start &lt;container-name-or-id&gt;</code>. When starting, however, you will have to start <code>dvna-mysql</code> container first because <code>dvna-app</code> is dependant on it.</p>
 </li>
 <li>
 <p>The <code>docker</code> commands can only be run as sudo user. There are 2 ways to enable executing <code>docker</code> commands without sudo. Although, you must know, its highly discouraged to do so. </p>
 <p>(i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. </p>
-<pre><code>sudo usermod -aG docker $USER; 
+<pre><code>sudo usermod -aG docker $USER
 sudo reboot
 </code></pre>
 <p>(ii) This method should only be used if no other method seems to work, since it grants every user permission to execute and run docker containers.</p>
@@ -562,12 +562,12 @@ sudo reboot
 </code></pre>
 </li>
 <li>
-<p>To completely remove nodejs and npm from your system </p>
-<p>Removing Nodejs and Npm    </p>
+<p>Follow these steps to completely uninstall/remove nodejs and npm from your VM.</p>
+<p>Removing Nodejs and Npm using <code>apt</code> package manager.</p>
 <pre><code>sudo apt-get remove nodejs npm node
 sudo apt-get purge nodejs
 </code></pre>
-<p>Now manually remove .node and .npm folders from your system</p>
+<p>Now manually remove .node and .npm folders from your VM.</p>
 <pre><code>sudo rm -rf /usr/local/bin/npm 
 sudo rm -rf /usr/local/share/man/man1/node* 
 sudo rm -rf /usr/local/lib/dtrace/node.d 
@@ -580,7 +580,7 @@ sudo rm -rf /usr/local/lib/node*
 sudo rm -rf /usr/local/include/node*
 sudo rm -rf /usr/local/bin/node*
 </code></pre>
-<p>Go to home directory and remove any node or node_modules directory, if it exists.</p>
+<p>Go to home directory and remove any node or node_modules directory.</p>
 <p>You can verify your uninstallation by running these commands; they should not return any output.</p>
 <pre><code>which node
 which nodejs
