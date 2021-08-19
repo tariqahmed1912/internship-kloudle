@@ -554,7 +554,7 @@
 ✔ Where does your code run? · browser
 ✔ What format do you want your config file to be in? · JSON
 </code></pre>
-<p>You should now see a <code>.eslintrc.json</code> file. Its contents look as follows.</p>
+<p>The contents of the new <code>.eslintrc.json</code> config file are:</p>
 <pre><code class="language-bash">{
     &quot;env&quot;: {
         &quot;browser&quot;: true,
@@ -569,9 +569,9 @@
     }
 }
 </code></pre>
-<p>To perform linting using eslint, run <code>eslint</code> command with the following flags -
-<code>-f</code>, format of output report
-<code>--ext</code>, specify the extensions of files to be scannned
+<p>To perform linting using eslint, run <code>eslint</code> command with the following flags;
+<code>-f</code>, format of output report;
+<code>--ext</code>, specify the extensions of files to be scannned;
 <code>-o</code>, specify file to write report to</p>
 <pre><code class="language-bash">eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
 </code></pre>

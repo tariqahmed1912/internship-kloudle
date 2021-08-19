@@ -49,7 +49,7 @@ After installing eslint, eslint requires a `.eslintrc` configuration file which 
 ✔ What format do you want your config file to be in? · JSON
 ```
 
-You should now see a `.eslintrc.json` file. Its contents look as follows.
+The contents of the new `.eslintrc.json` config file are:
 ```bash
 {
     "env": {
@@ -66,9 +66,9 @@ You should now see a `.eslintrc.json` file. Its contents look as follows.
 }
 ```
 
-To perform linting using eslint, run `eslint` command with the following flags -
-`-f`, format of output report
-`--ext`, specify the extensions of files to be scannned
+To perform linting using eslint, run `eslint` command with the following flags;
+`-f`, format of output report;
+`--ext`, specify the extensions of files to be scannned;
 `-o`, specify file to write report to
 
 ```bash
