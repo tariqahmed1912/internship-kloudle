@@ -559,13 +559,13 @@
 
 $ java --version   # OpenJDK version
 </code></pre>
-<p>Next, install Java Development Kit (JDK) in order to compile and run some specific Java-based software</p>
+<p>Next, install Java Development Kit (JDK) in order to compile and run some specific Java-based software.</p>
 <pre><code class="language-bash">$ sudo apt install default-jdk
 
 $ javac --version  # Java Compiler version
 </code></pre>
 <h3 id="step-2-install-jenkins"><strong>Step 2 - Install Jenkins</strong></h3>
-<p>First, add the repository key to the system. On success, the system will return "OK".</p>
+<p>First, add the repository key to the system. On success, the system will return <code>OK</code>.</p>
 <pre><code class="language-bash">wget -q -O - &lt;https://pkg.jenkins.io/debian-stable/jenkins.io.key&gt; | sudo apt-key add -
 </code></pre>
 <p>Next, append the Debian package repository address to the server’s sources.list file.</p>
@@ -573,7 +573,7 @@ $ javac --version  # Java Compiler version
 
 sudo apt update
 </code></pre>
-<p>Install Jenkins and its dependencies</p>
+<p>Install Jenkins and its dependencies.</p>
 <pre><code class="language-bash">sudo apt install jenkins
 </code></pre>
 <h3 id="step-3-start-jenkins-service"><strong>Step 3 - Start Jenkins Service</strong></h3>
@@ -604,7 +604,7 @@ This password is present in the /var/lib/jenkins/secrets/initialAdminPassword fi
 <img alt="Screenshot" src="../img/jenkins_setup_4.png" />&nbsp;</p>
 <p>You will see an 'Instance Configuration' page that will ask you to confirm the preferred URL for your Jenkins instance. After confirming the appropriate information, click Save and Finish. You will see a confirmation page confirming that “Jenkins is Ready!”</p>
 <p><strong>Note:</strong></p>
-<p>If you had moved forward with the default admin and not created a custom admin user, when logging in, username="admin" and password="<password in <code>initialAdminPassword</code> file>". You can change the admin password from <code>Dashboard</code> → <code>Admin</code> → <code>Configure</code></p>
+<p>If you had moved forward with the default admin and not created a custom admin user, when logging in, use username="admin" and password="<password in <code>initialAdminPassword</code> file>". You can change the admin password from <code>Dashboard</code> → <code>Admin</code> → <code>Configure</code></p>
                 
               
               

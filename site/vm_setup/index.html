@@ -501,12 +501,12 @@
                 <h2 id="objective"><strong>Objective</strong></h2>
 <p>The aim of this section is to set up VMs running Ubuntu Server.</p>
 <h3 id="setting-up-vms"><strong>Setting up VMs</strong></h3>
-<p>For the lab setup, I created 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. </p>
+<p>For the lab setup, create 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. </p>
 <p>I followed this <a href="https://hibbard.eu/install-ubuntu-virtual-box/">documentation</a> upto <code>Up and Running with SSH</code> step, for installing Ubuntu on both the VMs. In the blog, they used a <code>Bridged</code> connection for enabling VM-to-VM and host-to-VM communication. Although this connection was initially working fine, the connectivity between the two VMs would very often get dropped for a couple of minutes. So to solve this issue, I instead used 2 adaptors; one for NAT and the other a Host-only network.</p>
 <h3 id="vm-network-configuration"><strong>VM Network Configuration</strong></h3>
 <p>Open Virtual Box and go to <code>File</code> -&gt; <code>Host Network Manager</code>. The <code>Host Network Manager</code> window will open, and ideally, a network named "vboxnet0" should exist with the DHCP server disabled. If it does not exist, you can create it by clicking on the "Create" button. The new network created will be named "vboxnet0" and ensure DHCP server is not enabled. This network will enable host-to-VM communication.</p>
 <p><img alt="Screenshot" src="../img/vm_setup_1.png" /></p>
-<p>Now, open the <strong>Oracle VM VirtualBox Manager</strong>, click on the VM that you wish to configure for networking and go to the <code>Network</code> group. Follow this configuration steps for both the VMs (Jenkins and Production VMs, in my case) </p>
+<p>Now, open the <strong>Oracle VM VirtualBox Manager</strong>, click on the VM that you wish to configure for networking and go to the <code>Network</code> group. Follow this configuration steps for both the VMs (Jenkins and Production VMs, in my case).</p>
 <p>Adaptor 1 -&gt; Click on <code>Enable Network Adapter</code> and in the <strong>Attached</strong> field, select NAT.
 <img alt="Screenshot" src="../img/vm_setup_2.png" /></p>
 <p>Adaptor 2 -&gt; Click on <code>Enable Network Adapter</code> and make sure the fields are configured like this: <strong>Attached to</strong> - Host-only Adapter,  <strong>Name</strong> - vboxnet0.
@@ -540,7 +540,7 @@ network:
 <p>To solve this issue, I changed all occurences of <em><a href="https://kw.archive.ubuntu.com/">https://kw.archive.ubuntu.com/</a>...</em> to <em><a href="https://archive.ubuntu.com/">https://archive.ubuntu.com/</a>...</em> in the <code>sources.list</code> file</p>
 <pre><code class="language-bash">sudo nano /etc/apt/sources.list
 </code></pre>
-<p>Your server should now be able to interact with the ubuntu archive server for updates and other packages.</p>
+<p>Your VM should now be able to interact with the ubuntu archive server for updates and other packages.</p>
                 
               
               

@@ -3,7 +3,7 @@
 The aim of this section is to set up VMs running Ubuntu Server.
 
 ### **Setting up VMs**
-For the lab setup, I created 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. 
+For the lab setup, create 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. 
 
 I followed this [documentation](https://hibbard.eu/install-ubuntu-virtual-box/) upto `Up and Running with SSH` step, for installing Ubuntu on both the VMs. In the blog, they used a `Bridged` connection for enabling VM-to-VM and host-to-VM communication. Although this connection was initially working fine, the connectivity between the two VMs would very often get dropped for a couple of minutes. So to solve this issue, I instead used 2 adaptors; one for NAT and the other a Host-only network.
 
@@ -12,7 +12,7 @@ Open Virtual Box and go to `File` -> `Host Network Manager`. The `Host Network M
 
 ![Screenshot](img/vm_setup_1.png)
 
-Now, open the **Oracle VM VirtualBox Manager**, click on the VM that you wish to configure for networking and go to the `Network` group. Follow this configuration steps for both the VMs (Jenkins and Production VMs, in my case) 
+Now, open the **Oracle VM VirtualBox Manager**, click on the VM that you wish to configure for networking and go to the `Network` group. Follow this configuration steps for both the VMs (Jenkins and Production VMs, in my case).
 
 Adaptor 1 -> Click on `Enable Network Adapter` and in the **Attached** field, select NAT.
 ![Screenshot](img/vm_setup_2.png)
@@ -66,6 +66,6 @@ To solve this issue, I changed all occurences of _[https://kw.archive.ubuntu.com
 sudo nano /etc/apt/sources.list
 ```
 
-Your server should now be able to interact with the ubuntu archive server for updates and other packages.
+Your VM should now be able to interact with the ubuntu archive server for updates and other packages.
 
 

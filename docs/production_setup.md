@@ -58,7 +58,7 @@ MYSQL_HOST=mysql-db
 MYSQL_PORT=3306
 ```
 
-Start MySQL container (using environment variables in vars.env file). Run an infinite command in detached mode (using `-d`), so the command never ends and the container never stops. I used `tail -f /dev/null` because it is quite light weight and /dev/null is present in most linux images.
+Start MySQL container (using environment variables in `vars.env` file). Run an infinite command in detached mode (using `-d`), so the command never ends and the container never stops. I used `tail -f /dev/null` because it is quite light weight and /dev/null is present in most linux images.
    
 ```bash
 sudo docker run -d --name dvna-mysql --env-file vars.env mysql:5.7 tail -f /dev/null
@@ -70,7 +70,7 @@ Start/run the DVNA application.
 sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
 ```
 
-To see the if the containers are running, run a `docker ps`. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using `docker stop <container-name-or-id>`. 
+To test if the containers are running, run a `docker ps`. We will see two containers running; dvna-app and dvna-mysql. You can stop the running containers by using `docker stop <container-name-or-id>`. 
 	
 <b>**Note:**</b> 
 
@@ -80,12 +80,12 @@ To see the if the containers are running, run a `docker ps`. We will see two con
 
     (i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. 
     
-    ```bash
-    sudo usermod -aG docker $USER  
+    ```
+    sudo usermod -aG docker $USER; 
     sudo reboot
     ```
 
-    (ii) This method should only be used if no other method seems to work, since it grants permission to every user to execute and run docker containers.
+    (ii) This method should only be used if no other method seems to work, since it grants every user permission to execute and run docker containers.
 
     ```bash
     sudo chmod 666 /var/run/docker.sock
@@ -93,13 +93,13 @@ To see the if the containers are running, run a `docker ps`. We will see two con
 
 3. To completely remove nodejs and npm from your system 
 
-Removing Nodejs and Npm
-```bash
-sudo apt-get remove nodejs npm node
-sudo apt-get purge nodejs
-```
+        Removing Nodejs and Npm
+        ```bash
+        sudo apt-get remove nodejs npm node
+        sudo apt-get purge nodejs
+        ```
 
-Now remove .node and .npm folders from your system
+Now manually remove .node and .npm folders from your system
 ```bash
 sudo rm -rf /usr/local/bin/npm 
 sudo rm -rf /usr/local/share/man/man1/node* 
@@ -114,9 +114,9 @@ sudo rm -rf /usr/local/include/node*
 sudo rm -rf /usr/local/bin/node*
 ```
 
-Go to home directory and remove any node or node_modules directory, if exists.
+Go to home directory and remove any node or node_modules directory, if it exists.
 
-You can verify your uninstallation by these commands; they should not output anything.
+You can verify your uninstallation by running these commands; they should not return any output.
 ```bash
 which node
 which nodejs

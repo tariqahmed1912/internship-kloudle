@@ -24,8 +24,7 @@ $ sudo apt install default-jre
 $ java --version   # OpenJDK version
 ```
 
-
-Next, install Java Development Kit (JDK) in order to compile and run some specific Java-based software
+Next, install Java Development Kit (JDK) in order to compile and run some specific Java-based software.
 
 ```bash
 $ sudo apt install default-jdk
@@ -35,7 +34,7 @@ $ javac --version  # Java Compiler version
 
 ### **Step 2 - Install Jenkins**
 
-First, add the repository key to the system. On success, the system will return "OK".
+First, add the repository key to the system. On success, the system will return `OK`.
 
 ```bash
 wget -q -O - <https://pkg.jenkins.io/debian-stable/jenkins.io.key> | sudo apt-key add -
@@ -49,7 +48,7 @@ sudo sh -c 'echo deb <http://pkg.jenkins.io/debian-stable> binary/ > /etc/apt/so
 sudo apt update
 ```
 
-Install Jenkins and its dependencies
+Install Jenkins and its dependencies.
 
 ```bash
 sudo apt install jenkins
@@ -99,4 +98,4 @@ You will see an 'Instance Configuration' page that will ask you to confirm the p
 
 **Note:**
 
-If you had moved forward with the default admin and not created a custom admin user, when logging in, username="admin" and password="<password in `initialAdminPassword` file>". You can change the admin password from `Dashboard` → `Admin` → `Configure`
+If you had moved forward with the default admin and not created a custom admin user, when logging in, use username="admin" and password="<password in `initialAdminPassword` file>". You can change the admin password from `Dashboard` → `Admin` → `Configure`
