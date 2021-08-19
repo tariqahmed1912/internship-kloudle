@@ -52,6 +52,18 @@ pipeline {
       }
     }
     
+    stage ('JSHint Analysis') {
+      steps {
+        sh 'jshint $(find ~/app -type f -name "*.js" -o -name "*.ejs" | grep -v node_modules) > ~/reports/jshint-report || true'
+      }
+    }
+    
+    stage ('ESLint Analysis') {
+      steps {
+        sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
+      }
+    }
+
     stage ('Stop DVNA') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql;"'

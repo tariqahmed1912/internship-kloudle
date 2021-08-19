@@ -569,11 +569,13 @@
     }
 }
 </code></pre>
+<p><strong>Note:</strong> The <code>.eslintrc.*</code> config file is required everytime you want to run <code>eslint</code> code linting on a file or directory. While running the scans in a pipeline, its not possible to create the config file by running <code>eslint --init</code> as the command line waits for responses to file configuration questions. To work around this problem, copy the configuration details shown above in <code>&lt;Jenkins-Home-Dir&gt;/.eslintrc.json</code>. You can now specify <code>eslint</code> to use this config file during its execution.</p>
 <p>To perform linting using eslint, run <code>eslint</code> command with the following flags;
+<code>-c</code>, specify the config file to use;
 <code>-f</code>, format of output report;
 <code>--ext</code>, specify the extensions of files to be scannned;
 <code>-o</code>, specify file to write report to</p>
-<pre><code class="language-bash">eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
+<pre><code class="language-bash">eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
 </code></pre>
 <h3 id="code-quality-pipeline"><strong>Code Quality Pipeline</strong></h3>
 <p>I added the following stages in the Jenkins pipeline for performing code linting.</p>
@@ -584,7 +586,7 @@
 }
 stage ('ESLint Analysis') {
   steps {
-    sh 'eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
+    sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
   }
 }
 </code></pre>

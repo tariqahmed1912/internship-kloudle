@@ -547,6 +547,18 @@
       }
     }
 
+    stage ('JSHint Analysis') {
+      steps {
+        sh 'jshint $(find ~/app -type f -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; | grep -v node_modules) &gt; ~/reports/jshint-report || true'
+      }
+    }
+
+    stage ('ESLint Analysis') {
+      steps {
+        sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
+      }
+    }
+
     stage ('Stop DVNA') {
       steps {
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'

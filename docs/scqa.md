@@ -65,14 +65,16 @@ The contents of the new `.eslintrc.json` config file are:
     }
 }
 ```
+**Note:** The `.eslintrc.*` config file is required everytime you want to run `eslint` code linting on a file or directory. While running the scans in a pipeline, its not possible to create the config file by running `eslint --init` as the command line waits for responses to file configuration questions. To work around this problem, copy the configuration details shown above in `<Jenkins-Home-Dir>/.eslintrc.json`. You can now specify `eslint` to use this config file during its execution.
 
 To perform linting using eslint, run `eslint` command with the following flags;
+`-c`, specify the config file to use;
 `-f`, format of output report;
 `--ext`, specify the extensions of files to be scannned;
 `-o`, specify file to write report to
 
 ```bash
-eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
+eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
 ```
 
 ### **Code Quality Pipeline**
@@ -87,7 +89,7 @@ stage ('JSHint Analysis') {
 }
 stage ('ESLint Analysis') {
   steps {
-    sh 'eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
+    sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
   }
 }
 ```
