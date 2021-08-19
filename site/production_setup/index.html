@@ -561,7 +561,33 @@ sudo reboot</code></p>
 <p><code>bash
 sudo chmod 666 /var/run/docker.sock</code></p>
 </li>
+<li>
+<p>To completely remove nodejs and npm from your system </p>
+</li>
 </ol>
+<p>Removing Nodejs and Npm</p>
+<pre><code class="language-bash">sudo apt-get remove nodejs npm node
+sudo apt-get purge nodejs
+</code></pre>
+<p>Now remove .node and .npm folders from your system</p>
+<pre><code class="language-bash">sudo rm -rf /usr/local/bin/npm 
+sudo rm -rf /usr/local/share/man/man1/node* 
+sudo rm -rf /usr/local/lib/dtrace/node.d 
+sudo rm -rf ~/.npm 
+sudo rm -rf ~/.node-gyp 
+sudo rm -rf /opt/local/bin/node 
+sudo rm -rf opt/local/include/node 
+sudo rm -rf /opt/local/lib/node_modules  
+sudo rm -rf /usr/local/lib/node*
+sudo rm -rf /usr/local/include/node*
+sudo rm -rf /usr/local/bin/node*
+</code></pre>
+<p>Go to home directory and remove any node or node_modules directory, if exists.</p>
+<p>You can verify your uninstallation by these commands; they should not output anything.</p>
+<pre><code class="language-bash">which node
+which nodejs
+which npm
+</code></pre>
                 
               
               

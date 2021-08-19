@@ -397,6 +397,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#code-quality-pipeline" class="md-nav__link">
+    Code Quality Pipeline
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -492,6 +499,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#code-quality-pipeline" class="md-nav__link">
+    Code Quality Pipeline
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -527,17 +541,52 @@
 <p>The above command will scan all the files in the <code>/app</code> directory. To restrict the scan to only .js files, use a <code>find</code> command. We will further exclude all files in the <code>node_modules</code> directory.</p>
 <pre><code class="language-bash">jshint $(find ~/app -type f -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; | grep -v node_modules) &gt; ~/reports/jshint-report
 </code></pre>
-<p>I added the following stage in the Jenkins pipeline to perform code linting on DVNA</p>
-<pre><code class="language-bash">stage ('JSHint Analysis') {
-  steps {
-    sh 'jshint $(find ~/app -type f \( -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; \) | grep -v node_modules) &gt; ~/reports/jshint-report; echo $? &gt; /dev/null'
-  }
-}
-</code></pre>
 <h3 id="eslint"><strong>ESLint</strong></h3>
 <p>ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. Unlike JSHint, ESLint uses Espree for JavaScript parsing and an AST to evaluate patterns in code. It's completely pluggable, every single rule is a plugin and you can add more at runtime.</p>
 <p>To get started with JSHint, I followed the <a href="https://eslint.org/docs/user-guide/getting-started">official documentation</a>. </p>
 <pre><code class="language-bash">npm install -g eslint 
+</code></pre>
+<p>After installing eslint, eslint requires a <code>.eslintrc</code> configuration file which contains environment variables, rules and other extra config details. To create this file, navigate to your project folder and run <code>eslint --init</code>. You will be prompted a few questions to create the config file. The questions and my responses to them are given below.</p>
+<pre><code class="language-bash">✔ How would you like to use ESLint? · problems
+✔ What type of modules does your project use? · commonjs
+✔ Which framework does your project use? · none
+✔ Does your project use TypeScript? · No
+✔ Where does your code run? · browser
+✔ What format do you want your config file to be in? · JSON
+</code></pre>
+<p>You should now see a <code>.eslintrc.json</code> file. Its contents look as follows.</p>
+<pre><code class="language-bash">{
+    &quot;env&quot;: {
+        &quot;browser&quot;: true,
+        &quot;commonjs&quot;: true,
+        &quot;es2021&quot;: true
+    },
+    &quot;extends&quot;: &quot;eslint:recommended&quot;,
+    &quot;parserOptions&quot;: {
+        &quot;ecmaVersion&quot;: 12
+    },
+    &quot;rules&quot;: {
+    }
+}
+</code></pre>
+<p>To perform linting using eslint, run <code>eslint</code> command with the following flags -
+<code>-f</code>, format of output report
+<code>--ext</code>, specify the extensions of files to be scannned
+<code>-o</code>, specify file to write report to</p>
+<pre><code class="language-bash">eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
+</code></pre>
+<h3 id="code-quality-pipeline"><strong>Code Quality Pipeline</strong></h3>
+<p>I added the following stages in the Jenkins pipeline for performing code linting.</p>
+<pre><code class="language-bash">stage ('JSHint Analysis') {
+  steps {
+    sh 'jshint $(find ~/app -type f \( -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; \) | grep -v node_modules) &gt; ~/reports/jshint-report || true'
+  }
+}
+stage ('ESLint Analysis') {
+  steps {
+    sh 'eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
+  }
+}
 </code></pre>
                 
               

@@ -28,15 +28,6 @@ The above command will scan all the files in the `/app` directory. To restrict t
 jshint $(find ~/app -type f -name "*.js" -o -name "*.ejs" | grep -v node_modules) > ~/reports/jshint-report
 ```
 
-I added the following stage in the Jenkins pipeline to perform code linting on DVNA
-
-```bash
-stage ('JSHint Analysis') {
-  steps {
-    sh 'jshint $(find ~/app -type f \( -name "*.js" -o -name "*.ejs" \) | grep -v node_modules) > ~/reports/jshint-report; echo $? > /dev/null'
-  }
-}
-```
 
 ### **ESLint**
 
@@ -47,7 +38,57 @@ To get started with JSHint, I followed the [official documentation](https://esli
 ```bash
 npm install -g eslint 
 ```
+After installing eslint, eslint requires a `.eslintrc` configuration file which contains environment variables, rules and other extra config details. To create this file, navigate to your project folder and run `eslint --init`. You will be prompted a few questions to create the config file. The questions and my responses to them are given below.
 
+```bash
+✔ How would you like to use ESLint? · problems
+✔ What type of modules does your project use? · commonjs
+✔ Which framework does your project use? · none
+✔ Does your project use TypeScript? · No
+✔ Where does your code run? · browser
+✔ What format do you want your config file to be in? · JSON
+```
 
+You should now see a `.eslintrc.json` file. Its contents look as follows.
+```bash
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+    }
+}
+```
 
+To perform linting using eslint, run `eslint` command with the following flags -
+`-f`, format of output report
+`--ext`, specify the extensions of files to be scannned
+`-o`, specify file to write report to
+
+```bash
+eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
+```
+
+### **Code Quality Pipeline**
+
+I added the following stages in the Jenkins pipeline for performing code linting.
+
+```bash
+stage ('JSHint Analysis') {
+  steps {
+    sh 'jshint $(find ~/app -type f \( -name "*.js" -o -name "*.ejs" \) | grep -v node_modules) > ~/reports/jshint-report || true'
+  }
+}
+stage ('ESLint Analysis') {
+  steps {
+    sh 'eslint -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
+  }
+}
+```
 

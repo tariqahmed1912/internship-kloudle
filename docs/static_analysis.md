@@ -69,13 +69,13 @@ In the Production server, enter DVNA container in exec mode.
 sudo docker exec -it -u 0 dvna-app /bin/bash
 ```
 
-Following the [official documentation](https://github.com/ajinabraham/nodejsscan) available on GitHub, I installed auditjs using NPM (Node Packet Manager). To do so, we first need to install `npm` and `nodejs` in 'dvna-app' container in production server. After running the following commands, the package versions are: `npm v6.14.14` and `nodejs v14.17.4`
+Following the [official documentation](https://github.com/ajinabraham/nodejsscan) available on GitHub, I installed auditjs using NPM (Node Packet Manager). To do so, I referred this [documentation](https://www.tecmint.com/install-nodejs-npm-in-centos-ubuntu/) as it's clear and easy to follow, to install `npm` and `nodejs` in 'dvna-app' container in production server. After running the following commands, the package versions are: `npm v6.14.14` and `nodejs v14.17.4`.  
+**Note:** Installing nodejs from deb.nodesource.com comes with a prepackaged NPM. To update npm to latest version, use `sudo npm install latest-version` after running the commands below. 
 
 ```bash
 sudo apt update
 sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt install -y nodejs npm 
-sudo npm install latest-version
+sudo apt install -y nodejs
 ```
 
 Install auditjs using npm.

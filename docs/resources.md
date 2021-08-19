@@ -19,8 +19,9 @@ These are some references I used along with the ones mentioned implicitly in the
 
 ### Static Analysis
 
+- NPM Installation ([https://www.tecmint.com/install-nodejs-npm-in-centos-ubuntu/](https://www.tecmint.com/install-nodejs-npm-in-centos-ubuntu/))
 - NodeJsScan ([https://github.com/ajinabraham/nodejsscan](https://github.com/ajinabraham/nodejsscan))
--  Auditjs ([https://github.com/sonatype-nexus-community/auditjs](https://github.com/sonatype-nexus-community/auditjs))
+- Auditjs ([https://github.com/sonatype-nexus-community/auditjs](https://github.com/sonatype-nexus-community/auditjs))
 
 ### Software Composition Analysis
 
@@ -38,3 +39,4 @@ These are some references I used along with the ones mentioned implicitly in the
 
 - JSHint ([https://jshint.com/docs/cli/](https://jshint.com/docs/cli/), [https://github.com/jshint/jshint](https://github.com/jshint/jshint))
 - ESLint ([https://eslint.org/docs/user-guide/](https://eslint.org/docs/user-guide/), [https://github.com/eslint/eslint](https://github.com/eslint/eslint))
+- ESLint CLI ([https://eslint.org/docs/user-guide/command-line-interface](https://eslint.org/docs/user-guide/command-line-interface))

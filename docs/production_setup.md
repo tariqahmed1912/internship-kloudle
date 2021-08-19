@@ -90,3 +90,35 @@ To see the if the containers are running, run a `docker ps`. We will see two con
     ```bash
     sudo chmod 666 /var/run/docker.sock
     ```
+
+3. To completely remove nodejs and npm from your system 
+
+Removing Nodejs and Npm
+```bash
+sudo apt-get remove nodejs npm node
+sudo apt-get purge nodejs
+```
+
+Now remove .node and .npm folders from your system
+```bash
+sudo rm -rf /usr/local/bin/npm 
+sudo rm -rf /usr/local/share/man/man1/node* 
+sudo rm -rf /usr/local/lib/dtrace/node.d 
+sudo rm -rf ~/.npm 
+sudo rm -rf ~/.node-gyp 
+sudo rm -rf /opt/local/bin/node 
+sudo rm -rf opt/local/include/node 
+sudo rm -rf /opt/local/lib/node_modules  
+sudo rm -rf /usr/local/lib/node*
+sudo rm -rf /usr/local/include/node*
+sudo rm -rf /usr/local/bin/node*
+```
+
+Go to home directory and remove any node or node_modules directory, if exists.
+
+You can verify your uninstallation by these commands; they should not output anything.
+```bash
+which node
+which nodejs
+which npm
+```
