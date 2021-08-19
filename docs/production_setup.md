@@ -80,16 +80,12 @@ To test if the containers are running, run a `docker ps`. We will see two contai
 
     (i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. 
     
-    ```
-    sudo usermod -aG docker $USER; 
-    sudo reboot
-    ```
+        sudo usermod -aG docker $USER; 
+        sudo reboot
 
     (ii) This method should only be used if no other method seems to work, since it grants every user permission to execute and run docker containers.
 
-    ```bash
-    sudo chmod 666 /var/run/docker.sock
-    ```
+        sudo chmod 666 /var/run/docker.sock
 
 3. To completely remove nodejs and npm from your system 
 

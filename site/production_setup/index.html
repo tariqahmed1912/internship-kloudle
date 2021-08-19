@@ -554,11 +554,12 @@ MYSQL_PORT=3306
 <li>
 <p>The <code>docker</code> commands can only be run as sudo user. There are 2 ways to enable executing <code>docker</code> commands without sudo. Although, you must know, its highly discouraged to do so. </p>
 <p>(i) Add 'user' to group 'docker' by typing the following command. The changes might not take effect without rebooting your VM. </p>
-<p><code>sudo usermod -aG docker $USER; 
-sudo reboot</code></p>
+<pre><code>sudo usermod -aG docker $USER; 
+sudo reboot
+</code></pre>
 <p>(ii) This method should only be used if no other method seems to work, since it grants every user permission to execute and run docker containers.</p>
-<p><code>bash
-sudo chmod 666 /var/run/docker.sock</code></p>
+<pre><code>sudo chmod 666 /var/run/docker.sock
+</code></pre>
 </li>
 <li>
 <p>To completely remove nodejs and npm from your system </p>
