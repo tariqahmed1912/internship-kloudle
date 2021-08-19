@@ -118,6 +118,7 @@ VBoxManage showhdinfo <LOCATION-OF-VDI-IMAGE> | grep Capacity
 I followed the same steps as mentioned in the `Boot from GParted on your VM` section of the [documentation](https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox). Even after having followed all the steps, the partition was still not set properly. I found the solution to this problem [here](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
 
 In the Jenkins VM, resize the logical volume to use all the existing and free space of the volume group.
+
 ```bash
 sudo lvm
 
@@ -126,6 +127,7 @@ lvm> exit
 ```
 
 After the command above is successful, resize the file system to use the new available space in the logical volume.
+
 ```bash
 sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 ```
@@ -143,7 +145,7 @@ While running the ZAP scan in pipeline, I got the following error:
 ERROR [Errno 13] Permission denied: '/zap/wrk/zap-report.html'
 ```
 
-To resolve this error, I changed the permissions of /var/lib/jenkins/report directory.
+To resolve this error, I changed the permissions of `/var/lib/jenkins/reports` directory.
 
 ```bash
 sudo chmod 777 /var/lib/jenkins/report
