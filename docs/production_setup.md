@@ -93,32 +93,30 @@ To test if the containers are running, run a `docker ps`. We will see two contai
 
 3. To completely remove nodejs and npm from your system 
 
-        Removing Nodejs and Npm
-        ```bash
+    Removing Nodejs and Npm    
+
         sudo apt-get remove nodejs npm node
         sudo apt-get purge nodejs
-        ```
 
-Now manually remove .node and .npm folders from your system
-```bash
-sudo rm -rf /usr/local/bin/npm 
-sudo rm -rf /usr/local/share/man/man1/node* 
-sudo rm -rf /usr/local/lib/dtrace/node.d 
-sudo rm -rf ~/.npm 
-sudo rm -rf ~/.node-gyp 
-sudo rm -rf /opt/local/bin/node 
-sudo rm -rf opt/local/include/node 
-sudo rm -rf /opt/local/lib/node_modules  
-sudo rm -rf /usr/local/lib/node*
-sudo rm -rf /usr/local/include/node*
-sudo rm -rf /usr/local/bin/node*
-```
 
-Go to home directory and remove any node or node_modules directory, if it exists.
+    Now manually remove .node and .npm folders from your system
 
-You can verify your uninstallation by running these commands; they should not return any output.
-```bash
-which node
-which nodejs
-which npm
-```
+        sudo rm -rf /usr/local/bin/npm 
+        sudo rm -rf /usr/local/share/man/man1/node* 
+        sudo rm -rf /usr/local/lib/dtrace/node.d 
+        sudo rm -rf ~/.npm 
+        sudo rm -rf ~/.node-gyp 
+        sudo rm -rf /opt/local/bin/node 
+        sudo rm -rf opt/local/include/node 
+        sudo rm -rf /opt/local/lib/node_modules  
+        sudo rm -rf /usr/local/lib/node*
+        sudo rm -rf /usr/local/include/node*
+        sudo rm -rf /usr/local/bin/node*
+
+    Go to home directory and remove any node or node_modules directory, if it exists.
+
+    You can verify your uninstallation by running these commands; they should not return any output.
+
+        which node
+        which nodejs
+        which npm
