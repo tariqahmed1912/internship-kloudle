@@ -14,7 +14,7 @@
     
     
       
-        <title>Complete Pipeline Structure - DevSecOps Pipeline</title>
+        <title>Old pipeline - DevSecOps Pipeline</title>
       
     
     
@@ -60,11 +60,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#objective" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -91,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Complete Pipeline Structure
+              Old pipeline
             
           </span>
         </div>
@@ -353,67 +348,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Complete Pipeline Structure
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../complete_pipeline/" class="md-nav__link">
         Complete Pipeline Structure
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objective" class="md-nav__link">
-    Objective
-  </a>
-  
-    <nav class="md-nav" aria-label="Objective">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#complete-pipeline" class="md-nav__link">
-    Complete Pipeline
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    NOTE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -440,93 +379,29 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objective" class="md-nav__link">
-    Objective
-  </a>
-  
-    <nav class="md-nav" aria-label="Objective">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#complete-pipeline" class="md-nav__link">
-    Complete Pipeline
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    NOTE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Complete Pipeline Structure</h1>
+                  <h1>Old pipeline</h1>
                 
-                <h2 id="objective"><strong>Objective</strong></h2>
-<p>The aim of this section is to show the complete CI/CD pipeline structure.</p>
-<h3 id="complete-pipeline"><strong>Complete Pipeline</strong></h3>
-<pre><code class="language-bash">pipeline {
+                <pre><code class="language-bash">pipeline {
   agent any
-
   stages {
     stage ('Initialization') {
-      environment {
-        MYSQL_USER=&quot;dvna&quot;
-        MYSQL_DATABASE=&quot;dvna&quot;
-        MYSQL_PASSWORD=&lt;PASSWORD&gt;
-        MYSQL_RANDOM_ROOT_PASSWORD=&lt;ROOT_PASSWORD&gt;
-        MYSQL_HOST=&quot;mysql-db&quot;
-        MYSQL_PORT=3306
-      }
       steps {
         sh 'echo &quot;Starting the build!&quot;'
-        sh 'echo &quot;MYSQL_USER=$MYSQL_USER\nMYSQL_DATABASE=$MYSQL_DATABASE\nMYSQL_PASSWORD=$MYSQL_PASSWORD\nMYSQL_RANDOM_ROOT_PASSWORD=$MYSQL_RANDOM_ROOT_PASSWORD\nMYSQL_HOST=$MYSQL_HOST\nMYSQL_PORT=$MYSQL_PORT&quot; &gt; ~/vars.env'
       }
     }
 
-    stage ('Jenkins - Start DVNA and Copy Application Code') {
+    stage('Start DVNA and Copy DVNA Code') {
       steps {
-        sh 'docker run --rm -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
-        sh 'docker run --rm -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna'
-        sh 'docker cp dvna-app:/app/ ~/ &amp;&amp; mkdir ~/reports &amp;&amp; chmod 777 ~/reports'        
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/;&quot;'
+        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir ~/reports &amp;&amp; chmod 777 ~/reports'
       }
-    } 
+    }
 
     stage('NodeJsScan Analysis') {
       steps {
@@ -548,7 +423,7 @@
 
     stage('OWASP ZAP Analysis') {
       steps {
-        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.101:9090 -r zap-report.html -l PASS || true'
+        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
       }
     }
 
@@ -570,31 +445,16 @@
       }
     }
 
-    stage ('Remove DVNA from Jenkins') {
+    stage ('Stop DVNA') {
       steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
         sh 'rm -rf ~/app'
-        sh 'docker stop dvna-app &amp;&amp; docker stop dvna-mysql'
-        sh 'docker rmi appsecco/dvna &amp;&amp; docker rmi mysql:5.7'
-      }
-    }
-
-    stage ('Deploy DVNA on Production') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql &amp;&amp; docker rm dvna-app &amp;&amp; docker rm dvna-mysql &amp;&amp; docker rmi appsecco/dvna &amp;&amp; docker rmi mysql:5.7 || true&quot;'
-        sh 'scp ~/vars.env tariq@192.168.56.102:~/'
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker run -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null&quot;'
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker run -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna&quot;'
+        sh 'echo &quot;Scan successfully completed!&quot;'
       }
     }
 
   }
 }
-</code></pre>
-<h3 id="note"><strong>NOTE</strong></h3>
-<p>A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a <code>0</code> status code.  </p>
-<pre><code class="language-bash">&lt;scan command&gt; || true 
-OR
-&lt;scan command&gt;; echo $? &gt; /dev/null
 </code></pre>
                 
               
@@ -611,41 +471,6 @@ OR
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../scqa/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Software Code Quality Analysis" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Software Code Quality Analysis
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../resources/" class="md-footer__link md-footer__link--next" aria-label="Next: Resources" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Resources
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

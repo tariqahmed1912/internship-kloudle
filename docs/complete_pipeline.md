@@ -8,20 +8,31 @@ The aim of this section is to show the complete CI/CD pipeline structure.
 ```bash
 pipeline {
   agent any
+  
   stages {
     stage ('Initialization') {
+      environment {
+        MYSQL_USER="dvna"
+        MYSQL_DATABASE="dvna"
+        MYSQL_PASSWORD=<PASSWORD>
+        MYSQL_RANDOM_ROOT_PASSWORD=<ROOT_PASSWORD>
+        MYSQL_HOST="mysql-db"
+        MYSQL_PORT=3306
+      }
       steps {
         sh 'echo "Starting the build!"'
+        sh 'echo "MYSQL_USER=$MYSQL_USER\nMYSQL_DATABASE=$MYSQL_DATABASE\nMYSQL_PASSWORD=$MYSQL_PASSWORD\nMYSQL_RANDOM_ROOT_PASSWORD=$MYSQL_RANDOM_ROOT_PASSWORD\nMYSQL_HOST=$MYSQL_HOST\nMYSQL_PORT=$MYSQL_PORT" > ~/vars.env'
       }
     }
     
-    stage('Start DVNA and Copy DVNA Code') {
+    stage ('Jenkins - Start DVNA and Copy Application Code') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql && docker start dvna-app; docker cp dvna-app:/app/ ~/;"'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir ~/reports && chmod 777 ~/reports'
+        sh 'docker run --rm -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
+        sh 'docker run --rm -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna'
+        sh 'docker cp dvna-app:/app/ ~/ && mkdir ~/reports && chmod 777 ~/reports'        
       }
-    }
-    
+    } 
+       
     stage('NodeJsScan Analysis') {
       steps {
         sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
@@ -42,10 +53,10 @@ pipeline {
     
     stage('OWASP ZAP Analysis') {
       steps {
-        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
+        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.101:9090 -r zap-report.html -l PASS || true'
       }
     }
-
+    
     stage ('Generating Software Bill of Materials') {
       steps {
         sh 'cd ~/app && cyclonedx-bom -o ~/reports/sbom.xml'
@@ -63,15 +74,24 @@ pipeline {
         sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
       }
     }
-
-    stage ('Stop DVNA') {
+    
+    stage ('Remove DVNA from Jenkins') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql;"'
         sh 'rm -rf ~/app'
-        sh 'echo "Scan successfully completed!"'
+        sh 'docker stop dvna-app && docker stop dvna-mysql'
+        sh 'docker rmi appsecco/dvna && docker rmi mysql:5.7'
       }
     }
     
+    stage ('Deploy DVNA on Production') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql && docker rm dvna-app && docker rm dvna-mysql && docker rmi appsecco/dvna && docker rmi mysql:5.7 || true"'
+        sh 'scp ~/vars.env tariq@192.168.56.102:~/'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker run -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null"'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker run -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna"'
+      }
+    }
+
   }
 }
 ```
