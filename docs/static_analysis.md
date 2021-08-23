@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to perform static analysis on DVNA using SAST tools in a Jenkins pipeline and solve the 4th point of the `[Problem Statement](problem_statements.md)` under Task 1.
+The aim of this section is to perform static analysis on DVNA using SAST tools in a Jenkins pipeline and solve the 4th point of the [Problem Statement](problem_statements.md) under Task 1.
 
 About SAST
 

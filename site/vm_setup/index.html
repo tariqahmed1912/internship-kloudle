@@ -499,7 +499,7 @@
                   <h1>Setup of VMs</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
-<p>The aim of this section is to set up VMs running Ubuntu Server and solve the 1st point of the <code>[Problem Statement](problem_statements.md)</code> under Task 1.</p>
+<p>The aim of this section is to set up VMs running Ubuntu Server and solve the 1st point of the <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
 <h3 id="setting-up-vms"><strong>Setting up VMs</strong></h3>
 <p>For the lab setup, create 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. </p>
 <p>I followed this <a href="https://hibbard.eu/install-ubuntu-virtual-box/">documentation</a> upto <code>Up and Running with SSH</code> step, for installing Ubuntu on both the VMs. In the blog, they used a <code>Bridged</code> connection for enabling VM-to-VM and host-to-VM communication. Although this connection was initially working fine, the connectivity between the two VMs would very often get dropped for a couple of minutes. So to solve this issue, I instead used 2 adaptors; one for NAT and the other a Host-only network.</p>

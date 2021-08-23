@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to set up a production server for deploying an application (DVNA) and solve the 3rd point of the `[Problem Statement](problem_statements.md)` under Task 1.
+The aim of this section is to set up a production server for deploying an application (DVNA) and solve the 3rd point of the [Problem Statement](problem_statements.md) under Task 1.
 
 About DVNA
 

@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to set up a Jenkins server for building various CI/CD pipelines and solve the 2nd point of the `[Problem Statement](problem_statements.md)` under Task 1.
+The aim of this section is to set up a Jenkins server for building various CI/CD pipelines and solve the 2nd point of the [Problem Statement](problem_statements.md) under Task 1.
 
 About Jenkins
 

@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to set up VMs running Ubuntu Server and solve the 1st point of the `[Problem Statement](problem_statements.md)` under Task 1.
+The aim of this section is to set up VMs running Ubuntu Server and solve the 1st point of the [Problem Statement](problem_statements.md) under Task 1.
 
 ### **Setting up VMs**
 For the lab setup, create 2 VMs running Ubuntu 18.04 LTS on VirtualBox. One VM is for Jenkins deployment and the other is a production server for deploying DVNA via Jenkins pipeline. 

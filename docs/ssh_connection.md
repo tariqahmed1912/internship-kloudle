@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to enable SSH communication between the two VMs as part of the solution to 1st point of the `[Problem Statement](problem_statements.md)` under Task 1.
+The aim of this section is to enable SSH communication between the two VMs as part of the solution to 1st point of the [Problem Statement](problem_statements.md) under Task 1.
 
 About SSH
 
