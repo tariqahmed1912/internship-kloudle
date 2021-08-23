@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to set up a production server for deploying an application (DVNA).
+The aim of this section is to set up a production server for deploying an application (DVNA) and solve the 3rd point of the `[Problem Statement](problem_statements.md)` under Task 1.
 
 About DVNA
 
@@ -71,7 +71,9 @@ sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -
 ```
 
 To test if the containers are running, run a `docker ps`. You should see two containers running; dvna-app and dvna-mysql. You can stop running containers by using `docker stop <container-name-or-id>`. 
-	
+
+For deploying DVNA using Jenkins pipeline, the application will first be run in a docker container in the Jenkins VM. Static and dynamic analysis will be done and only then, will the application be deployed in the production server.
+
 <b>**Note:**</b> 
 
 1.  You can start the containers again using `docker start <container-name-or-id>`. When starting, however, you will have to start `dvna-mysql` container first because `dvna-app` is dependant on it.

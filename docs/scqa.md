@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to perform code linting and generate a code quality report.
+The aim of this section is to perform code linting and generate a code quality report and solve the 8th point of the `[Problem Statement](problem_statements.md)` under Task 1.
 
 ### **Code Linting**
 

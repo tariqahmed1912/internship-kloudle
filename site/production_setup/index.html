@@ -499,7 +499,7 @@
                   <h1>Setup of Production Server</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
-<p>The aim of this section is to set up a production server for deploying an application (DVNA).</p>
+<p>The aim of this section is to set up a production server for deploying an application (DVNA) and solve the 3rd point of the <code>[Problem Statement](problem_statements.md)</code> under Task 1.</p>
 <p>About DVNA</p>
 <ul>
 <li>Damn Vulnerable NodeJS Application is a simple NodeJS application to demonstrate <strong><a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">OWASP Top 10 Vulnerabilities</a></strong> and guide on fixing and avoiding these vulnerabilities.</li>
@@ -546,6 +546,7 @@ MYSQL_PORT=3306
 <pre><code class="language-bash">sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -p 9090:9090 -d appsecco/dvna
 </code></pre>
 <p>To test if the containers are running, run a <code>docker ps</code>. You should see two containers running; dvna-app and dvna-mysql. You can stop running containers by using <code>docker stop &lt;container-name-or-id&gt;</code>. </p>
+<p>For deploying DVNA using Jenkins pipeline, the application will first be run in a docker container in the Jenkins VM. Static and dynamic analysis will be done and only then, will the application be deployed in the production server.</p>
 <p><b><strong>Note:</strong></b> </p>
 <ol>
 <li>

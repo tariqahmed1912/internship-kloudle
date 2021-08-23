@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to generate a Software Bill of Materials (SBoM) for DVNA and generate a report.
+The aim of this section is to generate a Software Bill of Materials (SBoM) for DVNA and generate a report and solve the 7th point of the `[Problem Statement](problem_statements.md)` under Task 1.
 
 ### **SBoM**
 
