@@ -2,7 +2,6 @@
 
 The aim of this section is to show the complete CI/CD pipeline structure and solve the points 1-8 in [Problem Statement](problem_statements.md) under Task 1.
 
-
 ### **Complete Pipeline**
 
 ```bash
@@ -11,6 +10,12 @@ pipeline {
   
   stages {
     stage ('Initialization') {
+      steps {
+        sh 'echo "Starting the build!"'
+      }
+    }
+    
+    stage ('Build') {
       environment {
         MYSQL_USER="dvna"
         MYSQL_DATABASE="dvna"
@@ -20,13 +25,7 @@ pipeline {
         MYSQL_PORT=3306
       }
       steps {
-        sh 'echo "Starting the build!"'
         sh 'echo "MYSQL_USER=$MYSQL_USER\nMYSQL_DATABASE=$MYSQL_DATABASE\nMYSQL_PASSWORD=$MYSQL_PASSWORD\nMYSQL_RANDOM_ROOT_PASSWORD=$MYSQL_RANDOM_ROOT_PASSWORD\nMYSQL_HOST=$MYSQL_HOST\nMYSQL_PORT=$MYSQL_PORT" > ~/vars.env'
-      }
-    }
-    
-    stage ('Jenkins - Start DVNA and Copy Application Code') {
-      steps {
         sh 'docker run --rm -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
         sh 'docker run --rm -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna'
         sh 'docker cp dvna-app:/app/ ~/ && mkdir ~/reports && chmod 777 ~/reports'        
@@ -83,9 +82,9 @@ pipeline {
       }
     }
     
-    stage ('Deploy DVNA on Production') {
+    stage ('Deploy DVNA to Production') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql && docker rm dvna-app && docker rm dvna-mysql && docker rmi appsecco/dvna && docker rmi mysql:5.7 || true"'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql && docker rm dvna-app && docker rm dvna-mysql && docker rmi appsecco/dvna || true"'
         sh 'scp ~/vars.env tariq@192.168.56.102:~/'
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker run -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null"'
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker run -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna"'
@@ -94,12 +93,4 @@ pipeline {
 
   }
 }
-```
-
-### **NOTE**  
-A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a `0` status code.  
-```bash
-<scan command> || true 
-OR
-<scan command>; echo $? > /dev/null
 ```

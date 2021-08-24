@@ -7,11 +7,12 @@ nav:
   - Setup of Jenkins: 'jenkins_setup.md'
   - Setup of Production Server: 'production_setup.md'
   - SSH Connection between VMs: 'ssh_connection.md'
+  - Working of Pipeline: 'working_of_pipeline.md'
   - Static Analysis: 'static_analysis.md'
   - Software Composition Analysis: 'sca.md'
   - Dynamic Analysis: 'dynamic_analysis.md'
   - Software Bill of Materials: 'sbom.md'
   - Software Code Quality Analysis: 'scqa.md'
-  - Complete Pipeline Structure: 'complete_pipeline.md'
+  - Complete Pipeline: 'complete_pipeline.md'
   - Resources: 'resources.md'
 theme: material

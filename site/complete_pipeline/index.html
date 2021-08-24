@@ -14,7 +14,7 @@
     
     
       
-        <title>Complete Pipeline Structure - DevSecOps Pipeline</title>
+        <title>Complete Pipeline - DevSecOps Pipeline</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Complete Pipeline Structure
+              Complete Pipeline
             
           </span>
         </div>
@@ -280,6 +280,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../working_of_pipeline/" class="md-nav__link">
+        Working of Pipeline
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../static_analysis/" class="md-nav__link">
         Static Analysis
       </a>
@@ -363,12 +378,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Complete Pipeline Structure
+          Complete Pipeline
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Complete Pipeline Structure
+        Complete Pipeline
       </a>
       
         
@@ -394,13 +409,6 @@
           <li class="md-nav__item">
   <a href="#complete-pipeline" class="md-nav__link">
     Complete Pipeline
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    NOTE
   </a>
   
 </li>
@@ -471,13 +479,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#note" class="md-nav__link">
-    NOTE
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -496,7 +497,7 @@
               
                 
                 
-                  <h1>Complete Pipeline Structure</h1>
+                  <h1>Complete Pipeline</h1>
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
 <p>The aim of this section is to show the complete CI/CD pipeline structure and solve the points 1-8 in <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
@@ -506,6 +507,12 @@
 
   stages {
     stage ('Initialization') {
+      steps {
+        sh 'echo &quot;Starting the build!&quot;'
+      }
+    }
+
+    stage ('Build') {
       environment {
         MYSQL_USER=&quot;dvna&quot;
         MYSQL_DATABASE=&quot;dvna&quot;
@@ -515,13 +522,7 @@
         MYSQL_PORT=3306
       }
       steps {
-        sh 'echo &quot;Starting the build!&quot;'
         sh 'echo &quot;MYSQL_USER=$MYSQL_USER\nMYSQL_DATABASE=$MYSQL_DATABASE\nMYSQL_PASSWORD=$MYSQL_PASSWORD\nMYSQL_RANDOM_ROOT_PASSWORD=$MYSQL_RANDOM_ROOT_PASSWORD\nMYSQL_HOST=$MYSQL_HOST\nMYSQL_PORT=$MYSQL_PORT&quot; &gt; ~/vars.env'
-      }
-    }
-
-    stage ('Jenkins - Start DVNA and Copy Application Code') {
-      steps {
         sh 'docker run --rm -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
         sh 'docker run --rm -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna'
         sh 'docker cp dvna-app:/app/ ~/ &amp;&amp; mkdir ~/reports &amp;&amp; chmod 777 ~/reports'        
@@ -578,9 +579,9 @@
       }
     }
 
-    stage ('Deploy DVNA on Production') {
+    stage ('Deploy DVNA to Production') {
       steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql &amp;&amp; docker rm dvna-app &amp;&amp; docker rm dvna-mysql &amp;&amp; docker rmi appsecco/dvna &amp;&amp; docker rmi mysql:5.7 || true&quot;'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql &amp;&amp; docker rm dvna-app &amp;&amp; docker rm dvna-mysql &amp;&amp; docker rmi appsecco/dvna || true&quot;'
         sh 'scp ~/vars.env tariq@192.168.56.102:~/'
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker run -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null&quot;'
         sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker run -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna&quot;'
@@ -589,12 +590,6 @@
 
   }
 }
-</code></pre>
-<h3 id="note"><strong>NOTE</strong></h3>
-<p>A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands. Both of these will give a <code>0</code> status code.  </p>
-<pre><code class="language-bash">&lt;scan command&gt; || true 
-OR
-&lt;scan command&gt;; echo $? &gt; /dev/null
 </code></pre>
                 
               

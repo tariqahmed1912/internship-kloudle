@@ -14,7 +14,7 @@
     
     
       
-        <title>Problem Statement - DevSecOps Pipeline</title>
+        <title>Working of Pipeline - DevSecOps Pipeline</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#task-1" class="md-skip">
+        <a href="#objective" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Problem Statement
+              Working of Pipeline
             
           </span>
         </div>
@@ -203,47 +203,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Problem Statement
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../problem_statements/" class="md-nav__link">
         Problem Statement
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#task-1" class="md-nav__link">
-    TASK-1
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -314,11 +278,74 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../working_of_pipeline/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Working of Pipeline
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Working of Pipeline
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jenkins-pipeline" class="md-nav__link">
+    Jenkins Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkinsfile" class="md-nav__link">
+    Jenkinsfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-for-deploying-dvna" class="md-nav__link">
+    Pipeline for Deploying DVNA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -452,9 +479,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#task-1" class="md-nav__link">
-    TASK-1
+  <a href="#objective" class="md-nav__link">
+    Objective
   </a>
+  
+    <nav class="md-nav" aria-label="Objective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jenkins-pipeline" class="md-nav__link">
+    Jenkins Pipeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkinsfile" class="md-nav__link">
+    Jenkinsfile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-for-deploying-dvna" class="md-nav__link">
+    Pipeline for Deploying DVNA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -471,20 +525,49 @@
               
                 
                 
-                  <h1>Problem Statement</h1>
+                  <h1>Working of Pipeline</h1>
                 
-                <h3 id="task-1"><strong>TASK-1</strong></h3>
-<ol>
-<li>Setup the infrastructure, required for the task, on two virtual machines running locally on a laptop. One VM contains the Jenkins and related infrastructure, and the second VM is for deploying DVNA using the pipeline.</li>
-<li>Setup the Jenkins server and get to know Jenkins pipeline.</li>
-<li>Deploy the DVNA in the production server; both manually and through Jenkins pipeline.</li>
-<li>Perform static analysis by using suitable SAST tools on DVNA and generate a report.</li>
-<li>Getting to know Software Composition Analysis.</li>
-<li>Perform dynamic analysis by using suitable DAST tools on DVNA and generate a report.</li>
-<li>Generate Software Bill of Materials of DVNA for all its dependencies.</li>
-<li>Perform code quality analysis using suitable tools on DVNA and generate a report.</li>
-<li>Do extensive documentation in markdown and deploy it as a MkDocs website.</li>
-</ol>
+                <h2 id="objective"><strong>Objective</strong></h2>
+<p>The aim of this section is to understand the Jenkins pipeline to deploy DVNA and solve the points 1-8 in <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
+<h3 id="jenkins-pipeline"><strong>Jenkins Pipeline</strong></h3>
+<p>Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. A Jenkins Pipeline is a series of jobs/events to perform build, testing and deployment of software. In a Jenkins Pipeline, every job has some sort of dependency on at least one or more jobs or events. In our case, we will be integrating security in our pipeline by performing static and dynamic analysis using various SAST and DAST tools.</p>
+<h3 id="jenkinsfile"><strong>Jenkinsfile</strong></h3>
+<p>A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline and is checked into source control. </p>
+<pre><code class="language-bash">pipeline {
+  agent any
+
+  stages {
+    stage ('Initialization') {
+      steps {
+        sh 'echo &quot;Starting the build!&quot;'
+      }
+    }
+
+   stage ('Final') {
+     steps {
+       sh 'echo &quot;Final stage!&quot;'
+     }
+   }
+</code></pre>
+<p>The above sample consists of two <code>stages</code>; Initialization and Final. In each <code>stage</code>, shell commands can be run under <code>steps</code> using <code>sh</code>.</p>
+<h3 id="pipeline-for-deploying-dvna"><strong>Pipeline for Deploying DVNA</strong></h3>
+<p><strong>Stages</strong></p>
+<p>The pipeline is divided into various stages based on the operations being performed. They are as follows:</p>
+<p><strong>Initialization</strong></p>
+<p>This is the first stage in the pipeline and is used just to indicate the start of the build.</p>
+<p><strong>Build</strong></p>
+<p>In this stage, <code>vars.env</code> is created as it contains the environment variables required to link the <code>dvna-app</code> container with the <code>dvna-mysql</code> container. These containers are then run and the application code is copied into the hosts <code>jenkins</code> home directory (in my case, <code>/var/lib/jenkins</code>).</p>
+<p><strong>SAST and DAST</strong></p>
+<p>All the stages following the <code>Build</code> stage, excluding the last two stages, are for performing SAST and DAST on the application. The scan output reports are stored in a folder named <code>reports</code> in <code>jenkins</code> home directory.<br />
+<strong>NOTE:</strong> A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a <code>0</code> status code.  </p>
+<pre><code class="language-bash">&lt;scan command&gt; || true 
+OR
+&lt;scan command&gt;; echo $? &gt; /dev/null
+</code></pre>
+<p><strong>Take DVNA Offline</strong></p>
+<p>After the scans are complete, the running containers are stopped. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  <code>appsecco/dvna</code> docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the <code>mysql:5.7</code> image since we require v5.7 and not the latest version.</p>
+<p><strong>Deploy DVNA to Production</strong></p>
+<p>Finally, operations are performed on the Production VM over SSH (configured in the section titled <code>SSH Connection Between VMs</code>).  <code>vars.env</code> file is copied into Production server, and <code>dvna-app</code> and <code>dvna-mysql</code> containers are runthe Production server.. </p>
                 
               
               
@@ -504,7 +587,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../contents/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Table of Content" rel="prev">
+        <a href="../ssh_connection/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SSH Connection between VMs" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -513,20 +596,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Table of Content
+              SSH Connection between VMs
             </div>
           </div>
         </a>
       
       
         
-        <a href="../vm_setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Setup of VMs" rel="next">
+        <a href="../static_analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Static Analysis" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Setup of VMs
+              Static Analysis
             </div>
           </div>
           <div class="md-footer__button md-icon">
