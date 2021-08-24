@@ -9,7 +9,7 @@ Jenkins is a continuous integration server which has the ability to support the 
 
 ### **Jenkinsfile**
 
-A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline and is checked into a projects source control repository. 
+A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline.
 
 ```bash
 pipeline {
