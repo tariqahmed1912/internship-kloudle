@@ -557,43 +557,16 @@
 <p>The report <code>zap-report.html</code>, generated on successful completion, will be located in the users home directory.</p>
 <p><strong>Note:</strong> To open .html file in browser from terminal, type <code>open zap-report.html</code> from host terminal.</p>
 <h3 id="dast-pipeline"><strong>DAST Pipeline</strong></h3>
-<p>As we've already seen in <a href="../production_setup/">Setup of Production Server</a>, DVNA is deployed in a docker container. To perform DAST on DVNA, the application will run in a docker container and the DAST tool will run in another container (as shown earlier in this section). To work with docker containers via Jenkins pipeline, you'll need to add <code>jenkins</code> user to group <code>docker</code> to run docker commands without sudo.</p>
-<pre><code class="language-bash">sudo usermod -aG docker jenkins
-sudo reboot
-</code></pre>
-<p>The pipeline to implement DAST on DVNA is given below.</p>
-<pre><code class="language-bash">pipeline {
-  agent any
-  stages {
-    stage ('Initialization') {
-      steps {
-        sh 'echo &quot;Starting the build!&quot;'
-      }
-    }
-
-    stage('Start Application (DVNA)') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app&quot;'
-        sh 'mkdir ~/report &amp;&amp; chmod 777 ~/report'
-      }
-    }
-
-    }
-
-    stage('ZAP Scan') {
-      steps {
-        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
-      }
-    }
-
-    stage ('Final') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
-        sh 'echo &quot;Scan successfully completed!&quot;'
-      }
-    }
+<p>Add the following stage in the Jenkins pipelien for performing DAST on DVNA.</p>
+<pre><code class="language-bash">stage('ZAP Scan') {
+  steps {
+    sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
   }
 }
+</code></pre>
+<p><strong>Note:</strong> As we've already seen in <a href="../production_setup/">Setup of Production Server</a>, DVNA is deployed in a docker container. To perform DAST on DVNA, the application will run in a docker container and the DAST tool will run in another container (as shown earlier in this section). To work with docker containers via Jenkins pipeline, you'll need to add <code>jenkins</code> user to group <code>docker</code> to run docker commands without sudo.</p>
+<pre><code class="language-bash">sudo usermod -aG docker jenkins
+sudo reboot
 </code></pre>
 <h3 id="increase-vm-disk-space-optional"><strong>Increase VM Disk Space (Optional)</strong></h3>
 <p>While trying to run the Jenkins pipeline, I noticed there was an error during the ZAP scan. On reviewing the container logs, I realized that my VM was out of disk space. So instead of creating a new VM with more disk space (I was currently using the default 10GB), I decided to increase the disk space of the Jenkins VM to 16GB.</p>

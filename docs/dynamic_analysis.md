@@ -47,48 +47,21 @@ The report `zap-report.html`, generated on successful completion, will be locate
 
 ### **DAST Pipeline**
 
-As we've already seen in [Setup of Production Server](production_setup.md), DVNA is deployed in a docker container. To perform DAST on DVNA, the application will run in a docker container and the DAST tool will run in another container (as shown earlier in this section). To work with docker containers via Jenkins pipeline, you'll need to add `jenkins` user to group `docker` to run docker commands without sudo.
+Add the following stage in the Jenkins pipelien for performing DAST on DVNA.
+
+```bash    
+stage('ZAP Scan') {
+  steps {
+    sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
+  }
+}
+```
+
+**Note:** As we've already seen in [Setup of Production Server](production_setup.md), DVNA is deployed in a docker container. To perform DAST on DVNA, the application will run in a docker container and the DAST tool will run in another container (as shown earlier in this section). To work with docker containers via Jenkins pipeline, you'll need to add `jenkins` user to group `docker` to run docker commands without sudo.
 
 ```bash
 sudo usermod -aG docker jenkins
 sudo reboot
-```
-
-The pipeline to implement DAST on DVNA is given below.
-
-```bash
-pipeline {
-  agent any
-  stages {
-    stage ('Initialization') {
-      steps {
-        sh 'echo "Starting the build!"'
-      }
-    }
-    
-    stage('Start Application (DVNA)') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql && docker start dvna-app"'
-        sh 'mkdir ~/report && chmod 777 ~/report'
-      }
-    }
-    
-    }
-    
-    stage('ZAP Scan') {
-      steps {
-        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
-      }
-    }
-
-    stage ('Final') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql;"'
-        sh 'echo "Scan successfully completed!"'
-      }
-    }
-  }
-}
 ```
 
 

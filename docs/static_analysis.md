@@ -15,25 +15,7 @@ Prerequisites
 
 NodeJsScan is a static code scanner which is used to find security flaws in Node.js applications.
 
-#### Web-based 
-
-Pull NodeJsScan docker image.
-
-```bash
-sudo docker pull opensecurity/nodejsscan:latest
-```
-    
-Run nodjsscan container with host-port `9090` mapped to container-port `9090`.
-
-```bash
-sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
-```
-    
-You can access the website by typing `<ip-address>:9090` in the browsers URL. To perform SAST, upload multiple files (as a zip file) or individual file and run the scan.
-
-#### CLI-based
-
- In the Production server, enter DVNA container in exec mode.
+In the Jenkins server, enter DVNA container in exec mode.
 
 ```bash
 sudo docker exec -it -u 0 dvna-app /bin/bash
@@ -59,11 +41,21 @@ mkdir ~/reports
 njsscan --json -o /app/reports/nodejsscan-report ~/app
 ```
 
+**NodeJsScan Pipeline**
+
+```bash
+stage('NodeJsScan') {
+  steps {
+    sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
+  }
+}
+``` 
+
 ### **Auditjs**
 
 Auditjs is a SAST tool which detects vulnerablilites in dependencies (node modules) used in your application. It interacts with Sonatype Nexus IQ Server to check for known and disclosed vulnerabailites.
 
-In the Production server, enter DVNA container in exec mode.
+In the Jenkins server, enter DVNA container in exec mode.
 
 ```bash
 sudo docker exec -it -u 0 dvna-app /bin/bash
@@ -100,49 +92,32 @@ at OSS Index and run the scan with your accounts `username` and `API-token`.
 auditjs ossi --username <USERNAME> --token <API-TOKEN> > ~/reports/auditjs-report
 ```
 
-### **SAST Pipeline**
-
-The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.
-
-The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:
+**AuditJs Pipeline**
 
 ```bash
-pipeline {
-  agent any
-  stages {
-    stage ('Initialization') {
-      steps {
-        sh 'echo "Starting the build!"'
-      }
-    }
-    
-    stage('Copy Application Code') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker start dvna-mysql && docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app && docker stop dvna-mysql;"'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ && mkdir -p ~/reports'
-      }
-    }
-    
-    stage('NodeJsScan') {
-      steps {
-        sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
-      }
-    }
-    
-    stage('Auditjs') {
-      steps {
-        sh 'cd ~/app; auditjs ossi > ~/reports/auditjs-report || true'
-      }
-    }
+stage('Auditjs') {
+  steps {
+    sh 'cd ~/app; auditjs ossi > ~/reports/auditjs-report || true'
+  }
+}
+```
 
-    stage ('Final') {
-      steps {
-        sh 'rm -rf ~/app'
-        sh 'echo "Scan successfully completed!"'
-      }
-    }
+### **SAST Pipeline**
 
+The static analysis is done on the application source code in `dvna-app` container running on Jenkins server.
+
+Add the following stages to the Jenkinsfile for performing SAST of DVNA.
+
+```bash
+stage('NodeJsScan') {
+  steps {
+    sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
   }
 }
 
+stage('Auditjs') {
+  steps {
+    sh 'cd ~/app; auditjs ossi > ~/reports/auditjs-report || true'
+  }
+}
 ```

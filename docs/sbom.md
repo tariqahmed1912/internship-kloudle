@@ -26,7 +26,8 @@ cyclonedx-bom -o sbom.xml
 
 ### **SBoM Pipeline**
 
-Add this stage in the Jenkins pipeline for generating the SBoM.  
+Add the following stage in the Jenkins pipeline for generating the SBoM.
+  
 ```bash
 stage ('Generating Software Bill of Materials') {
     steps {

@@ -336,26 +336,6 @@
     NodeJsScan
   </a>
   
-    <nav class="md-nav" aria-label="NodeJsScan">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#web-based" class="md-nav__link">
-    Web-based
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cli-based" class="md-nav__link">
-    CLI-based
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -511,26 +491,6 @@
     NodeJsScan
   </a>
   
-    <nav class="md-nav" aria-label="NodeJsScan">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#web-based" class="md-nav__link">
-    Web-based
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cli-based" class="md-nav__link">
-    CLI-based
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -580,16 +540,7 @@
 </ul>
 <h3 id="nodejsscan"><strong>NodeJsScan</strong></h3>
 <p>NodeJsScan is a static code scanner which is used to find security flaws in Node.js applications.</p>
-<h4 id="web-based">Web-based</h4>
-<p>Pull NodeJsScan docker image.</p>
-<pre><code class="language-bash">sudo docker pull opensecurity/nodejsscan:latest
-</code></pre>
-<p>Run nodjsscan container with host-port <code>9090</code> mapped to container-port <code>9090</code>.</p>
-<pre><code class="language-bash">sudo docker run -it -p 9090:9090 opensecurity/nodejsscan:latest -d
-</code></pre>
-<p>You can access the website by typing <code>&lt;ip-address&gt;:9090</code> in the browsers URL. To perform SAST, upload multiple files (as a zip file) or individual file and run the scan.</p>
-<h4 id="cli-based">CLI-based</h4>
-<p>In the Production server, enter DVNA container in exec mode.</p>
+<p>In the Jenkins server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
 <p>Following the <a href="https://github.com/ajinabraham/nodejsscan">official documentation</a> available on GitHub, I installed njsscan using pip3. To use pip3, we first need to install it in the <code>dvna-app</code> container in production server.</p>
@@ -603,9 +554,16 @@
 
 njsscan --json -o /app/reports/nodejsscan-report ~/app
 </code></pre>
+<p><strong>NodeJsScan Pipeline</strong></p>
+<pre><code class="language-bash">stage('NodeJsScan') {
+  steps {
+    sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
+  }
+}
+</code></pre>
 <h3 id="auditjs"><strong>Auditjs</strong></h3>
 <p>Auditjs is a SAST tool which detects vulnerablilites in dependencies (node modules) used in your application. It interacts with Sonatype Nexus IQ Server to check for known and disclosed vulnerabailites.</p>
-<p>In the Production server, enter DVNA container in exec mode.</p>
+<p>In the Jenkins server, enter DVNA container in exec mode.</p>
 <pre><code class="language-bash">sudo docker exec -it -u 0 dvna-app /bin/bash
 </code></pre>
 <p>Following the <a href="https://github.com/ajinabraham/nodejsscan">official documentation</a> available on GitHub, I installed auditjs using NPM (Node Packet Manager). To install <code>npm</code> and <code>nodejs</code> in <code>dvna-app</code> container in production server, I referred this <a href="https://www.tecmint.com/install-nodejs-npm-in-centos-ubuntu/">documentation</a> as it's clear and easy to follow. After running the following commands, the package versions are: <code>npm v6.14.14</code> and <code>nodejs v14.17.4</code>.<br />
@@ -626,47 +584,27 @@ at OSS Index and run the scan with your accounts <code>username</code> and <code
 <p><strong>Note</strong>: You can find the <code>API-token</code> in the <code>User Settings</code> after logging into the OSS Index website.</p>
 <pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;API-TOKEN&gt; &gt; ~/reports/auditjs-report
 </code></pre>
+<p><strong>AuditJs Pipeline</strong></p>
+<pre><code class="language-bash">stage('Auditjs') {
+  steps {
+    sh 'cd ~/app; auditjs ossi &gt; ~/reports/auditjs-report || true'
+  }
+}
+</code></pre>
 <h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
-<p>The static analysis is done by copying the DVNA code in Production server to Jenkins server, and then running multiple static analysis scans.</p>
-<p>The Jenkinsfile for performing SAST of DVNA via Jenkins pipeline is given below:</p>
-<pre><code class="language-bash">pipeline {
-  agent any
-  stages {
-    stage ('Initialization') {
-      steps {
-        sh 'echo &quot;Starting the build!&quot;'
-      }
-    }
-
-    stage('Copy Application Code') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/; docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir -p ~/reports'
-      }
-    }
-
-    stage('NodeJsScan') {
-      steps {
-        sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
-      }
-    }
-
-    stage('Auditjs') {
-      steps {
-        sh 'cd ~/app; auditjs ossi &gt; ~/reports/auditjs-report || true'
-      }
-    }
-
-    stage ('Final') {
-      steps {
-        sh 'rm -rf ~/app'
-        sh 'echo &quot;Scan successfully completed!&quot;'
-      }
-    }
-
+<p>The static analysis is done on the application source code in <code>dvna-app</code> container running on Jenkins server.</p>
+<p>Add the following stages to the Jenkinsfile for performing SAST of DVNA.</p>
+<pre><code class="language-bash">stage('NodeJsScan') {
+  steps {
+    sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
   }
 }
 
+stage('Auditjs') {
+  steps {
+    sh 'cd ~/app; auditjs ossi &gt; ~/reports/auditjs-report || true'
+  }
+}
 </code></pre>
                 
               

@@ -28,6 +28,15 @@ The above command will scan all the files in the `/app` directory. To restrict t
 jshint $(find ~/app -type f -name "*.js" -o -name "*.ejs" | grep -v node_modules) > ~/reports/jshint-report
 ```
 
+**JSHint Pipeline**
+
+```bash
+stage ('JSHint Analysis') {
+  steps {
+    sh 'jshint $(find ~/app -type f \( -name "*.js" -o -name "*.ejs" \) | grep -v node_modules) > ~/reports/jshint-report || true'
+  }
+}
+```
 
 ### **ESLint**
 
@@ -76,6 +85,16 @@ To perform an eslint scan, run `eslint` command with the following flags;
 
 ```bash
 eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
+```
+
+**ESLint Pipeline**
+
+```bash
+stage ('ESLint Analysis') {
+  steps {
+    sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
+  }
+}
 ```
 
 ### **Code Quality Pipeline**

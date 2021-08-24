@@ -530,9 +530,9 @@
                 <h2 id="objective"><strong>Objective</strong></h2>
 <p>The aim of this section is to understand the Jenkins pipeline to deploy DVNA and solve the points 1-8 in <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
 <h3 id="jenkins-pipeline"><strong>Jenkins Pipeline</strong></h3>
-<p>Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. A Jenkins Pipeline is a series of jobs/events to perform build, testing and deployment of software. Every job has some sort of dependency on at least one or more jobs or events in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.</p>
+<p>Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. Jenkins pipelines are made up of multiple steps that allow you to build, test and deploy applications. Every stage (an event/job) has some sort of dependency on at least one or more jobs or events in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.</p>
 <h3 id="jenkinsfile"><strong>Jenkinsfile</strong></h3>
-<p>A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline and is checked into source control. </p>
+<p>A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline and is checked into a projects source control repository. </p>
 <pre><code class="language-bash">pipeline {
   agent any
 
@@ -543,30 +543,73 @@
       }
     }
 
-   stage ('Final') {
-     steps {
-       sh 'echo &quot;Final stage!&quot;'
-     }
-   }
+    stage ('Build') {
+      environment {
+        MYSQL_USER=&quot;dvna&quot;
+        MYSQL_DATABASE=&quot;dvna&quot;
+        MYSQL_PASSWORD=&lt;PASSWORD&gt;
+        MYSQL_RANDOM_ROOT_PASSWORD=&lt;ROOT_PASSWORD&gt;
+        MYSQL_HOST=&quot;mysql-db&quot;
+        MYSQL_PORT=3306
+      }
+      steps {
+        sh 'echo &quot;MYSQL_USER=$MYSQL_USER\nMYSQL_DATABASE=$MYSQL_DATABASE\nMYSQL_PASSWORD=$MYSQL_PASSWORD\nMYSQL_RANDOM_ROOT_PASSWORD=$MYSQL_RANDOM_ROOT_PASSWORD\nMYSQL_HOST=$MYSQL_HOST\nMYSQL_PORT=$MYSQL_PORT&quot; &gt; ~/vars.env'
+        sh 'docker run --rm -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
+        sh 'docker run --rm -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna'
+        sh 'docker cp dvna-app:/app/ ~/ &amp;&amp; mkdir ~/reports &amp;&amp; chmod 777 ~/reports'        
+      }
+    } 
+
+
+    stage('SAST and DAST Scans') {
+      ........
+    }
+
+
+    stage ('Remove DVNA from Jenkins') {
+      steps {
+        sh 'rm -rf ~/app'
+        sh 'docker stop dvna-app &amp;&amp; docker stop dvna-mysql'
+        sh 'docker rmi appsecco/dvna &amp;&amp; docker rmi mysql:5.7'
+      }
+    }
+
+    stage ('Deploy DVNA to Production') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql &amp;&amp; docker rm dvna-app &amp;&amp; docker rm dvna-mysql &amp;&amp; docker rmi appsecco/dvna || true&quot;'
+        sh 'scp ~/vars.env tariq@192.168.56.102:~/'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker run -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null&quot;'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker run -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna&quot;'
+      }
+    }
+
+  }
+}
 </code></pre>
-<p>The above sample consists of two <code>stages</code>; Initialization and Final. In each <code>stage</code>, shell commands can be run under <code>steps</code> using <code>sh</code>.</p>
+<p>Components of the Jenkinsfile-<br />
+- <code>pipeline</code> - Constitutes the entire definition of the pipeline.
+- <code>agent</code> - Used to choose the way the Jenkins instance(s) are used to run the pipeline. The <code>any</code> keyword defines that Jenkins should allocate any available agent (an instance of Jenkins/a slave/the master instance) to execute the pipeline.
+- <code>stages</code> - Consists of all the stages/jobs to be performed during the execution of the pipeline.
+- <code>stage</code> - Specify the task to be performed.
+- <code>steps</code> - Defines actions to be performed within a particular stage.
+- <code>sh</code> - Used to execute shell commands.</p>
 <h3 id="pipeline-for-deploying-dvna"><strong>Pipeline for Deploying DVNA</strong></h3>
 <p>The pipeline is divided into various stages based on the operations being performed. They are as follows:</p>
 <p><strong>Initialization</strong></p>
 <p>This is the first stage in the pipeline and is used just to indicate the start of the build.</p>
 <p><strong>Build</strong></p>
-<p>In this stage, <code>vars.env</code> is created as it contains the environment variables required to link the <code>dvna-app</code> container with the <code>dvna-mysql</code> container. These containers are then run and the application code is copied into the hosts <code>jenkins</code> home directory (in my case, <code>/var/lib/jenkins</code>).</p>
-<p><strong>SAST and DAST</strong></p>
-<p>All the stages following the <code>Build</code> stage, excluding the last two stages, are for performing SAST and DAST on the application. The scan output reports are stored in a folder named <code>reports</code> in <code>jenkins</code> home directory.<br />
-<strong>NOTE:</strong> A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a <code>0</code> status code.  </p>
+<p>In this stage, <code>vars.env</code> file is created as it contains the environment variables for <code>dvna-mysql</code> db container. Two containers, <code>dvna-app</code> and <code>dvna-mysql</code>, are then run and the application code is copied into the hosts <code>jenkins</code> home directory (in my case, <code>/var/lib/jenkins</code>).</p>
+<p><strong>SAST and DAST Scans</strong></p>
+<p>All the stages following the <code>Build</code> stage, excluding the last two stages, are for performing SAST and DAST on the application. The scans are performed on the application running on the Jenkins VM and their output reports are stored in a folder named <code>reports</code> in <code>jenkins</code> home directory.<br />
+<strong>NOTE:</strong> Most of the scans such as like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a <code>0</code> status code.  </p>
 <pre><code class="language-bash">&lt;scan command&gt; || true 
 OR
 &lt;scan command&gt;; echo $? &gt; /dev/null
 </code></pre>
-<p><strong>Take DVNA Offline</strong></p>
-<p>After the scans are complete, the running containers are stopped. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  <code>appsecco/dvna</code> docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the <code>mysql:5.7</code> image, since we require v5.7 and not the latest version.</p>
+<p><strong>Remove DVNA from Jenkins</strong></p>
+<p>After the scans are complete, the containers running in Jenkins VM are stopped and removed. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  <code>appsecco/dvna</code> docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the <code>mysql:5.7</code> image, since we require v5.7 and not the latest version.</p>
 <p><strong>Deploy DVNA to Production</strong></p>
-<p>Finally, operations are performed on the Production VM over SSH (configured in the section titled <code>SSH Connection Between VMs</code>).  <code>vars.env</code> file is copied into Production server, and the two containers; <code>dvna-app</code> and <code>dvna-mysql</code>, are run.</p>
+<p>Finally, operations are performed on the Production VM over SSH (configured in the section titled <code>SSH Connection Between VMs</code>). <code>vars.env</code> file is copied into Production server, and the two containers; <code>dvna-app</code> and <code>dvna-mysql</code>, are run. The application is now successfully deployed!</p>
                 
               
               

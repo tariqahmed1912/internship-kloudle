@@ -5,11 +5,11 @@ The aim of this section is to understand the Jenkins pipeline to deploy DVNA and
 
 ### **Jenkins Pipeline**
 
-Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. A Jenkins Pipeline is a series of jobs/events to perform build, testing and deployment of software. Every job has some sort of dependency on at least one or more jobs or events in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.
+Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. Jenkins pipelines are made up of multiple steps that allow you to build, test and deploy applications. Every stage (an event/job) has some sort of dependency on at least one or more jobs or events in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.
 
 ### **Jenkinsfile**
 
-A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline and is checked into source control. 
+A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline and is checked into a projects source control repository. 
 
 ```bash
 pipeline {
@@ -21,15 +21,58 @@ pipeline {
         sh 'echo "Starting the build!"'
       }
     }
+    
+    stage ('Build') {
+      environment {
+        MYSQL_USER="dvna"
+        MYSQL_DATABASE="dvna"
+        MYSQL_PASSWORD=<PASSWORD>
+        MYSQL_RANDOM_ROOT_PASSWORD=<ROOT_PASSWORD>
+        MYSQL_HOST="mysql-db"
+        MYSQL_PORT=3306
+      }
+      steps {
+        sh 'echo "MYSQL_USER=$MYSQL_USER\nMYSQL_DATABASE=$MYSQL_DATABASE\nMYSQL_PASSWORD=$MYSQL_PASSWORD\nMYSQL_RANDOM_ROOT_PASSWORD=$MYSQL_RANDOM_ROOT_PASSWORD\nMYSQL_HOST=$MYSQL_HOST\nMYSQL_PORT=$MYSQL_PORT" > ~/vars.env'
+        sh 'docker run --rm -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null'
+        sh 'docker run --rm -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna'
+        sh 'docker cp dvna-app:/app/ ~/ && mkdir ~/reports && chmod 777 ~/reports'        
+      }
+    } 
+       
 
-   stage ('Final') {
-     steps {
-       sh 'echo "Final stage!"'
-     }
-   }
+    stage('SAST and DAST Scans') {
+      ........
+    }
+    
+
+    stage ('Remove DVNA from Jenkins') {
+      steps {
+        sh 'rm -rf ~/app'
+        sh 'docker stop dvna-app && docker stop dvna-mysql'
+        sh 'docker rmi appsecco/dvna && docker rmi mysql:5.7'
+      }
+    }
+    
+    stage ('Deploy DVNA to Production') {
+      steps {
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker stop dvna-app && docker stop dvna-mysql && docker rm dvna-app && docker rm dvna-mysql && docker rmi appsecco/dvna || true"'
+        sh 'scp ~/vars.env tariq@192.168.56.102:~/'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker run -d --name dvna-mysql --env-file ~/vars.env mysql:5.7 tail -f /dev/null"'
+        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 "docker run -d --name dvna-app --env-file ~/vars.env --link dvna-mysql:mysql-db -p 9090:9090 appsecco/dvna"'
+      }
+    }
+
+  }
+}
 ```
 
-The above sample consists of two `stages`; Initialization and Final. In each `stage`, shell commands can be run under `steps` using `sh`.
+Components of the Jenkinsfile-  
+- `pipeline` - Constitutes the entire definition of the pipeline.
+- `agent` - Used to choose the way the Jenkins instance(s) are used to run the pipeline. The `any` keyword defines that Jenkins should allocate any available agent (an instance of Jenkins/a slave/the master instance) to execute the pipeline.
+- `stages` - Consists of all the stages/jobs to be performed during the execution of the pipeline.
+- `stage` - Specify the task to be performed.
+- `steps` - Defines actions to be performed within a particular stage.
+- `sh` - Used to execute shell commands.
 
 ### **Pipeline for Deploying DVNA**
 
@@ -41,22 +84,22 @@ This is the first stage in the pipeline and is used just to indicate the start o
 
 **Build**
 
-In this stage, `vars.env` is created as it contains the environment variables required to link the `dvna-app` container with the `dvna-mysql` container. These containers are then run and the application code is copied into the hosts `jenkins` home directory (in my case, `/var/lib/jenkins`).
+In this stage, `vars.env` file is created as it contains the environment variables for `dvna-mysql` db container. Two containers, `dvna-app` and `dvna-mysql`, are then run and the application code is copied into the hosts `jenkins` home directory (in my case, `/var/lib/jenkins`).
 
-**SAST and DAST**
+**SAST and DAST Scans**
 
-All the stages following the `Build` stage, excluding the last two stages, are for performing SAST and DAST on the application. The scan output reports are stored in a folder named `reports` in `jenkins` home directory.  
-**NOTE:** A lot of scans like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a `0` status code.  
+All the stages following the `Build` stage, excluding the last two stages, are for performing SAST and DAST on the application. The scans are performed on the application running on the Jenkins VM and their output reports are stored in a folder named `reports` in `jenkins` home directory.  
+**NOTE:** Most of the scans such as like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a `0` status code.  
 ```bash
 <scan command> || true 
 OR
 <scan command>; echo $? > /dev/null
 ```
 
-**Take DVNA Offline**
+**Remove DVNA from Jenkins**
 
-After the scans are complete, the running containers are stopped. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  `appsecco/dvna` docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the `mysql:5.7` image, since we require v5.7 and not the latest version.
+After the scans are complete, the containers running in Jenkins VM are stopped and removed. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  `appsecco/dvna` docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the `mysql:5.7` image, since we require v5.7 and not the latest version.
 
 **Deploy DVNA to Production**
 
-Finally, operations are performed on the Production VM over SSH (configured in the section titled `SSH Connection Between VMs`).  `vars.env` file is copied into Production server, and the two containers; `dvna-app` and `dvna-mysql`, are run.
+Finally, operations are performed on the Production VM over SSH (configured in the section titled `SSH Connection Between VMs`). `vars.env` file is copied into Production server, and the two containers; `dvna-app` and `dvna-mysql`, are run. The application is now successfully deployed!
