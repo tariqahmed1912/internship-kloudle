@@ -530,7 +530,7 @@
                 <h2 id="objective"><strong>Objective</strong></h2>
 <p>The aim of this section is to understand the Jenkins pipeline to deploy DVNA and solve the points 1-8 in <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
 <h3 id="jenkins-pipeline"><strong>Jenkins Pipeline</strong></h3>
-<p>Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. A Jenkins Pipeline is a series of jobs/events to perform build, testing and deployment of software. In a Jenkins Pipeline, every job has some sort of dependency on at least one or more jobs or events. In our case, we will be integrating security in our pipeline by performing static and dynamic analysis using various SAST and DAST tools.</p>
+<p>Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. A Jenkins Pipeline is a series of jobs/events to perform build, testing and deployment of software. Every job has some sort of dependency on at least one or more jobs or events in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.</p>
 <h3 id="jenkinsfile"><strong>Jenkinsfile</strong></h3>
 <p>A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline and is checked into source control. </p>
 <pre><code class="language-bash">pipeline {
@@ -551,7 +551,6 @@
 </code></pre>
 <p>The above sample consists of two <code>stages</code>; Initialization and Final. In each <code>stage</code>, shell commands can be run under <code>steps</code> using <code>sh</code>.</p>
 <h3 id="pipeline-for-deploying-dvna"><strong>Pipeline for Deploying DVNA</strong></h3>
-<p><strong>Stages</strong></p>
 <p>The pipeline is divided into various stages based on the operations being performed. They are as follows:</p>
 <p><strong>Initialization</strong></p>
 <p>This is the first stage in the pipeline and is used just to indicate the start of the build.</p>
@@ -565,9 +564,9 @@ OR
 &lt;scan command&gt;; echo $? &gt; /dev/null
 </code></pre>
 <p><strong>Take DVNA Offline</strong></p>
-<p>After the scans are complete, the running containers are stopped. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  <code>appsecco/dvna</code> docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the <code>mysql:5.7</code> image since we require v5.7 and not the latest version.</p>
+<p>After the scans are complete, the running containers are stopped. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  <code>appsecco/dvna</code> docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the <code>mysql:5.7</code> image, since we require v5.7 and not the latest version.</p>
 <p><strong>Deploy DVNA to Production</strong></p>
-<p>Finally, operations are performed on the Production VM over SSH (configured in the section titled <code>SSH Connection Between VMs</code>).  <code>vars.env</code> file is copied into Production server, and <code>dvna-app</code> and <code>dvna-mysql</code> containers are runthe Production server.. </p>
+<p>Finally, operations are performed on the Production VM over SSH (configured in the section titled <code>SSH Connection Between VMs</code>).  <code>vars.env</code> file is copied into Production server, and the two containers; <code>dvna-app</code> and <code>dvna-mysql</code>, are run.</p>
                 
               
               
