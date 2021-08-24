@@ -67,11 +67,12 @@ pipeline {
 ```
 
 Components of the Jenkinsfile-  
-- `pipeline` - Constitutes the entire definition of the pipeline.
-- `agent` - Used to choose the way the Jenkins instance(s) are used to run the pipeline. The `any` keyword defines that Jenkins should allocate any available agent (an instance of Jenkins/a slave/the master instance) to execute the pipeline.
-- `stages` - Consists of all the stages/jobs to be performed during the execution of the pipeline.
-- `stage` - Specify the task to be performed.
-- `steps` - Defines actions to be performed within a particular stage.
+
+- `pipeline` - Constitutes the entire definition of the pipeline.  
+- `agent` - Used to choose the way the Jenkins instance(s) are used to run the pipeline. The `any` keyword defines that Jenkins should allocate any available agent (an instance of Jenkins/a slave/the master instance) to execute the pipeline.  
+- `stages` - Consists of all the stages/jobs to be performed during the execution of the pipeline.  
+- `stage` - Specify the task to be performed.  
+- `steps` - Defines actions to be performed within a particular stage.  
 - `sh` - Used to execute shell commands.
 
 ### **Pipeline for Deploying DVNA**

@@ -586,13 +586,15 @@
   }
 }
 </code></pre>
-<p>Components of the Jenkinsfile-<br />
-- <code>pipeline</code> - Constitutes the entire definition of the pipeline.
-- <code>agent</code> - Used to choose the way the Jenkins instance(s) are used to run the pipeline. The <code>any</code> keyword defines that Jenkins should allocate any available agent (an instance of Jenkins/a slave/the master instance) to execute the pipeline.
-- <code>stages</code> - Consists of all the stages/jobs to be performed during the execution of the pipeline.
-- <code>stage</code> - Specify the task to be performed.
-- <code>steps</code> - Defines actions to be performed within a particular stage.
-- <code>sh</code> - Used to execute shell commands.</p>
+<p>Components of the Jenkinsfile-  </p>
+<ul>
+<li><code>pipeline</code> - Constitutes the entire definition of the pipeline.  </li>
+<li><code>agent</code> - Used to choose the way the Jenkins instance(s) are used to run the pipeline. The <code>any</code> keyword defines that Jenkins should allocate any available agent (an instance of Jenkins/a slave/the master instance) to execute the pipeline.  </li>
+<li><code>stages</code> - Consists of all the stages/jobs to be performed during the execution of the pipeline.  </li>
+<li><code>stage</code> - Specify the task to be performed.  </li>
+<li><code>steps</code> - Defines actions to be performed within a particular stage.  </li>
+<li><code>sh</code> - Used to execute shell commands.</li>
+</ul>
 <h3 id="pipeline-for-deploying-dvna"><strong>Pipeline for Deploying DVNA</strong></h3>
 <p>The pipeline is divided into various stages based on the operations being performed. They are as follows:</p>
 <p><strong>Initialization</strong></p>
