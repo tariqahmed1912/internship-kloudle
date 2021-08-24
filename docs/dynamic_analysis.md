@@ -110,13 +110,7 @@ Check if the available space has increased.
 df -h
 ```
 
-**Note:** While running the ZAP scan in pipeline, I got the following error:
-
-```bash
-ERROR [Errno 13] Permission denied: '/zap/wrk/zap-report.html'
-```
-
-To resolve this error, I changed the permissions of `/var/lib/jenkins/reports` directory.
+**Note:** While running the ZAP scan in pipeline, I got the following error: ```ERROR [Errno 13] Permission denied: '/zap/wrk/zap-report.html'```.  To resolve this error, I changed the permissions of `/var/lib/jenkins/reports` directory.
 
 ```bash
 sudo chmod 777 /var/lib/jenkins/report
