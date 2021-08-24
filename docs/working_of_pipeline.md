@@ -5,7 +5,7 @@ The aim of this section is to understand the Jenkins pipeline to deploy DVNA and
 
 ### **Jenkins Pipeline**
 
-Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. Jenkins pipelines are made up of multiple steps/stages that allow you to build, test and deploy applications. Every stage (job/event) has some sort of dependency on at least one or more stages in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.
+Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. Jenkins pipelines are made up of multiple stages (jobs/events) that allow you to build, test and deploy applications. Every stage has some sort of dependency on at least one or more stages in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.
 
 ### **Jenkinsfile**
 
