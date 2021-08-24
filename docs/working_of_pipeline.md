@@ -75,7 +75,7 @@ Components of the Jenkinsfile-
 - `steps` - Defines actions to be performed within a particular stage.  
 - `sh` - Used to execute shell commands.
 
-### **Pipeline for Deploying DVNA**
+### **CI/CD Pipeline for Deploying DVNA**
 
 The pipeline is divided into various stages based on the operations being performed. They are as follows:
 
