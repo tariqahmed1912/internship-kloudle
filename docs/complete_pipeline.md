@@ -4,7 +4,7 @@ The aim of this section is to show the complete CI/CD pipeline structure and sol
 
 ### **Complete Pipeline**
 
-The following is the complete pipeline to perform multiple scans on the application and then deploying it in Production VM.
+The following is the complete pipeline to perform multiple scans on the application and then deploy it in Production VM.
 
 ```bash
 pipeline {
