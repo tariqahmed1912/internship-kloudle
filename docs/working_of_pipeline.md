@@ -90,7 +90,8 @@ In this stage, `vars.env` file is created as it contains the environment variabl
 **SAST and DAST Scans**
 
 All the stages following the `Build` stage, excluding the last two stages, are for performing SAST and DAST on the application. The scans are performed on the application running on the Jenkins VM and their output reports are stored in a folder named `reports` in `jenkins` home directory.  
-**NOTE:** Most of the scans such as like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a `0` status code.  
+
+**Note:** Most of the scans such as like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as `FAILED` and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a `0` status code.  
 ```bash
 <scan command> || true 
 OR

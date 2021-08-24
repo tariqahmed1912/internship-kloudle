@@ -602,8 +602,8 @@
 <p><strong>Build</strong></p>
 <p>In this stage, <code>vars.env</code> file is created as it contains the environment variables for <code>dvna-mysql</code> db container. Two containers, <code>dvna-app</code> and <code>dvna-mysql</code>, are then run and the application code is copied into the hosts <code>jenkins</code> home directory (in my case, <code>/var/lib/jenkins</code>).</p>
 <p><strong>SAST and DAST Scans</strong></p>
-<p>All the stages following the <code>Build</code> stage, excluding the last two stages, are for performing SAST and DAST on the application. The scans are performed on the application running on the Jenkins VM and their output reports are stored in a folder named <code>reports</code> in <code>jenkins</code> home directory.<br />
-<strong>NOTE:</strong> Most of the scans such as like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a <code>0</code> status code.  </p>
+<p>All the stages following the <code>Build</code> stage, excluding the last two stages, are for performing SAST and DAST on the application. The scans are performed on the application running on the Jenkins VM and their output reports are stored in a folder named <code>reports</code> in <code>jenkins</code> home directory.  </p>
+<p><strong>Note:</strong> Most of the scans such as like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a <code>0</code> status code.  </p>
 <pre><code class="language-bash">&lt;scan command&gt; || true 
 OR
 &lt;scan command&gt;; echo $? &gt; /dev/null
