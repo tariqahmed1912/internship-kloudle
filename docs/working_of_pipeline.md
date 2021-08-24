@@ -1,6 +1,6 @@
 ## **Objective**
 
-The aim of this section is to understand the Jenkins pipeline to deploy DVNA and solve the points 1-8 in [Problem Statement](problem_statements.md) under Task 1.
+The aim of this section is to understand the Jenkins pipeline to deploy DVNA and solve the points 2-8 in [Problem Statement](problem_statements.md) under Task 1.
 
 
 ### **Jenkins Pipeline**
