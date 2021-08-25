@@ -40,3 +40,8 @@ These are some references I used along with the ones mentioned implicitly in the
 - JSHint ([https://jshint.com/docs/cli/](https://jshint.com/docs/cli/), [https://github.com/jshint/jshint](https://github.com/jshint/jshint))
 - ESLint ([https://eslint.org/docs/user-guide/](https://eslint.org/docs/user-guide/), [https://github.com/eslint/eslint](https://github.com/eslint/eslint))
 - ESLint CLI ([https://eslint.org/docs/user-guide/command-line-interface](https://eslint.org/docs/user-guide/command-line-interface))
+
+### Shifting Local Setup to AWS
+
+- EC2 Instances ([https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html))
+- Setup to use EC2 ([https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#sign-up-for-aws](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#sign-up-for-aws))
