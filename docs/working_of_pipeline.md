@@ -17,14 +17,14 @@ To start creating a new pipeline in Jenkins, login to the Jenkins web interface 
     Check the `Discard Old Builds` option if you don't want to keep the console output, archived artifacts, and any other metadata related to older builds. They take up unnecessary disk space on the server. You can then specify the max number of days to keep builds and how many builds at max should be kept.
 
     - Under the `Pipeline` section-  
-    Select `Pipeline script from SCM` and select SCM as `Git`. You will then have to specify your GitHub URL where your file containing details about the pipeline (aka Jenkinsfile) resides. There is an option to specify the Git branch and Jenkinsfile location in the repository.  
+    Select `Pipeline script from SCM` and the SCM as `Git`. You will then have to specify your GitHub URL where your file containing details about the pipeline (aka Jenkinsfile) resides. There is an option to specify the Git branch and Jenkinsfile location in the repository.  
     **Note:** GitHub has deprecated the use of username and passwords for cloning Git repositories. You must instead use access tokens, which you can create from your GitHub account settings. The URL format should be like this-
 
             https://<access_token>@github.com/<github_username>/<repo>
 
     - Click `Save` to save and apply the configurations.
 
-3. To perform build, Go to `Dashboard` -> `DVNA_Pipeline` -> `Build Now`
+3. To initiate build, Go to `Dashboard` -> `DVNA_Pipeline` -> `Build Now`
 
 ### **Jenkinsfile**
 
