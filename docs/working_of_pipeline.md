@@ -20,7 +20,7 @@ To start creating a new pipeline in Jenkins, login to the Jenkins web interface 
     Select `Pipeline script from SCM` and select SCM as `Git`. You will then have to specify your GitHub URL where your file containing details about the pipeline (aka Jenkinsfile) resides. There is an option to specify the Git branch and Jenkinsfile location in the repository.  
     **Note:** GitHub has deprecated the use of username and passwords for cloning Git repositories. You must instead use access tokens, which you can create from your GitHub account settings. The URL format should be like this-
 
-        https://<access_token>@github.com/<github_username>/<repo>
+            https://<access_token>@github.com/<github_username>/<repo>
 
     - Click `Save` to save and apply the configurations.
 
