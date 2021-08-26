@@ -560,14 +560,13 @@ Check the <code>Discard Old Builds</code> option if you don't want to keep the c
 </li>
 <li>
 <p>Under the <code>Pipeline</code> section-<br />
-Select <code>Pipeline script from SCM</code> and select SCM as <code>Git</code>. You will then have to specify your GitHub URL where your file containing details about the pipeline (aka Jenkinsfile) resides. There is an option to specify the Git branch and Jenkinsfile location in the repository.</p>
+Select <code>Pipeline script from SCM</code> and select SCM as <code>Git</code>. You will then have to specify your GitHub URL where your file containing details about the pipeline (aka Jenkinsfile) resides. There is an option to specify the Git branch and Jenkinsfile location in the repository.<br />
+<strong>Note:</strong> GitHub has deprecated the use of username and passwords for cloning Git repositories. You must instead use access tokens, which you can create from your GitHub account settings. The URL format should be like this-</p>
+<p>https://<access_token>@github.com/<github_username>/<repo></p>
 </li>
-</ul>
-<p><strong>Note:</strong> GitHub has deprecated the use of username and passwords for cloning Git repositories. You must instead use access tokens, which you can create from your GitHub account settings. The URL format should be like this-</p>
-<pre><code>https://&lt;access_token&gt;@github.com/&lt;github_username&gt;/&lt;repo&gt;
-</code></pre>
-<ul>
-<li>Click <code>Save</code> to save and apply the configurations.</li>
+<li>
+<p>Click <code>Save</code> to save and apply the configurations.</p>
+</li>
 </ul>
 </li>
 <li>
