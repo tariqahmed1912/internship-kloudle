@@ -13,3 +13,6 @@ Steps:
 
 Follow the same steps mentioned in the previous sections to setup Jenkins, SAST and DAST Tools.
         
+1. Jenkins - Follow steps mentioned in section `Setup of Jenkins`
+
+2. Docker - Followed this [documentation](https://geekylane.com/install-docker-on-aws-ec2-ubuntu-18-04-script-method/) as I was facing some issue with the executing the `curl` command mentioned in section `Setup of Production Server` -> `Install Docker`.
