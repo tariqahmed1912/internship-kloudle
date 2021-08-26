@@ -37,13 +37,13 @@ $ javac --version  # Java Compiler version
 First, add the repository key to the system. On success, the system will return `OK`.
 
 ```bash
-wget -q -O - <https://pkg.jenkins.io/debian-stable/jenkins.io.key> | sudo apt-key add -
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 ```
 
 Next, append the Debian package repository address to the server’s sources.list file.
 
 ```bash
-sudo sh -c 'echo deb <http://pkg.jenkins.io/debian-stable> binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 
 sudo apt update
 ```

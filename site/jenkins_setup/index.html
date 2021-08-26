@@ -596,10 +596,10 @@ $ javac --version  # Java Compiler version
 </code></pre>
 <h3 id="step-2-install-jenkins"><strong>Step 2 - Install Jenkins</strong></h3>
 <p>First, add the repository key to the system. On success, the system will return <code>OK</code>.</p>
-<pre><code class="language-bash">wget -q -O - &lt;https://pkg.jenkins.io/debian-stable/jenkins.io.key&gt; | sudo apt-key add -
+<pre><code class="language-bash">wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 </code></pre>
 <p>Next, append the Debian package repository address to the server’s sources.list file.</p>
-<pre><code class="language-bash">sudo sh -c 'echo deb &lt;http://pkg.jenkins.io/debian-stable&gt; binary/ &gt; /etc/apt/sources.list.d/jenkins.list'
+<pre><code class="language-bash">sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list'
 
 sudo apt update
 </code></pre>
