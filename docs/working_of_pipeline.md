@@ -7,6 +7,37 @@ The aim of this section is to understand the Jenkins pipeline to deploy DVNA and
 
 Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. Jenkins pipelines are made up of multiple stages (jobs/events) that allow you to build, test and deploy applications. Every stage has some sort of dependency on at least one or more stages in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.
 
+To start creating a new pipeline in Jenkins, login to the Jenkins web interface by typing `jenkins_server_ip:8080` in the url. Follow the steps below:
+
+1. On the left hand side of the `Dashboard` page, click `New Item` to create a new project or pipeline. Provide a name for your pipeline (say `DVNA_pipeline`), select `Pipeline` as the project type and click `OK`.
+
+2. You will then be redirected to the `Configure` page for your newly created project. 
+
+    - Under the `General` section-  
+    Check the `Discard Old Builds` option if you don't want to keep the console output, archived artifacts, and any other metadata related to older builds. They take up unnecessary disk space on the server. You can then specify the max number of days to keep builds and how many builds at max should be kept.
+
+    - Under the `Pipeline` section-  
+    Select `Pipeline script from SCM` and select SCM as `Git`. You will then have to specify your GitHub URL where your file containing details about the pipeline (aka Jenkinsfile) resides. There is an option to specify the Git branch and Jenkinsfile location in the repository.
+
+    **Note:** GitHub has deprecated the use of username and passwords for cloning Git repositories. You must instead use access tokens, which you can create from your GitHub account settings. The URL format should be like this-
+
+        https://<access_token>@github.com/<github_username>/<repo>
+      
+    
+
+
+Next came the project configurations page. Here:
+Under General section:
+I gave a brief description of the application being deployed and the purpose of this pipeline.
+I checked the Discard Old Builds option as I felt there was no need of keeping artifacts from previous builds.
+I also checked the GitHub Project option and provided the GitHub URL for the project's repository. This option allowed Jenkins to know where to fetch the project from.
+Under Build Triggers section:
+I checked the GitHub hook trigger for GITScm Polling option to allow automated builds based on webhook triggers on GitHub for selected events. The need for this option is explained in more detail in the upcoming section, Configuring Webhook.
+Under Pipeline section:
+For Definition, I chose Pipeline Script from SCM option as I planned on adding the Jenkinsfile directly to the project repository.
+For Script Path, I just provided Jenkinsfile as it was situated at the project's root directory.
+Lastly, I clicked on save to save the configurations.
+
 ### **Jenkinsfile**
 
 A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline.
