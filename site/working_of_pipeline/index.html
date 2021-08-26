@@ -566,19 +566,14 @@ Select <code>Pipeline script from SCM</code> and select SCM as <code>Git</code>.
 <p><strong>Note:</strong> GitHub has deprecated the use of username and passwords for cloning Git repositories. You must instead use access tokens, which you can create from your GitHub account settings. The URL format should be like this-</p>
 <pre><code>https://&lt;access_token&gt;@github.com/&lt;github_username&gt;/&lt;repo&gt;
 </code></pre>
+<ul>
+<li>Click <code>Save</code> to save and apply the configurations.</li>
+</ul>
+</li>
+<li>
+<p>To perform build, Go to <code>Dashboard</code> -&gt; <code>DVNA_Pipeline</code> -&gt; <code>Build Now</code></p>
 </li>
 </ol>
-<p>Next came the project configurations page. Here:
-Under General section:
-I gave a brief description of the application being deployed and the purpose of this pipeline.
-I checked the Discard Old Builds option as I felt there was no need of keeping artifacts from previous builds.
-I also checked the GitHub Project option and provided the GitHub URL for the project's repository. This option allowed Jenkins to know where to fetch the project from.
-Under Build Triggers section:
-I checked the GitHub hook trigger for GITScm Polling option to allow automated builds based on webhook triggers on GitHub for selected events. The need for this option is explained in more detail in the upcoming section, Configuring Webhook.
-Under Pipeline section:
-For Definition, I chose Pipeline Script from SCM option as I planned on adding the Jenkinsfile directly to the project repository.
-For Script Path, I just provided Jenkinsfile as it was situated at the project's root directory.
-Lastly, I clicked on save to save the configurations.</p>
 <h3 id="jenkinsfile"><strong>Jenkinsfile</strong></h3>
 <p>A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline.</p>
 <pre><code class="language-bash">pipeline {

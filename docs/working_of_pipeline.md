@@ -22,21 +22,10 @@ To start creating a new pipeline in Jenkins, login to the Jenkins web interface 
     **Note:** GitHub has deprecated the use of username and passwords for cloning Git repositories. You must instead use access tokens, which you can create from your GitHub account settings. The URL format should be like this-
 
         https://<access_token>@github.com/<github_username>/<repo>
-      
-    
 
+    - Click `Save` to save and apply the configurations.
 
-Next came the project configurations page. Here:
-Under General section:
-I gave a brief description of the application being deployed and the purpose of this pipeline.
-I checked the Discard Old Builds option as I felt there was no need of keeping artifacts from previous builds.
-I also checked the GitHub Project option and provided the GitHub URL for the project's repository. This option allowed Jenkins to know where to fetch the project from.
-Under Build Triggers section:
-I checked the GitHub hook trigger for GITScm Polling option to allow automated builds based on webhook triggers on GitHub for selected events. The need for this option is explained in more detail in the upcoming section, Configuring Webhook.
-Under Pipeline section:
-For Definition, I chose Pipeline Script from SCM option as I planned on adding the Jenkinsfile directly to the project repository.
-For Script Path, I just provided Jenkinsfile as it was situated at the project's root directory.
-Lastly, I clicked on save to save the configurations.
+3. To perform build, Go to `Dashboard` -> `DVNA_Pipeline` -> `Build Now`
 
 ### **Jenkinsfile**
 
