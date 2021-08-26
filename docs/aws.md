@@ -9,5 +9,7 @@ Steps:
 
     To get the instance-username for SSH login based on your instance OS/distro, refer this [documentation](https://alestic.com/2014/01/ec2-ssh-username/). For an Ubuntu instance, the username is `ubuntu`.
 
+### Install Jenkins, SAST and DAST Tools
 
+Follow the same steps mentioned in the previous sections to setup Jenkins, SAST and DAST Tools.
         
