@@ -14,4 +14,5 @@ The following is the report/documentation for the problem statements stated in t
 12. [Software Bill of Materials](sbom.md)
 13. [Software Code Quality Analysis](scqa.md)
 14. [Complete Pipeline](complete_pipeline.md)
-14. [Resources](resources.md)
+15. [Shift Local Setup to AWS](aws.md)
+16. [Resources](resources.md)

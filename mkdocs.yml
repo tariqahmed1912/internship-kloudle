@@ -14,5 +14,6 @@ nav:
   - Software Bill of Materials: 'sbom.md'
   - Software Code Quality Analysis: 'scqa.md'
   - Complete Pipeline: 'complete_pipeline.md'
+  - Shift Local Setup to AWS: 'aws.md'
   - Resources: 'resources.md'
 theme: material
