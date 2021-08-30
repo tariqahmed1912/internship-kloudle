@@ -540,7 +540,11 @@
 <li>Docker installed</li>
 </ul>
 <h3 id="step-1-install-docker"><strong>Step 1 - Install docker</strong></h3>
-<p>For docker installation, I followed the <a href="https://docs.docker.com/engine/install/ubuntu/">official documentation</a>. First, Update the apt package index and install packages to allow apt to use a repository over HTTPS.</p>
+<p>For docker installation, I followed this <a href="https://geekylane.com/install-docker-on-aws-ec2-ubuntu-18-04-script-method/">documentation</a> as its very simple and easy to execute.</p>
+<pre><code class="language-bash">curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+</code></pre>
+<p>Alternatively, you can follow this <a href="https://docs.docker.com/engine/install/ubuntu/">official documentation</a> for docker installation. First, Update the apt package index and install packages to allow apt to use a repository over HTTPS.</p>
 <pre><code class="language-bash">sudo apt-get update
 
 sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release

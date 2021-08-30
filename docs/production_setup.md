@@ -13,7 +13,14 @@ Prerequisites
 
 ### **Step 1 - Install docker**
 
-For docker installation, I followed the [official documentation](https://docs.docker.com/engine/install/ubuntu/). First, Update the apt package index and install packages to allow apt to use a repository over HTTPS.
+For docker installation, I followed this [documentation](https://geekylane.com/install-docker-on-aws-ec2-ubuntu-18-04-script-method/) as its very simple and easy to execute.
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+Alternatively, you can follow this [official documentation](https://docs.docker.com/engine/install/ubuntu/) for docker installation. First, Update the apt package index and install packages to allow apt to use a repository over HTTPS.
 
 ```bash
 sudo apt-get update
