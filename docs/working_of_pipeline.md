@@ -24,7 +24,7 @@ To start creating a new pipeline in Jenkins, login to the Jenkins web interface 
 
     - Click `Save` to save and apply the configurations.
 
-3. To initiate build, Go to `Dashboard` -> `DVNA_Pipeline` -> `Build Now`
+3. To initiate build, Go to `Dashboard` -> `DVNA_Pipeline` -> `Build Now`.
 
 ### **Jenkinsfile**
 

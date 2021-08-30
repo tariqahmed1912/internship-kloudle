@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-jenkins-sast-and-dast-tools" class="md-skip">
+        <a href="#jenkins-server" class="md-skip">
           Skip to content
         </a>
       
@@ -414,8 +414,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-jenkins-sast-and-dast-tools" class="md-nav__link">
-    Install Jenkins, SAST and DAST Tools
+  <a href="#jenkins-server" class="md-nav__link">
+    Jenkins Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-server" class="md-nav__link">
+    Production Server
   </a>
   
 </li>
@@ -467,8 +474,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-jenkins-sast-and-dast-tools" class="md-nav__link">
-    Install Jenkins, SAST and DAST Tools
+  <a href="#jenkins-server" class="md-nav__link">
+    Jenkins Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-server" class="md-nav__link">
+    Production Server
   </a>
   
 </li>
@@ -499,7 +513,7 @@
 <p>To get the instance-username for SSH login based on your instance OS/distro, refer this <a href="https://alestic.com/2014/01/ec2-ssh-username/">documentation</a>. For an Ubuntu instance, the username is <code>ubuntu</code>.</p>
 </li>
 </ol>
-<h3 id="install-jenkins-sast-and-dast-tools">Install Jenkins, SAST and DAST Tools</h3>
+<h3 id="jenkins-server">Jenkins Server</h3>
 <p>Follow the same steps mentioned in the previous sections to setup Jenkins, SAST and DAST Tools.</p>
 <ol>
 <li>
@@ -513,6 +527,55 @@ sudo sh get-docker.sh
 </code></pre>
 </li>
 </ol>
+<p>Automate the installation process by running the following script in the Jenkins instance.</p>
+<pre><code class="language-bash">#!/bin/bash
+sudo apt update
+
+# Install Java
+sudo apt install -y default-jre default-jdk 
+
+# Install Jenkins
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - &amp;&amp;
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list' &amp;&amp;
+sudo apt install -y jenkins &amp;&amp;
+sudo systemctl start jenkins
+
+# Install Docker
+sudo curl -fsSL https://get.docker.com -o get-docker.sh &amp;&amp;
+sudo sh get-docker.sh &amp;&amp;
+sudo usermod -aG docker jenkins
+
+# Install Python3 and Pip3
+sudo apt install -y python3-pip
+
+# Install NodeJs and NPM
+sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - &amp;&amp;
+sudo apt install -y nodejs 
+
+# Install NodeJsScan (SAST)
+pip3 install njsscan
+
+# Install AuditJS (SAST)
+sudo npm install -g auditjs
+
+# Install OWASP Dependency-Check (SCA)
+wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip &amp;&amp;
+wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc &amp;&amp;
+unzip ~/dependency-check-6.2.2-release.zip
+
+# Install CycloneDX (SBoM)
+sudo npm install -g @cyclonedx/bom
+
+# Install JSHint (Code Linting)
+sudo npm install -g jshint
+
+# Install ESLint (Code Linting)
+# Note: To use eslint, manually create a .eslintrc.json file in the `jenkins` home directory.
+# Copy the file content from documentation
+sudo npm install -g eslint
+</code></pre>
+<h3 id="production-server">Production Server</h3>
+<p>Install docker on the production server the same way you installed it on the Jenkins server. </p>
                 
                   
                 
