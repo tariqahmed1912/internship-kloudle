@@ -514,19 +514,6 @@
 </li>
 </ol>
 <h3 id="jenkins-server">Jenkins Server</h3>
-<p>Follow the same steps mentioned in the previous sections to setup Jenkins, SAST and DAST Tools.</p>
-<ol>
-<li>
-<p>Jenkins - Follow steps mentioned in section <code>Setup of Jenkins</code></p>
-</li>
-<li>
-<p>Docker - Followed this <a href="https://geekylane.com/install-docker-on-aws-ec2-ubuntu-18-04-script-method/">documentation</a> as I was facing some issue with the executing the <code>curl</code> command mentioned in section <code>Setup of Production Server</code> -&gt; <code>Install Docker</code>.</p>
-<pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
-
-sudo sh get-docker.sh
-</code></pre>
-</li>
-</ol>
 <p>Automate the installation process by running the following script in the Jenkins instance.</p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
