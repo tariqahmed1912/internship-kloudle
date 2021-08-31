@@ -31,6 +31,8 @@ Steps to create an EC2 instance:
 
 ### **Jenkins Server**
 
+**Jenkins Master**
+
 Spin up an instance for Jenkins server. Automate the installation process of Jenkins, Docker and static analysis tools by running the following script in the Jenkins instance.  
 **Note:** Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version of AWS, I can only use 1GB memory instances, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance).
 
@@ -39,11 +41,12 @@ Spin up an instance for Jenkins server. Automate the installation process of Jen
 sudo apt update
 
 # Install Java
-sudo apt install -y default-jre default-jdk 
+sudo apt install -y default-jre default-jdk unzip
 
 # Install Jenkins
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add - &&
 sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list' &&
+sudo apt update &&
 sudo apt install -y jenkins &&
 sudo systemctl start jenkins
 
@@ -66,6 +69,7 @@ pip3 install njsscan
 sudo npm install -g auditjs
 
 # Install OWASP Dependency-Check (SCA)
+sudo su - jenkins &&
 wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip &&
 wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc &&
 unzip ~/dependency-check-6.2.2-release.zip
@@ -82,6 +86,51 @@ sudo npm install -g jshint
 sudo npm install -g eslint
 ```
 
+After the installation process is complete, we need to enable SSH communication between Master and Slave. Create SSH keys in `jenkins` user home directory. 
+
+```bash
+sudo su - jenkins
+ssh-keygen -t ed25519
+```
+
+The public and private SSH keys are stored in `<Jenkins-Home-Dir>/.ssh` directory.
+
+**Jenkins Slave/Agent**
+
+The Jenkins agent instance will be used to perform DAST scan on DVNA (which will be deployed on Master prior to deployment). Run the following bash script after logging into the instance.
+
+```bash
+#!/bin/bash
+sudo apt update
+
+# Install Java
+sudo apt install -y default-jre default-jdk
+
+# Create user `jenkins`
+sudo adduser jenkins &&
+sudo su - jenkins &&
+ssh jenkins@localhost
+
+touch ~/.ssh/authorized_keys
+```
+
+To allow SSH connection from Master to Slave, copy the public key created in the Master instance into `~/.ssh/authorized_keys` in Slave.
+
 ### **Production Server**
 
-Install docker on the production server the same way you installed it on the Jenkins server. 
+Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).
+
+```bash
+#!/bin/bash
+sudo apt update
+
+# Install Docker
+sudo curl -fsSL https://get.docker.com -o get-docker.sh &&
+sudo sh get-docker.sh &&
+sudo usermod -aG docker jenkins
+```
+
+The Production instance is now ready!
+
+### **Pipeline**
+
