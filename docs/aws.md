@@ -5,7 +5,7 @@ The aim of this section is to shift the entire setup from local machine to AWS C
 About AWS
 
 - Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.  
-- Migrating your local/on-prem infrastructure to cloud (AWS) can help reduce costs of operations, increase IT staff productivity, and reduce downtime.
+- Migrating your local/on-prem infrastructure to cloud can help reduce costs of operations, increase IT staff productivity, and reduce downtime.
 
 ### **Setup EC2 Instances**
 
@@ -25,6 +25,7 @@ Steps to create an EC2 instance:
         ssh -i /path/to/private-key instance-username@instance-IP-address
 
     To get the instance-username for SSH login based on your instance OS/distro, refer this [documentation](https://alestic.com/2014/01/ec2-ssh-username/). For an Ubuntu instance, the username is `ubuntu`.
+    
 7. Create three instances; Jenkins instance (master), DAST instance (agent), Production instance. 
 
 
