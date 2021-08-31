@@ -101,7 +101,7 @@ The public and private SSH keys are stored in `<Jenkins-Home-Dir>/.ssh` director
 
 **Jenkins Slave/Agent**
 
-The Jenkins agent instance will be used to perform DAST scan on DVNA (which will be deployed on Master prior to deployment). Run the following bash script after logging into the instance.
+The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.
 
 ```bash
 #!/bin/bash

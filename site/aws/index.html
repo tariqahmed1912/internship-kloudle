@@ -631,7 +631,7 @@ ssh-keygen -t ed25519
 </code></pre>
 <p>The public and private SSH keys are stored in <code>&lt;Jenkins-Home-Dir&gt;/.ssh</code> directory.</p>
 <p><strong>Jenkins Slave/Agent</strong></p>
-<p>The Jenkins agent instance will be used to perform DAST scan on DVNA (which will be deployed on Master prior to deployment). Run the following bash script after logging into the instance.</p>
+<p>The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.</p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
 
