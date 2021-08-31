@@ -428,8 +428,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jenkins-instance" class="md-nav__link">
-    Jenkins Instance
+  <a href="#jenkins-server" class="md-nav__link">
+    Jenkins Server
   </a>
   
 </li>
@@ -502,8 +502,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#jenkins-instance" class="md-nav__link">
-    Jenkins Instance
+  <a href="#jenkins-server" class="md-nav__link">
+    Jenkins Server
   </a>
   
 </li>
@@ -555,8 +555,9 @@
 7. Create three instances; Jenkins instance (master), DAST instance (agent), Production instance. </p>
 </li>
 </ol>
-<h3 id="jenkins-instance">Jenkins Instance</h3>
-<p>Automate the installation process by running the following script in the Jenkins instance.</p>
+<h3 id="jenkins-server"><strong>Jenkins Server</strong></h3>
+<p>Spin up an instance for Jenkins server. Automate the installation process of Jenkins, Docker and static analysis tools by running the following script in the Jenkins instance.<br />
+<strong>Note:</strong> Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version, I can only start instances with 1GB memory, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance).</p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
 
@@ -603,7 +604,7 @@ sudo npm install -g jshint
 # Copy the file content from documentation
 sudo npm install -g eslint
 </code></pre>
-<h3 id="production-server">Production Server</h3>
+<h3 id="production-server"><strong>Production Server</strong></h3>
 <p>Install docker on the production server the same way you installed it on the Jenkins server. </p>
                 
               

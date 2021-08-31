@@ -28,9 +28,10 @@ Steps to create an EC2 instance:
 7. Create three instances; Jenkins instance (master), DAST instance (agent), Production instance. 
 
 
-### Jenkins Instance
+### **Jenkins Server**
 
-Automate the installation process by running the following script in the Jenkins instance.
+Spin up an instance for Jenkins server. Automate the installation process of Jenkins, Docker and static analysis tools by running the following script in the Jenkins instance.  
+**Note:** Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version, I can only start instances with 1GB memory, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance).
 
 ```bash
 #!/bin/bash
@@ -80,6 +81,6 @@ sudo npm install -g jshint
 sudo npm install -g eslint
 ```
 
-### Production Server 
+### **Production Server**
 
 Install docker on the production server the same way you installed it on the Jenkins server. 
