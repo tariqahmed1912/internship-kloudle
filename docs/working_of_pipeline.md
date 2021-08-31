@@ -46,7 +46,7 @@ pipeline {
         MYSQL_USER="dvna"
         MYSQL_DATABASE="dvna"
         MYSQL_PASSWORD=<PASSWORD>
-        MYSQL_RANDOM_ROOT_PASSWORD=<ROOT_PASSWORD>
+        MYSQL_RANDOM_ROOT_PASSWORD=<YES_OR_NO>
         MYSQL_HOST="mysql-db"
         MYSQL_PORT=3306
       }

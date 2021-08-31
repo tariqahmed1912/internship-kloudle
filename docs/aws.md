@@ -67,16 +67,16 @@ sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash - &&
 sudo apt install -y nodejs 
 
 # Install NodeJsScan (SAST)
-pip3 install njsscan
+sudo pip3 install njsscan
 
 # Install AuditJS (SAST)
 sudo npm install -g auditjs
 
 # Install OWASP Dependency-Check (SCA)
-sudo su - jenkins &&
-wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip &&
-wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc &&
-unzip ~/dependency-check-6.2.2-release.zip
+cd /var/lib/jenkins && 
+wget -P ./ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip &&
+wget -P ./ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip.asc &&
+sudo unzip ./dependency-check-6.2.2-release.zip
 
 # Install CycloneDX (SBoM)
 sudo npm install -g @cyclonedx/bom
@@ -110,6 +110,12 @@ sudo apt update
 # Install Java
 sudo apt install -y default-jre default-jdk
 
+# Install Docker
+sudo curl -fsSL https://get.docker.com -o get-docker.sh &&
+sudo sh get-docker.sh
+```
+
+```bash
 # Create user `jenkins`
 sudo adduser jenkins &&
 sudo su - jenkins &&
