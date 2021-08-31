@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jenkins-server" class="md-skip">
+        <a href="#objective" class="md-skip">
           Skip to content
         </a>
       
@@ -414,8 +414,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#jenkins-server" class="md-nav__link">
-    Jenkins Server
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-ec2-instances" class="md-nav__link">
+    Setup EC2 Instances
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jenkins-instance" class="md-nav__link">
+    Jenkins Instance
   </a>
   
 </li>
@@ -474,8 +488,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#jenkins-server" class="md-nav__link">
-    Jenkins Server
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-ec2-instances" class="md-nav__link">
+    Setup EC2 Instances
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jenkins-instance" class="md-nav__link">
+    Jenkins Instance
   </a>
   
 </li>
@@ -502,18 +530,32 @@
                 
                   <h1>Shift Local Setup to AWS</h1>
                 
-                <ol>
-<li>Launch an EC2 instance.</li>
-<li>Add security group (firewall rules) and SSH key pair. When adding key pair, the browser will automatically ask to download the private key file. Keep the file safe in directory of your choice. You will need it to establish an SSH connection with the instance.</li>
+                <h3 id="objective"><strong>Objective</strong></h3>
+<p>The aim of this section is to shift the entire setup from local machine to AWS Cloud and solve the 10th point of the <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
+<p>About AWS</p>
+<ul>
+<li>Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.  </li>
+<li>Migrating your local/on-prem infrastructure to cloud (AWS) can help reduce costs of operations, increase IT staff productivity, and reduce downtime.</li>
+</ul>
+<h3 id="setup-ec2-instances"><strong>Setup EC2 Instances</strong></h3>
+<p>Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is a service that enables business subscribers to run application programs in the computing environment. It can serve as a practically unlimited set of VMs. </p>
+<p>An EC2 instance is a virtual server in Amazon's EC2 for running applications on the AWS infrastructure. Instances are created from Amazon Machine Images (AMI). AMIs are like templates that are configured with an OS, CPU power, memory, storage and other networking resources to suit user needs.</p>
+<p>Steps to create an EC2 instance:</p>
+<ol>
+<li>Create an AWS account on <a href="https://aws.amazon.com">https://aws.amazon.com</a>. </li>
+<li>After logging in to your account, select <code>All Services</code> and under the <code>Compute</code> section, click <code>EC2</code> in the <code>AWS Management Console</code> page. You will be redirected to <code>EC2 Management Console</code></li>
+<li>Select <code>Launch EC2 instance</code>.</li>
+<li>Select AMI of your choice, add security group (firewall rules) and SSH key pair. When adding key pair, the browser will automatically ask to download the private key file. Keep the file safe in directory of your choice. You will need it to establish an SSH connection with the instance.</li>
 <li>After launch, wait till the instance is up and running.</li>
 <li>
 <p>SSH into the instance using the following command. </p>
 <pre><code>ssh -i /path/to/private-key instance-username@instance-IP-address
 </code></pre>
-<p>To get the instance-username for SSH login based on your instance OS/distro, refer this <a href="https://alestic.com/2014/01/ec2-ssh-username/">documentation</a>. For an Ubuntu instance, the username is <code>ubuntu</code>.</p>
+<p>To get the instance-username for SSH login based on your instance OS/distro, refer this <a href="https://alestic.com/2014/01/ec2-ssh-username/">documentation</a>. For an Ubuntu instance, the username is <code>ubuntu</code>.
+7. Create three instances; Jenkins instance (master), DAST instance (agent), Production instance. </p>
 </li>
 </ol>
-<h3 id="jenkins-server">Jenkins Server</h3>
+<h3 id="jenkins-instance">Jenkins Instance</h3>
 <p>Automate the installation process by running the following script in the Jenkins instance.</p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
@@ -563,8 +605,6 @@ sudo npm install -g eslint
 </code></pre>
 <h3 id="production-server">Production Server</h3>
 <p>Install docker on the production server the same way you installed it on the Jenkins server. </p>
-                
-                  
                 
               
               

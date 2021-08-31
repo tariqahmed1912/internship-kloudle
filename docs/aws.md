@@ -1,15 +1,34 @@
-Steps:
+### **Objective**
 
-1. Launch an EC2 instance.
-2. Add security group (firewall rules) and SSH key pair. When adding key pair, the browser will automatically ask to download the private key file. Keep the file safe in directory of your choice. You will need it to establish an SSH connection with the instance.
-3. After launch, wait till the instance is up and running.
-4. SSH into the instance using the following command. 
+The aim of this section is to shift the entire setup from local machine to AWS Cloud and solve the 10th point of the [Problem Statement](problem_statements.md) under Task 1.
+
+About AWS
+
+- Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.  
+- Migrating your local/on-prem infrastructure to cloud (AWS) can help reduce costs of operations, increase IT staff productivity, and reduce downtime.
+
+### **Setup EC2 Instances**
+
+Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is a service that enables business subscribers to run application programs in the computing environment. It can serve as a practically unlimited set of VMs. 
+
+An EC2 instance is a virtual server in Amazon's EC2 for running applications on the AWS infrastructure. Instances are created from Amazon Machine Images (AMI). AMIs are like templates that are configured with an OS, CPU power, memory, storage and other networking resources to suit user needs.
+
+Steps to create an EC2 instance:
+
+1. Create an AWS account on [https://aws.amazon.com](https://aws.amazon.com). 
+2. After logging in to your account, select `All Services` and under the `Compute` section, click `EC2` in the `AWS Management Console` page. You will be redirected to `EC2 Management Console`
+3. Select `Launch EC2 instance`.
+4. Select AMI of your choice, add security group (firewall rules) and SSH key pair. When adding key pair, the browser will automatically ask to download the private key file. Keep the file safe in directory of your choice. You will need it to establish an SSH connection with the instance.
+5. After launch, wait till the instance is up and running.
+6. SSH into the instance using the following command. 
 
         ssh -i /path/to/private-key instance-username@instance-IP-address
 
     To get the instance-username for SSH login based on your instance OS/distro, refer this [documentation](https://alestic.com/2014/01/ec2-ssh-username/). For an Ubuntu instance, the username is `ubuntu`.
+7. Create three instances; Jenkins instance (master), DAST instance (agent), Production instance. 
 
-### Jenkins Server
+
+### Jenkins Instance
 
 Automate the installation process by running the following script in the Jenkins instance.
 
