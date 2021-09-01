@@ -572,8 +572,8 @@
 </li>
 </ol>
 <h3 id="jenkins-server"><strong>Jenkins Server</strong></h3>
-<p>A Jenkins server is setup to automate the software development life cycle using CI/CD pipelines. DVNA NodeJs application which is to be deployed on Production server will first undergo multiple security testing in the Jenkins server prior to deployment. <br />
-<strong>Note:</strong> Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version of AWS, I can only use 1GB memory instances, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance). The Master-Agent architecture of Jenkins is used for distributed build environments, where the workload of building projects is distributed to multiple agent nodes or slaves.</p>
+<p>A Jenkins server is setup to automate the software development life cycle using CI/CD pipelines. DVNA NodeJs application which is to be deployed on Production server will first undergo multiple security testing in the Jenkins server prior to deployment.   </p>
+<p><strong>Note:</strong> Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version of AWS, I can only use 1GB memory instances, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance). The Master-Agent architecture of Jenkins is used for distributed build environments, where the workload of building projects is distributed to multiple agent nodes or slaves.</p>
 <p>Create two EC2 instances for Jenkins. The <code>Master</code> instance is the main Jenkins server which will also perform static analysis on test DVNA, while the <code>Agent</code> instance will be used to perform DAST scan on test DVNA deployed on Master.</p>
 <p><strong>Jenkins Master</strong></p>
 <p>Automate the installation process of Jenkins, Docker and static analysis tools by running the following script in the Jenkins Master instance.  </p>
@@ -642,14 +642,16 @@ sudo apt install -y default-jre default-jdk
 sudo curl -fsSL https://get.docker.com -o get-docker.sh &amp;&amp;
 sudo sh get-docker.sh
 </code></pre>
-<pre><code class="language-bash"># Create user `jenkins`
-sudo adduser jenkins &amp;&amp;
-sudo su - jenkins &amp;&amp;
+<p>To work with this instance from pipeline, we will be creating a new user - <code>jenkins</code>. Add this user to <code>docker</code> group to enable running docker containers without sudo.</p>
+<pre><code class="language-bash">sudo adduser jenkins
+sudo usermod -aG docker jenkins
+</code></pre>
+<p>Change to user <code>jenkins</code> and create a <code>.ssh</code> directory in its home directory. </p>
+<pre><code class="language-bash">sudo su - jenkins
 ssh jenkins@localhost
-
 touch ~/.ssh/authorized_keys
 </code></pre>
-<p>To allow SSH connection from Master to Slave, copy the public key created in the Master instance into <code>~/.ssh/authorized_keys</code> in Slave.</p>
+<p>To allow SSH connection from Master to Slave, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Slave.</p>
 <h3 id="production-server"><strong>Production Server</strong></h3>
 <p>Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).</p>
 <pre><code class="language-bash">#!/bin/bash
@@ -657,10 +659,19 @@ sudo apt update
 
 # Install Docker
 sudo curl -fsSL https://get.docker.com -o get-docker.sh &amp;&amp;
-sudo sh get-docker.sh &amp;&amp;
+sudo sh get-docker.sh
+</code></pre>
+<p>To work with this instance from pipeline, we will be creating a new user - <code>jenkins</code>. Add this user to <code>docker</code> group to enable running docker containers without sudo.</p>
+<pre><code class="language-bash">sudo adduser jenkins
 sudo usermod -aG docker jenkins
 </code></pre>
-<p>The Production instance is now ready!</p>
+<p>Change to user <code>jenkins</code> and create a <code>.ssh</code> directory in its home directory. </p>
+<pre><code class="language-bash">sudo su - jenkins
+ssh jenkins@localhost
+touch ~/.ssh/authorized_keys
+</code></pre>
+<p>To allow SSH connection from Jenkins Master to Production, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Production.</p>
+<p>The instances have now been successfully setup!</p>
 <h3 id="pipeline"><strong>Pipeline</strong></h3>
 <pre><code class="language-bash">pipeline {
   agent any

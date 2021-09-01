@@ -32,6 +32,7 @@ Steps to create an EC2 instance:
 ### **Jenkins Server**
 
 A Jenkins server is setup to automate the software development life cycle using CI/CD pipelines. DVNA NodeJs application which is to be deployed on Production server will first undergo multiple security testing in the Jenkins server prior to deployment.   
+
 **Note:** Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version of AWS, I can only use 1GB memory instances, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance). The Master-Agent architecture of Jenkins is used for distributed build environments, where the workload of building projects is distributed to multiple agent nodes or slaves.
 
 Create two EC2 instances for Jenkins. The `Master` instance is the main Jenkins server which will also perform static analysis on test DVNA, while the `Agent` instance will be used to perform DAST scan on test DVNA deployed on Master.
@@ -115,16 +116,22 @@ sudo curl -fsSL https://get.docker.com -o get-docker.sh &&
 sudo sh get-docker.sh
 ```
 
-```bash
-# Create user `jenkins`
-sudo adduser jenkins &&
-sudo su - jenkins &&
-ssh jenkins@localhost
+To work with this instance from pipeline, we will be creating a new user - `jenkins`. Add this user to `docker` group to enable running docker containers without sudo.
 
+```bash
+sudo adduser jenkins
+sudo usermod -aG docker jenkins
+```
+
+Change to user `jenkins` and create a `.ssh` directory in its home directory. 
+
+```bash
+sudo su - jenkins
+ssh jenkins@localhost
 touch ~/.ssh/authorized_keys
 ```
 
-To allow SSH connection from Master to Slave, copy the public key created in the Master instance into `~/.ssh/authorized_keys` in Slave.
+To allow SSH connection from Master to Slave, copy the public key of Master instance into `~/.ssh/authorized_keys` created in Slave.
 
 ### **Production Server**
 
@@ -136,11 +143,27 @@ sudo apt update
 
 # Install Docker
 sudo curl -fsSL https://get.docker.com -o get-docker.sh &&
-sudo sh get-docker.sh &&
+sudo sh get-docker.sh
+```
+
+To work with this instance from pipeline, we will be creating a new user - `jenkins`. Add this user to `docker` group to enable running docker containers without sudo.
+
+```bash
+sudo adduser jenkins
 sudo usermod -aG docker jenkins
 ```
 
-The Production instance is now ready!
+Change to user `jenkins` and create a `.ssh` directory in its home directory. 
+
+```bash
+sudo su - jenkins
+ssh jenkins@localhost
+touch ~/.ssh/authorized_keys
+```
+
+To allow SSH connection from Jenkins Master to Production, copy the public key of Master instance into `~/.ssh/authorized_keys` created in Production.
+
+The instances have now been successfully setup!
 
 ### **Pipeline**
 
