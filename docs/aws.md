@@ -109,7 +109,7 @@ Create a `.eslintrc.json` config file to run ESLint scan.
 }
 ```
 
-After the installation process is complete, we need to enable SSH communication between Master and Slave. Create SSH keys in `jenkins` user home directory. 
+After the installation process is complete, we need to enable SSH communication between Master and Agent. Create SSH keys in `jenkins` user home directory. 
 
 ```bash
 sudo su - jenkins
@@ -118,7 +118,7 @@ ssh-keygen -t ed25519
 
 The public and private SSH keys are stored in `<Jenkins-Home-Dir>/.ssh` directory.
 
-**Jenkins Slave/Agent**
+**Jenkins Agent/Slave**
 
 The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.
 
@@ -149,7 +149,7 @@ ssh jenkins@localhost
 touch ~/.ssh/authorized_keys
 ```
 
-To allow SSH connection from Master to Slave, copy the public key of Master instance into `~/.ssh/authorized_keys` created in Slave.
+To allow SSH connection from Master to Agent, copy the public key of Master instance into `~/.ssh/authorized_keys` created in Agent.
 
 ### **Production Server**
 
@@ -183,7 +183,7 @@ To allow SSH connection from Jenkins Master to Production, copy the public key o
 
 The instances have now been successfully setup!
 
-### **Setup Master-Slave**
+### **Setup Master-Agent**
 
 1. Go to `Dashboard` -> `Manage Jenkins` -> `Manage Nodes and Clouds` -> `New Node`.
 2. Give a name to the node (`Jenkins Slave` in my case) and select `Permanent agent`.  
@@ -263,7 +263,7 @@ pipeline {
       }
     }
     
-    stage ('Retrieve ZAP report from Slave'){
+    stage ('Retrieve ZAP report from Agent'){
         steps {
             sh 'scp jenkins@3.143.222.142:~/zap-report.html ~/reports'
         }

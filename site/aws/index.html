@@ -442,8 +442,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-master-slave" class="md-nav__link">
-    Setup Master-Slave
+  <a href="#setup-master-agent" class="md-nav__link">
+    Setup Master-Agent
   </a>
   
 </li>
@@ -530,8 +530,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-master-slave" class="md-nav__link">
-    Setup Master-Slave
+  <a href="#setup-master-agent" class="md-nav__link">
+    Setup Master-Agent
   </a>
   
 </li>
@@ -654,12 +654,12 @@ sudo npm install -g eslint
     }
 }
 </code></pre>
-<p>After the installation process is complete, we need to enable SSH communication between Master and Slave. Create SSH keys in <code>jenkins</code> user home directory. </p>
+<p>After the installation process is complete, we need to enable SSH communication between Master and Agent. Create SSH keys in <code>jenkins</code> user home directory. </p>
 <pre><code class="language-bash">sudo su - jenkins
 ssh-keygen -t ed25519
 </code></pre>
 <p>The public and private SSH keys are stored in <code>&lt;Jenkins-Home-Dir&gt;/.ssh</code> directory.</p>
-<p><strong>Jenkins Slave/Agent</strong></p>
+<p><strong>Jenkins Agent/Slave</strong></p>
 <p>The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.</p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
@@ -680,7 +680,7 @@ sudo usermod -aG docker jenkins
 ssh jenkins@localhost
 touch ~/.ssh/authorized_keys
 </code></pre>
-<p>To allow SSH connection from Master to Slave, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Slave.</p>
+<p>To allow SSH connection from Master to Agent, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Agent.</p>
 <h3 id="production-server"><strong>Production Server</strong></h3>
 <p>Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).</p>
 <pre><code class="language-bash">#!/bin/bash
@@ -701,7 +701,7 @@ touch ~/.ssh/authorized_keys
 </code></pre>
 <p>To allow SSH connection from Jenkins Master to Production, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Production.</p>
 <p>The instances have now been successfully setup!</p>
-<h3 id="setup-master-slave"><strong>Setup Master-Slave</strong></h3>
+<h3 id="setup-master-agent"><strong>Setup Master-Agent</strong></h3>
 <ol>
 <li>Go to <code>Dashboard</code> -&gt; <code>Manage Jenkins</code> -&gt; <code>Manage Nodes and Clouds</code> -&gt; <code>New Node</code>.</li>
 <li>
@@ -782,7 +782,7 @@ Now, click <code>Save</code>.</li>
       }
     }
 
-    stage ('Retrieve ZAP report from Slave'){
+    stage ('Retrieve ZAP report from Agent'){
         steps {
             sh 'scp jenkins@3.143.222.142:~/zap-report.html ~/reports'
         }
