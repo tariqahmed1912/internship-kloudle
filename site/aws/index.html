@@ -703,7 +703,16 @@ touch ~/.ssh/authorized_keys
 <p>The instances have now been successfully setup!</p>
 <h3 id="steps-to-setup-master-slave-architecture"><strong>Steps to Setup Master-Slave Architecture</strong></h3>
 <ol>
-<li>Go to <code>Dashboard</code> -&gt; </li>
+<li>Go to <code>Dashboard</code> -&gt; <code>Manage Jenkins</code> -&gt; <code>Manage Nodes and Clouds</code>.</li>
+<li>Create an agent by clicking <code>New Node</code>.</li>
+<li>
+<p>Provide the <code>Node Name</code> and select <code>Permanent agent</code>.  </p>
+<p><img alt="Screenshot" src="../img/aws_1.png" /></p>
+</li>
+<li>
+<p>Give agent details. </p>
+<p><img alt="Screenshot" src="../img/aws_2.png" /></p>
+</li>
 </ol>
 <h3 id="pipeline"><strong>Pipeline</strong></h3>
 <pre><code class="language-bash">pipeline {

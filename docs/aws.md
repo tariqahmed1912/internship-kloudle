@@ -185,7 +185,15 @@ The instances have now been successfully setup!
 
 ### **Steps to Setup Master-Slave Architecture**
 
-1. Go to `Dashboard` -> 
+1. Go to `Dashboard` -> `Manage Jenkins` -> `Manage Nodes and Clouds`.
+2. Create an agent by clicking `New Node`.
+3. Provide the `Node Name` and select `Permanent agent`.  
+        
+    ![Screenshot](img/aws_1.png)
+
+4. Give agent details. 
+
+    ![Screenshot](img/aws_2.png)
 
 ### **Pipeline**
 
