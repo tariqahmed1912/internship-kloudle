@@ -717,10 +717,15 @@ touch ~/.ssh/authorized_keys
 <li>Labels - Give label name (<code>dast-scan</code>, in my case) which can be used to specify stage(s) to use this agent instead of the master node.</li>
 <li>Usage - I selected <code>Only build jobs with label expressions matching this node</code> because I only want this agent to be used when its label expression is specified in the project. </li>
 <li>Launch Method - Chose <code>Launch agents via SSH</code> and provided IP of agent instance and credentials required to log on to the instance. </li>
-<li>Availability - Selected the default option of <code>Keep this agent online as much as possible</code>.</li>
+<li>Availability - Selected the default option of <code>Keep this agent online as much as possible</code>.<br />
+Now, click <code>Save</code>.</li>
 </ul>
 <p><img alt="Screenshot" src="../img/aws_2.png" /></p>
 </li>
+<li>
+<p>Create a new project (I selected <code>Pipeline</code>) and in the <code>Configure</code> section, specify the Git repo containing the Jenkinsfile.</p>
+</li>
+<li>Click <code>Build Now</code> to execute the pipeline.</li>
 </ol>
 <h3 id="pipeline"><strong>Pipeline</strong></h3>
 <pre><code class="language-bash">pipeline {

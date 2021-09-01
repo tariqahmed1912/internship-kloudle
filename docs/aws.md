@@ -190,7 +190,7 @@ The instances have now been successfully setup!
         
     ![Screenshot](img/aws_1.png)
 
-4. Give details about the agent.
+3. Give details about the agent.
 
     - Description - Description of the agent
     - Number of executors - The maximum number of concurrent builds that Jenkins may perform on this node (default is 1).
@@ -198,9 +198,13 @@ The instances have now been successfully setup!
     - Labels - Give label name (`dast-scan`, in my case) which can be used to specify stage(s) to use this agent instead of the master node.
     - Usage - I selected `Only build jobs with label expressions matching this node` because I only want this agent to be used when its label expression is specified in the project. 
     - Launch Method - Chose `Launch agents via SSH` and provided IP of agent instance and credentials required to log on to the instance. 
-    - Availability - Selected the default option of `Keep this agent online as much as possible`.
+    - Availability - Selected the default option of `Keep this agent online as much as possible`.  
+    Now, click `Save`.
 
     ![Screenshot](img/aws_2.png)
+
+4. Create a new project (I selected `Pipeline`) and in the `Configure` section, specify the Git repo containing the Jenkinsfile.
+5. Click `Build Now` to execute the pipeline.
 
 ### **Pipeline**
 
