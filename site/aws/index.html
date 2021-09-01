@@ -703,14 +703,22 @@ touch ~/.ssh/authorized_keys
 <p>The instances have now been successfully setup!</p>
 <h3 id="steps-to-setup-master-slave-architecture"><strong>Steps to Setup Master-Slave Architecture</strong></h3>
 <ol>
-<li>Go to <code>Dashboard</code> -&gt; <code>Manage Jenkins</code> -&gt; <code>Manage Nodes and Clouds</code>.</li>
-<li>Create an agent by clicking <code>New Node</code>.</li>
+<li>Go to <code>Dashboard</code> -&gt; <code>Manage Jenkins</code> -&gt; <code>Manage Nodes and Clouds</code> -&gt; <code>New Node</code>.</li>
 <li>
-<p>Provide the <code>Node Name</code> and select <code>Permanent agent</code>.  </p>
+<p>Give a name to the node (<code>Jenkins Slave</code> in my case) and select <code>Permanent agent</code>.  </p>
 <p><img alt="Screenshot" src="../img/aws_1.png" /></p>
 </li>
 <li>
-<p>Give agent details. </p>
+<p>Give details about the agent.</p>
+<ul>
+<li>Description - Description of the agent</li>
+<li>Number of executors - The maximum number of concurrent builds that Jenkins may perform on this node (default is 1).</li>
+<li>Remote root directory - Provide the directory in the agent instance dedicated to Jenkins (<code>/home/jenkins</code>, in my case)</li>
+<li>Labels - Give label name (<code>dast-scan</code>, in my case) which can be used to specify stage(s) to use this agent instead of the master node.</li>
+<li>Usage - I selected <code>Only build jobs with label expressions matching this node</code> because I only want this agent to be used when its label expression is specified in the project. </li>
+<li>Launch Method - Chose <code>Launch agents via SSH</code> and provided IP of agent instance and credentials required to log on to the instance. </li>
+<li>Availability - Selected the default option of <code>Keep this agent online as much as possible</code>.</li>
+</ul>
 <p><img alt="Screenshot" src="../img/aws_2.png" /></p>
 </li>
 </ol>

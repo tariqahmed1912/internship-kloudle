@@ -185,13 +185,20 @@ The instances have now been successfully setup!
 
 ### **Steps to Setup Master-Slave Architecture**
 
-1. Go to `Dashboard` -> `Manage Jenkins` -> `Manage Nodes and Clouds`.
-2. Create an agent by clicking `New Node`.
-3. Provide the `Node Name` and select `Permanent agent`.  
+1. Go to `Dashboard` -> `Manage Jenkins` -> `Manage Nodes and Clouds` -> `New Node`.
+2. Give a name to the node (`Jenkins Slave` in my case) and select `Permanent agent`.  
         
     ![Screenshot](img/aws_1.png)
 
-4. Give agent details. 
+4. Give details about the agent.
+
+    - Description - Description of the agent
+    - Number of executors - The maximum number of concurrent builds that Jenkins may perform on this node (default is 1).
+    - Remote root directory - Provide the directory in the agent instance dedicated to Jenkins (`/home/jenkins`, in my case)
+    - Labels - Give label name (`dast-scan`, in my case) which can be used to specify stage(s) to use this agent instead of the master node.
+    - Usage - I selected `Only build jobs with label expressions matching this node` because I only want this agent to be used when its label expression is specified in the project. 
+    - Launch Method - Chose `Launch agents via SSH` and provided IP of agent instance and credentials required to log on to the instance. 
+    - Availability - Selected the default option of `Keep this agent online as much as possible`.
 
     ![Screenshot](img/aws_2.png)
 
