@@ -183,7 +183,7 @@ To allow SSH connection from Jenkins Master to Production, copy the public key o
 
 The instances have now been successfully setup!
 
-### **Steps to Setup Master-Slave Architecture**
+### **Setup Master-Slave**
 
 1. Go to `Dashboard` -> `Manage Jenkins` -> `Manage Nodes and Clouds` -> `New Node`.
 2. Give a name to the node (`Jenkins Slave` in my case) and select `Permanent agent`.  
