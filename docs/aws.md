@@ -91,6 +91,24 @@ sudo npm install -g jshint
 sudo npm install -g eslint
 ```
 
+Create a `.eslintrc.json` config file to run ESLint scan.
+
+```bash
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+    }
+}
+```
+
 After the installation process is complete, we need to enable SSH communication between Master and Slave. Create SSH keys in `jenkins` user home directory. 
 
 ```bash
@@ -165,6 +183,10 @@ To allow SSH connection from Jenkins Master to Production, copy the public key o
 
 The instances have now been successfully setup!
 
+### **Steps to Setup Master-Slave Architecture**
+
+1. Go to `Dashboard` -> 
+
 ### **Pipeline**
 
 ```bash
@@ -195,6 +217,12 @@ pipeline {
       }
     } 
     
+    stage('NodeJsScan Analysis') {
+      steps {
+        sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
+      }
+    }
+
     stage('Auditjs Analysis') {
       steps {
         sh 'cd ~/app; auditjs ossi > ~/reports/auditjs-report || true'
@@ -213,10 +241,15 @@ pipeline {
       }
       steps {
         sh 'docker run --rm -i -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://3.143.222.142:9090 -r zap-report.html -l PASS || true'
-        sh 'scp ~/zap-report.html jenkins@3.143.222.142:~/''
       }
     }
     
+    stage ('Retrieve ZAP report from Slave'){
+        steps {
+            sh 'scp jenkins@3.143.222.142:~/zap-report.html ~/reports'
+        }
+    }
+
     stage ('Generating Software Bill of Materials') {
       steps {
         sh 'cd ~/app && cyclonedx-bom -o ~/reports/sbom.xml'

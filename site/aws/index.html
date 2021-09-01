@@ -442,6 +442,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#steps-to-setup-master-slave-architecture" class="md-nav__link">
+    Steps to Setup Master-Slave Architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pipeline" class="md-nav__link">
     Pipeline
   </a>
@@ -518,6 +525,13 @@
         <li class="md-nav__item">
   <a href="#production-server" class="md-nav__link">
     Production Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-setup-master-slave-architecture" class="md-nav__link">
+    Steps to Setup Master-Slave Architecture
   </a>
   
 </li>
@@ -625,6 +639,21 @@ sudo npm install -g jshint
 # Copy the file content from documentation
 sudo npm install -g eslint
 </code></pre>
+<p>Create a <code>.eslintrc.json</code> config file to run ESLint scan.</p>
+<pre><code class="language-bash">{
+    &quot;env&quot;: {
+        &quot;browser&quot;: true,
+        &quot;commonjs&quot;: true,
+        &quot;es2021&quot;: true
+    },
+    &quot;extends&quot;: &quot;eslint:recommended&quot;,
+    &quot;parserOptions&quot;: {
+        &quot;ecmaVersion&quot;: 12
+    },
+    &quot;rules&quot;: {
+    }
+}
+</code></pre>
 <p>After the installation process is complete, we need to enable SSH communication between Master and Slave. Create SSH keys in <code>jenkins</code> user home directory. </p>
 <pre><code class="language-bash">sudo su - jenkins
 ssh-keygen -t ed25519
@@ -672,6 +701,10 @@ touch ~/.ssh/authorized_keys
 </code></pre>
 <p>To allow SSH connection from Jenkins Master to Production, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Production.</p>
 <p>The instances have now been successfully setup!</p>
+<h3 id="steps-to-setup-master-slave-architecture"><strong>Steps to Setup Master-Slave Architecture</strong></h3>
+<ol>
+<li>Go to <code>Dashboard</code> -&gt; </li>
+</ol>
 <h3 id="pipeline"><strong>Pipeline</strong></h3>
 <pre><code class="language-bash">pipeline {
   agent any
@@ -700,6 +733,12 @@ touch ~/.ssh/authorized_keys
       }
     } 
 
+    stage('NodeJsScan Analysis') {
+      steps {
+        sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
+      }
+    }
+
     stage('Auditjs Analysis') {
       steps {
         sh 'cd ~/app; auditjs ossi &gt; ~/reports/auditjs-report || true'
@@ -718,8 +757,13 @@ touch ~/.ssh/authorized_keys
       }
       steps {
         sh 'docker run --rm -i -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://3.143.222.142:9090 -r zap-report.html -l PASS || true'
-        sh 'scp ~/zap-report.html jenkins@3.143.222.142:~/''
       }
+    }
+
+    stage ('Retrieve ZAP report from Slave'){
+        steps {
+            sh 'scp jenkins@3.143.222.142:~/zap-report.html ~/reports'
+        }
     }
 
     stage ('Generating Software Bill of Materials') {
