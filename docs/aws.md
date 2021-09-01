@@ -190,7 +190,7 @@ The instances have now been successfully setup!
         
     ![Screenshot](img/aws_1.png)
 
-3. Give details about the agent.
+3. Provide details about the agent.
 
     - Description - Description of the agent
     - Number of executors - The maximum number of concurrent builds that Jenkins may perform on this node (default is 1).
