@@ -181,7 +181,7 @@ To allow SSH connection from Master to Agent, copy the public key of Master inst
 ### Configuring Dynamic Analysis Tool - OWASP ZAP
 
 For reasons mentioned earlier, The ZAP scan is run on the Jenkins Agent. Docker installation is the only requirement to run the ZAP scan. I added the same stage in the pipeline, as the one I used in my local setup (mentioned in the [documentation](dynamic_analysis.md)). However, I specified the `agent` to run the scan using a label. To work with Master-Agent architecture, labels can be used to allocate jobs to certain agents.  
-**Note:** The [`Setup Master-Agent`](aws.md/#setup-master-agent)) section gives details on creating node with label.
+**Note:** The [`Setup Master-Agent`](#setup-master-agent)) section gives details on creating node with label.
 
 ```bash
 stage('OWASP ZAP Analysis') {
