@@ -39,7 +39,7 @@ Create two EC2 instances for Jenkins. The `Master` instance is the main Jenkins 
 
 ### Jenkins Master
 
-In the Jenkins Master instance, run the following bash script to automate the installation process of Jenkins, Docker and static analysis tools. 
+In the Jenkins Master instance, run the following `install.sh` script to automate the installation process of Jenkins, Docker and static analysis tools. 
 
 ```bash
 #!/bin/bash
@@ -91,7 +91,9 @@ sudo npm install -g jshint
 sudo npm install -g eslint
 ```
 
-Create a `.eslintrc.json` config file to run ESLint scan.
+**Note:** Run the script using `sudo sh install.sh`  
+
+Next, create a `.eslintrc.json` config file to run ESLint scan.
 
 ```bash
 {
@@ -124,28 +126,22 @@ The `install.sh` bash script executed previously installs all the tools required
 
 **SAST Tools**
 
-For SAST, I followed the [documentation](static_analysis.md) I wrote previously. The SAST tools used are:
+For SAST, I followed the [documentation](static_analysis.md) I wrote previously. I added the same stage in the pipeline, as the one I used in my local setup. The SAST tools used are:
 
 - NodeJsScan
 - AuditJs
 - OWASP Dependency-Check
 
-**DAST Tools**
-
-For DAST, I followed the [documentation](dynamic_analysis.md) I wrote previously. The DAST tool used is:
-
-- OWASP ZAP
-
 **Code Analysis Tools**
 
-For code quality analysis, I followed the [documentation](scqa.md) I wrote previously. The code linting tools used are:
+For code quality analysis, I followed the [documentation](scqa.md) I wrote previously. I added the same stage in the pipeline, as the one I used in my local setup. The code linting tools used are:
 
 - JSHint
 - ESLint
 
 **Software Bill of Marterials**
 
-For generating SBoM, I followed the [documentation](sbom.md) I wrote previously. The SBoM tool used is:
+For generating SBoM, I followed the [documentation](sbom.md) I wrote previously. I added the same stage in the pipeline, as the one I used in my local setup. The SBoM tool used is:
 
 - CycloneDX
 
@@ -181,6 +177,23 @@ touch ~/.ssh/authorized_keys
 ```
 
 To allow SSH connection from Master to Agent, copy the public key of Master instance into `~/.ssh/authorized_keys` created in Agent.
+
+### Configuring Dynamic Analysis Tool - OWASP ZAP
+
+For reasons mentioned earlier, The ZAP scan is run on the Jenkins Agent. Docker installation is the only requirement to run the ZAP scan. I added the same stage in the pipeline, as the one I used in my local setup (mentioned in the [documentation](dynamic_analysis.md)). However, I specified the `agent` to run the scan using a label. To work with Master-Agent architecture, labels can be used to allocate jobs to certain agents.  
+**Note:** The [`Setup Master-Agent`](aws.md/#setup-master-agent)) section gives details on creating node with label.
+
+```bash
+stage('OWASP ZAP Analysis') {
+  agent {
+    label 'dast-scan'
+  }
+  steps {
+    sh 'docker run --rm -i -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://3.143.222.142:9090 -r zap-report.html -l PASS || true'
+  }
+}
+```
+
 
 ### **Setup Production Server**
 

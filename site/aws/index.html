@@ -456,6 +456,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuring-dynamic-analysis-tool-owasp-zap" class="md-nav__link">
+    Configuring Dynamic Analysis Tool - OWASP ZAP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setup-production-server" class="md-nav__link">
     Setup Production Server
   </a>
@@ -565,6 +572,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuring-dynamic-analysis-tool-owasp-zap" class="md-nav__link">
+    Configuring Dynamic Analysis Tool - OWASP ZAP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setup-production-server" class="md-nav__link">
     Setup Production Server
   </a>
@@ -632,7 +646,7 @@
 <p><strong>Note:</strong> Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version of AWS, I can only use 1GB memory instances, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance). The Master-Agent architecture of Jenkins is used for distributed build environments, where the workload of building projects is distributed to multiple agent nodes or slaves.</p>
 <p>Create two EC2 instances for Jenkins. The <code>Master</code> instance is the main Jenkins server which will also perform static analysis on test DVNA, while the <code>Agent</code> instance will be used to perform DAST scan on test DVNA deployed on Master.</p>
 <h3 id="jenkins-master">Jenkins Master</h3>
-<p>In the Jenkins Master instance, run the following bash script to automate the installation process of Jenkins, Docker and static analysis tools. </p>
+<p>In the Jenkins Master instance, run the following <code>install.sh</code> script to automate the installation process of Jenkins, Docker and static analysis tools. </p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
 
@@ -681,7 +695,8 @@ sudo npm install -g jshint
 # Copy the file content from documentation
 sudo npm install -g eslint
 </code></pre>
-<p>Create a <code>.eslintrc.json</code> config file to run ESLint scan.</p>
+<p><strong>Note:</strong> Run the script using <code>sudo sh install.sh</code>  </p>
+<p>Next, create a <code>.eslintrc.json</code> config file to run ESLint scan.</p>
 <pre><code class="language-bash">{
     &quot;env&quot;: {
         &quot;browser&quot;: true,
@@ -704,25 +719,20 @@ ssh-keygen -t ed25519
 <h3 id="configuring-static-analysis-tools">Configuring Static Analysis Tools</h3>
 <p>The <code>install.sh</code> bash script executed previously installs all the tools required to perform scans on a NodeJs application (DVNA). </p>
 <p><strong>SAST Tools</strong></p>
-<p>For SAST, I followed the <a href="../static_analysis/">documentation</a> I wrote previously. The SAST tools used are:</p>
+<p>For SAST, I followed the <a href="../static_analysis/">documentation</a> I wrote previously. I added the same stage in the pipeline, as the one I used in my local setup. The SAST tools used are:</p>
 <ul>
 <li>NodeJsScan</li>
 <li>AuditJs</li>
 <li>OWASP Dependency-Check</li>
 </ul>
-<p><strong>DAST Tools</strong></p>
-<p>For DAST, I followed the <a href="../dynamic_analysis/">documentation</a> I wrote previously. The DAST tool used is:</p>
-<ul>
-<li>OWASP ZAP</li>
-</ul>
 <p><strong>Code Analysis Tools</strong></p>
-<p>For code quality analysis, I followed the <a href="../scqa/">documentation</a> I wrote previously. The code linting tools used are:</p>
+<p>For code quality analysis, I followed the <a href="../scqa/">documentation</a> I wrote previously. I added the same stage in the pipeline, as the one I used in my local setup. The code linting tools used are:</p>
 <ul>
 <li>JSHint</li>
 <li>ESLint</li>
 </ul>
 <p><strong>Software Bill of Marterials</strong></p>
-<p>For generating SBoM, I followed the <a href="../sbom/">documentation</a> I wrote previously. The SBoM tool used is:</p>
+<p>For generating SBoM, I followed the <a href="../sbom/">documentation</a> I wrote previously. I added the same stage in the pipeline, as the one I used in my local setup. The SBoM tool used is:</p>
 <ul>
 <li>CycloneDX</li>
 </ul>
@@ -748,6 +758,18 @@ ssh jenkins@localhost
 touch ~/.ssh/authorized_keys
 </code></pre>
 <p>To allow SSH connection from Master to Agent, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Agent.</p>
+<h3 id="configuring-dynamic-analysis-tool-owasp-zap">Configuring Dynamic Analysis Tool - OWASP ZAP</h3>
+<p>For reasons mentioned earlier, The ZAP scan is run on the Jenkins Agent. Docker installation is the only requirement to run the ZAP scan. I added the same stage in the pipeline, as the one I used in my local setup (mentioned in the <a href="../dynamic_analysis/">documentation</a>). However, I specified the <code>agent</code> to run the scan using a label. To work with Master-Agent architecture, labels can be used to allocate jobs to certain agents.<br />
+<strong>Note:</strong> The <a href="aws.md/#setup-master-agent"><code>Setup Master-Agent</code></a>) section gives details on creating node with label.</p>
+<pre><code class="language-bash">stage('OWASP ZAP Analysis') {
+  agent {
+    label 'dast-scan'
+  }
+  steps {
+    sh 'docker run --rm -i -u zap --name owasp-zap -v ~/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://3.143.222.142:9090 -r zap-report.html -l PASS || true'
+  }
+}
+</code></pre>
 <h3 id="setup-production-server"><strong>Setup Production Server</strong></h3>
 <p>Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).</p>
 <pre><code class="language-bash">#!/bin/bash
