@@ -37,7 +37,7 @@ A Jenkins server is setup to automate the software development life cycle using 
 
 Create two EC2 instances for Jenkins. The `Master` instance is the main Jenkins server which will also perform static analysis on test DVNA, while the `Agent` instance will be used to perform DAST scan on test DVNA deployed on Master.
 
-### Jenkins Master
+### **Jenkins Master**
 
 In the Jenkins Master instance, run the following `install.sh` script to automate the installation process of Jenkins, Docker and static analysis tools. 
 
@@ -145,7 +145,7 @@ For generating SBoM, I followed the [documentation](sbom.md) I wrote previously.
 
 - CycloneDX
 
-### Jenkins Agent/Slave
+### **Jenkins Agent/Slave**
 
 The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.
 
