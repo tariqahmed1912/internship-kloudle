@@ -130,6 +130,11 @@ For SAST, I followed the [documentation](static_analysis.md) I wrote previously.
 
 - NodeJsScan
 - AuditJs
+
+**SCA Tools**
+
+For SCA, I followed the [documentation](sca.md) I wrote previously. I added the same stage in the pipeline, as the one I used in my local setup. The SCA tool used is:
+
 - OWASP Dependency-Check
 
 **Code Analysis Tools**
