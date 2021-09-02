@@ -7,6 +7,8 @@ About AWS
 - Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.  
 - Migrating your local/on-prem infrastructure to cloud can help reduce costs of operations, increase IT staff productivity, and reduce downtime.
 
+---
+
 ### **Starting EC2 Instances**
 
 Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is a service that enables business subscribers to run application programs in the computing environment. It can serve as a practically unlimited set of VMs. 
@@ -28,6 +30,7 @@ Steps to create an EC2 instance:
 
 7. Create three instances; Jenkins server (master), DAST server (agent), Production server. 
 
+---
 
 ### **Setup Jenkins Server**
 
@@ -36,6 +39,8 @@ A Jenkins server is setup to automate the software development life cycle using 
 **Note:** Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version of AWS, I can only use 1GB memory instances, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance). The Master-Agent architecture of Jenkins is used for distributed build environments, where the workload of building projects is distributed to multiple agent nodes or slaves.
 
 Create two EC2 instances for Jenkins. The `Master` instance is the main Jenkins server which will also perform static analysis on test DVNA, while the `Agent` instance will be used to perform DAST scan on test DVNA deployed on Master.
+
+---
 
 ### **Jenkins Master**
 
@@ -150,7 +155,7 @@ For generating SBoM, I followed the [documentation](sbom.md) I wrote previously.
 
 - CycloneDX
 
-**---**
+---
 
 ### **Jenkins Agent/Slave**
 
@@ -211,6 +216,8 @@ stage ('Retrieve ZAP report from Agent'){
 }
 ```
 
+---
+
 ### **Setup Production Server**
 
 Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).
@@ -243,6 +250,8 @@ To allow SSH connection from Jenkins Master to Production, copy the public key o
 
 The instances have now been successfully setup!
 
+---
+
 ### **Setup Master-Agent**
 
 1. Go to `Dashboard` -> `Manage Jenkins` -> `Manage Nodes and Clouds` -> `New Node`.
@@ -265,6 +274,8 @@ The instances have now been successfully setup!
 
 4. Create a new project (I selected `Pipeline`) and in the `Configure` section, specify the Git repo containing the Jenkinsfile.
 5. Click `Build Now` to execute the pipeline.
+
+---
 
 ### **Complete Pipeline**
 
