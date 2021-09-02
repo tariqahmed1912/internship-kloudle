@@ -194,6 +194,15 @@ stage('OWASP ZAP Analysis') {
 }
 ```
 
+I added an extra stage after the `OWASP ZAP Analysis` stage to copy the ZAP report generated in the Agent into the `~/reports` directory in Master.
+
+```bash
+stage ('Retrieve ZAP report from Agent'){
+  steps {
+    sh 'scp jenkins@3.143.222.142:~/zap-report.html ~/reports'
+  }
+}
+```
 
 ### **Setup Production Server**
 

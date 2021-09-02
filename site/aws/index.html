@@ -770,6 +770,13 @@ touch ~/.ssh/authorized_keys
   }
 }
 </code></pre>
+<p>I added an extra stage after the <code>OWASP ZAP Analysis</code> stage to copy the ZAP report generated in the Agent into the <code>~/reports</code> directory in Master.</p>
+<pre><code class="language-bash">stage ('Retrieve ZAP report from Agent'){
+  steps {
+    sh 'scp jenkins@3.143.222.142:~/zap-report.html ~/reports'
+  }
+}
+</code></pre>
 <h3 id="setup-production-server"><strong>Setup Production Server</strong></h3>
 <p>Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).</p>
 <pre><code class="language-bash">#!/bin/bash
