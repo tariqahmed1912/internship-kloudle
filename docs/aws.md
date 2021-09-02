@@ -124,7 +124,7 @@ The `install.sh` bash script executed previously installs all the tools required
 
 **SAST Tools**
 
-For SAST, I followed the [documentation](static_analysis.md) I wrote previously. 
+For SAST, I followed the [documentation](static_analysis.md) I wrote previously. The SAST tools used are:
 
 - NodeJsScan
 - AuditJs
@@ -132,14 +132,20 @@ For SAST, I followed the [documentation](static_analysis.md) I wrote previously.
 
 **DAST Tools**
 
+For DAST, I followed the [documentation](dynamic_analysis.md) I wrote previously. The DAST tool used is:
+
 - OWASP ZAP
 
 **Code Analysis Tools**
+
+For code quality analysis, I followed the [documentation](scqa.md) I wrote previously. The code linting tools used are:
 
 - JSHint
 - ESLint
 
 **Software Bill of Marterials**
+
+For generating SBoM, I followed the [documentation](sbom.md) I wrote previously. The SBoM tool used is:
 
 - CycloneDX
 
