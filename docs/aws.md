@@ -150,6 +150,8 @@ For generating SBoM, I followed the [documentation](sbom.md) I wrote previously.
 
 - CycloneDX
 
+---
+
 ### **Jenkins Agent/Slave**
 
 The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.
