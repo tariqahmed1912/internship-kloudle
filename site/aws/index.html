@@ -421,22 +421,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-ec2-instances" class="md-nav__link">
-    Setup EC2 Instances
+  <a href="#starting-ec2-instances" class="md-nav__link">
+    Starting EC2 Instances
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#jenkins-server" class="md-nav__link">
-    Jenkins Server
+  <a href="#setup-jenkins-server" class="md-nav__link">
+    Setup Jenkins Server
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#production-server" class="md-nav__link">
-    Production Server
+  <a href="#jenkins-master" class="md-nav__link">
+    Jenkins Master
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-static-analysis-tools" class="md-nav__link">
+    Configuring Static Analysis Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jenkins-agentslave" class="md-nav__link">
+    Jenkins Agent/Slave
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-production-server" class="md-nav__link">
+    Setup Production Server
   </a>
   
 </li>
@@ -509,22 +530,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-ec2-instances" class="md-nav__link">
-    Setup EC2 Instances
+  <a href="#starting-ec2-instances" class="md-nav__link">
+    Starting EC2 Instances
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#jenkins-server" class="md-nav__link">
-    Jenkins Server
+  <a href="#setup-jenkins-server" class="md-nav__link">
+    Setup Jenkins Server
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#production-server" class="md-nav__link">
-    Production Server
+  <a href="#jenkins-master" class="md-nav__link">
+    Jenkins Master
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-static-analysis-tools" class="md-nav__link">
+    Configuring Static Analysis Tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jenkins-agentslave" class="md-nav__link">
+    Jenkins Agent/Slave
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-production-server" class="md-nav__link">
+    Setup Production Server
   </a>
   
 </li>
@@ -565,7 +607,7 @@
 <li>Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.  </li>
 <li>Migrating your local/on-prem infrastructure to cloud can help reduce costs of operations, increase IT staff productivity, and reduce downtime.</li>
 </ul>
-<h3 id="setup-ec2-instances"><strong>Setup EC2 Instances</strong></h3>
+<h3 id="starting-ec2-instances"><strong>Starting EC2 Instances</strong></h3>
 <p>Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is a service that enables business subscribers to run application programs in the computing environment. It can serve as a practically unlimited set of VMs. </p>
 <p>An EC2 instance is a virtual server in Amazon's EC2 for running applications on the AWS infrastructure. Instances are created from Amazon Machine Images (AMI). AMIs are like templates that are configured with an OS, CPU power, memory, storage and other networking resources to suit user needs.</p>
 <p>Steps to create an EC2 instance:</p>
@@ -585,12 +627,12 @@
 <p>Create three instances; Jenkins server (master), DAST server (agent), Production server. </p>
 </li>
 </ol>
-<h3 id="jenkins-server"><strong>Jenkins Server</strong></h3>
+<h3 id="setup-jenkins-server"><strong>Setup Jenkins Server</strong></h3>
 <p>A Jenkins server is setup to automate the software development life cycle using CI/CD pipelines. DVNA NodeJs application which is to be deployed on Production server will first undergo multiple security testing in the Jenkins server prior to deployment.   </p>
 <p><strong>Note:</strong> Initially, I tried running all the scans in Jenkins instance via pipeline. But the instance crashed/hung when running the OWASP ZAP scan. Since I'm using a Free Tier version of AWS, I can only use 1GB memory instances, which isn't sufficient to run all these scans. To solve this issue, I'm using a Master-Agent architecture in which the DAST scan will be allocated to an Agent (separate instance). The Master-Agent architecture of Jenkins is used for distributed build environments, where the workload of building projects is distributed to multiple agent nodes or slaves.</p>
 <p>Create two EC2 instances for Jenkins. The <code>Master</code> instance is the main Jenkins server which will also perform static analysis on test DVNA, while the <code>Agent</code> instance will be used to perform DAST scan on test DVNA deployed on Master.</p>
-<p><strong>Jenkins Master</strong></p>
-<p>Automate the installation process of Jenkins, Docker and static analysis tools by running the following script in the Jenkins Master instance.  </p>
+<h3 id="jenkins-master">Jenkins Master</h3>
+<p>In the Jenkins Master instance, run the following bash script to automate the installation process of Jenkins, Docker and static analysis tools. </p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
 
@@ -659,7 +701,28 @@ sudo npm install -g eslint
 ssh-keygen -t ed25519
 </code></pre>
 <p>The public and private SSH keys are stored in <code>&lt;Jenkins-Home-Dir&gt;/.ssh</code> directory.</p>
-<p><strong>Jenkins Agent/Slave</strong></p>
+<h3 id="configuring-static-analysis-tools">Configuring Static Analysis Tools</h3>
+<p>The <code>install.sh</code> bash script installs all the tools required to perform scans on a NodeJs application (DVNA). </p>
+<p><strong>SAST Tools</strong></p>
+<ol>
+<li>NodeJsScan</li>
+<li>AuditJs</li>
+<li>OWASP Dependency-Check</li>
+</ol>
+<p><strong>DAST Tools</strong></p>
+<ol>
+<li>OWASP ZAP</li>
+</ol>
+<p><strong>Code Analysis Tools</strong></p>
+<ol>
+<li>JSHint</li>
+<li>ESLint</li>
+</ol>
+<p><strong>Software Bill of Marterials</strong></p>
+<ol>
+<li>CycloneDX</li>
+</ol>
+<h3 id="jenkins-agentslave">Jenkins Agent/Slave</h3>
 <p>The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.</p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update
@@ -681,7 +744,7 @@ ssh jenkins@localhost
 touch ~/.ssh/authorized_keys
 </code></pre>
 <p>To allow SSH connection from Master to Agent, copy the public key of Master instance into <code>~/.ssh/authorized_keys</code> created in Agent.</p>
-<h3 id="production-server"><strong>Production Server</strong></h3>
+<h3 id="setup-production-server"><strong>Setup Production Server</strong></h3>
 <p>Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).</p>
 <pre><code class="language-bash">#!/bin/bash
 sudo apt update

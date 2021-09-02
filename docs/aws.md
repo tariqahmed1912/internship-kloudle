@@ -7,7 +7,7 @@ About AWS
 - Amazon Web Services (AWS) is the world's most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally.  
 - Migrating your local/on-prem infrastructure to cloud can help reduce costs of operations, increase IT staff productivity, and reduce downtime.
 
-### **Setup EC2 Instances**
+### **Starting EC2 Instances**
 
 Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is a service that enables business subscribers to run application programs in the computing environment. It can serve as a practically unlimited set of VMs. 
 
@@ -29,7 +29,7 @@ Steps to create an EC2 instance:
 7. Create three instances; Jenkins server (master), DAST server (agent), Production server. 
 
 
-### **Jenkins Server**
+### **Setup Jenkins Server**
 
 A Jenkins server is setup to automate the software development life cycle using CI/CD pipelines. DVNA NodeJs application which is to be deployed on Production server will first undergo multiple security testing in the Jenkins server prior to deployment.   
 
@@ -37,9 +37,9 @@ A Jenkins server is setup to automate the software development life cycle using 
 
 Create two EC2 instances for Jenkins. The `Master` instance is the main Jenkins server which will also perform static analysis on test DVNA, while the `Agent` instance will be used to perform DAST scan on test DVNA deployed on Master.
 
-**Jenkins Master**
+### Jenkins Master
 
-Automate the installation process of Jenkins, Docker and static analysis tools by running the following script in the Jenkins Master instance.  
+In the Jenkins Master instance, run the following bash script to automate the installation process of Jenkins, Docker and static analysis tools. 
 
 ```bash
 #!/bin/bash
@@ -118,7 +118,30 @@ ssh-keygen -t ed25519
 
 The public and private SSH keys are stored in `<Jenkins-Home-Dir>/.ssh` directory.
 
-**Jenkins Agent/Slave**
+### Configuring Static Analysis Tools
+
+The `install.sh` bash script installs all the tools required to perform scans on a NodeJs application (DVNA). 
+
+**SAST Tools**
+
+1. NodeJsScan
+2. AuditJs
+3. OWASP Dependency-Check
+
+**DAST Tools**
+
+1. OWASP ZAP
+
+**Code Analysis Tools**
+
+1. JSHint
+2. ESLint
+
+**Software Bill of Marterials**
+
+1. CycloneDX
+
+### Jenkins Agent/Slave
 
 The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.
 
@@ -151,7 +174,7 @@ touch ~/.ssh/authorized_keys
 
 To allow SSH connection from Master to Agent, copy the public key of Master instance into `~/.ssh/authorized_keys` created in Agent.
 
-### **Production Server**
+### **Setup Production Server**
 
 Install docker on the production server the same way you installed it on the Jenkins server (you can just run the bash script below).
 
