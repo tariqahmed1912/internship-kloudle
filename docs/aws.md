@@ -250,7 +250,7 @@ The instances have now been successfully setup!
 4. Create a new project (I selected `Pipeline`) and in the `Configure` section, specify the Git repo containing the Jenkinsfile.
 5. Click `Build Now` to execute the pipeline.
 
-### **Pipeline**
+### **Complete Pipeline**
 
 ```bash
 pipeline {
