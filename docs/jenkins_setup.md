@@ -100,7 +100,7 @@ You will be given a choice to install suggested plugins or select your own plugi
 &nbsp;
 
 After the installation of plugins is complete, you will be prompted to create admin user. You can either create your own, or continue with the default admin.
-![Screenshot](img/jenkins_setup_3.png)&nbsp;
+![Screenshot](img/jenkins_setup_5.png)&nbsp;
 ![Screenshot](img/jenkins_setup_4.png)&nbsp;
 
 You will see an 'Instance Configuration' page that will ask you to confirm the preferred URL for your Jenkins instance. After confirming the appropriate information, click Save and Finish. You will see a confirmation page confirming that “Jenkins is Ready!”
