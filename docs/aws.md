@@ -120,26 +120,28 @@ The public and private SSH keys are stored in `<Jenkins-Home-Dir>/.ssh` director
 
 ### Configuring Static Analysis Tools
 
-The `install.sh` bash script installs all the tools required to perform scans on a NodeJs application (DVNA). 
+The `install.sh` bash script executed previously installs all the tools required to perform scans on a NodeJs application (DVNA). 
 
 **SAST Tools**
 
-1. NodeJsScan
-2. AuditJs
-3. OWASP Dependency-Check
+For SAST, I followed the [documentation](static_analysis.md) I wrote previously. 
+
+- NodeJsScan
+- AuditJs
+- OWASP Dependency-Check
 
 **DAST Tools**
 
-1. OWASP ZAP
+- OWASP ZAP
 
 **Code Analysis Tools**
 
-1. JSHint
-2. ESLint
+- JSHint
+- ESLint
 
 **Software Bill of Marterials**
 
-1. CycloneDX
+- CycloneDX
 
 ### Jenkins Agent/Slave
 

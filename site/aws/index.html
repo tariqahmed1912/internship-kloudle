@@ -702,26 +702,27 @@ ssh-keygen -t ed25519
 </code></pre>
 <p>The public and private SSH keys are stored in <code>&lt;Jenkins-Home-Dir&gt;/.ssh</code> directory.</p>
 <h3 id="configuring-static-analysis-tools">Configuring Static Analysis Tools</h3>
-<p>The <code>install.sh</code> bash script installs all the tools required to perform scans on a NodeJs application (DVNA). </p>
+<p>The <code>install.sh</code> bash script executed previously installs all the tools required to perform scans on a NodeJs application (DVNA). </p>
 <p><strong>SAST Tools</strong></p>
-<ol>
+<p>For SAST, I followed the <a href="../static_analysis/">documentation</a> I wrote previously. </p>
+<ul>
 <li>NodeJsScan</li>
 <li>AuditJs</li>
 <li>OWASP Dependency-Check</li>
-</ol>
+</ul>
 <p><strong>DAST Tools</strong></p>
-<ol>
+<ul>
 <li>OWASP ZAP</li>
-</ol>
+</ul>
 <p><strong>Code Analysis Tools</strong></p>
-<ol>
+<ul>
 <li>JSHint</li>
 <li>ESLint</li>
-</ol>
+</ul>
 <p><strong>Software Bill of Marterials</strong></p>
-<ol>
+<ul>
 <li>CycloneDX</li>
-</ol>
+</ul>
 <h3 id="jenkins-agentslave">Jenkins Agent/Slave</h3>
 <p>The Jenkins agent instance will be used to perform DAST scan on DVNA running on Master. Run the following bash script after logging into the instance.</p>
 <pre><code class="language-bash">#!/bin/bash
