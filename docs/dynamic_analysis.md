@@ -7,6 +7,7 @@ About DAST
 - Dynamic Application Security Testing (DAST) is a testing methodology which looks for security vulnerabilities by simulating external attacks on an application while the application is running. 
 - DAST performs black-box security testing.
 
+---
 
 ### **OWASP ZAP**
 
@@ -44,6 +45,7 @@ The report `zap-report.html`, generated on successful completion, will be locate
 
 **Note:** To open .html file in browser from terminal, type `open zap-report.html` from host terminal.
 
+---
 
 ### **DAST Pipeline**
 
@@ -64,6 +66,7 @@ sudo usermod -aG docker jenkins
 sudo reboot
 ```
 
+---
 
 ### **Increase VM Disk Space (Optional)**
 While trying to run the Jenkins pipeline, I noticed there was an error during the ZAP scan. On reviewing the container logs, I realized that my VM was out of disk space. So instead of creating a new VM with more disk space (I was currently using the default 10GB), I decided to increase the disk space of the Jenkins VM to 16GB.
@@ -109,6 +112,8 @@ Check if the available space has increased.
 ```bash
 df -h
 ```
+
+---
 
 **Note:** While running the ZAP scan in pipeline, I got the following error: ```ERROR [Errno 13] Permission denied: '/zap/wrk/zap-report.html'```.  To resolve this error, I changed the permissions of `/var/lib/jenkins/reports` directory.
 

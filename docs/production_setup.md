@@ -11,6 +11,8 @@ Prerequisites
 -   VM running Ubuntu 18.04 LTS.
 -   Docker installed
 
+---
+
 ### **Step 1 - Install docker**
 
 For docker installation, I followed this [documentation](https://geekylane.com/install-docker-on-aws-ec2-ubuntu-18-04-script-method/) as its very simple and easy to execute.
@@ -52,6 +54,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo docker run hello-world # Test if docker installation is successful 
 ```
 
+---
+
 ### **Step 2 - Setup Production Server**
 
 I followed the [official documentation](https://github.com/appsecco/dvna) available on GitHub to setup DVNA. DVNA interacts with a MySQL database. Store the db configuration in a file named `vars.env`.
@@ -80,6 +84,8 @@ sudo docker run --name dvna-app --env-file vars.env --link dvna-mysql:mysql-db -
 To test if the containers are running, run a `docker ps`. You should see two containers running; dvna-app and dvna-mysql. You can stop running containers by using `docker stop <container-name-or-id>`. 
 
 For deploying DVNA using Jenkins pipeline, the application will first be run in a docker container in the Jenkins VM. Static and dynamic analysis will be done and only then, will the application be deployed in the production server.
+
+---
 
 <b>**Note:**</b> 
 

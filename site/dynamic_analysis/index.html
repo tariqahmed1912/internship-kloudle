@@ -549,6 +549,7 @@
 <li>Dynamic Application Security Testing (DAST) is a testing methodology which looks for security vulnerabilities by simulating external attacks on an application while the application is running. </li>
 <li>DAST performs black-box security testing.</li>
 </ul>
+<hr />
 <h3 id="owasp-zap"><strong>OWASP ZAP</strong></h3>
 <p>The Zed Attack Proxy (ZAP) is one of the most widely-used open source tools for DAST. It helps find security vulnerabilities in web applications while its in the development and testing stage.  Maintained by OWASP, ZAP has built a huge community of people creating new features and add-ons that make it incredibly versatile. </p>
 <p>Implementing ZAP analysis with docker is simpler and faster than manual installation. I followed this <a href="https://www.zaproxy.org/docs/docker/about/">official documentation</a>. First, pull the ZAP image from docker hub.</p>
@@ -571,6 +572,7 @@
 </code></pre>
 <p>The report <code>zap-report.html</code>, generated on successful completion, will be located in the users home directory.</p>
 <p><strong>Note:</strong> To open .html file in browser from terminal, type <code>open zap-report.html</code> from host terminal.</p>
+<hr />
 <h3 id="dast-pipeline"><strong>DAST Pipeline</strong></h3>
 <p>Add the following stage in the Jenkins pipelien for performing DAST on DVNA.</p>
 <pre><code class="language-bash">stage('ZAP Scan') {
@@ -583,6 +585,7 @@
 <pre><code class="language-bash">sudo usermod -aG docker jenkins
 sudo reboot
 </code></pre>
+<hr />
 <h3 id="increase-vm-disk-space-optional"><strong>Increase VM Disk Space (Optional)</strong></h3>
 <p>While trying to run the Jenkins pipeline, I noticed there was an error during the ZAP scan. On reviewing the container logs, I realized that my VM was out of disk space. So instead of creating a new VM with more disk space (I was currently using the default 10GB), I decided to increase the disk space of the Jenkins VM to 16GB.</p>
 <p>I followed this <a href="https://ourcodeworld.com/articles/read/1434/how-to-increase-the-disk-size-of-a-dynamically-allocated-disk-in-virtualbox">documentation</a>. Get location of your Jenkins VM virtual hard disk. Go to <code>Oracle VM VirtualBox Manager</code> -&gt; <code>Jenkins Server</code> -&gt; <code>Settings</code> -&gt; <code>Storage</code> -&gt; <code>Controller: IDE</code>.</p>
@@ -608,6 +611,7 @@ lvm&gt; exit
 <p>Check if the available space has increased.</p>
 <pre><code class="language-bash">df -h
 </code></pre>
+<hr />
 <p><strong>Note:</strong> While running the ZAP scan in pipeline, I got the following error: <code>ERROR [Errno 13] Permission denied: '/zap/wrk/zap-report.html'</code>.  To resolve this error, I changed the permissions of <code>/var/lib/jenkins/reports</code> directory.</p>
 <pre><code class="language-bash">sudo chmod 777 /var/lib/jenkins/report
 </code></pre>

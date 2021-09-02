@@ -562,10 +562,13 @@
 <ul>
 <li>An application (DVNA) running on Production Server.</li>
 </ul>
+<hr />
 <h3 id="sca"><strong>SCA</strong></h3>
 <p>Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities. It helps identify vulnerabilities in open source code (dependencies) used in code.</p>
+<hr />
 <h3 id="owasp-dependancy-check"><strong>OWASP Dependancy-Check</strong></h3>
 <p>OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies. It does this by determining if there is a Common Platform Enumeration (CPE) identifier for a given dependency. If found, it will generate a report linking to the associated CVE entries.</p>
+<hr />
 <h3 id="performing-sca-on-dvna"><strong>Performing SCA on DVNA</strong></h3>
 <p>To start working with Dependency Check, I followed the <a href="https://jeremylong.github.io/DependencyCheck/dependency-check-cli/index.html">official documentation</a>. First, download the Dependency-Check CLI tool and the associated GPG signature file.</p>
 <pre><code class="language-bash">wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip
@@ -579,6 +582,7 @@ wget -P ~/ https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.
 <pre><code class="language-bash">~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/report/dependency-check-report --format JSON --prettyPrint
 </code></pre>
 <p><strong>Note</strong>: This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.</p>
+<hr />
 <h3 id="sca-pipeline"><strong>SCA Pipeline</strong></h3>
 <p>Add the following stage in the Jenkins pipeline to perform SCA of DVNA.</p>
 <pre><code class="language-bash">stage ('OWASP Dependency-Check') {

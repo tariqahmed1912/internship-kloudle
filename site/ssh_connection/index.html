@@ -568,11 +568,13 @@
 <ul>
 <li>VMs running Ubuntu 18.04 LTS.</li>
 </ul>
+<hr />
 <h3 id="generating-ssh-keys"><strong>Generating SSH Keys</strong></h3>
 <p>Generate SSH keys in the Jenkins VM using <code>ssh-keygen</code>. The encryption algorithm I used is ed25519, which is generally much faster than RSA and provides the same level of security with significantly smaller keys. Consequently, two files are generated; id_ed25519 and id_ed25519.pub. The former contains the private key, while the public key is present in the latter.</p>
 <pre><code class="language-bash">ssh-keygen -t ed25519 -m PEM
 </code></pre>
 <p>You will be prompted to add a passphrase. You can either provide one or leave it empty.</p>
+<hr />
 <h3 id="copying-ssh-key"><strong>Copying SSH Key</strong></h3>
 <p>Copy the public key from Jenkins server (id_ed25519.pub) into <code>.ssh/authorized_users</code> file of Production servers.</p>
 <pre><code class="language-bash">ssh-copy-id -i ~/.ssh/id_ed25519 &lt;username&gt;@&lt;production_server_ip&gt;
@@ -584,12 +586,14 @@ sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
 
 sudo chmod 400 /var/lib/jenkins/.ssh
 </code></pre>
+<hr />
 <h3 id="test-ssh-connection"><strong>Test SSH Connection</strong></h3>
 <p>Use <code>ssh</code> command to successfully login to the other server without being prompted for a password. Test SSH connection as user <code>jenkins</code>.</p>
 <pre><code class="language-bash">sudo su - jenkins
 
 ssh &lt;username&gt;@&lt;ip_address_of_server&gt;
 </code></pre>
+<hr />
 <h3 id="jenkins-remote-ssh"><strong>Jenkins remote SSH</strong></h3>
 <p>Install <code>Publish over SSH</code> plugin.</p>
 <p>Go to <code>Dashboard</code> → <code>Manage Jenkins</code> → <code>Configure System</code> → <code>Publish over SSH</code>. Add the path to the private SSH key of Jenkins server or copy the private SSH key into the input field. <br>

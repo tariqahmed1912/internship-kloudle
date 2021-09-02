@@ -2,19 +2,23 @@
 
 The aim of this section is to explain the software composition of DVNA using SCA tools in a Jenkins pipeline and solve the 5th point of the [Problem Statement](problem_statements.md) under Task 1.
 
-
 Prerequisites
 
 -   An application (DVNA) running on Production Server.
+
+---
 
 ### **SCA**
 
 Software composition analysis (SCA) identifies all the open source in a codebase and maps that inventory to a list of current known vulnerabilities. It helps identify vulnerabilities in open source code (dependencies) used in code.
 
+---
 
 ### **OWASP Dependancy-Check**
 
 OWASP Dependency-Check is a software composition analysis (SCA) tool that detects publicly disclosed vulnerabilities contained within a project’s dependencies. It does this by determining if there is a Common Platform Enumeration (CPE) identifier for a given dependency. If found, it will generate a report linking to the associated CVE entries.
+
+---
 
 ### **Performing SCA on DVNA**
 
@@ -39,6 +43,8 @@ Perform the scan by specifying the path to the project, output report format and
 ```
 
 **Note**: This scan is inclusive of Retire.js scan, NPM Audit scan, and Auditjs scan, to name a few.
+
+---
 
 ### **SCA Pipeline**
 

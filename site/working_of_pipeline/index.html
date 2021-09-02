@@ -544,6 +544,7 @@
                 
                 <h2 id="objective"><strong>Objective</strong></h2>
 <p>The aim of this section is to understand the Jenkins pipeline to deploy DVNA and solve the points 2-8 in <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
+<hr />
 <h3 id="jenkins-pipeline"><strong>Jenkins Pipeline</strong></h3>
 <p>Jenkins is a continuous integration server which has the ability to support the automation of software development processes. It can be used to create several automation jobs and run them as a pipeline. Jenkins pipelines are made up of multiple stages (jobs/events) that allow you to build, test and deploy applications. Every stage has some sort of dependency on at least one or more stages in a pipeline. In DevSecOps, security is integrated into the pipeline by performing static and dynamic analysis using various SAST and DAST tools.</p>
 <p>To start creating a new pipeline in Jenkins, login to the Jenkins web interface by typing <code>jenkins_server_ip:8080</code> in the url. Follow the steps below:</p>
@@ -574,6 +575,7 @@ Select <code>Pipeline script from SCM</code> and the SCM as <code>Git</code>. Yo
 <p>To initiate build, Go to <code>Dashboard</code> -&gt; <code>DVNA_Pipeline</code> -&gt; <code>Build Now</code>.</p>
 </li>
 </ol>
+<hr />
 <h3 id="jenkinsfile"><strong>Jenkinsfile</strong></h3>
 <p>A Jenkinsfile is a text file that contains the definition of a Jenkins Pipeline.</p>
 <pre><code class="language-bash">pipeline {
@@ -638,6 +640,7 @@ Select <code>Pipeline script from SCM</code> and the SCM as <code>Git</code>. Yo
 <li><code>steps</code> - Defines actions to be performed within a particular stage.  </li>
 <li><code>sh</code> - Used to execute shell commands.</li>
 </ul>
+<hr />
 <h3 id="cicd-pipeline-for-deploying-dvna"><strong>CI/CD Pipeline for Deploying DVNA</strong></h3>
 <p>The pipeline is divided into various stages based on the operations being performed. They are as follows:</p>
 <p><strong>Initialization</strong></p>

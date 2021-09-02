@@ -2,6 +2,8 @@
 
 The aim of this section is to show the complete CI/CD pipeline structure and solve the points 1-8 in [Problem Statement](problem_statements.md) under Task 1.
 
+---
+
 ### **Complete Pipeline**
 
 The following is the complete pipeline to perform multiple scans on the application and then deploy it in Production VM.

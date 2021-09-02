@@ -2,9 +2,13 @@
 
 The aim of this section is to perform code linting and generate a code quality report and solve the 8th point of the [Problem Statement](problem_statements.md) under Task 1.
 
+---
+
 ### **Code Linting**
 
 Code linting is the automated checking of your source code for programmatic and stylistic errors. It's great for identifying violations of standard rules and is the most basic form of static analysis. Lint tools (aka linters) help accelerate developement process and reduce costs by finding errors earlier.
+
+---
 
 ### **JSHint**
 
@@ -37,6 +41,8 @@ stage ('JSHint Analysis') {
   }
 }
 ```
+
+---
 
 ### **ESLint**
 
@@ -96,6 +102,8 @@ stage ('ESLint Analysis') {
   }
 }
 ```
+
+---
 
 ### **Code Quality Pipeline**
 

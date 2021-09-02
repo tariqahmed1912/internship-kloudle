@@ -553,6 +553,7 @@
 <ul>
 <li>An application (DVNA) running on Production Server.</li>
 </ul>
+<hr />
 <h3 id="nodejsscan"><strong>NodeJsScan</strong></h3>
 <p>NodeJsScan is a static code scanner which is used to find security flaws in Node.js applications.</p>
 <p>In the Jenkins server, enter DVNA container in exec mode.</p>
@@ -576,6 +577,7 @@ njsscan --json -o /app/reports/nodejsscan-report ~/app
   }
 }
 </code></pre>
+<hr />
 <h3 id="auditjs"><strong>Auditjs</strong></h3>
 <p>Auditjs is a SAST tool which detects vulnerablilites in dependencies (node modules) used in your application. It interacts with Sonatype Nexus IQ Server to check for known and disclosed vulnerabailites.</p>
 <p>In the Jenkins server, enter DVNA container in exec mode.</p>
@@ -606,6 +608,7 @@ at OSS Index and run the scan with your accounts <code>username</code> and <code
   }
 }
 </code></pre>
+<hr />
 <h3 id="sast-pipeline"><strong>SAST Pipeline</strong></h3>
 <p>The static analysis is done on the application source code in <code>dvna-app</code> container running on Jenkins server.</p>
 <p>Add the following stages to the Jenkinsfile for performing SAST of DVNA.</p>

@@ -2,6 +2,7 @@
 
 The aim of this section is to understand the Jenkins pipeline to deploy DVNA and solve the points 2-8 in [Problem Statement](problem_statements.md) under Task 1.
 
+---
 
 ### **Jenkins Pipeline**
 
@@ -25,6 +26,8 @@ To start creating a new pipeline in Jenkins, login to the Jenkins web interface 
     - Click `Save` to save and apply the configurations.
 
 3. To initiate build, Go to `Dashboard` -> `DVNA_Pipeline` -> `Build Now`.
+
+---
 
 ### **Jenkinsfile**
 
@@ -93,6 +96,8 @@ Components of the Jenkinsfile-
 - `stage` - Specify the task to be performed.  
 - `steps` - Defines actions to be performed within a particular stage.  
 - `sh` - Used to execute shell commands.
+
+---
 
 ### **CI/CD Pipeline for Deploying DVNA**
 

@@ -11,6 +11,8 @@ Prerequisites
 
 -   An application (DVNA) running on Production Server.
 
+---
+
 ### **NodeJsScan**
 
 NodeJsScan is a static code scanner which is used to find security flaws in Node.js applications.
@@ -50,6 +52,8 @@ stage('NodeJsScan') {
   }
 }
 ``` 
+
+---
 
 ### **Auditjs**
 
@@ -101,6 +105,8 @@ stage('Auditjs') {
   }
 }
 ```
+
+---
 
 ### **SAST Pipeline**
 

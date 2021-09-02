@@ -12,6 +12,8 @@ Prerequisites
 
 -   VMs running Ubuntu 18.04 LTS.
 
+---
+
 ### **Generating SSH Keys**
 Generate SSH keys in the Jenkins VM using `ssh-keygen`. The encryption algorithm I used is ed25519, which is generally much faster than RSA and provides the same level of security with significantly smaller keys. Consequently, two files are generated; id_ed25519 and id_ed25519.pub. The former contains the private key, while the public key is present in the latter.
     
@@ -21,6 +23,7 @@ ssh-keygen -t ed25519 -m PEM
     
 You will be prompted to add a passphrase. You can either provide one or leave it empty.
     
+---
 
 ### **Copying SSH Key**
 
@@ -39,7 +42,8 @@ sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
 
 sudo chmod 400 /var/lib/jenkins/.ssh
 ```
-    
+
+---
 
 ### **Test SSH Connection**
 
@@ -50,6 +54,8 @@ sudo su - jenkins
 
 ssh <username>@<ip_address_of_server>
 ```
+
+---
 
 ### **Jenkins remote SSH**
 

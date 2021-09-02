@@ -12,6 +12,8 @@ Prerequisites
 - VM running Ubuntu 18.04 LTS.
 - Java version 8. OpenJDK version 11.
 
+---
+
 ### **Step 1 - Install Java**
 
 For setting up the Jenkins server, I followed this [documentation](https://www.digitalocean.com/community/tutorials/how-to-install-jenkins-on-ubuntu-18-04) as its very clear and easy to follow. The easiest option for installing Java is to use the version packaged with Ubuntu. By default, Ubuntu 18.04 includes OpenJDK version 11, which is an open-source variant of the JRE and JDK.
@@ -31,6 +33,8 @@ $ sudo apt install default-jdk
 
 $ javac --version  # Java Compiler version
 ```
+
+---
 
 ### **Step 2 - Install Jenkins**
 
@@ -54,6 +58,8 @@ Install Jenkins and its dependencies.
 sudo apt install jenkins
 ```
 
+---
+
 ### **Step 3 - Start Jenkins Service**
 
 After all the installation steps, start Jenkins using systemctl. You can view the status of the service, using the 2nd command shown below.
@@ -63,6 +69,8 @@ sudo systemctl start jenkins
 
 sudo systemctl status jenkins
 ```
+
+---
 
 ### **Step 4 - Adding Firewall Rules**
 
@@ -74,6 +82,8 @@ sudo ufw allow OpenSSH # Allow SSH access into the server over the internet
 sudo ufw enable # Starts the firewall service
 sudo ufw status # Shows all firewall rules
 ```
+
+---
 
 ### **Step 5 - Setting Up Jenkins**
 
@@ -95,6 +105,7 @@ After the installation of plugins is complete, you will be prompted to create ad
 
 You will see an 'Instance Configuration' page that will ask you to confirm the preferred URL for your Jenkins instance. After confirming the appropriate information, click Save and Finish. You will see a confirmation page confirming that “Jenkins is Ready!”
 
+---
 
 **Note:**
 
