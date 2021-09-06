@@ -12,4 +12,4 @@ Secrets management refers to the tools and methods for managing digital authenti
 
 ### **AWS Secrets Manager**
 
-AWS Secrets Manager centralizes storage of secrets so applications dont need to take on the added responsibility of storing secrets securely. It helps implement best practices such as periodic rotation of secrets/keys.
+AWS Secrets Manager is a secrets management service that helps you protect access to your applications, services, and IT resources. It centralizes storage of secrets and enables you to rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. When your application running within an Amazon VPC communicates with Secrets Manager, this communication traverses the public internet.
