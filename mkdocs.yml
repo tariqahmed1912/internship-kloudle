@@ -15,5 +15,6 @@ nav:
   - Software Code Quality Analysis: 'scqa.md'
   - Complete Pipeline: 'complete_pipeline.md'
   - Shift Local Setup to AWS: 'aws.md'
+  - Secrets Management: 'secrets_management.md'
   - Resources: 'resources.md'
 theme: material

@@ -14,7 +14,7 @@
     
     
       
-        <title>Table of Content - DevSecOps Pipeline</title>
+        <title>Secrets Management - DevSecOps Pipeline</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#objective" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -86,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Table of Content
+              Secrets Management
             
           </span>
         </div>
@@ -183,19 +188,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../contents/" class="md-nav__link">
         Table of Content
       </a>
-      
     </li>
   
 
@@ -401,11 +398,61 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../secrets_management/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Secrets Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Secrets Management
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-management" class="md-nav__link">
+    Secrets Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-secrets-manager" class="md-nav__link">
+    AWS Secrets Manager
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -432,34 +479,65 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secrets-management" class="md-nav__link">
+    Secrets Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-secrets-manager" class="md-nav__link">
+    AWS Secrets Manager
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Table of Content</h1>
+                  <h1>Secrets Management</h1>
                 
-                <p>The following is the report/documentation for the problem statements stated in the next section. The contents of the report are:</p>
-<ol>
-<li><a href="..">Introduction</a></li>
-<li><a href="./">Table of Content</a></li>
-<li><a href="../problem_statements/">Problem Statements</a></li>
-<li><a href="../vm_setup/">Setup of VMs</a></li>
-<li><a href="../jenkins_setup/">Setup of Jenkins</a></li>
-<li><a href="../production_setup/">Setup of Production Server</a></li>
-<li><a href="../ssh_connection/">SSH Connection between VMs</a></li>
-<li><a href="../working_of_pipeline/">Working of Pipeline</a></li>
-<li><a href="../static_analysis/">Static Analysis</a></li>
-<li><a href="../sca/">Software Composition Analysis</a></li>
-<li><a href="../dynamic_analysis/">Dynamic Analysis</a></li>
-<li><a href="../sbom/">Software Bill of Materials</a></li>
-<li><a href="../scqa/">Software Code Quality Analysis</a></li>
-<li><a href="../complete_pipeline/">Complete Pipeline</a></li>
-<li><a href="../aws/">Shift Local Setup to AWS</a></li>
-<li><a href="../secrets_management/">Secrets Management</a></li>
-<li><a href="../resources/">Resources</a></li>
-</ol>
+                <h3 id="objective"><strong>Objective</strong></h3>
+<p>The aim of this section is to set up a secrets management service on the cloud to segregate the app and the associated secrets required for it to function and solve the 11th point of the <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
+<hr />
+<h3 id="secrets-management"><strong>Secrets Management</strong></h3>
+<p>Secrets management refers to the tools and methods for managing digital authentication credentials (secrets), including passwords, keys, APIs, and tokens for use in applications, services, privileged accounts. They also provide additional services such as rotation of secrets.</p>
+<hr />
+<h3 id="aws-secrets-manager"><strong>AWS Secrets Manager</strong></h3>
                 
               
               
@@ -479,7 +557,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+        <a href="../aws/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Shift Local Setup to AWS" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -488,20 +566,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Introduction
+              Shift Local Setup to AWS
             </div>
           </div>
         </a>
       
       
         
-        <a href="../problem_statements/" class="md-footer__link md-footer__link--next" aria-label="Next: Problem Statements" rel="next">
+        <a href="../resources/" class="md-footer__link md-footer__link--next" aria-label="Next: Resources" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Problem Statements
+              Resources
             </div>
           </div>
           <div class="md-footer__button md-icon">

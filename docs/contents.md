@@ -15,4 +15,5 @@ The following is the report/documentation for the problem statements stated in t
 13. [Software Code Quality Analysis](scqa.md)
 14. [Complete Pipeline](complete_pipeline.md)
 15. [Shift Local Setup to AWS](aws.md)
+16. [Secrets Management](secrets_management.md)
 16. [Resources](resources.md)
