@@ -554,11 +554,13 @@ curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &qu
 unzip awscliv2.zip
 sudo ./aws/install
 </code></pre>
-<p>After complete installation of aws-cli, I followed their official <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">documentation</a> to configure basic settings required by aws-cli to interact with AWS. When running a <code>aws configure</code>, you'll be prompted to enter:<br />
-1. Access key ID<br />
-2. Secret access key<br />
-3. AWS Region<br />
-4. Output format  </p>
+<p>After complete installation of aws-cli, I followed their official <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">documentation</a> to configure basic settings required by aws-cli to interact with AWS. When running a <code>aws configure</code>, you'll be prompted to enter:  </p>
+<ol>
+<li>Access key ID  </li>
+<li>Secret access key  </li>
+<li>AWS Region  </li>
+<li>Output format  </li>
+</ol>
 <p>Retrieve the db configurations stored in <code>dvna/database/mysql</code> by running the following command.<br />
 <strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
 <pre><code class="language-bash">aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/&quot;//g' &gt; vars.env

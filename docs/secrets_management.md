@@ -35,6 +35,7 @@ sudo ./aws/install
 ```
 
 After complete installation of aws-cli, I followed their official [documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) to configure basic settings required by aws-cli to interact with AWS. When running a `aws configure`, you'll be prompted to enter:  
+
 1. Access key ID  
 2. Secret access key  
 3. AWS Region  
