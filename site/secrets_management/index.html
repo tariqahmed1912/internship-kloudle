@@ -546,6 +546,23 @@
 <li>Select <code>Other Types of Secrets</code> and specify the secrets as key value pairs. Then, choose the default encryption key - <code>DefaultEncryptionKey</code> to encrypt the secrets, and click <code>Next</code>.</li>
 <li>Give a name for the secret (Eg. <code>/dvna/username</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
 </ol>
+<p><strong>Retrieve Secrets</strong></p>
+<p>I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. Instead, create a new IAM user for each person that requires administrator access following this <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html">documentation</a>. </p>
+<p>I followed the official <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html">documentation</a> to install the latest version of aws-cli on Jenkins Master instance. </p>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install unzip
+curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;
+unzip awscliv2.zip
+sudo ./aws/install
+</code></pre>
+<p>After complete installation of aws-cli, I followed their official <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html">documentation</a> to configure basic settings required by aws-cli to interact with AWS. When running a <code>aws configure</code>, you'll be prompted to enter:<br />
+1. Access key ID
+2. Secret access key
+3. AWS Region
+4. Output format</p>
+<p>Retrieve the db configurations stored in <code>dvna/database/mysql</code> by running the following command.<br />
+<strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
+<pre><code class="language-bash">aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/&quot;//g' &gt; vars.env
+</code></pre>
                 
               
               
