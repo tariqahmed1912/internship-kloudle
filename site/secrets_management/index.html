@@ -544,7 +544,7 @@
 <li>Login to AWS Secrets Manager Console</li>
 <li>Click on <code>Store new secret</code></li>
 <li>Select <code>Other Types of Secrets</code> and specify the secrets as key value pairs. Then, choose the default encryption key - <code>DefaultEncryptionKey</code> to encrypt the secrets, and click <code>Next</code>.</li>
-<li>Give a name for the secret (Eg. <code>/dvna/username</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
+<li>Give a name for the secret (I kept <code>/dvna/databse/mysql</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
 </ol>
 <p><strong>Retrieve Secrets</strong></p>
 <p>I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. I followed this <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html">documentation</a> to create a new IAM user for each person that requires administrator access.</p>
@@ -561,9 +561,17 @@ sudo ./aws/install
 <li>AWS Region  </li>
 <li>Output format  </li>
 </ol>
-<p>Retrieve the db configurations stored in <code>dvna/database/mysql</code> by running the following command.<br />
+<p>Retrieve the db configurations stored as <code>dvna/database/mysql</code> in Secrets Manager by running the following command.<br />
 <strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
 <pre><code class="language-bash">aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/&quot;//g' &gt; vars.env
+</code></pre>
+<p><strong>Pipeline</strong></p>
+<p>In the <code>Build</code> stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the <code>Build</code> stage as given below.</p>
+<pre><code class="language-bash">stage ('Retrieve DB Configuration') {
+  steps {
+    sh &quot;aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/\&quot;//g' &gt; vars.env&quot;
+  }
+}
 </code></pre>
                 
               

@@ -19,7 +19,7 @@ AWS Secrets Manager is a secrets management service that helps you protect acces
 1. Login to AWS Secrets Manager Console
 2. Click on `Store new secret`
 3. Select `Other Types of Secrets` and specify the secrets as key value pairs. Then, choose the default encryption key - `DefaultEncryptionKey` to encrypt the secrets, and click `Next`.
-4. Give a name for the secret (Eg. `/dvna/username`). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click `Next` and finish from the `Review Page`.
+4. Give a name for the secret (I kept `/dvna/databse/mysql`). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click `Next` and finish from the `Review Page`.
 
 **Retrieve Secrets**
 
@@ -41,11 +41,22 @@ After complete installation of aws-cli, I followed their official [documentation
 3. AWS Region  
 4. Output format  
 
-Retrieve the db configurations stored in `dvna/database/mysql` by running the following command.  
+Retrieve the db configurations stored as `dvna/database/mysql` in Secrets Manager by running the following command.  
 **Note:** I used the `sed` command to replace certain charaters in the `aws` command output to write to `vars.env` file in the required format.
 
 ```bash
 aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/"//g' > vars.env
 ```
 
+**Pipeline**
+
+In the `Build` stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the `Build` stage as given below.
+
+```bash
+stage ('Retrieve DB Configuration') {
+  steps {
+    sh "aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/\"//g' > vars.env"
+  }
+}
+```
 
