@@ -557,7 +557,8 @@
 <ol>
 <li>Login to AWS Secrets Manager Console</li>
 <li>Click on <code>Store new secret</code></li>
-<li>Select <code>Other Types of Secrets</code> and specify the secrets as key value pairs. Then, choose the default encryption key - <code>DefaultEncryptionKey</code> to encrypt the secrets, and click <code>Next</code>.</li>
+<li>Select <code>Other Types of Secrets</code> and specify the secrets as key value pairs. Instead of creating multiple secrets with each individual key-value pair, I added all the key value-pairs in one secret. </li>
+<li>Choose the default encryption key - <code>DefaultEncryptionKey</code> to encrypt the secrets, and click <code>Next</code>.</li>
 <li>Give a name for the secret (I kept <code>/dvna/databse/mysql</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
 </ol>
 <p><strong>Retrieve Secrets</strong></p>
