@@ -35,10 +35,10 @@ sudo ./aws/install
 ```
 
 After complete installation of aws-cli, I followed their official [documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) to configure basic settings required by aws-cli to interact with AWS. When running a `aws configure`, you'll be prompted to enter:  
-1. Access key ID
-2. Secret access key
-3. AWS Region
-4. Output format
+1. Access key ID  
+2. Secret access key  
+3. AWS Region  
+4. Output format  
 
 Retrieve the db configurations stored in `dvna/database/mysql` by running the following command.  
 **Note:** I used the `sed` command to replace certain charaters in the `aws` command output to write to `vars.env` file in the required format.
