@@ -23,9 +23,9 @@ AWS Secrets Manager is a secrets management service that helps you protect acces
 
 **Retrieve Secrets**
 
-I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. Instead, create a new IAM user for each person that requires administrator access following this [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html). 
+I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. I followed this [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to create a new IAM user for each person that requires administrator access.
 
-I followed the official [documentation](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html) to install the latest version of aws-cli on Jenkins Master instance. 
+Next, I followed the official [documentation](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html) to install the latest version of aws-cli on Jenkins Master instance. 
 
 ```bash
 sudo apt update && sudo apt install unzip

@@ -547,8 +547,8 @@
 <li>Give a name for the secret (Eg. <code>/dvna/username</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
 </ol>
 <p><strong>Retrieve Secrets</strong></p>
-<p>I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. Instead, create a new IAM user for each person that requires administrator access following this <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html">documentation</a>. </p>
-<p>I followed the official <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html">documentation</a> to install the latest version of aws-cli on Jenkins Master instance. </p>
+<p>I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. I followed this <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html">documentation</a> to create a new IAM user for each person that requires administrator access.</p>
+<p>Next, I followed the official <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html">documentation</a> to install the latest version of aws-cli on Jenkins Master instance. </p>
 <pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install unzip
 curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;
 unzip awscliv2.zip
