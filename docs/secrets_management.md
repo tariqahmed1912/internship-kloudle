@@ -60,3 +60,4 @@ stage ('Retrieve DB Configuration') {
 }
 ```
 
+### **HashiCorp Vault**
