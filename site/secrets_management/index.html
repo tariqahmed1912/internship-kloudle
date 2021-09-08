@@ -559,7 +559,7 @@
 <li>Click on <code>Store new secret</code></li>
 <li>Select <code>Other Types of Secrets</code> and specify the secrets as key value pairs. Instead of creating multiple secrets with each individual key-value pair, I added all the key value-pairs in one secret. </li>
 <li>Choose the default encryption key - <code>DefaultEncryptionKey</code> to encrypt the secrets, and click <code>Next</code>.</li>
-<li>Give a name for the secret (I kept <code>/dvna/databse/mysql</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
+<li>Give a name for the secret (I kept <code>/dvna/db/mysql</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
 </ol>
 <p><strong>Retrieve Secrets</strong></p>
 <p>I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. I followed this <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html">documentation</a> to create a new IAM user for each person that requires administrator access.</p>
@@ -576,15 +576,15 @@ sudo ./aws/install
 <li>AWS Region  </li>
 <li>Output format  </li>
 </ol>
-<p>Retrieve the db configurations stored as <code>dvna/database/mysql</code> in Secrets Manager by running the following command.<br />
+<p>Retrieve the db configurations stored as <code>dvna/db/mysql</code> in Secrets Manager by running the following command.<br />
 <strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
-<pre><code class="language-bash">aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/&quot;//g' &gt; vars.env
+<pre><code class="language-bash">aws secretsmanager get-secret-value --secret-id dvna/db/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/&quot;//g' &gt; vars.env
 </code></pre>
 <p><strong>Pipeline</strong></p>
 <p>In the <code>Build</code> stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the <code>Build</code> stage as given below.</p>
-<pre><code class="language-bash">stage ('Retrieve DB Configuration') {
+<pre><code class="language-bash">stage ('Retrieve DB Configuration - AWS Secrets Manager') {
   steps {
-    sh &quot;aws secretsmanager get-secret-value --secret-id dvna/database/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/\&quot;//g' &gt; vars.env&quot;
+    sh &quot;aws secretsmanager get-secret-value --secret-id dvna/db/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/\&quot;//g' &gt; vars.env&quot;
   }
 }
 </code></pre>
@@ -611,7 +611,7 @@ api_addr = &quot;http://127.0.0.1:8200&quot;
 cluster_addr = &quot;http://127.0.0.1:8201&quot;
 ui = true
 </code></pre>
-<p>Set the vault address and create a directory for raft storage to use.</p>
+<p>Set the <code>VAULT_ADDR</code> to enable the Vault client to talk to the Vault server. Vault CLI determines which Vault servers to send requests using the <code>VAULT_ADDR</code> environment variable. Create a directory for raft storage to use.</p>
 <pre><code class="language-bash">export VAULT_ADDR='http://127.0.0.1:8200'
 mkdir -p ./vault/data
 </code></pre>
@@ -621,19 +621,46 @@ mkdir -p ./vault/data
 <p>To initialize Vault use <code>vault operator init</code>. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. This is the only time ever that all of this data is known by Vault, and also the only time that the unseal keys should ever be so close together. </p>
 <pre><code class="language-bash">vault operator init
 </code></pre>
-<p>Every initialized Vault server starts in the sealed state. From the configuration, Vault can access the physical storage, but it can't read any of it because it doesn't know how to decrypt it. The process of teaching Vault how to decrypt the data is known as unsealing the Vault.  To unseal the Vault, you must have the threshold number of unseal keys. In the output above, notice that the "key threshold" is 3. This means that to unseal the Vault, you need 3 of the 5 keys that were generated. Run the following command thrice and passing one of the 5 previously generated unseal keys each time.</p>
-<pre><code class="language-bash">vault operator unseal 
+<p>Store the output of the above command securely.</p>
+<pre><code class="language-bash">Unseal Key 1: xrrxTkC/v89nFmDLaXDYvkqoZKor/uqPWotlbStiHXTU
+Unseal Key 2: YWZG/4xnL77YOxqxMqV/uvhsmSL/mMeJ8mOxxMjETa8C
+Unseal Key 3: aLst0tPFejnuGzpK8O3ru5oonWf0P+Y/WHOe91/2mTrR
+Unseal Key 4: as8e7wV7Rli96onEi1XnIFWtj4NBG1OOXLl4hx8re6R3
+Unseal Key 5: i8F61xHsazlp+MGpZxJTqDx5n+L7ZwixankeIBWLSd7e
+
+Initial Root Token: s.pXT2YENqxxfJcffeks2bj6rt
 </code></pre>
-<p>Finally, authenticate as the initial root token (it was included in the output with the unseal keys).<br />
+<p>Every initialized Vault server starts in the sealed state. From the configuration, Vault can access the physical storage, but it can't read any of it because it doesn't know how to decrypt it. The process of teaching Vault how to decrypt the data is known as unsealing the Vault.  To unseal the Vault, you must have the threshold number of unseal keys. In the output above, notice that the "key threshold" is 3. This means that to unseal the Vault, you need 3 of the 5 keys that were generated. Run <code>vault operator unseal</code> command thrice, passing one of the 5 previously generated unseal keys each time.</p>
+<pre><code class="language-bash">vault operator unseal &lt;UNSEAL_KEY_1&gt;
+vault operator unseal &lt;UNSEAL_KEY_2&gt;
+vault operator unseal &lt;UNSEAL_KEY_3&gt;
+</code></pre>
+<p>Finally, authenticate with the initial root token (included in the output with the unseal keys).<br />
 <strong>Note:</strong> As a root user, you can reseal the Vault with <code>vault operator seal</code>. </p>
 <pre><code class="language-bash">vault login &lt;ROOT_TOKEN&gt;
 </code></pre>
-<p>Enable the KV secrets engine.</p>
-<pre><code class="language-bash">vault secrets enable -path=secret/ kv
+<p>Enables Key/Value version2 secrets engine (kv-v2) at the path <code>dvna/</code> to store all MySQL db configs there. </p>
+<pre><code class="language-bash">vault secrets enable -path=dvna kv
 </code></pre>
-<p>Create a secret and retrieve it.</p>
-<pre><code class="language-bash">vault kv put secret/hello foo=world
-vault kv get -format=json secret/hello
+<p>Store MySQL DB config (secrets) in <code>dvna/mysql</code>.</p>
+<pre><code class="language-bash">vault kv put dvna/mysql &lt;NAME&gt;=&lt;VALUE&gt;
+</code></pre>
+<p><strong>Pipeline</strong>
+Unseal Key 1: xrrxTkC/v89nFmDLaXDYvkqoZKor/uqPWotlbStiHXTU
+Unseal Key 2: YWZG/4xnL77YOxqxMqV/uvhsmSL/mMeJ8mOxxMjETa8C
+Unseal Key 3: aLst0tPFejnuGzpK8O3ru5oonWf0P+Y/WHOe91/2mTrR
+Unseal Key 4: as8e7wV7Rli96onEi1XnIFWtj4NBG1OOXLl4hx8re6R3
+Unseal Key 5: i8F61xHsazlp+MGpZxJTqDx5n+L7ZwixankeIBWLSd7e</p>
+<pre><code class="language-bash">stage ('Retrieve DB Configuration - Vault') {
+    steps {
+        sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;export VAULT_ADDR=http://127.0.0.1:8200&quot;'
+        sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;vault operator unseal &lt;UNSEAL-KEY-1&gt; &amp;&amp; vault operator unseal &lt;UNSEAL-KEY-2&gt; &amp;&amp; vault operator unseal &lt;UNSEAL-KEY-3&gt;&quot;'
+        sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;vault kv get -format=text dvna/mysql | &quot;'
+        sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;vault operator seal&quot;'
+        sh  'scp jenkins@18.222.213.198:~/vars.env ~/'
+
+    }
+}
 </code></pre>
                 
               
