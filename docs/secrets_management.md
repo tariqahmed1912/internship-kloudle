@@ -62,3 +62,10 @@ stage ('Retrieve DB Configuration') {
 ```
 
 ### **HashiCorp Vault**
+
+HashiCorp Vault is a secrets management tool specifically designed to control access to sensitive credentials in a low-trust environment. It can be used to store sensitive values and at the same time dynamically generate access for specific services/applications on lease. It is a more generic secrets manager as its not specific to a particular cloud vendor.
+
+**Configuring Vault**
+
+
+During initialization, the encryption keys are generated, unseal keys are created, and the initial root token is setup.
