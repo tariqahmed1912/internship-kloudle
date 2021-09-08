@@ -580,7 +580,7 @@ sudo ./aws/install
 <strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
 <pre><code class="language-bash">aws secretsmanager get-secret-value --secret-id dvna/db/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/&quot;//g' &gt; vars.env
 </code></pre>
-<p><strong>Pipeline</strong></p>
+<p><strong>AWS Secrets Manager Pipeline</strong></p>
 <p>In the <code>Build</code> stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the <code>Build</code> stage as given below.</p>
 <pre><code class="language-bash">stage ('Retrieve DB Configuration - AWS Secrets Manager') {
   steps {
@@ -645,12 +645,8 @@ vault operator unseal &lt;UNSEAL_KEY_3&gt;
 <p>Store MySQL DB config (secrets) in <code>dvna/mysql</code>.</p>
 <pre><code class="language-bash">vault kv put dvna/mysql &lt;NAME&gt;=&lt;VALUE&gt;
 </code></pre>
-<p><strong>Pipeline</strong>
-Unseal Key 1: xrrxTkC/v89nFmDLaXDYvkqoZKor/uqPWotlbStiHXTU
-Unseal Key 2: YWZG/4xnL77YOxqxMqV/uvhsmSL/mMeJ8mOxxMjETa8C
-Unseal Key 3: aLst0tPFejnuGzpK8O3ru5oonWf0P+Y/WHOe91/2mTrR
-Unseal Key 4: as8e7wV7Rli96onEi1XnIFWtj4NBG1OOXLl4hx8re6R3
-Unseal Key 5: i8F61xHsazlp+MGpZxJTqDx5n+L7ZwixankeIBWLSd7e</p>
+<p><strong>Vault Pipeline</strong></p>
+<p>In the <code>Build</code> stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the <code>Build</code> stage as given below.</p>
 <pre><code class="language-bash">stage ('Retrieve DB Configuration - Vault') {
     steps {
         sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;export VAULT_ADDR=http://127.0.0.1:8200&quot;'

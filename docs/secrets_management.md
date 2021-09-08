@@ -49,7 +49,7 @@ Retrieve the db configurations stored as `dvna/db/mysql` in Secrets Manager by r
 aws secretsmanager get-secret-value --secret-id dvna/db/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/"//g' > vars.env
 ```
 
-**Pipeline**
+**AWS Secrets Manager Pipeline**
 
 In the `Build` stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the `Build` stage as given below.
 
@@ -149,12 +149,9 @@ Store MySQL DB config (secrets) in `dvna/mysql`.
 vault kv put dvna/mysql <NAME>=<VALUE>
 ```
 
-**Pipeline**
-Unseal Key 1: xrrxTkC/v89nFmDLaXDYvkqoZKor/uqPWotlbStiHXTU
-Unseal Key 2: YWZG/4xnL77YOxqxMqV/uvhsmSL/mMeJ8mOxxMjETa8C
-Unseal Key 3: aLst0tPFejnuGzpK8O3ru5oonWf0P+Y/WHOe91/2mTrR
-Unseal Key 4: as8e7wV7Rli96onEi1XnIFWtj4NBG1OOXLl4hx8re6R3
-Unseal Key 5: i8F61xHsazlp+MGpZxJTqDx5n+L7ZwixankeIBWLSd7e
+**Vault Pipeline**
+
+In the `Build` stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the `Build` stage as given below.
 
 ```bash
 stage ('Retrieve DB Configuration - Vault') {
