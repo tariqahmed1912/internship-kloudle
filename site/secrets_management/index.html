@@ -656,7 +656,7 @@ vault operator unseal &lt;UNSEAL_KEY_3&gt;
     steps {
         sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;export VAULT_ADDR=http://127.0.0.1:8200&quot;'
         sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;vault operator unseal &lt;UNSEAL-KEY-1&gt; &amp;&amp; vault operator unseal &lt;UNSEAL-KEY-2&gt; &amp;&amp; vault operator unseal &lt;UNSEAL-KEY-3&gt;&quot;'
-        sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;vault kv get -format=json -field=data dvna/mysql | sed -e \'s/:/=/g\' -e \'s/{//g\' -e \'s/}//g\' -e \'s/,//g\' -e \'s/\&quot;//g\' &gt; vars.env&quot;'
+        sh &quot;ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 'vault kv get -format=json -field=data dvna/mysql | sed -e \'s/:/=/g\' -e \'s/{//g\' -e \'s/}//g\' -e \'s/,//g\' -e \'s/\&quot;//g\' &gt; vars.env'&quot;
         sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 &quot;vault operator seal&quot;'
         sh  'scp jenkins@18.222.213.198:~/vars.env ~/'
 
