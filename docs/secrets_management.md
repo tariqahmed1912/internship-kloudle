@@ -67,5 +67,68 @@ HashiCorp Vault is a secrets management tool specifically designed to control ac
 
 **Configuring Vault**
 
+First, Install Vault. I followed the official [documentation](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started) as its very easy to follow.
 
-During initialization, the encryption keys are generated, unseal keys are created, and the initial root token is setup.
+Next, I followed the `Deploy Vault` section in the documentation.  
+Create the Vault configuration in the file `config.hcl`.
+
+```bash
+disable_cache = true
+disable_mlock = true
+
+storage "raft" {
+  path    = "./vault/data"
+  node_id = "node1"
+}
+
+listener "tcp" {
+  address     = "127.0.0.1:8200"
+  tls_disable = "true"
+}
+
+api_addr = "http://127.0.0.1:8200"
+cluster_addr = "http://127.0.0.1:8201"
+ui = true
+```
+
+Set the vault address and create a directory for raft storage to use.
+
+```bash
+export VAULT_ADDR='http://127.0.0.1:8200'
+mkdir -p ./vault/data
+```
+
+Start the vault server and set the -config flag to point to the proper path where you saved the configuration above.
+```bash
+vault server -config=config.hcl
+```
+
+To initialize Vault use `vault operator init`. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. This is the only time ever that all of this data is known by Vault, and also the only time that the unseal keys should ever be so close together. 
+```bash
+vault operator init
+```
+
+Every initialized Vault server starts in the sealed state. From the configuration, Vault can access the physical storage, but it can't read any of it because it doesn't know how to decrypt it. The process of teaching Vault how to decrypt the data is known as unsealing the Vault.  To unseal the Vault, you must have the threshold number of unseal keys. In the output above, notice that the "key threshold" is 3. This means that to unseal the Vault, you need 3 of the 5 keys that were generated. Run the following command thrice and passing one of the 5 previously generated unseal keys each time.
+```bash
+vault operator unseal 
+```
+
+Finally, authenticate as the initial root token (it was included in the output with the unseal keys).  
+**Note:** As a root user, you can reseal the Vault with `vault operator seal`. 
+
+```bash
+vault login <ROOT_TOKEN>
+```
+
+Enable the KV secrets engine.
+
+```bash
+vault secrets enable -path=secret/ kv
+```
+
+Create a secret and retrieve it.
+
+```bash
+vault kv put secret/hello foo=world
+vault kv get -format=json secret/hello
+```

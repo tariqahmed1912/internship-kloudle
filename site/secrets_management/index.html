@@ -591,7 +591,50 @@ sudo ./aws/install
 <h3 id="hashicorp-vault"><strong>HashiCorp Vault</strong></h3>
 <p>HashiCorp Vault is a secrets management tool specifically designed to control access to sensitive credentials in a low-trust environment. It can be used to store sensitive values and at the same time dynamically generate access for specific services/applications on lease. It is a more generic secrets manager as its not specific to a particular cloud vendor.</p>
 <p><strong>Configuring Vault</strong></p>
-<p>During initialization, the encryption keys are generated, unseal keys are created, and the initial root token is setup.</p>
+<p>First, Install Vault. I followed the official <a href="https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started">documentation</a> as its very easy to follow.</p>
+<p>Next, I followed the <code>Deploy Vault</code> section in the documentation.<br />
+Create the Vault configuration in the file <code>config.hcl</code>.</p>
+<pre><code class="language-bash">disable_cache = true
+disable_mlock = true
+
+storage &quot;raft&quot; {
+  path    = &quot;./vault/data&quot;
+  node_id = &quot;node1&quot;
+}
+
+listener &quot;tcp&quot; {
+  address     = &quot;127.0.0.1:8200&quot;
+  tls_disable = &quot;true&quot;
+}
+
+api_addr = &quot;http://127.0.0.1:8200&quot;
+cluster_addr = &quot;http://127.0.0.1:8201&quot;
+ui = true
+</code></pre>
+<p>Set the vault address and create a directory for raft storage to use.</p>
+<pre><code class="language-bash">export VAULT_ADDR='http://127.0.0.1:8200'
+mkdir -p ./vault/data
+</code></pre>
+<p>Start the vault server and set the -config flag to point to the proper path where you saved the configuration above.</p>
+<pre><code class="language-bash">vault server -config=config.hcl
+</code></pre>
+<p>To initialize Vault use <code>vault operator init</code>. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. This is the only time ever that all of this data is known by Vault, and also the only time that the unseal keys should ever be so close together. </p>
+<pre><code class="language-bash">vault operator init
+</code></pre>
+<p>Every initialized Vault server starts in the sealed state. From the configuration, Vault can access the physical storage, but it can't read any of it because it doesn't know how to decrypt it. The process of teaching Vault how to decrypt the data is known as unsealing the Vault.  To unseal the Vault, you must have the threshold number of unseal keys. In the output above, notice that the "key threshold" is 3. This means that to unseal the Vault, you need 3 of the 5 keys that were generated. Run the following command thrice and passing one of the 5 previously generated unseal keys each time.</p>
+<pre><code class="language-bash">vault operator unseal 
+</code></pre>
+<p>Finally, authenticate as the initial root token (it was included in the output with the unseal keys).<br />
+<strong>Note:</strong> As a root user, you can reseal the Vault with <code>vault operator seal</code>. </p>
+<pre><code class="language-bash">vault login &lt;ROOT_TOKEN&gt;
+</code></pre>
+<p>Enable the KV secrets engine.</p>
+<pre><code class="language-bash">vault secrets enable -path=secret/ kv
+</code></pre>
+<p>Create a secret and retrieve it.</p>
+<pre><code class="language-bash">vault kv put secret/hello foo=world
+vault kv get -format=json secret/hello
+</code></pre>
                 
               
               
