@@ -616,14 +616,13 @@ ui = true
 <pre><code class="language-bash">export VAULT_ADDR='http://127.0.0.1:8200'
 mkdir -p ./vault/data
 </code></pre>
-<p>Start the vault server and set the -config flag to point to the configuration file created prior.</p>
+<p>Start the Vault server and set the -config flag to point to the configuration file created prior.</p>
 <pre><code class="language-bash">vault server -config=config.hcl
 </code></pre>
-<p>To initialize Vault use <code>vault operator init</code>. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. This is the only time ever that all of this data is known by Vault, and also the only time that the unseal keys should ever be so close together. </p>
-<pre><code class="language-bash">vault operator init
-</code></pre>
-<p>Store the output of the above command securely.</p>
-<pre><code class="language-bash">Unseal Key 1: xrrxTkC/v89nFmDLaXDYvkqoZKor/uqPWotlbStiHXTU
+<p>To initialize Vault, use <code>vault operator init</code>. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. Store these keys somewhere as you'll be needing them later on.  </p>
+<pre><code class="language-bash">$ vault operator init
+
+Unseal Key 1: xrrxTkC/v89nFmDLaXDYvkqoZKor/uqPWotlbStiHXTU
 Unseal Key 2: YWZG/4xnL77YOxqxMqV/uvhsmSL/mMeJ8mOxxMjETa8C
 Unseal Key 3: aLst0tPFejnuGzpK8O3ru5oonWf0P+Y/WHOe91/2mTrR
 Unseal Key 4: as8e7wV7Rli96onEi1XnIFWtj4NBG1OOXLl4hx8re6R3

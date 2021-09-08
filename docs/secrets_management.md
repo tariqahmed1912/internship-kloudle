@@ -100,21 +100,17 @@ export VAULT_ADDR='http://127.0.0.1:8200'
 mkdir -p ./vault/data
 ```
 
-Start the vault server and set the -config flag to point to the configuration file created prior.
+Start the Vault server and set the -config flag to point to the configuration file created prior.
 
 ```bash
 vault server -config=config.hcl
 ```
 
-To initialize Vault use `vault operator init`. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. This is the only time ever that all of this data is known by Vault, and also the only time that the unseal keys should ever be so close together. 
+To initialize Vault, use `vault operator init`. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. Store these keys somewhere as you'll be needing them later on.  
 
 ```bash
-vault operator init
-```
+$ vault operator init
 
-Store the output of the above command securely.
-
-```bash
 Unseal Key 1: xrrxTkC/v89nFmDLaXDYvkqoZKor/uqPWotlbStiHXTU
 Unseal Key 2: YWZG/4xnL77YOxqxMqV/uvhsmSL/mMeJ8mOxxMjETa8C
 Unseal Key 3: aLst0tPFejnuGzpK8O3ru5oonWf0P+Y/WHOe91/2mTrR
