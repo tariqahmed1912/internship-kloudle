@@ -154,7 +154,7 @@ Retrieve the db configurations stored as `dvna/mysql` in Vault by running the fo
 **Note:** I used the `sed` command to replace certain charaters in the `aws` command output to write to `vars.env` file in the required format.
 
 ```bash
-vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\"//g' > vars.env
+vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\"//g' -e 's/[[:blank:]]\+//g' > vars.env
 ```
 
 **Vault Pipeline**
@@ -166,12 +166,9 @@ stage ('Retrieve DB Configuration - Vault') {
     steps {
         sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 "export VAULT_ADDR=http://127.0.0.1:8200"'
         sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 "vault operator unseal <UNSEAL-KEY-1> && vault operator unseal <UNSEAL-KEY-2> && vault operator unseal <UNSEAL-KEY-3>"'
-        sh "ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 'vault kv get -format=json -field=data dvna/mysql | sed -e \'s/:/=/g\' -e \'s/{//g\' -e \'s/}//g\' -e \'s/,//g\' -e \'s/\"//g\' > vars.env'"
+        sh "ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 'vault kv get -format=json -field=data dvna/mysql | sed -e \'s/:/=/g\' -e \'s/{//g\' -e \'s/}//g\' -e \'s/,//g\' -e \'s/\"//g\' -e \'s/[[:blank:]]\+//g\' > vars.env'"
         sh 'ssh -o StrictHostKeyChecking=no jenkins@18.222.213.198 "vault operator seal"'
         sh  'scp jenkins@18.222.213.198:~/vars.env ~/'
-
     }
 }
 ```
-
-
