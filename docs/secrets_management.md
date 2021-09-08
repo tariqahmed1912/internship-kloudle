@@ -67,7 +67,7 @@ HashiCorp Vault is a secrets management tool specifically designed to control ac
 
 **Configuring Vault**
 
-First, Install Vault. I followed the official [documentation](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started) as its very easy to follow.
+First, Install Vault. I followed the official [documentation](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started) as its very concise and easy to follow.
 
 Next, I followed the `Deploy Vault` section in the documentation.  
 Create the Vault configuration in the file `config.hcl`.
