@@ -143,10 +143,18 @@ Enables Key/Value version2 secrets engine (kv-v2) at the path `dvna/` to store a
 vault secrets enable -path=dvna kv
 ```
 
-Store MySQL DB config (secrets) in `dvna/mysql`.
+Store MySQL DB config (secrets) in `dvna/mysql`.  
+**Note:** We're writing all secrets in a single `vault kv put` command because if we write a key-value pair one by one, it doesnt append it to the secrets list. It instead overrides it.
 
 ```bash
-vault kv put dvna/mysql <NAME>=<VALUE>
+vault kv put dvna/mysql MYSQL_USER="dvna" MYSQL_DATABASE="dvna" MYSQL_PASSWORD="passw0rd" MYSQL_RANDOM_ROOT_PASSWORD="yes" MYSQL_HOST="mysql-db" MYSQL_PORT=3306
+```
+
+Retrieve the db configurations stored as `dvna/mysql` in Vault by running the following command.  
+**Note:** I used the `sed` command to replace certain charaters in the `aws` command output to write to `vars.env` file in the required format.
+
+```bash
+vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\"//g' > vars.env
 ```
 
 **Vault Pipeline**
@@ -165,3 +173,5 @@ stage ('Retrieve DB Configuration - Vault') {
     }
 }
 ```
+
+

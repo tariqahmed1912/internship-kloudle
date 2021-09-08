@@ -642,8 +642,13 @@ vault operator unseal &lt;UNSEAL_KEY_3&gt;
 <p>Enables Key/Value version2 secrets engine (kv-v2) at the path <code>dvna/</code> to store all MySQL db configs there. </p>
 <pre><code class="language-bash">vault secrets enable -path=dvna kv
 </code></pre>
-<p>Store MySQL DB config (secrets) in <code>dvna/mysql</code>.</p>
-<pre><code class="language-bash">vault kv put dvna/mysql &lt;NAME&gt;=&lt;VALUE&gt;
+<p>Store MySQL DB config (secrets) in <code>dvna/mysql</code>.<br />
+<strong>Note:</strong> We're writing all secrets in a single <code>vault kv put</code> command because if we write a key-value pair one by one, it doesnt append it to the secrets list. It instead overrides it.</p>
+<pre><code class="language-bash">vault kv put dvna/mysql MYSQL_USER=&quot;dvna&quot; MYSQL_DATABASE=&quot;dvna&quot; MYSQL_PASSWORD=&quot;passw0rd&quot; MYSQL_RANDOM_ROOT_PASSWORD=&quot;yes&quot; MYSQL_HOST=&quot;mysql-db&quot; MYSQL_PORT=3306
+</code></pre>
+<p>Retrieve the db configurations stored as <code>dvna/mysql</code> in Vault by running the following command.<br />
+<strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
+<pre><code class="language-bash">vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\&quot;//g' &gt; vars.env
 </code></pre>
 <p><strong>Vault Pipeline</strong></p>
 <p>In the <code>Build</code> stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the <code>Build</code> stage as given below.</p>
