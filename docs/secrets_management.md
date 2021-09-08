@@ -98,17 +98,20 @@ export VAULT_ADDR='http://127.0.0.1:8200'
 mkdir -p ./vault/data
 ```
 
-Start the vault server and set the -config flag to point to the proper path where you saved the configuration above.
+Start the vault server and set the -config flag to point to the configuration file created prior.
+
 ```bash
 vault server -config=config.hcl
 ```
 
 To initialize Vault use `vault operator init`. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. This is the only time ever that all of this data is known by Vault, and also the only time that the unseal keys should ever be so close together. 
+
 ```bash
 vault operator init
 ```
 
 Every initialized Vault server starts in the sealed state. From the configuration, Vault can access the physical storage, but it can't read any of it because it doesn't know how to decrypt it. The process of teaching Vault how to decrypt the data is known as unsealing the Vault.  To unseal the Vault, you must have the threshold number of unseal keys. In the output above, notice that the "key threshold" is 3. This means that to unseal the Vault, you need 3 of the 5 keys that were generated. Run the following command thrice and passing one of the 5 previously generated unseal keys each time.
+
 ```bash
 vault operator unseal 
 ```

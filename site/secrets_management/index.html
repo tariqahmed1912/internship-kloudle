@@ -615,7 +615,7 @@ ui = true
 <pre><code class="language-bash">export VAULT_ADDR='http://127.0.0.1:8200'
 mkdir -p ./vault/data
 </code></pre>
-<p>Start the vault server and set the -config flag to point to the proper path where you saved the configuration above.</p>
+<p>Start the vault server and set the -config flag to point to the configuration file created prior.</p>
 <pre><code class="language-bash">vault server -config=config.hcl
 </code></pre>
 <p>To initialize Vault use <code>vault operator init</code>. It outputs two incredibly important pieces of information: the unseal keys and the initial root token. This is the only time ever that all of this data is known by Vault, and also the only time that the unseal keys should ever be so close together. </p>
