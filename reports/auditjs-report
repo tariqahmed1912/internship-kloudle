@@ -1,0 +1,511 @@
+ ________   ___  ___   ________   ___   _________       ___   ________      
+|\   __  \ |\  \|\  \ |\   ___ \ |\  \ |\___   ___\    |\  \ |\   ____\     
+\ \  \|\  \\ \  \\\  \\ \  \_|\ \\ \  \\|___ \  \_|    \ \  \\ \  \___|_    
+ \ \   __  \\ \  \\\  \\ \  \ \\ \\ \  \    \ \  \   __ \ \  \\ \_____  \   
+  \ \  \ \  \\ \  \\\  \\ \  \_\\ \\ \  \    \ \  \ |\  \\_\  \\|____|\  \  
+   \ \__\ \__\\ \_______\\ \_______\\ \__\    \ \__\\ \________\ ____\_\  \ 
+    \|__|\|__| \|_______| \|_______| \|__|     \|__| \|________||\_________\
+                                                                \|_________|
+                                                                            
+                                                                            
+  _      _                       _   _              
+ /_)    /_`_  _  _ _/_   _  _   (/  /_`_._  _   _/ _
+/_)/_/ ._//_// //_|/ /_//_//_' (_X /  ///_'/ //_/_\ 
+   _/                _//                            
+
+  AuditJS version: 4.0.30
+
+
+  Sonabot here, beep boop beep boop, here are your Sonatype OSS Index results:
+  Total dependencies audited: 214
+
+
+[1/214] - pkg:npm/@types/geojson@1.0.6 - No vulnerabilities found!
+[2/214] - pkg:npm/@types/node@8.0.53 - No vulnerabilities found!
+[3/214] - pkg:npm/abbrev@1.1.1 - No vulnerabilities found!
+[4/214] - pkg:npm/accepts@1.3.4 - No vulnerabilities found!
+[5/214] - pkg:npm/ajv@5.5.0 - No vulnerabilities found!
+[6/214] - pkg:npm/ansi-regex@2.1.1 - No vulnerabilities found!
+[7/214] - pkg:npm/ansicolors@0.2.1 - No vulnerabilities found!
+[8/214] - pkg:npm/aproba@1.2.0 - No vulnerabilities found!
+[9/214] - pkg:npm/are-we-there-yet@1.1.4 - No vulnerabilities found!
+[10/214] - pkg:npm/array-flatten@1.1.1 - No vulnerabilities found!
+[11/214] - pkg:npm/asn1@0.2.3 - No vulnerabilities found!
+[12/214] - pkg:npm/assert-plus@1.0.0 - No vulnerabilities found!
+[13/214] - pkg:npm/asynckit@0.4.0 - No vulnerabilities found!
+[14/214] - pkg:npm/aws-sign2@0.7.0 - No vulnerabilities found!
+[15/214] - pkg:npm/aws4@1.6.0 - No vulnerabilities found!
+[16/214] - pkg:npm/balanced-match@1.0.0 - No vulnerabilities found!
+[17/214] - pkg:npm/basic-auth@2.0.0 - No vulnerabilities found!
+[18/214] - pkg:npm/bcrypt-pbkdf@1.0.1 - No vulnerabilities found!
+[19/214] - pkg:npm/bcrypt@1.0.3 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-326: Inadequate Encryption Strength
+  ID:  e4ad4cb7-d751-4cf5-85ac-041a1a68facd
+  Description:  The software stores or transmits sensitive data using an encryption scheme that is theoretically sound, but is not strong enough for the level of protection required.
+  CVSS Score:  6.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N
+  Reference:  https://ossindex.sonatype.org/vulnerability/e4ad4cb7-d751-4cf5-85ac-041a1a68facd?component-type=npm&component-name=bcrypt&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[20/214] - pkg:npm/block-stream@0.0.9 - No vulnerabilities found!
+[21/214] - pkg:npm/bluebird@3.5.1 - No vulnerabilities found!
+[22/214] - pkg:npm/body-parser@1.18.2 - No vulnerabilities found!
+[23/214] - pkg:npm/boom@4.3.1 - No vulnerabilities found!
+[24/214] - pkg:npm/boom@5.2.0 - No vulnerabilities found!
+[25/214] - pkg:npm/brace-expansion@1.1.8 - No vulnerabilities found!
+[26/214] - pkg:npm/bytes@3.0.0 - No vulnerabilities found!
+[27/214] - pkg:npm/cardinal@1.0.0 - No vulnerabilities found!
+[28/214] - pkg:npm/caseless@0.12.0 - No vulnerabilities found!
+[29/214] - pkg:npm/charenc@0.0.2 - No vulnerabilities found!
+[30/214] - pkg:npm/cls-bluebird@2.0.1 - No vulnerabilities found!
+[31/214] - pkg:npm/co@4.6.0 - No vulnerabilities found!
+[32/214] - pkg:npm/code-point-at@1.1.0 - No vulnerabilities found!
+[33/214] - pkg:npm/combined-stream@1.0.5 - No vulnerabilities found!
+[34/214] - pkg:npm/complex.js@2.0.1 - No vulnerabilities found!
+[35/214] - pkg:npm/concat-map@0.0.1 - No vulnerabilities found!
+[36/214] - pkg:npm/connect-flash@0.1.1 - No vulnerabilities found!
+[37/214] - pkg:npm/console-control-strings@1.1.0 - No vulnerabilities found!
+[38/214] - pkg:npm/content-disposition@0.5.2 - No vulnerabilities found!
+[39/214] - pkg:npm/content-type@1.0.4 - No vulnerabilities found!
+[40/214] - pkg:npm/cookie-signature@1.0.6 - No vulnerabilities found!
+[41/214] - pkg:npm/cookie@0.3.1 - No vulnerabilities found!
+[42/214] - pkg:npm/core-util-is@1.0.2 - No vulnerabilities found!
+[43/214] - pkg:npm/crc@3.4.4 - No vulnerabilities found!
+[44/214] - pkg:npm/crypt@0.0.2 - No vulnerabilities found!
+[45/214] - pkg:npm/cryptiles@3.1.2 - 4 vulnerabilities found!
+
+  Vulnerability Title:  [CVE-2018-1000620]  Insufficient Entropy
+  ID:  9c0a4f9f-5add-42bc-b505-29445729e2a8
+  Description:  Eran Hammer cryptiles version 4.1.1 earlier contains a CWE-331: Insufficient Entropy vulnerability in randomDigits() method that can result in An attacker is more likely to be able to brute force something that was supposed to be random.. This attack appear to be exploitable via Depends upon the calling application.. This vulnerability appears to have been fixed in 4.1.2.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  CVE:  CVE-2018-1000620
+  Reference:  https://ossindex.sonatype.org/vulnerability/9c0a4f9f-5add-42bc-b505-29445729e2a8?component-type=npm&component-name=cryptiles&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-331: Insufficient Entropy
+  ID:  ca91ab31-0d5c-4538-aedd-dd6beda070d3
+  Description:  The software uses an algorithm or scheme that produces insufficient entropy, leaving patterns or clusters of values that are more likely to occur than others.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/ca91ab31-0d5c-4538-aedd-dd6beda070d3?component-type=npm&component-name=cryptiles&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-331: Insufficient Entropy
+  ID:  42241d09-8208-486b-a2bc-417ad955159c
+  Description:  The software uses an algorithm or scheme that produces insufficient entropy, leaving patterns or clusters of values that are more likely to occur than others.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/42241d09-8208-486b-a2bc-417ad955159c?component-type=npm&component-name=cryptiles&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-330: Use of Insufficiently Random Values
+  ID:  ce49648b-993b-4243-9f41-8c09fce5754d
+  Description:  The software may use insufficiently random numbers or values in a security context that depends on unpredictable numbers.
+  CVSS Score:  5.9
+  CVSS Vector:  CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N
+  Reference:  https://ossindex.sonatype.org/vulnerability/ce49648b-993b-4243-9f41-8c09fce5754d?component-type=npm&component-name=cryptiles&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[46/214] - pkg:npm/dashdash@1.14.1 - No vulnerabilities found!
+[47/214] - pkg:npm/debug@2.6.9 - No vulnerabilities found!
+[48/214] - pkg:npm/debug@3.1.0 - No vulnerabilities found!
+[49/214] - pkg:npm/decimal.js@7.1.1 - No vulnerabilities found!
+[50/214] - pkg:npm/deep-extend@0.4.2 - 2 vulnerabilities found!
+
+  Vulnerability Title:  [CVE-2018-3750]  Improper Input Validation
+  ID:  d4f49abf-792e-44c1-b04e-b8c812e554ec
+  Description:  The utilities function in all versions <= 0.5.0 of the deep-extend node module can be tricked into modifying the prototype of Object when the attacker can control part of the structure passed to this function. This can let an attacker add or modify existing properties that will exist on all objects.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  CVE:  CVE-2018-3750
+  Reference:  https://ossindex.sonatype.org/vulnerability/d4f49abf-792e-44c1-b04e-b8c812e554ec?component-type=npm&component-name=deep-extend&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-471: Modification of Assumed-Immutable Data (MAID)
+  ID:  3185f948-ca5a-48d5-9201-ff7a86a60761
+  Description:  The software does not properly protect an assumed-immutable element from being modified by an attacker.
+  CVSS Score:  7.4
+  CVSS Vector:  CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/3185f948-ca5a-48d5-9201-ff7a86a60761?component-type=npm&component-name=deep-extend&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[51/214] - pkg:npm/delayed-stream@1.0.0 - No vulnerabilities found!
+[52/214] - pkg:npm/delegates@1.0.0 - No vulnerabilities found!
+[53/214] - pkg:npm/denque@1.2.2 - No vulnerabilities found!
+[54/214] - pkg:npm/depd@1.1.1 - No vulnerabilities found!
+[55/214] - pkg:npm/destroy@1.0.4 - No vulnerabilities found!
+[56/214] - pkg:npm/dottie@2.0.0 - No vulnerabilities found!
+[57/214] - pkg:npm/ecc-jsbn@0.1.1 - No vulnerabilities found!
+[58/214] - pkg:npm/ee-first@1.1.1 - No vulnerabilities found!
+[59/214] - pkg:npm/ejs@2.5.7 - No vulnerabilities found!
+[60/214] - pkg:npm/encodeurl@1.0.1 - No vulnerabilities found!
+[61/214] - pkg:npm/escape-html@1.0.3 - No vulnerabilities found!
+[62/214] - pkg:npm/esprima@3.0.0 - No vulnerabilities found!
+[63/214] - pkg:npm/etag@1.8.1 - No vulnerabilities found!
+[64/214] - pkg:npm/express-flash@0.0.2 - No vulnerabilities found!
+[65/214] - pkg:npm/express-session@1.15.6 - No vulnerabilities found!
+[66/214] - pkg:npm/express@4.16.2 - No vulnerabilities found!
+[67/214] - pkg:npm/extend@3.0.1 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-74: Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')
+  ID:  192c2783-2be8-48d4-8e2d-136c261d740c
+  Description:  The software constructs all or part of a command, data structure, or record using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify how it is parsed or interpreted when it is sent to a downstream component.
+  CVSS Score:  5.3
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+  Reference:  https://ossindex.sonatype.org/vulnerability/192c2783-2be8-48d4-8e2d-136c261d740c?component-type=npm&component-name=extend&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[68/214] - pkg:npm/extsprintf@1.3.0 - No vulnerabilities found!
+[69/214] - pkg:npm/fast-deep-equal@1.0.0 - No vulnerabilities found!
+[70/214] - pkg:npm/fast-json-stable-stringify@2.0.0 - No vulnerabilities found!
+[71/214] - pkg:npm/finalhandler@1.1.0 - No vulnerabilities found!
+[72/214] - pkg:npm/flash@1.1.0 - No vulnerabilities found!
+[73/214] - pkg:npm/forever-agent@0.6.1 - No vulnerabilities found!
+[74/214] - pkg:npm/form-data@2.3.1 - No vulnerabilities found!
+[75/214] - pkg:npm/forwarded@0.1.2 - No vulnerabilities found!
+[76/214] - pkg:npm/fraction.js@4.0.0 - No vulnerabilities found!
+[77/214] - pkg:npm/fresh@0.5.2 - No vulnerabilities found!
+[78/214] - pkg:npm/fs.realpath@1.0.0 - No vulnerabilities found!
+[79/214] - pkg:npm/fstream-ignore@1.0.5 - No vulnerabilities found!
+[80/214] - pkg:npm/fstream@1.0.11 - 2 vulnerabilities found!
+
+  Vulnerability Title:  CWE-62: UNIX Hard Link
+  ID:  6c2bc236-48b7-45b2-aa3c-bb415565814b
+  Description:  The software, when opening a file or directory, does not sufficiently account for when the name is associated with a hard link to a target that is outside of the intended control sphere. This could allow an attacker to cause the software to operate on unauthorized files.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+  Reference:  https://ossindex.sonatype.org/vulnerability/6c2bc236-48b7-45b2-aa3c-bb415565814b?component-type=npm&component-name=fstream&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  [CVE-2019-13173]  Improper Input Validation
+  ID:  481fbf77-a68a-46c3-9d09-5c17c3b0c81c
+  Description:  fstream before 1.0.12 is vulnerable to Arbitrary File Overwrite. Extracting tarballs containing a hardlink to a file that already exists in the system, and a file that matches the hardlink, will overwrite the system's file with the contents of the extracted file. The fstream.DirWriter() function is vulnerable.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N
+  CVE:  CVE-2019-13173
+  Reference:  https://ossindex.sonatype.org/vulnerability/481fbf77-a68a-46c3-9d09-5c17c3b0c81c?component-type=npm&component-name=fstream&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[81/214] - pkg:npm/gauge@2.7.4 - No vulnerabilities found!
+[82/214] - pkg:npm/generate-function@2.0.0 - No vulnerabilities found!
+[83/214] - pkg:npm/generic-pool@3.2.0 - No vulnerabilities found!
+[84/214] - pkg:npm/getpass@0.1.7 - No vulnerabilities found!
+[85/214] - pkg:npm/glob@7.1.2 - No vulnerabilities found!
+[86/214] - pkg:npm/graceful-fs@4.1.11 - No vulnerabilities found!
+[87/214] - pkg:npm/har-schema@2.0.0 - No vulnerabilities found!
+[88/214] - pkg:npm/har-validator@5.0.3 - No vulnerabilities found!
+[89/214] - pkg:npm/has-unicode@2.0.1 - No vulnerabilities found!
+[90/214] - pkg:npm/hawk@6.0.2 - No vulnerabilities found!
+[91/214] - pkg:npm/hoek@4.2.0 - 1 vulnerability found!
+
+  Vulnerability Title:  [CVE-2018-3728]  Improper Access Control, Modification of Assumed-Immutable Data (MAID)
+  ID:  f83875d9-0fe3-492a-a1c1-e0ed39e74001
+  Description:  hoek node module before 4.2.0 and 5.0.x before 5.0.3 suffers from a Modification of Assumed-Immutable Data (MAID) vulnerability via 'merge' and 'applyToDefaults' functions, which allows a malicious user to modify the prototype of "Object" via __proto__, causing the addition or modification of an existing property that will exist on all objects.
+  CVSS Score:  6.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N
+  CVE:  CVE-2018-3728
+  Reference:  https://ossindex.sonatype.org/vulnerability/f83875d9-0fe3-492a-a1c1-e0ed39e74001?component-type=npm&component-name=hoek&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[92/214] - pkg:npm/http-errors@1.6.2 - No vulnerabilities found!
+[93/214] - pkg:npm/http-signature@1.2.0 - No vulnerabilities found!
+[94/214] - pkg:npm/iconv-lite@0.4.19 - No vulnerabilities found!
+[95/214] - pkg:npm/inflection@1.12.0 - No vulnerabilities found!
+[96/214] - pkg:npm/inflight@1.0.6 - No vulnerabilities found!
+[97/214] - pkg:npm/inherits@2.0.3 - No vulnerabilities found!
+[98/214] - pkg:npm/ini@1.3.5 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-471: Modification of Assumed-Immutable Data (MAID)
+  ID:  c08153de-a0ad-4212-963d-3de92eaab509
+  Description:  The software does not properly protect an assumed-immutable element from being modified by an attacker.
+  CVSS Score:  7.4
+  CVSS Vector:  CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/c08153de-a0ad-4212-963d-3de92eaab509?component-type=npm&component-name=ini&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[99/214] - pkg:npm/ipaddr.js@1.5.2 - No vulnerabilities found!
+[100/214] - pkg:npm/is-bluebird@1.0.2 - No vulnerabilities found!
+[101/214] - pkg:npm/is-buffer@1.1.6 - No vulnerabilities found!
+[102/214] - pkg:npm/is-fullwidth-code-point@1.0.0 - No vulnerabilities found!
+[103/214] - pkg:npm/is-typedarray@1.0.0 - No vulnerabilities found!
+[104/214] - pkg:npm/isarray@1.0.0 - No vulnerabilities found!
+[105/214] - pkg:npm/isstream@0.1.2 - No vulnerabilities found!
+[106/214] - pkg:npm/jsbn@0.1.1 - No vulnerabilities found!
+[107/214] - pkg:npm/json-schema-traverse@0.3.1 - No vulnerabilities found!
+[108/214] - pkg:npm/json-schema@0.2.3 - No vulnerabilities found!
+[109/214] - pkg:npm/json-stringify-safe@5.0.1 - No vulnerabilities found!
+[110/214] - pkg:npm/jsprim@1.4.1 - No vulnerabilities found!
+[111/214] - pkg:npm/lodash@4.17.4 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')
+  ID:  2053350d-b06f-4926-88ea-871760f6e5d8
+  Description:  The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/2053350d-b06f-4926-88ea-871760f6e5d8?component-type=npm&component-name=lodash&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[112/214] - pkg:npm/long@3.2.0 - No vulnerabilities found!
+[113/214] - pkg:npm/lru-cache@2.5.0 - No vulnerabilities found!
+[114/214] - pkg:npm/lru-cache@4.1.1 - No vulnerabilities found!
+[115/214] - pkg:npm/mathjs@3.10.1 - 4 vulnerabilities found!
+
+  Vulnerability Title:  [CVE-2017-1001002] math.js before 3.17.0 had an arbitrary code execution in the JavaScript engine. ...
+  ID:  1e6c8e7a-4371-43fe-8772-1aedc76baca1
+  Description:  math.js before 3.17.0 had an arbitrary code execution in the JavaScript engine. Creating a typed function with JavaScript code in the name could result arbitrary execution.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  CVE:  CVE-2017-1001002
+  Reference:  https://ossindex.sonatype.org/vulnerability/1e6c8e7a-4371-43fe-8772-1aedc76baca1?component-type=npm&component-name=mathjs&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  [CVE-2017-1001003]  Improper Input Validation
+  ID:  51031497-800c-43b4-a798-95c20e0d17e9
+  Description:  math.js before 3.17.0 had an issue where private properties such as a constructor could be replaced by using unicode characters when creating an object.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  CVE:  CVE-2017-1001003
+  Reference:  https://ossindex.sonatype.org/vulnerability/51031497-800c-43b4-a798-95c20e0d17e9?component-type=npm&component-name=mathjs&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-94: Improper Control of Generation of Code ('Code Injection')
+  ID:  6e815112-1cfa-48a6-a98f-e5e5fd70d4fa
+  Description:  The software constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment.
+  CVSS Score:  8.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/6e815112-1cfa-48a6-a98f-e5e5fd70d4fa?component-type=npm&component-name=mathjs&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')
+  ID:  be5cef0e-2296-45bf-a9c7-af6cb1f58c3c
+  Description:  The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/be5cef0e-2296-45bf-a9c7-af6cb1f58c3c?component-type=npm&component-name=mathjs&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[116/214] - pkg:npm/md5@2.2.1 - No vulnerabilities found!
+[117/214] - pkg:npm/media-typer@0.3.0 - No vulnerabilities found!
+[118/214] - pkg:npm/merge-descriptors@1.0.1 - No vulnerabilities found!
+[119/214] - pkg:npm/methods@1.1.2 - No vulnerabilities found!
+[120/214] - pkg:npm/mime-db@1.30.0 - No vulnerabilities found!
+[121/214] - pkg:npm/mime-types@2.1.17 - No vulnerabilities found!
+[122/214] - pkg:npm/mime@1.4.1 - No vulnerabilities found!
+[123/214] - pkg:npm/minimatch@3.0.4 - No vulnerabilities found!
+[124/214] - pkg:npm/minimist@0.0.8 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-94: Improper Control of Generation of Code ('Code Injection')
+  ID:  a0172c09-270c-4d3c-9816-564f20f372db
+  Description:  The software constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment.
+  CVSS Score:  8.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/a0172c09-270c-4d3c-9816-564f20f372db?component-type=npm&component-name=minimist&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[125/214] - pkg:npm/minimist@1.2.0 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-94: Improper Control of Generation of Code ('Code Injection')
+  ID:  a0172c09-270c-4d3c-9816-564f20f372db
+  Description:  The software constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment.
+  CVSS Score:  8.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/a0172c09-270c-4d3c-9816-564f20f372db?component-type=npm&component-name=minimist&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[126/214] - pkg:npm/mkdirp@0.5.1 - No vulnerabilities found!
+[127/214] - pkg:npm/moment-timezone@0.5.14 - No vulnerabilities found!
+[128/214] - pkg:npm/moment@2.19.2 - 2 vulnerabilities found!
+
+  Vulnerability Title:  [CVE-2017-18214] The moment module before 2.19.3 for Node.js is prone to a regular expression den...
+  ID:  58fdd459-8d4a-4bf6-b106-ef7cff98268c
+  Description:  The moment module before 2.19.3 for Node.js is prone to a regular expression denial of service via a crafted date string, a different vulnerability than CVE-2016-4055.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+  CVE:  CVE-2017-18214
+  Reference:  https://ossindex.sonatype.org/vulnerability/58fdd459-8d4a-4bf6-b106-ef7cff98268c?component-type=npm&component-name=moment&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')
+  ID:  d939d5e9-46d5-4682-a6c7-756e5fea2b2b
+  Description:  The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/d939d5e9-46d5-4682-a6c7-756e5fea2b2b?component-type=npm&component-name=moment&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[129/214] - pkg:npm/morgan@1.9.0 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-77: Improper Neutralization of Special Elements used in a Command ('Command Injection')
+  ID:  08d44425-964d-4fad-838b-917426593e57
+  Description:  The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/08d44425-964d-4fad-838b-917426593e57?component-type=npm&component-name=morgan&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[130/214] - pkg:npm/ms@2.0.0 - No vulnerabilities found!
+[131/214] - pkg:npm/mysql2@1.5.1 - No vulnerabilities found!
+[132/214] - pkg:npm/named-placeholders@1.1.1 - No vulnerabilities found!
+[133/214] - pkg:npm/nan@2.6.2 - No vulnerabilities found!
+[134/214] - pkg:npm/negotiator@0.6.1 - No vulnerabilities found!
+[135/214] - pkg:npm/node-pre-gyp@0.6.36 - No vulnerabilities found!
+[136/214] - pkg:npm/nopt@4.0.1 - No vulnerabilities found!
+[137/214] - pkg:npm/npmlog@4.1.2 - No vulnerabilities found!
+[138/214] - pkg:npm/number-is-nan@1.0.1 - No vulnerabilities found!
+[139/214] - pkg:npm/oauth-sign@0.8.2 - No vulnerabilities found!
+[140/214] - pkg:npm/object-assign@4.1.1 - No vulnerabilities found!
+[141/214] - pkg:npm/on-finished@2.3.0 - No vulnerabilities found!
+[142/214] - pkg:npm/on-headers@1.0.1 - No vulnerabilities found!
+[143/214] - pkg:npm/once@1.4.0 - No vulnerabilities found!
+[144/214] - pkg:npm/os-homedir@1.0.2 - No vulnerabilities found!
+[145/214] - pkg:npm/os-tmpdir@1.0.2 - No vulnerabilities found!
+[146/214] - pkg:npm/osenv@0.1.4 - No vulnerabilities found!
+[147/214] - pkg:npm/parseurl@1.3.2 - No vulnerabilities found!
+[148/214] - pkg:npm/passport-local@1.0.0 - No vulnerabilities found!
+[149/214] - pkg:npm/passport-strategy@1.0.0 - No vulnerabilities found!
+[150/214] - pkg:npm/passport@0.4.0 - No vulnerabilities found!
+[151/214] - pkg:npm/path-is-absolute@1.0.1 - No vulnerabilities found!
+[152/214] - pkg:npm/path-to-regexp@0.1.7 - No vulnerabilities found!
+[153/214] - pkg:npm/pause@0.0.1 - No vulnerabilities found!
+[154/214] - pkg:npm/performance-now@2.1.0 - No vulnerabilities found!
+[155/214] - pkg:npm/process-nextick-args@1.0.7 - No vulnerabilities found!
+[156/214] - pkg:npm/proxy-addr@2.0.2 - No vulnerabilities found!
+[157/214] - pkg:npm/pseudomap@1.0.2 - No vulnerabilities found!
+[158/214] - pkg:npm/punycode@1.4.1 - No vulnerabilities found!
+[159/214] - pkg:npm/qs@6.5.1 - No vulnerabilities found!
+[160/214] - pkg:npm/random-bytes@1.0.0 - No vulnerabilities found!
+[161/214] - pkg:npm/range-parser@1.2.0 - No vulnerabilities found!
+[162/214] - pkg:npm/raw-body@2.3.2 - No vulnerabilities found!
+[163/214] - pkg:npm/rc@1.2.2 - No vulnerabilities found!
+[164/214] - pkg:npm/readable-stream@2.3.2 - No vulnerabilities found!
+[165/214] - pkg:npm/readable-stream@2.3.3 - No vulnerabilities found!
+[166/214] - pkg:npm/redeyed@1.0.1 - No vulnerabilities found!
+[167/214] - pkg:npm/request@2.83.0 - No vulnerabilities found!
+[168/214] - pkg:npm/retry-as-promised@2.3.2 - No vulnerabilities found!
+[169/214] - pkg:npm/rimraf@2.6.2 - No vulnerabilities found!
+[170/214] - pkg:npm/safe-buffer@5.1.1 - No vulnerabilities found!
+[171/214] - pkg:npm/seed-random@2.2.0 - No vulnerabilities found!
+[172/214] - pkg:npm/semver@5.4.1 - No vulnerabilities found!
+[173/214] - pkg:npm/send@0.16.1 - No vulnerabilities found!
+[174/214] - pkg:npm/seq-queue@0.0.5 - No vulnerabilities found!
+[175/214] - pkg:npm/sequelize@4.23.1 - 6 vulnerabilities found!
+
+  Vulnerability Title:  CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+  ID:  47c93aa7-1b5c-4c19-9567-643dc7871097
+  Description:  The software constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component.
+  CVSS Score:  9.9
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/47c93aa7-1b5c-4c19-9567-643dc7871097?component-type=npm&component-name=sequelize&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+  ID:  bc5cce9c-eaf8-42de-bfc2-2b90655f5225
+  Description:  The software constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component.
+  CVSS Score:  9.9
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/bc5cce9c-eaf8-42de-bfc2-2b90655f5225?component-type=npm&component-name=sequelize&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+  ID:  c8094459-2c25-40a9-bad2-480d75e05dd9
+  Description:  The software constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component.
+  CVSS Score:  9.9
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/c8094459-2c25-40a9-bad2-480d75e05dd9?component-type=npm&component-name=sequelize&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  [CVE-2019-10748] Sequelize all versions prior to 3.35.1, 4.44.3, and 5.8.11 are vulnerable to SQL...
+  ID:  8c2ea541-0210-4d46-a7f5-3ac7d83f0e3b
+  Description:  Sequelize all versions prior to 3.35.1, 4.44.3, and 5.8.11 are vulnerable to SQL Injection due to JSON path keys not being properly escaped for the MySQL/MariaDB dialects.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  CVE:  CVE-2019-10748
+  Reference:  https://ossindex.sonatype.org/vulnerability/8c2ea541-0210-4d46-a7f5-3ac7d83f0e3b?component-type=npm&component-name=sequelize&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  [CVE-2019-10752] Sequelize, all versions prior to version 4.44.3 and 5.15.1, is vulnerable to SQL...
+  ID:  9efb34f2-bad3-4f8b-8da8-fb2eea942573
+  Description:  Sequelize, all versions prior to version 4.44.3 and 5.15.1, is vulnerable to SQL Injection due to sequelize.json() helper function not escaping values properly when formatting sub paths for JSON queries for MySQL, MariaDB and SQLite.
+  CVSS Score:  9.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+  CVE:  CVE-2019-10752
+  Reference:  https://ossindex.sonatype.org/vulnerability/9efb34f2-bad3-4f8b-8da8-fb2eea942573?component-type=npm&component-name=sequelize&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')
+  ID:  cb8ee38e-f0cd-4657-8d6b-2713f193b39d
+  Description:  The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/cb8ee38e-f0cd-4657-8d6b-2713f193b39d?component-type=npm&component-name=sequelize&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[176/214] - pkg:npm/serve-static@1.13.1 - No vulnerabilities found!
+[177/214] - pkg:npm/set-blocking@2.0.0 - No vulnerabilities found!
+[178/214] - pkg:npm/setprototypeof@1.0.3 - No vulnerabilities found!
+[179/214] - pkg:npm/setprototypeof@1.1.0 - No vulnerabilities found!
+[180/214] - pkg:npm/shimmer@1.2.0 - No vulnerabilities found!
+[181/214] - pkg:npm/signal-exit@3.0.2 - No vulnerabilities found!
+[182/214] - pkg:npm/sntp@2.1.0 - No vulnerabilities found!
+[183/214] - pkg:npm/sqlstring@2.3.0 - No vulnerabilities found!
+[184/214] - pkg:npm/sshpk@1.13.1 - 1 vulnerability found!
+
+  Vulnerability Title:  CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')
+  ID:  fc393f9f-282f-4bc9-953b-d7e4b48352e9
+  Description:  The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/fc393f9f-282f-4bc9-953b-d7e4b48352e9?component-type=npm&component-name=sshpk&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[185/214] - pkg:npm/statuses@1.3.1 - No vulnerabilities found!
+[186/214] - pkg:npm/string-width@1.0.2 - No vulnerabilities found!
+[187/214] - pkg:npm/string_decoder@1.0.3 - No vulnerabilities found!
+[188/214] - pkg:npm/stringstream@0.0.5 - 2 vulnerabilities found!
+
+  Vulnerability Title:  CWE-125: Out-of-bounds Read
+  ID:  ef91fdbd-dcc6-44cc-b9ff-42bdbb5da6ad
+  Description:  The software reads data past the end, or before the beginning, of the intended buffer.
+  CVSS Score:  7.4
+  CVSS Vector:  CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/ef91fdbd-dcc6-44cc-b9ff-42bdbb5da6ad?component-type=npm&component-name=stringstream&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-125: Out-of-bounds Read
+  ID:  841f9e13-f3fb-4a7e-a15f-1a809255d839
+  Description:  The software reads data past the end, or before the beginning, of the intended buffer.
+  CVSS Score:  5.2
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:N/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/841f9e13-f3fb-4a7e-a15f-1a809255d839?component-type=npm&component-name=stringstream&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[189/214] - pkg:npm/strip-ansi@3.0.1 - No vulnerabilities found!
+[190/214] - pkg:npm/strip-json-comments@2.0.1 - No vulnerabilities found!
+[191/214] - pkg:npm/tar-pack@3.4.1 - No vulnerabilities found!
+[192/214] - pkg:npm/tar@2.2.1 - 2 vulnerabilities found!
+
+  Vulnerability Title:  [CVE-2018-20834]  Improper Link Resolution Before File Access ("Link Following")
+  ID:  c4a1ca70-9c58-4774-b9aa-1a8ebbdb90c1
+  Description:  A vulnerability was found in node-tar before version 4.4.2. An Arbitrary File Overwrite issue exists when extracting a tarball containing a hardlink to a file that already exists on the system, in conjunction with a later plain file with the same name as the hardlink. This plain file content replaces the existing file content.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N
+  CVE:  CVE-2018-20834
+  Reference:  https://ossindex.sonatype.org/vulnerability/c4a1ca70-9c58-4774-b9aa-1a8ebbdb90c1?component-type=npm&component-name=tar&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-62: UNIX Hard Link
+  ID:  bf81518d-0493-49ac-b4af-8747379049fc
+  Description:  The software, when opening a file or directory, does not sufficiently account for when the name is associated with a hard link to a target that is outside of the intended control sphere. This could allow an attacker to cause the software to operate on unauthorized files.
+  CVSS Score:  7.5
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+  Reference:  https://ossindex.sonatype.org/vulnerability/bf81518d-0493-49ac-b4af-8747379049fc?component-type=npm&component-name=tar&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[193/214] - pkg:npm/terraformer-wkt-parser@1.1.2 - No vulnerabilities found!
+[194/214] - pkg:npm/terraformer@1.0.8 - No vulnerabilities found!
+[195/214] - pkg:npm/tiny-emitter@1.0.2 - No vulnerabilities found!
+[196/214] - pkg:npm/toposort-class@1.0.1 - No vulnerabilities found!
+[197/214] - pkg:npm/tough-cookie@2.3.3 - No vulnerabilities found!
+[198/214] - pkg:npm/tunnel-agent@0.6.0 - No vulnerabilities found!
+[199/214] - pkg:npm/tweetnacl@0.14.5 - No vulnerabilities found!
+[200/214] - pkg:npm/type-is@1.6.15 - No vulnerabilities found!
+[201/214] - pkg:npm/typed-function@0.10.5 - 2 vulnerabilities found!
+
+  Vulnerability Title:  [CVE-2017-1001004]  Improper Input Validation
+  ID:  9cc5f186-a03a-4c49-910a-047ea7bae9ec
+  Description:  typed-function before 0.10.6 had an arbitrary code execution in the JavaScript engine. Creating a typed function with JavaScript code in the name could result arbitrary execution.
+  CVSS Score:  8.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+  CVE:  CVE-2017-1001004
+  Reference:  https://ossindex.sonatype.org/vulnerability/9cc5f186-a03a-4c49-910a-047ea7bae9ec?component-type=npm&component-name=typed-function&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+  Vulnerability Title:  CWE-94: Improper Control of Generation of Code ('Code Injection')
+  ID:  656aa499-2044-4aaf-a920-83bfed2e56d9
+  Description:  The software constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment.
+  CVSS Score:  8.8
+  CVSS Vector:  CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+  Reference:  https://ossindex.sonatype.org/vulnerability/656aa499-2044-4aaf-a920-83bfed2e56d9?component-type=npm&component-name=typed-function&utm_source=auditjs&utm_medium=integration&utm_content=4.0.30
+  
+[202/214] - pkg:npm/uid-number@0.0.6 - No vulnerabilities found!
+[203/214] - pkg:npm/uid-safe@2.1.5 - No vulnerabilities found!
+[204/214] - pkg:npm/unpipe@1.0.0 - No vulnerabilities found!
+[205/214] - pkg:npm/util-deprecate@1.0.2 - No vulnerabilities found!
+[206/214] - pkg:npm/utils-merge@1.0.1 - No vulnerabilities found!
+[207/214] - pkg:npm/uuid@3.1.0 - No vulnerabilities found!
+[208/214] - pkg:npm/validator@9.1.2 - No vulnerabilities found!
+[209/214] - pkg:npm/vary@1.1.2 - No vulnerabilities found!
+[210/214] - pkg:npm/verror@1.10.0 - No vulnerabilities found!
+[211/214] - pkg:npm/wide-align@1.1.2 - No vulnerabilities found!
+[212/214] - pkg:npm/wkx@0.4.2 - No vulnerabilities found!
+[213/214] - pkg:npm/wrappy@1.0.2 - No vulnerabilities found!
+[214/214] - pkg:npm/yallist@2.1.2 - No vulnerabilities found!
+

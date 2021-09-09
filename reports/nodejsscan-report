@@ -1,0 +1,455 @@
+{
+  "errors": [
+    {
+      "code": 3,
+      "help": "If the code appears to be valid, this may be a semgrep bug.",
+      "level": "warn",
+      "long_msg": "Could not parse Dockerfile-dev as javascript",
+      "short_msg": "parse error",
+      "spans": [
+        {
+          "context_end": null,
+          "context_start": null,
+          "end": {
+            "col": 18,
+            "line": 1
+          },
+          "file": "/var/lib/jenkins/app/Dockerfile-dev",
+          "source_hash": "c10967c90e63b1bc8ae7c9ac69cf4bfa898ba967103868570477430d7c26076a",
+          "start": {
+            "col": 1,
+            "line": 1
+          }
+        }
+      ],
+      "type": "SourceParseError"
+    },
+    {
+      "code": 3,
+      "help": "If the code appears to be valid, this may be a semgrep bug.",
+      "level": "warn",
+      "long_msg": "Could not parse Dockerfile as typescript",
+      "short_msg": "parse error",
+      "spans": [
+        {
+          "context_end": null,
+          "context_start": null,
+          "end": {
+            "col": 69,
+            "line": 1
+          },
+          "file": "/var/lib/jenkins/app/Dockerfile",
+          "source_hash": "2e6ef43382521e93092babdff17fb887e82392aa678736d3ad061a9a85e9137f",
+          "start": {
+            "col": 1,
+            "line": 1
+          }
+        }
+      ],
+      "type": "SourceParseError"
+    },
+    {
+      "code": 3,
+      "help": "If the code appears to be valid, this may be a semgrep bug.",
+      "level": "warn",
+      "long_msg": "Could not parse LICENSE as typescript",
+      "short_msg": "parse error",
+      "spans": [
+        {
+          "context_end": null,
+          "context_start": null,
+          "end": {
+            "col": 8,
+            "line": 1
+          },
+          "file": "/var/lib/jenkins/app/LICENSE",
+          "source_hash": "3918b81077d08aa4e30a81f813bbd101391fcc22395ff64c3812cf0afdc40084",
+          "start": {
+            "col": 1,
+            "line": 1
+          }
+        }
+      ],
+      "type": "SourceParseError"
+    },
+    {
+      "code": 3,
+      "help": "If the code appears to be valid, this may be a semgrep bug.",
+      "level": "warn",
+      "long_msg": "Could not parse Dockerfile as javascript",
+      "short_msg": "parse error",
+      "spans": [
+        {
+          "context_end": null,
+          "context_start": null,
+          "end": {
+            "col": 69,
+            "line": 1
+          },
+          "file": "/var/lib/jenkins/app/Dockerfile",
+          "source_hash": "2e6ef43382521e93092babdff17fb887e82392aa678736d3ad061a9a85e9137f",
+          "start": {
+            "col": 1,
+            "line": 1
+          }
+        }
+      ],
+      "type": "SourceParseError"
+    },
+    {
+      "code": 3,
+      "help": "If the code appears to be valid, this may be a semgrep bug.",
+      "level": "warn",
+      "long_msg": "Could not parse Dockerfile-dev as typescript",
+      "short_msg": "parse error",
+      "spans": [
+        {
+          "context_end": null,
+          "context_start": null,
+          "end": {
+            "col": 18,
+            "line": 1
+          },
+          "file": "/var/lib/jenkins/app/Dockerfile-dev",
+          "source_hash": "c10967c90e63b1bc8ae7c9ac69cf4bfa898ba967103868570477430d7c26076a",
+          "start": {
+            "col": 1,
+            "line": 1
+          }
+        }
+      ],
+      "type": "SourceParseError"
+    },
+    {
+      "code": 3,
+      "help": "If the code appears to be valid, this may be a semgrep bug.",
+      "level": "warn",
+      "long_msg": "Could not parse LICENSE as javascript",
+      "short_msg": "parse error",
+      "spans": [
+        {
+          "context_end": null,
+          "context_start": null,
+          "end": {
+            "col": 8,
+            "line": 1
+          },
+          "file": "/var/lib/jenkins/app/LICENSE",
+          "source_hash": "3918b81077d08aa4e30a81f813bbd101391fcc22395ff64c3812cf0afdc40084",
+          "start": {
+            "col": 1,
+            "line": 1
+          }
+        }
+      ],
+      "type": "SourceParseError"
+    }
+  ],
+  "njsscan_version": "0.2.8",
+  "nodejs": {
+    "cookie_session_default": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/server.js",
+          "match_lines": [
+            21,
+            26
+          ],
+          "match_position": [
+            9,
+            3
+          ],
+          "match_string": "app.use(session({\n  secret: 'keyboard cat',\n  resave: true,\n  saveUninitialized: true,\n  cookie: { secure: false }\n}))"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-522: Insufficiently Protected Credentials",
+        "description": "Consider changing the default session cookie name. An attacker can use it to fingerprint the server and target attacks accordingly.",
+        "owasp": "A2: Broken Authentication",
+        "severity": "INFO"
+      }
+    },
+    "cookie_session_no_domain": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/server.js",
+          "match_lines": [
+            21,
+            26
+          ],
+          "match_position": [
+            9,
+            3
+          ],
+          "match_string": "app.use(session({\n  secret: 'keyboard cat',\n  resave: true,\n  saveUninitialized: true,\n  cookie: { secure: false }\n}))"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-522: Insufficiently Protected Credentials",
+        "description": "Default session middleware settings: `domain` not set. It indicates the domain of the cookie; use it to compare against the domain of the server in which the URL is being requested. If they match, then check the path attribute next.",
+        "owasp": "A2: Broken Authentication",
+        "severity": "INFO"
+      }
+    },
+    "cookie_session_no_maxage": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/server.js",
+          "match_lines": [
+            21,
+            26
+          ],
+          "match_position": [
+            9,
+            3
+          ],
+          "match_string": "app.use(session({\n  secret: 'keyboard cat',\n  resave: true,\n  saveUninitialized: true,\n  cookie: { secure: false }\n}))"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-613: Insufficient Session Expiration",
+        "description": "Session middleware settings: `maxAge` not set. Use it to set expiration date for cookies.",
+        "owasp": "A2: Broken Authentication",
+        "severity": "INFO"
+      }
+    },
+    "cookie_session_no_path": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/server.js",
+          "match_lines": [
+            21,
+            26
+          ],
+          "match_position": [
+            9,
+            3
+          ],
+          "match_string": "app.use(session({\n  secret: 'keyboard cat',\n  resave: true,\n  saveUninitialized: true,\n  cookie: { secure: false }\n}))"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-522: Insufficiently Protected Credentials",
+        "description": "Default session middleware settings: `path` not set. It indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request.",
+        "owasp": "A2: Broken Authentication",
+        "severity": "INFO"
+      }
+    },
+    "cookie_session_no_samesite": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/server.js",
+          "match_lines": [
+            21,
+            26
+          ],
+          "match_position": [
+            9,
+            3
+          ],
+          "match_string": "app.use(session({\n  secret: 'keyboard cat',\n  resave: true,\n  saveUninitialized: true,\n  cookie: { secure: false }\n}))"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-1275: Sensitive Cookie with Improper SameSite Attribute",
+        "description": "Default session middleware settings: `sameSite` attribute is not configured to strict or lax. These configurations provides protection against Cross Site Request Forgery attacks.",
+        "owasp": "A2: Broken Authentication",
+        "severity": "WARNING"
+      }
+    },
+    "cookie_session_no_secure": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/server.js",
+          "match_lines": [
+            21,
+            26
+          ],
+          "match_position": [
+            9,
+            3
+          ],
+          "match_string": "app.use(session({\n  secret: 'keyboard cat',\n  resave: true,\n  saveUninitialized: true,\n  cookie: { secure: false }\n}))"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-614: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
+        "description": "Default session middleware settings: `secure` not set. It ensures the browser only sends the cookie over HTTPS.",
+        "owasp": "A2: Broken Authentication",
+        "severity": "WARNING"
+      }
+    },
+    "express_lfr_warning": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/routes/app.js",
+          "match_lines": [
+            33,
+            35
+          ],
+          "match_position": [
+            9,
+            11
+          ],
+          "match_string": "        res.render('app/admin', {\n            admin: (req.user.role == 'admin')\n        })"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-23: Relative Path Traversal",
+        "description": "Untrusted user input in express render() function can result in arbitrary file read if hbs templating is used.",
+        "owasp": "A5: Broken Access Control",
+        "severity": "WARNING"
+      }
+    },
+    "express_open_redirect": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/core/appHandler.js",
+          "match_lines": [
+            186,
+            186
+          ],
+          "match_position": [
+            3,
+            30
+          ],
+          "match_string": "\t\tres.redirect(req.query.url)"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')",
+        "description": "Untrusted user input in redirect() can result in Open Redirect vulnerability.",
+        "owasp": "A1: Injection",
+        "severity": "ERROR"
+      }
+    },
+    "node_sqli_injection": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/core/appHandler.js",
+          "match_lines": [
+            8,
+            33
+          ],
+          "match_position": [
+            2,
+            4
+          ],
+          "match_string": "\tvar query = \"SELECT name,id FROM Users WHERE login='\" + req.body.login + \"'\";\n\tdb.sequelize.query(query, {\n\t\tmodel: db.User\n\t}).then(user => {\n\t\tif (user.length) {\n\t\t\tvar output = {\n\t\t\t\tuser: {\n\t\t\t\t\tname: user[0].name,\n\t\t\t\t\tid: user[0].id\n\t\t\t\t}\n\t\t\t}\n\t\t\tres.render('app/usersearch', {\n\t\t\t\toutput: output\n\t\t\t})\n\t\t} else {\n\t\t\treq.flash('warning', 'User not found')\n\t\t\tres.render('app/usersearch', {\n\t\t\t\toutput: null\n\t\t\t})\n\t\t}\n\t}).catch(err => {\n\t\treq.flash('danger', 'Internal Error')\n\t\tres.render('app/usersearch', {\n\t\t\toutput: null\n\t\t})\n\t})"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+        "description": "Untrusted input concatinated with raw SQL query can result in SQL Injection.",
+        "owasp": "A1: Injection",
+        "severity": "ERROR"
+      }
+    },
+    "sequelize_tls": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/config/db.js",
+          "match_lines": [
+            1,
+            8
+          ],
+          "match_position": [
+            18,
+            2
+          ],
+          "match_string": "module.exports = {\n  username: process.env.MYSQL_USER,\n  password: process.env.MYSQL_PASSWORD,\n  database: process.env.MYSQL_DATABASE,\n  host: process.env.MYSQL_HOST || 'mysql-db',\n  port: process.env.MYSQL_PORT || 3306,\n  dialect: 'mysql'\n}"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-319: Cleartext Transmission of Sensitive Information",
+        "description": "The Sequelize connection string indicates that database server does not use TLS. Non TLS connections are susceptible to man in the middle (MITM) attacks.\n",
+        "owasp": "A6: 2017-Security Misconfiguration",
+        "severity": "WARNING"
+      }
+    }
+  },
+  "templates": {
+    "ejs_ect_template": {
+      "files": [
+        {
+          "file_path": "/var/lib/jenkins/app/views/app/products.ejs",
+          "match_lines": [
+            50,
+            50
+          ],
+          "match_position": [
+            1851,
+            1881
+          ],
+          "match_string": "<%- output.products[i].name %>"
+        },
+        {
+          "file_path": "/var/lib/jenkins/app/views/app/products.ejs",
+          "match_lines": [
+            52,
+            52
+          ],
+          "match_position": [
+            1963,
+            1993
+          ],
+          "match_string": "<%- output.products[i].tags %>"
+        },
+        {
+          "file_path": "/var/lib/jenkins/app/views/app/products.ejs",
+          "match_lines": [
+            53,
+            53
+          ],
+          "match_position": [
+            2019,
+            2056
+          ],
+          "match_string": "<%- output.products[i].description %>"
+        },
+        {
+          "file_path": "/var/lib/jenkins/app/views/app/products.ejs",
+          "match_lines": [
+            51,
+            51
+          ],
+          "match_position": [
+            1907,
+            1937
+          ],
+          "match_string": "<%- output.products[i].code %>"
+        },
+        {
+          "file_path": "/var/lib/jenkins/app/views/app/products.ejs",
+          "match_lines": [
+            49,
+            49
+          ],
+          "match_position": [
+            1797,
+            1825
+          ],
+          "match_string": "<%- output.products[i].id %>"
+        },
+        {
+          "file_path": "/var/lib/jenkins/app/views/app/products.ejs",
+          "match_lines": [
+            20,
+            20
+          ],
+          "match_position": [
+            721,
+            745
+          ],
+          "match_string": "<%- output.searchTerm %>"
+        }
+      ],
+      "metadata": {
+        "cwe": "CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+        "description": "The EJS/ECT template has an unescaped variable. Untrusted user input passed to this variable results in Cross Site Scripting (XSS).",
+        "owasp": "A1: Injection",
+        "severity": "ERROR"
+      }
+    }
+  }
+}

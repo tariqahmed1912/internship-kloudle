@@ -1,0 +1,880 @@
+/var/lib/jenkins/app/views/register.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/register.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/register.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/register.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/register.ejs: line 1, col 6, Missing semicolon.
+/var/lib/jenkins/app/views/register.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/register.ejs: line 2, col 1, Unrecoverable syntax error. (2% scanned).
+
+/var/lib/jenkins/app/views/app/products.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/products.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/products.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/products.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/products.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/products.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/products.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/products.ejs: line 2, col 1, Unrecoverable syntax error. (1% scanned).
+
+/var/lib/jenkins/app/views/app/useredit.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/useredit.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/useredit.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/useredit.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/useredit.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/useredit.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/useredit.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/useredit.ejs: line 2, col 1, Unrecoverable syntax error. (2% scanned).
+
+/var/lib/jenkins/app/views/app/calc.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/calc.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/calc.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/calc.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/calc.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/calc.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/calc.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/calc.ejs: line 2, col 1, Unrecoverable syntax error. (3% scanned).
+
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/adminusers.ejs: line 2, col 1, Unrecoverable syntax error. (2% scanned).
+
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/modifyproduct.ejs: line 2, col 1, Unrecoverable syntax error. (2% scanned).
+
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/usersearch.ejs: line 2, col 1, Unrecoverable syntax error. (3% scanned).
+
+/var/lib/jenkins/app/views/app/admin.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/admin.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/admin.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/admin.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/admin.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/admin.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/admin.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/admin.ejs: line 2, col 1, Unrecoverable syntax error. (5% scanned).
+
+/var/lib/jenkins/app/views/app/ping.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/ping.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/app/ping.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/ping.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/app/ping.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/app/ping.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/app/ping.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/app/ping.ejs: line 2, col 1, Unrecoverable syntax error. (3% scanned).
+
+/var/lib/jenkins/app/views/learn.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/learn.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/learn.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/learn.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/learn.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/learn.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/learn.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/learn.ejs: line 2, col 1, Unrecoverable syntax error. (4% scanned).
+
+/var/lib/jenkins/app/views/login.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/login.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/login.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/login.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/login.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/login.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/login.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/login.ejs: line 2, col 1, Unrecoverable syntax error. (2% scanned).
+
+/var/lib/jenkins/app/views/forgotpw.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/forgotpw.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/forgotpw.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/forgotpw.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/forgotpw.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/forgotpw.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/forgotpw.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/forgotpw.ejs: line 2, col 1, Unrecoverable syntax error. (3% scanned).
+
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 1, col 52, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 5, col 49, Unclosed regular expression.
+/var/lib/jenkins/app/views/common/navigation.ejs: line 5, col 49, Unrecoverable syntax error. (20% scanned).
+
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 8, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 12, Missing semicolon.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 13, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 23, Missing semicolon.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 24, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 30, Missing semicolon.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 43, Unclosed regular expression.
+/var/lib/jenkins/app/views/common/head.ejs: line 1, col 43, Unrecoverable syntax error. (4% scanned).
+
+/var/lib/jenkins/app/views/common/footer.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/common/footer.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/footer.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/common/footer.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/footer.ejs: line 1, col 8, Missing semicolon.
+/var/lib/jenkins/app/views/common/footer.ejs: line 1, col 40, Unclosed regular expression.
+/var/lib/jenkins/app/views/common/footer.ejs: line 1, col 40, Unrecoverable syntax error. (2% scanned).
+
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/common/menu.ejs: line 1, col 24, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/common/menu.ejs: line 3, col 46, Unclosed regular expression.
+/var/lib/jenkins/app/views/common/menu.ejs: line 3, col 46, Unrecoverable syntax error. (9% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 3, col 32, Unnecessary RegExp 's' flag.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 3, col 32, 'Unicode RegExp flag' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 3, col 32, 'DotAll RegExp flag' is only available in ES9 (use 'esversion: 9').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 3, col 32, Expected an identifier and instead saw '/app/us'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 3, col 47, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 4, col 1, Expected an identifier and instead saw '*'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 4, col 3, Expected an operator and instead saw '['.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 4, col 12, Class properties must be methods. Expected '(' but instead saw 'Injection'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 4, col 50, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 4, col 59, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 6, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/scenario.ejs: line 6, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 7, col 1, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 7, col 3, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 9, col 2, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 11, col 27, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 13, col 1, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 13, col 3, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 15, col 2, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 17, col 1, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 17, col 3, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 19, col 2, 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 26, col 102, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/description.ejs: line 26, col 102, Unrecoverable syntax error. (81% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 4, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a1_injection/reference.ejs: line 4, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/layout.ejs: line 2, col 1, Unrecoverable syntax error. (6% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 2, col 35, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 2, col 48, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 3, col 1, Expected an identifier and instead saw '*'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 3, col 3, Expected an operator and instead saw '['.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 3, col 11, Class properties must be methods. Expected '(' but instead saw 'XSS'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 3, col 34, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 3, col 47, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 5, col 1, Expected an identifier and instead saw '**'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 5, col 7, Class properties must be methods. Expected '(' but instead saw ':'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 6, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/scenario.ejs: line 6, col 2, Unrecoverable syntax error. (75% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 2, col 26, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 2, col 40, Class properties must be methods. Expected '(' but instead saw 'a'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 6, col 102, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/description.ejs: line 6, col 102, Unrecoverable syntax error. (54% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 4, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a3_xss/reference.ejs: line 4, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 2, col 25, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 2, col 35, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 4, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/scenario.ejs: line 4, col 2, Unrecoverable syntax error. (66% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/description.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a7_missing_access_control/reference.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 2, col 23, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 2, col 39, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 4, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/scenario.ejs: line 4, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 2, col 138, Unclosed string.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 3, col 7, Unclosed string.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/description.ejs: line 3, col 1, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a6_sensitive_data/reference.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 2, col 21, Unnecessary RegExp 's' flag.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 2, col 21, 'Unicode RegExp flag' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 2, col 21, 'DotAll RegExp flag' is only available in ES9 (use 'esversion: 9').
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 2, col 21, Expected an identifier and instead saw '/app/us'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 2, col 34, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/scenario.ejs: line 3, col 2, Unrecoverable syntax error. (60% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/description.ejs: line 3, col 2, Unrecoverable syntax error. (75% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a4_idor/reference.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 2, col 21, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/scenario.ejs: line 2, col 21, Unrecoverable syntax error. (28% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 5, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/description.ejs: line 5, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a2_broken_auth/reference.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 2, col 16, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 2, col 25, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/scenario.ejs: line 3, col 2, Unrecoverable syntax error. (60% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/description.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 2, col 18, Expected an identifier and instead saw ':'.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 4, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a9_vuln_component/reference.ejs: line 4, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 2, col 18, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 2, col 36, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 4, col 9, Class properties must be methods. Expected '(' but instead saw 'redirects'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 5, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/scenario.ejs: line 5, col 2, Unrecoverable syntax error. (71% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 5, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/description.ejs: line 5, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a10_redirect/reference.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 2, col 43, Expected an identifier and instead saw '/app/'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 2, col 52, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 4, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/scenario.ejs: line 4, col 2, Unrecoverable syntax error. (66% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/description.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a5_sec_misconf/reference.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 2, col 28, Expected an identifier and instead saw '/app/m'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 2, col 46, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 1, Expected an identifier and instead saw '*'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 3, Expected an operator and instead saw '['.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 8, Class properties must be methods. Expected '(' but instead saw ':'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 21, Unnecessary RegExp 's' flag.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 21, 'Unicode RegExp flag' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 21, 'DotAll RegExp flag' is only available in ES9 (use 'esversion: 9').
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 21, Expected an identifier and instead saw '/app/us'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 3, col 34, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 4, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/scenario.ejs: line 4, col 2, Unrecoverable syntax error. (66% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 2, col 33, 'function closure expressions' is only available in Mozilla JavaScript extensions (use moz option).
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 2, col 40, Class properties must be methods. Expected '(' but instead saw 'vulnerability'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 2, col 178, Unclosed string.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 3, col 7, Unclosed string.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/description.ejs: line 3, col 1, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 1, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 2, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 5, Missing semicolon.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 6, 'class' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 6, Expected 'identifier' and instead saw '(punctuator)'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 1, col 22, Class properties must be methods. Expected '(' but instead saw '>'.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 3, col 2, Unclosed regular expression.
+/var/lib/jenkins/app/views/vulnerabilities/a8_csrf/reference.ejs: line 3, col 2, Unrecoverable syntax error. (100% scanned).
+
+/var/lib/jenkins/app/views/resetpw.ejs: line 1, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/resetpw.ejs: line 1, col 2, Expected an operator and instead saw '!'.
+/var/lib/jenkins/app/views/resetpw.ejs: line 1, col 2, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/resetpw.ejs: line 1, col 3, Missing semicolon.
+/var/lib/jenkins/app/views/resetpw.ejs: line 1, col 3, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/views/resetpw.ejs: line 1, col 10, Missing semicolon.
+/var/lib/jenkins/app/views/resetpw.ejs: line 2, col 1, Expected an identifier and instead saw '<'.
+/var/lib/jenkins/app/views/resetpw.ejs: line 2, col 1, Unrecoverable syntax error. (3% scanned).
+
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 10750, A leading decimal point can be confused with a dot: '.9'.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 10764, A leading decimal point can be confused with a dot: '.45'.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 4, col 4366, Unexpected '\'.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 2860, Confusing use of '!'.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 2972, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 2982, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 3127, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 3841, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 4430, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 4565, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 4928, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 4938, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 4998, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 5841, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 5851, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 5941, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 5991, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6038, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6086, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6266, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6267, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6313, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6393, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6451, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6619, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6626, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6886, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6944, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 6998, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7051, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7107, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7155, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7261, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7393, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7499, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7571, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 7636, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8170, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8171, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8288, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8443, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8477, Did you mean to return a conditional instead of an assignment?
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8492, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8492, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8670, Expected a conditional expression and instead saw an assignment.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8733, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8910, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 8946, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 9244, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 9368, Missing semicolon.
+/var/lib/jenkins/app/public/assets/showdown.min.js: line 3, col 9368, Too many errors. (50% scanned).
+
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 218, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 223, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 224, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 562, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 563, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 619, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 722, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 812, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 889, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 975, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1015, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1100, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1103, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1168, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1204, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1240, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1335, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1394, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1869, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1879, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 1991, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2062, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2113, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2212, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2383, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2445, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2556, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2585, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2647, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2735, Confusing use of '!'.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2743, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2785, Confusing use of '!'.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2802, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2859, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 2977, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3034, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3130, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3227, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3237, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3338, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3387, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3409, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3597, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3631, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3866, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 3867, Expected an assignment or function call and instead saw an expression.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 4022, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 4100, Missing '()' invoking a constructor.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 4185, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 4324, Missing semicolon.
+/var/lib/jenkins/app/public/assets/jquery-3.2.1.min.js: line 2, col 4324, Too many errors. (40% scanned).
+
+/var/lib/jenkins/app/core/passport.js: line 1, col 30, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 2, col 55, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 3, col 31, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 9, col 28, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 21, col 34, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 24, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 25, col 7, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 37, col 89, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 40, col 89, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 44, col 12, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 48, col 6, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 71, col 60, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 72, col 35, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 82, col 47, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 87, col 6, Missing semicolon.
+/var/lib/jenkins/app/core/passport.js: line 89, col 2, Missing semicolon.
+
+/var/lib/jenkins/app/core/authHandler.js: line 1, col 30, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 2, col 31, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 3, col 25, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 7, col 41, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 11, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 17, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 25, col 22, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/authHandler.js: line 28, col 64, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 29, col 39, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 31, col 62, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 32, col 42, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 34, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 36, col 54, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 37, col 34, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 39, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 47, col 22, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/authHandler.js: line 53, col 23, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 55, col 63, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 56, col 46, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 59, col 62, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 60, col 42, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 62, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 64, col 59, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 65, col 34, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 67, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 76, col 26, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/authHandler.js: line 79, col 105, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 81, col 80, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 82, col 51, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 83, col 27, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 85, col 67, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 86, col 50, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 89, col 66, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 90, col 46, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 92, col 15, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 94, col 59, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 98, col 15, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 102, col 47, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 103, col 34, Missing semicolon.
+/var/lib/jenkins/app/core/authHandler.js: line 105, col 2, Missing semicolon.
+
+/var/lib/jenkins/app/core/appHandler.js: line 1, col 30, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 2, col 31, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 3, col 1, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/core/appHandler.js: line 4, col 31, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 5, col 1, 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+/var/lib/jenkins/app/core/appHandler.js: line 5, col 27, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 11, col 18, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 18, col 14, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 21, col 15, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 23, col 51, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 26, col 15, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 28, col 18, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 29, col 46, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 32, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 33, col 7, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 34, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 38, col 33, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 41, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 42, col 7, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 43, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 46, col 40, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 49, col 10, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 52, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 53, col 7, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 54, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 60, col 17, 'computed property names' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 63, col 22, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 67, col 10, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 70, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 71, col 7, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 72, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 78, col 10, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 81, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 87, col 25, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 89, col 29, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 93, col 14, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 96, col 15, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 97, col 11, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 99, col 2, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 103, col 24, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 109, col 21, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 111, col 39, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 113, col 37, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 114, col 37, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 115, col 51, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 116, col 37, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 117, col 31, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 119, col 64, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 120, col 46, Missing semicolon.
+/var/lib/jenkins/app/core/appHandler.js: line 122, col 22, 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+/var/lib/jenkins/app/core/appHandler.js: line 122, col 22, Too many errors. (57% scanned).
+
+/var/lib/jenkins/app/config/vulns.js: line 12, col 2, Missing semicolon.
+
+/var/lib/jenkins/app/config/server.js: line 4, col 2, Missing semicolon.
+
+/var/lib/jenkins/app/config/db.js: line 8, col 2, Missing semicolon.
+
+/var/lib/jenkins/app/server.js: line 1, col 33, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 2, col 40, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 3, col 35, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 4, col 41, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 5, col 25, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 6, col 31, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 7, col 40, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 10, col 20, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 11, col 37, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 12, col 34, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 13, col 29, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 14, col 24, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 15, col 52, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 26, col 4, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 29, col 31, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 30, col 28, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 36, col 42, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 37, col 48, Missing semicolon.
+/var/lib/jenkins/app/server.js: line 40, col 39, Missing semicolon.
+
+/var/lib/jenkins/app/routes/app.js: line 1, col 41, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 2, col 47, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 3, col 49, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 7, col 31, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 8, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 13, col 11, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 14, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 19, col 11, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 20, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 22, col 82, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 24, col 88, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 26, col 78, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 29, col 45, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 30, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 35, col 11, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 36, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 38, col 88, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 41, col 37, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 42, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 44, col 49, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 46, col 83, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 48, col 71, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 50, col 84, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 52, col 95, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 54, col 85, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 56, col 71, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 58, col 18, Missing semicolon.
+/var/lib/jenkins/app/routes/app.js: line 59, col 2, Missing semicolon.
+
+/var/lib/jenkins/app/routes/main.js: line 1, col 41, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 2, col 42, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 3, col 49, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 7, col 31, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 8, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 11, col 28, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 12, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 23, col 44, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 25, col 31, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 27, col 11, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 28, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 31, col 28, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 32, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 35, col 31, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 36, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 41, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 44, col 31, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 45, col 7, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 47, col 48, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 53, col 8, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 59, col 8, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 61, col 51, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 63, col 55, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 65, col 18, Missing semicolon.
+/var/lib/jenkins/app/routes/main.js: line 66, col 2, Missing semicolon.
+
+/var/lib/jenkins/app/models/product.js: line 1, col 1, Use the function form of "use strict".
+/var/lib/jenkins/app/models/product.js: line 3, col 1, 'module' is not defined.
+
+/var/lib/jenkins/app/models/index.js: line 1, col 1, Use the function form of "use strict".
+/var/lib/jenkins/app/models/index.js: line 7, col 40, Missing semicolon.
+/var/lib/jenkins/app/models/index.js: line 25, col 5, Missing semicolon.
+/var/lib/jenkins/app/models/index.js: line 33, col 5, Missing semicolon.
+/var/lib/jenkins/app/models/index.js: line 3, col 10, 'require' is not defined.
+/var/lib/jenkins/app/models/index.js: line 4, col 12, 'require' is not defined.
+/var/lib/jenkins/app/models/index.js: line 5, col 17, 'require' is not defined.
+/var/lib/jenkins/app/models/index.js: line 7, col 14, 'require' is not defined.
+/var/lib/jenkins/app/models/index.js: line 6, col 11, 'process' is not defined.
+/var/lib/jenkins/app/models/index.js: line 9, col 5, 'process' is not defined.
+/var/lib/jenkins/app/models/index.js: line 10, col 33, 'process' is not defined.
+/var/lib/jenkins/app/models/index.js: line 21, col 5, 'console' is not defined.
+/var/lib/jenkins/app/models/index.js: line 24, col 5, 'console' is not defined.
+/var/lib/jenkins/app/models/index.js: line 30, col 5, 'console' is not defined.
+/var/lib/jenkins/app/models/index.js: line 32, col 5, 'console' is not defined.
+/var/lib/jenkins/app/models/index.js: line 38, col 16, '__dirname' is not defined.
+/var/lib/jenkins/app/models/index.js: line 43, col 44, '__dirname' is not defined.
+/var/lib/jenkins/app/models/index.js: line 56, col 1, 'module' is not defined.
+
+/var/lib/jenkins/app/models/user.js: line 1, col 1, Use the function form of "use strict".
+/var/lib/jenkins/app/models/user.js: line 3, col 1, 'module' is not defined.
+
+817 errors
