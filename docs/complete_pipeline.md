@@ -4,13 +4,9 @@ The aim of this section is to show the complete CI/CD pipeline structure and sol
 
 ---
 
-### **FlowChart**
+### **Complete Pipeline**
 
 ![Screenshot](img/complete_pipeline.png)&nbsp;
-
----
-
-### **Complete Pipeline**
 
 The following is the complete pipeline to perform multiple scans on the application and then deploy it in Production VM.
 
