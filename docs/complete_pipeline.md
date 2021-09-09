@@ -6,6 +6,8 @@ The aim of this section is to show the complete CI/CD pipeline structure and sol
 
 ### **Complete Pipeline**
 
+I compiled all the stages of initializing, building dependencies, running DVNA containers in Jenkins, static analysis, software composition analysis, dynamic analysis, generating software bill of materials, code quality (code linting) analysis, stopping containers running in Jenkins and finally deploying DVNA in production server into a single pipeline to streamline the entire process.
+
 ![Screenshot](img/complete_pipeline.png)&nbsp;
 
 The following is the complete pipeline to perform multiple scans on the application and then deploy it in Production VM.
