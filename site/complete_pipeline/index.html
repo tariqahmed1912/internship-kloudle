@@ -533,7 +533,7 @@
 <p>The aim of this section is to show the complete CI/CD pipeline structure and solve the points 1-8 in <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
 <hr />
 <h3 id="complete-pipeline"><strong>Complete Pipeline</strong></h3>
-<p>I compiled all the stages of initializing, building dependencies, running DVNA containers in Jenkins, static analysis, software composition analysis, dynamic analysis, generating software bill of materials, code quality (code linting) analysis, stopping containers running in Jenkins and finally deploying DVNA in production server into a single pipeline to streamline the entire process.</p>
+<p>I compiled all the stages of initializing, building dependencies, running DVNA containers in Jenkins server, static analysis, software composition analysis, dynamic analysis, generating software bill of materials, code quality (code linting) analysis, stopping containers running in Jenkins server and finally deploying DVNA in production server, into a single pipeline to streamline the entire process.</p>
 <p><img alt="Screenshot" src="../img/complete_pipeline.png" />&nbsp;</p>
 <p>The following is the complete pipeline to perform multiple scans on the application and then deploy it in Production VM.</p>
 <pre><code class="language-bash">pipeline {
