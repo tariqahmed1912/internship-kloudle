@@ -149,7 +149,7 @@ vault kv put dvna/mysql MYSQL_USER="dvna" MYSQL_DATABASE="dvna" MYSQL_PASSWORD="
 ```
 
 Retrieve the db configurations stored as `dvna/mysql` in Vault by running the following command.  
-**Note:** I used the `sed` command to replace certain charaters in the `aws` command output to write to `vars.env` file in the required format.
+**Note:** I used the `sed` command to replace certain charaters in the `vault kv put` command output to write to `vars.env` file in the required format.
 
 ```bash
 vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\"//g' -e 's/[[:blank:]]\+//g' > vars.env

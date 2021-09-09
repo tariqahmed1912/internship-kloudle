@@ -647,7 +647,7 @@ vault operator unseal &lt;UNSEAL_KEY_3&gt;
 <pre><code class="language-bash">vault kv put dvna/mysql MYSQL_USER=&quot;dvna&quot; MYSQL_DATABASE=&quot;dvna&quot; MYSQL_PASSWORD=&quot;passw0rd&quot; MYSQL_RANDOM_ROOT_PASSWORD=&quot;yes&quot; MYSQL_HOST=&quot;mysql-db&quot; MYSQL_PORT=3306
 </code></pre>
 <p>Retrieve the db configurations stored as <code>dvna/mysql</code> in Vault by running the following command.<br />
-<strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
+<strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>vault kv put</code> command output to write to <code>vars.env</code> file in the required format.</p>
 <pre><code class="language-bash">vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\&quot;//g' -e 's/[[:blank:]]\+//g' &gt; vars.env
 </code></pre>
 <p><strong>Vault Pipeline</strong></p>
