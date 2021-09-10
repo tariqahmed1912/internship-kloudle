@@ -447,12 +447,59 @@
     AWS Secrets Manager
   </a>
   
+    <nav class="md-nav" aria-label="AWS Secrets Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-secrets" class="md-nav__link">
+    Create Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-secrets" class="md-nav__link">
+    Retrieve Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-secrets-manager-pipeline" class="md-nav__link">
+    AWS Secrets Manager Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#hashicorp-vault" class="md-nav__link">
     HashiCorp Vault
   </a>
+  
+    <nav class="md-nav" aria-label="HashiCorp Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-vault" class="md-nav__link">
+    Configuring Vault
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vault-pipeline" class="md-nav__link">
+    Vault Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -521,12 +568,59 @@
     AWS Secrets Manager
   </a>
   
+    <nav class="md-nav" aria-label="AWS Secrets Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-secrets" class="md-nav__link">
+    Create Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieve-secrets" class="md-nav__link">
+    Retrieve Secrets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-secrets-manager-pipeline" class="md-nav__link">
+    AWS Secrets Manager Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#hashicorp-vault" class="md-nav__link">
     HashiCorp Vault
   </a>
+  
+    <nav class="md-nav" aria-label="HashiCorp Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-vault" class="md-nav__link">
+    Configuring Vault
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vault-pipeline" class="md-nav__link">
+    Vault Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -553,7 +647,7 @@
 <hr />
 <h3 id="aws-secrets-manager"><strong>AWS Secrets Manager</strong></h3>
 <p>AWS Secrets Manager is a secrets management service that helps you protect access to your applications, services, and IT resources. It centralizes storage of secrets and enables you to rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. An application running within an Amazon VPC can communicate with the Secrets Manager to retrieve reqired credentials. </p>
-<p><strong>Create Secrets</strong></p>
+<h4 id="create-secrets"><strong>Create Secrets</strong></h4>
 <ol>
 <li>Login to AWS Secrets Manager Console</li>
 <li>Click on <code>Store new secret</code></li>
@@ -561,7 +655,7 @@
 <li>Choose the default encryption key - <code>DefaultEncryptionKey</code> to encrypt the secrets, and click <code>Next</code>.</li>
 <li>Give a name for the secret (I kept <code>/dvna/db/mysql</code>). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click <code>Next</code> and finish from the <code>Review Page</code>.</li>
 </ol>
-<p><strong>Retrieve Secrets</strong></p>
+<h4 id="retrieve-secrets"><strong>Retrieve Secrets</strong></h4>
 <p>I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. I followed this <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html">documentation</a> to create a new IAM user for each person that requires administrator access.</p>
 <p>Next, I followed the official <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html">documentation</a> to install the latest version of aws-cli on Jenkins Master instance. </p>
 <pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install unzip
@@ -580,7 +674,7 @@ sudo ./aws/install
 <strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>aws</code> command output to write to <code>vars.env</code> file in the required format.</p>
 <pre><code class="language-bash">aws secretsmanager get-secret-value --secret-id dvna/db/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/&quot;//g' &gt; vars.env
 </code></pre>
-<p><strong>AWS Secrets Manager Pipeline</strong></p>
+<h4 id="aws-secrets-manager-pipeline"><strong>AWS Secrets Manager Pipeline</strong></h4>
 <p>In the <code>Build</code> stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the <code>Build</code> stage as given below.</p>
 <pre><code class="language-bash">stage ('Retrieve DB Configuration - AWS Secrets Manager') {
   steps {
@@ -591,7 +685,7 @@ sudo ./aws/install
 <hr />
 <h3 id="hashicorp-vault"><strong>HashiCorp Vault</strong></h3>
 <p>HashiCorp Vault is a secrets management tool specifically designed to control access to sensitive credentials in a low-trust environment. It can be used to store sensitive values and at the same time dynamically generate access for specific services/applications on lease. It is a more generic secrets manager as its not specific to a particular cloud vendor.</p>
-<p><strong>Configuring Vault</strong></p>
+<h4 id="configuring-vault"><strong>Configuring Vault</strong></h4>
 <p>First, Install Vault. I followed the official <a href="https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started">documentation</a> as its very concise and easy to follow.</p>
 <p>Next, I followed the <code>Deploy Vault</code> section in the documentation.<br />
 Create the Vault configuration in the file <code>config.hcl</code>.</p>
@@ -650,7 +744,7 @@ vault operator unseal &lt;UNSEAL_KEY_3&gt;
 <strong>Note:</strong> I used the <code>sed</code> command to replace certain charaters in the <code>vault kv put</code> command output to write to <code>vars.env</code> file in the required format.</p>
 <pre><code class="language-bash">vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\&quot;//g' -e 's/[[:blank:]]\+//g' &gt; vars.env
 </code></pre>
-<p><strong>Vault Pipeline</strong></p>
+<h4 id="vault-pipeline"><strong>Vault Pipeline</strong></h4>
 <p>In the <code>Build</code> stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the <code>Build</code> stage as given below.</p>
 <pre><code class="language-bash">stage ('Retrieve DB Configuration - Vault') {
     steps {

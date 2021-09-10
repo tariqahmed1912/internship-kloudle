@@ -1,4 +1,4 @@
-## **Objective**
+### **Objective**
 
 The aim of this section is to perform code linting and generate a code quality report and solve the 8th point of the [Problem Statement](problem_statements.md) under Task 1.
 
@@ -32,7 +32,7 @@ The above command will scan all the files in the `/app` directory. To restrict t
 jshint $(find ~/app -type f -name "*.js" -o -name "*.ejs" | grep -v node_modules) > ~/reports/jshint-report
 ```
 
-**JSHint Pipeline**
+#### **JSHint Pipeline**
 
 ```bash
 stage ('JSHint Analysis') {
@@ -95,7 +95,7 @@ To perform an eslint scan, run `eslint` command with the following flags;
 eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
 ```
 
-**ESLint Pipeline**
+#### **ESLint Pipeline**
 
 ```bash
 stage ('ESLint Analysis') {

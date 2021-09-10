@@ -328,32 +328,52 @@
     Objective
   </a>
   
-    <nav class="md-nav" aria-label="Objective">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nodejsscan" class="md-nav__link">
     NodeJsScan
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="NodeJsScan">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#auditjs" class="md-nav__link">
-    Auditjs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sast-pipeline" class="md-nav__link">
-    SAST Pipeline
+  <a href="#nodejsscan-pipeline" class="md-nav__link">
+    NodeJsScan Pipeline
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auditjs" class="md-nav__link">
+    Auditjs
+  </a>
+  
+    <nav class="md-nav" aria-label="Auditjs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auditjs-pipeline" class="md-nav__link">
+    AuditJs Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sast-pipeline" class="md-nav__link">
+    SAST Pipeline
+  </a>
   
 </li>
       
@@ -513,32 +533,52 @@
     Objective
   </a>
   
-    <nav class="md-nav" aria-label="Objective">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nodejsscan" class="md-nav__link">
     NodeJsScan
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="NodeJsScan">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#auditjs" class="md-nav__link">
-    Auditjs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sast-pipeline" class="md-nav__link">
-    SAST Pipeline
+  <a href="#nodejsscan-pipeline" class="md-nav__link">
+    NodeJsScan Pipeline
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auditjs" class="md-nav__link">
+    Auditjs
+  </a>
+  
+    <nav class="md-nav" aria-label="Auditjs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auditjs-pipeline" class="md-nav__link">
+    AuditJs Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sast-pipeline" class="md-nav__link">
+    SAST Pipeline
+  </a>
   
 </li>
       
@@ -557,7 +597,7 @@
                 
                   <h1>Static Analysis</h1>
                 
-                <h2 id="objective"><strong>Objective</strong></h2>
+                <h3 id="objective"><strong>Objective</strong></h3>
 <p>The aim of this section is to perform static analysis on DVNA using SAST tools in a Jenkins pipeline and solve the 4th point of the <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
 <p>About SAST</p>
 <ul>
@@ -585,7 +625,7 @@
 
 njsscan --json -o /app/reports/nodejsscan-report ~/app
 </code></pre>
-<p><strong>NodeJsScan Pipeline</strong></p>
+<h4 id="nodejsscan-pipeline"><strong>NodeJsScan Pipeline</strong></h4>
 <pre><code class="language-bash">stage('NodeJsScan') {
   steps {
     sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
@@ -617,7 +657,7 @@ at OSS Index and run the scan with your accounts <code>username</code> and <code
 <p><strong>Note</strong>: You can find the <code>API-token</code> in the <code>User Settings</code> after logging into the OSS Index website.</p>
 <pre><code class="language-bash">auditjs ossi --username &lt;USERNAME&gt; --token &lt;API-TOKEN&gt; &gt; ~/reports/auditjs-report
 </code></pre>
-<p><strong>AuditJs Pipeline</strong></p>
+<h4 id="auditjs-pipeline"><strong>AuditJs Pipeline</strong></h4>
 <pre><code class="language-bash">stage('Auditjs') {
   steps {
     sh 'cd ~/app; auditjs ossi &gt; ~/reports/auditjs-report || true'

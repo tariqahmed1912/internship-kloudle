@@ -1,4 +1,4 @@
-## **Objective**
+### **Objective**
 
 The aim of this section is to perform static analysis on DVNA using SAST tools in a Jenkins pipeline and solve the 4th point of the [Problem Statement](problem_statements.md) under Task 1.
 
@@ -43,7 +43,7 @@ mkdir ~/reports
 njsscan --json -o /app/reports/nodejsscan-report ~/app
 ```
 
-**NodeJsScan Pipeline**
+#### **NodeJsScan Pipeline**
 
 ```bash
 stage('NodeJsScan') {
@@ -98,7 +98,7 @@ at OSS Index and run the scan with your accounts `username` and `API-token`.
 auditjs ossi --username <USERNAME> --token <API-TOKEN> > ~/reports/auditjs-report
 ```
 
-**AuditJs Pipeline**
+#### **AuditJs Pipeline**
 
 ```bash
 stage('Auditjs') {

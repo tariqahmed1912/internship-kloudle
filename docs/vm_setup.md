@@ -1,4 +1,4 @@
-## **Objective**
+### **Objective**
 
 The aim of this section is to set up VMs running Ubuntu Server and solve the 1st point of the [Problem Statement](problem_statements.md) under Task 1.
 

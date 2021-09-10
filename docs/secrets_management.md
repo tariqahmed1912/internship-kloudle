@@ -14,7 +14,7 @@ Secrets management refers to the tools and methods for managing digital authenti
 
 AWS Secrets Manager is a secrets management service that helps you protect access to your applications, services, and IT resources. It centralizes storage of secrets and enables you to rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. An application running within an Amazon VPC can communicate with the Secrets Manager to retrieve reqired credentials. 
 
-**Create Secrets**
+#### **Create Secrets**
 
 1. Login to AWS Secrets Manager Console
 2. Click on `Store new secret`
@@ -22,7 +22,7 @@ AWS Secrets Manager is a secrets management service that helps you protect acces
 4. Choose the default encryption key - `DefaultEncryptionKey` to encrypt the secrets, and click `Next`.
 5. Give a name for the secret (I kept `/dvna/db/mysql`). The hierarchy allows you to group your secrets and maintain them better. You can add description, tags, etc. here if you want. Click `Next` and finish from the `Review Page`.
 
-**Retrieve Secrets**
+#### **Retrieve Secrets**
 
 I'll be using AWS CLI to retrieve db configurations. As a best practice, do not use the AWS account root user for any task where it's not required. I followed this [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to create a new IAM user for each person that requires administrator access.
 
@@ -49,7 +49,7 @@ Retrieve the db configurations stored as `dvna/db/mysql` in Secrets Manager by r
 aws secretsmanager get-secret-value --secret-id dvna/db/mysql --query SecretString --version-stage AWSCURRENT --output text | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,/\n/g' -e 's/"//g' > vars.env
 ```
 
-**AWS Secrets Manager Pipeline**
+#### **AWS Secrets Manager Pipeline**
 
 In the `Build` stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the `Build` stage as given below.
 
@@ -67,7 +67,7 @@ stage ('Retrieve DB Configuration - AWS Secrets Manager') {
 
 HashiCorp Vault is a secrets management tool specifically designed to control access to sensitive credentials in a low-trust environment. It can be used to store sensitive values and at the same time dynamically generate access for specific services/applications on lease. It is a more generic secrets manager as its not specific to a particular cloud vendor.
 
-**Configuring Vault**
+#### **Configuring Vault**
 
 First, Install Vault. I followed the official [documentation](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started) as its very concise and easy to follow.
 
@@ -155,7 +155,7 @@ Retrieve the db configurations stored as `dvna/mysql` in Vault by running the fo
 vault kv get -format=json -field=data dvna/mysql | sed -e 's/:/=/g' -e 's/{//g' -e 's/}//g' -e 's/,//g' -e 's/\"//g' -e 's/[[:blank:]]\+//g' > vars.env
 ```
 
-**Vault Pipeline**
+#### **Vault Pipeline**
 
 In the `Build` stage of Jenkins pipeline, remove the environment variables and the 1st shell command. Add another stage prior to the `Build` stage as given below.
 

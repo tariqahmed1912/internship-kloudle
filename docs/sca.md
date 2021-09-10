@@ -1,4 +1,4 @@
-## **Objective**
+### **Objective**
 
 The aim of this section is to explain the software composition of DVNA using SCA tools in a Jenkins pipeline and solve the 5th point of the [Problem Statement](problem_statements.md) under Task 1.
 

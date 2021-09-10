@@ -388,39 +388,59 @@
     Objective
   </a>
   
-    <nav class="md-nav" aria-label="Objective">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#code-linting" class="md-nav__link">
     Code Linting
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#jshint" class="md-nav__link">
     JSHint
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="JSHint">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#eslint" class="md-nav__link">
-    ESLint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-quality-pipeline" class="md-nav__link">
-    Code Quality Pipeline
+  <a href="#jshint-pipeline" class="md-nav__link">
+    JSHint Pipeline
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eslint" class="md-nav__link">
+    ESLint
+  </a>
+  
+    <nav class="md-nav" aria-label="ESLint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eslint-pipeline" class="md-nav__link">
+    ESLint Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-quality-pipeline" class="md-nav__link">
+    Code Quality Pipeline
+  </a>
   
 </li>
       
@@ -520,39 +540,59 @@
     Objective
   </a>
   
-    <nav class="md-nav" aria-label="Objective">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#code-linting" class="md-nav__link">
     Code Linting
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#jshint" class="md-nav__link">
     JSHint
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="JSHint">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#eslint" class="md-nav__link">
-    ESLint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#code-quality-pipeline" class="md-nav__link">
-    Code Quality Pipeline
+  <a href="#jshint-pipeline" class="md-nav__link">
+    JSHint Pipeline
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eslint" class="md-nav__link">
+    ESLint
+  </a>
+  
+    <nav class="md-nav" aria-label="ESLint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eslint-pipeline" class="md-nav__link">
+    ESLint Pipeline
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-quality-pipeline" class="md-nav__link">
+    Code Quality Pipeline
+  </a>
   
 </li>
       
@@ -571,7 +611,7 @@
                 
                   <h1>Software Code Quality Analysis</h1>
                 
-                <h2 id="objective"><strong>Objective</strong></h2>
+                <h3 id="objective"><strong>Objective</strong></h3>
 <p>The aim of this section is to perform code linting and generate a code quality report and solve the 8th point of the <a href="../problem_statements/">Problem Statement</a> under Task 1.</p>
 <hr />
 <h3 id="code-linting"><strong>Code Linting</strong></h3>
@@ -588,7 +628,7 @@
 <p>The above command will scan all the files in the <code>/app</code> directory. To restrict the scan to only .js and .ejs files, use a <code>find</code> command. We will further exclude all files in the <code>node_modules</code> directory.</p>
 <pre><code class="language-bash">jshint $(find ~/app -type f -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; | grep -v node_modules) &gt; ~/reports/jshint-report
 </code></pre>
-<p><strong>JSHint Pipeline</strong></p>
+<h4 id="jshint-pipeline"><strong>JSHint Pipeline</strong></h4>
 <pre><code class="language-bash">stage ('JSHint Analysis') {
   steps {
     sh 'jshint $(find ~/app -type f \( -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; \) | grep -v node_modules) &gt; ~/reports/jshint-report || true'
@@ -633,7 +673,7 @@
 <code>-o</code>, specify file to write report to</p>
 <pre><code class="language-bash">eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app
 </code></pre>
-<p><strong>ESLint Pipeline</strong></p>
+<h4 id="eslint-pipeline"><strong>ESLint Pipeline</strong></h4>
 <pre><code class="language-bash">stage ('ESLint Analysis') {
   steps {
     sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
