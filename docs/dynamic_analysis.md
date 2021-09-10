@@ -1,4 +1,4 @@
-## **Objective**
+### **Objective**
 
 The aim of this section is to perform dynamic analysis using DAST tools on DVNA and solve the 6th point of the [Problem Statement](problem_statements.md) under Task 1.
 
