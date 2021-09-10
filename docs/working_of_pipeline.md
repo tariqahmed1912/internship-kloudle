@@ -103,15 +103,15 @@ Components of the Jenkinsfile-
 
 The pipeline is divided into various stages based on the operations being performed. They are as follows:
 
-**Initialization**
+#### **Initialization**
 
 This is the first stage in the pipeline and is used just to indicate the start of the build.
 
-**Build**
+#### **Build**
 
 In this stage, `vars.env` file is created as it contains the environment variables for `dvna-mysql` db container. Two containers, `dvna-app` and `dvna-mysql`, are then run and the application code is copied into the hosts `jenkins` home directory (in my case, `/var/lib/jenkins`).
 
-**SAST and DAST Scans**
+#### **SAST and DAST Scans**
 
 All the stages following the `Build` stage, excluding the last two stages, are for performing SAST and DAST on the application. The scans are performed on the application running on the Jenkins VM and their output reports are stored in a folder named `reports` in `jenkins` home directory.  
 
@@ -122,10 +122,10 @@ OR
 <scan command>; echo $? > /dev/null
 ```
 
-**Remove DVNA from Jenkins**
+#### **Remove DVNA from Jenkins**
 
 After the scans are complete, the containers running in Jenkins VM are stopped and removed. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  `appsecco/dvna` docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the `mysql:5.7` image, since we require v5.7 and not the latest version.
 
-**Deploy DVNA to Production**
+#### **Deploy DVNA to Production**
 
 Finally, operations are performed on the Production VM over SSH (configured in the section titled `SSH Connection Between VMs`). `vars.env` file is copied into Production server, and the two containers; `dvna-app` and `dvna-mysql`, are run. The application is now successfully deployed!

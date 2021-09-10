@@ -335,6 +335,47 @@
     CI/CD Pipeline for Deploying DVNA
   </a>
   
+    <nav class="md-nav" aria-label="CI/CD Pipeline for Deploying DVNA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialization" class="md-nav__link">
+    Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sast-and-dast-scans" class="md-nav__link">
+    SAST and DAST Scans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-dvna-from-jenkins" class="md-nav__link">
+    Remove DVNA from Jenkins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dvna-to-production" class="md-nav__link">
+    Deploy DVNA to Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -535,6 +576,47 @@
     CI/CD Pipeline for Deploying DVNA
   </a>
   
+    <nav class="md-nav" aria-label="CI/CD Pipeline for Deploying DVNA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialization" class="md-nav__link">
+    Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sast-and-dast-scans" class="md-nav__link">
+    SAST and DAST Scans
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-dvna-from-jenkins" class="md-nav__link">
+    Remove DVNA from Jenkins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-dvna-to-production" class="md-nav__link">
+    Deploy DVNA to Production
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -658,20 +740,20 @@ Select <code>Pipeline script from SCM</code> and the SCM as <code>Git</code>. Yo
 <hr />
 <h3 id="cicd-pipeline-for-deploying-dvna"><strong>CI/CD Pipeline for Deploying DVNA</strong></h3>
 <p>The pipeline is divided into various stages based on the operations being performed. They are as follows:</p>
-<p><strong>Initialization</strong></p>
+<h4 id="initialization"><strong>Initialization</strong></h4>
 <p>This is the first stage in the pipeline and is used just to indicate the start of the build.</p>
-<p><strong>Build</strong></p>
+<h4 id="build"><strong>Build</strong></h4>
 <p>In this stage, <code>vars.env</code> file is created as it contains the environment variables for <code>dvna-mysql</code> db container. Two containers, <code>dvna-app</code> and <code>dvna-mysql</code>, are then run and the application code is copied into the hosts <code>jenkins</code> home directory (in my case, <code>/var/lib/jenkins</code>).</p>
-<p><strong>SAST and DAST Scans</strong></p>
+<h4 id="sast-and-dast-scans"><strong>SAST and DAST Scans</strong></h4>
 <p>All the stages following the <code>Build</code> stage, excluding the last two stages, are for performing SAST and DAST on the application. The scans are performed on the application running on the Jenkins VM and their output reports are stored in a folder named <code>reports</code> in <code>jenkins</code> home directory.  </p>
 <p><strong>Note:</strong> Most of the scans such as like NodeJsScan, AuditJs, JSHint, etc. return a non-zero exit code, even on successful completion. Jenkins considers non-zero status code as <code>FAILED</code> and stops the build. To overcome this, you can add either of the following at the end of the scan commands to give a <code>0</code> status code.  </p>
 <pre><code class="language-bash">&lt;scan command&gt; || true 
 OR
 &lt;scan command&gt;; echo $? &gt; /dev/null
 </code></pre>
-<p><strong>Remove DVNA from Jenkins</strong></p>
+<h4 id="remove-dvna-from-jenkins"><strong>Remove DVNA from Jenkins</strong></h4>
 <p>After the scans are complete, the containers running in Jenkins VM are stopped and removed. Since we're working with a containerized application (DVNA), we need to perform tests on the latest available image on DockerHub. Hence, we remove the existing local  <code>appsecco/dvna</code> docker image to avoid running a container with older release of the application image. On the other hand, you don't need to remove the <code>mysql:5.7</code> image, since we require v5.7 and not the latest version.</p>
-<p><strong>Deploy DVNA to Production</strong></p>
+<h4 id="deploy-dvna-to-production"><strong>Deploy DVNA to Production</strong></h4>
 <p>Finally, operations are performed on the Production VM over SSH (configured in the section titled <code>SSH Connection Between VMs</code>). <code>vars.env</code> file is copied into Production server, and the two containers; <code>dvna-app</code> and <code>dvna-mysql</code>, are run. The application is now successfully deployed!</p>
                 
               
