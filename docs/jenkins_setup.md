@@ -2,12 +2,12 @@
 
 The aim of this section is to set up a Jenkins server for building various CI/CD pipelines and solve the 2nd point of the [Problem Statement](problem_statements.md) under Task 1.
 
-About Jenkins
+#### About Jenkins
 
 - Jenkins is a Java-based open-source automation software. 
 - It automates the repetitive technical tasks involved in the continuous integration and delivery of software
 
-Prerequisites
+#### Prerequisites
 
 - VM running Ubuntu 18.04 LTS.
 - Java version 8. OpenJDK version 11.
