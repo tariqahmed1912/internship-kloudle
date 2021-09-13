@@ -14,7 +14,7 @@
     
     
       
-        <title>Old pipeline - DevSecOps Pipeline</title>
+        <title>Setup mkdocs - DevSecOps Pipeline</title>
       
     
     
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#setting-up-mkdocs" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -86,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Old pipeline
+              Setup mkdocs
             
           </span>
         </div>
@@ -424,82 +429,58 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-mkdocs" class="md-nav__link">
+    Setting up MkDocs
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Old pipeline</h1>
+                  <h1>Setup mkdocs</h1>
                 
-                <pre><code class="language-bash">pipeline {
-  agent any
-  stages {
-    stage ('Initialization') {
-      steps {
-        sh 'echo &quot;Starting the build!&quot;'
-      }
-    }
-
-    stage('Start DVNA and Copy DVNA Code') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker start dvna-mysql &amp;&amp; docker start dvna-app; docker cp dvna-app:/app/ ~/;&quot;'
-        sh 'scp -rC tariq@192.168.56.102:~/app ~/ &amp;&amp; mkdir ~/reports &amp;&amp; chmod 777 ~/reports'
-      }
-    }
-
-    stage('NodeJsScan Analysis') {
-      steps {
-        sh 'njsscan --json -o ~/reports/nodejsscan-report ~/app || true'
-      }
-    }
-
-    stage('Auditjs Analysis') {
-      steps {
-        sh 'cd ~/app; auditjs ossi &gt; ~/reports/auditjs-report || true'
-      }
-    }
-
-    stage ('OWASP Dependency-Check Analysis') {
-      steps {
-        sh '~/dependency-check/bin/dependency-check.sh --scan ~/app --out ~/reports/dependency-check-report --format JSON --prettyPrint || true'
-      }
-    }
-
-    stage('OWASP ZAP Analysis') {
-      steps {
-        sh 'docker run --rm -i -u zap --name owasp-zap -v ~/reports/:/zap/wrk/ owasp/zap2docker-stable zap-baseline.py -t http://192.168.56.102:9090 -r zap-report.html -l PASS || true'
-      }
-    }
-
-    stage ('Generating Software Bill of Materials') {
-      steps {
-        sh 'cd ~/app &amp;&amp; cyclonedx-bom -o ~/reports/sbom.xml'
-      }
-    }
-
-    stage ('JSHint Analysis') {
-      steps {
-        sh 'jshint $(find ~/app -type f -name &quot;*.js&quot; -o -name &quot;*.ejs&quot; | grep -v node_modules) &gt; ~/reports/jshint-report || true'
-      }
-    }
-
-    stage ('ESLint Analysis') {
-      steps {
-        sh 'eslint -c ~/.eslintrc.json -f html --ext .js,.ejs -o ~/reports/eslint-report.html ~/app || true'
-      }
-    }
-
-    stage ('Stop DVNA') {
-      steps {
-        sh 'ssh -o StrictHostKeyChecking=no tariq@192.168.56.102 &quot;docker stop dvna-app &amp;&amp; docker stop dvna-mysql;&quot;'
-        sh 'rm -rf ~/app'
-        sh 'echo &quot;Scan successfully completed!&quot;'
-      }
-    }
-
-  }
-}
+                <h2 id="setting-up-mkdocs">Setting up MkDocs</h2>
+<p>Install mkdocs and theme 'material'</p>
+<p>Create a private git repository.</p>
+<p>Create a Personal Access Token (Settings -&gt; Developer Settings -&gt; Personal Access Tokens).</p>
+<p>Clone repository.</p>
+<pre><code class="language-bash">git clone https://&lt;ACCESS_TOKEN&gt;@github.com/tariqahmed1912/cloud-native
+</code></pre>
+<p>Go into the newly created directory and run the following commands:</p>
+<pre><code class="language-bash">cd cloud-native
+mkdocs new .
+mkdocs build --clean
+</code></pre>
+<p>Make changes in the .yml file and add Markdown files.</p>
+<pre><code class="language-bash">git add . &amp;&amp; git commit -m &quot;Commit changes&quot; &amp;&amp; git push -u origin main
 </code></pre>
                 
               
